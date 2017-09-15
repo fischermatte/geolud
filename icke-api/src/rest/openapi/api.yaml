@@ -1,7 +1,7 @@
 swagger: 2.0
 
 info:
-  title: Project API
+  title: Icke API
   description: Project API description
   contact:
     name: Joe Developer
@@ -16,7 +16,7 @@ tags:
     description: scaffolding
 
 host: server:8080
-basePath: /api-path
+basePath: /api
 
 paths:
   /projects:
