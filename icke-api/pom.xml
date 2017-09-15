@@ -15,7 +15,7 @@
     <version>0.0.1-SNAPSHOT</version>
 
     <properties>
-        <!--<apikana.java-package>org.fischermatte.icke.api</apikana.java-package>-->
+        <apikana.java-package>org.fischermatte.icke.api</apikana.java-package>
         <apikana.global>false</apikana.global>
         <apikana.serve>false</apikana.serve>
     </properties>
@@ -48,7 +48,7 @@
                 <!--<plugin>-->
                     <!--<groupId>org.swisspush.maven.plugins</groupId>-->
                     <!--<artifactId>apikana-maven-plugin</artifactId>-->
-                    <!--<version>0.1.17</version>-->
+                    <!--<version>0.1.20</version>-->
                     <!--<executions>-->
                         <!--<execution>-->
                             <!--<goals>-->
@@ -56,6 +56,11 @@
                             <!--</goals>-->
                         <!--</execution>-->
                     <!--</executions>-->
+                    <!--<configuration>-->
+                        <!--<serve>false</serve>-->
+                        <!--<global>false</global>-->
+                        <!--<javaPackage>org.fischermatte.icke.api</javaPackage>-->
+                    <!--</configuration>-->
                 <!--</plugin>-->
             <!--</plugins>-->
         <!--</pluginManagement>-->
