@@ -12,12 +12,13 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
+
     </properties>
 
     <modules>
         <module>icke-api</module>
         <module>icke-server</module>
-        <module>icke-ui</module>
+        <module>icke-client</module>
     </modules>
 
 </project>

@@ -1,17 +1,98 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-	<artifactId>icke-api</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+    <parent>
+        <groupId>org.swisspush.apikana</groupId>
+        <artifactId>apikana-parent</artifactId>
+        <version>0.1.20</version>
+    </parent>
 
-	<parent>
-		<groupId>org.fischermatte</groupId>
-		<artifactId>icke</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
-	</parent>
+    <groupId>org.fischermatte</groupId>
+    <artifactId>icke-api</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
 
+    <properties>
+        <!--<apikana.java-package>org.fischermatte.icke.api</apikana.java-package>-->
+        <apikana.global>false</apikana.global>
+        <apikana.serve>false</apikana.serve>
+    </properties>
+
+    <!--<build>-->
+        <!--<pluginManagement>-->
+            <!--<plugins>-->
+                <!--<plugin>-->
+                    <!--<groupId>org.jsonschema2pojo</groupId>-->
+                    <!--<artifactId>jsonschema2pojo-maven-plugin</artifactId>-->
+                    <!--<version>0.4.29</version>-->
+                    <!--<configuration>-->
+                        <!--<sourceDirectory>${basedir}/target/api/model/json-schema-v3</sourceDirectory>-->
+                        <!--<includeJsr303Annotations>true</includeJsr303Annotations>-->
+                        <!--<useJodaDates>true</useJodaDates>-->
+                        <!--<useJodaLocalDates>true</useJodaLocalDates>-->
+                        <!--<useJodaLocalTimes>true</useJodaLocalTimes>-->
+                        <!--<generateBuilders>true</generateBuilders>-->
+                        <!--<removeOldOutput>true</removeOldOutput>-->
+                    <!--</configuration>-->
+                    <!--<executions>-->
+                        <!--<execution>-->
+                            <!--<phase>process-resources</phase>-->
+                            <!--<goals>-->
+                                <!--<goal>generate</goal>-->
+                            <!--</goals>-->
+                        <!--</execution>-->
+                    <!--</executions>-->
+                <!--</plugin>-->
+                <!--<plugin>-->
+                    <!--<groupId>org.swisspush.maven.plugins</groupId>-->
+                    <!--<artifactId>apikana-maven-plugin</artifactId>-->
+                    <!--<version>0.1.17</version>-->
+                    <!--<executions>-->
+                        <!--<execution>-->
+                            <!--<goals>-->
+                                <!--<goal>generate</goal>-->
+                            <!--</goals>-->
+                        <!--</execution>-->
+                    <!--</executions>-->
+                <!--</plugin>-->
+            <!--</plugins>-->
+        <!--</pluginManagement>-->
+
+        <!--<plugins>-->
+            <!--<plugin>-->
+                <!--<groupId>org.jsonschema2pojo</groupId>-->
+                <!--<artifactId>jsonschema2pojo-maven-plugin</artifactId>-->
+            <!--</plugin>-->
+            <!--<plugin>-->
+                <!--<groupId>org.swisspush.maven.plugins</groupId>-->
+                <!--<artifactId>apikana-maven-plugin</artifactId>-->
+            <!--</plugin>-->
+        <!--</plugins>-->
+    <!--</build>-->
+
+    <!--<dependencies>-->
+        <!--<dependency>-->
+            <!--<groupId>commons-lang</groupId>-->
+            <!--<artifactId>commons-lang</artifactId>-->
+            <!--<version>2.6</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>com.fasterxml.jackson.core</groupId>-->
+            <!--<artifactId>jackson-databind</artifactId>-->
+            <!--<version>2.8.5</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>javax.validation</groupId>-->
+            <!--<artifactId>validation-api</artifactId>-->
+            <!--<version>1.1.0.Final</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>joda-time</groupId>-->
+            <!--<artifactId>joda-time</artifactId>-->
+            <!--<version>2.9.7</version>-->
+        <!--</dependency>-->
+    <!--</dependencies>-->
 
 </project>
