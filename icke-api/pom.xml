@@ -4,9 +4,14 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.fischermatte</groupId>
     <artifactId>icke-api</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+
+    <parent>
+        <groupId>org.fischermatte</groupId>
+        <artifactId>icke</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
 
     <build>
         <pluginManagement>
@@ -48,6 +53,8 @@
                         <serve>false</serve>
                         <global>false</global>
                         <javaPackage>org.fischermatte.icke.api</javaPackage>
+                        <nodeWorkingDir>node</nodeWorkingDir>
+                        <openBrowser>false</openBrowser>
                     </configuration>
                 </plugin>
             </plugins>

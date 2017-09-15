@@ -12,6 +12,6 @@ public class ProjectController {
 
     @RequestMapping(path = "/all", method = RequestMethod.GET)
     public Observable<Project> getAll() {
-        return Observable.just(new Project("example project"));
+        return Observable.just(new Project().withTitle("example project"));
     }
 }
