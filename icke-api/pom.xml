@@ -54,11 +54,12 @@
                         </execution>
                     </executions>
                     <configuration>
-                        <!--<serve>false</serve>-->
+                        <serve>false</serve>
                         <global>false</global>
                         <javaPackage>org.fischermatte.icke.api</javaPackage>
-                        <nodeWorkingDir>node</nodeWorkingDir>
-                        <!--<openBrowser>false</openBrowser>-->
+                        <nodeWorkingDir>../node</nodeWorkingDir>
+                        <nodeVersion>${node.version}</nodeVersion>
+                        <openBrowser>false</openBrowser>
                     </configuration>
                 </plugin>
             </plugins>
