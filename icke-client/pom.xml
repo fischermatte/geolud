@@ -1,24 +1,70 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
+  <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>icke-client</artifactId>
+  <artifactId>icke-client</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <properties>
+    <frontend-maven-plugin.version>1.5</frontend-maven-plugin.version>
+  </properties>
+  <packaging>jar</packaging>
+
+  <parent>
+    <groupId>org.fischermatte</groupId>
+    <artifactId>icke</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
+  </parent>
 
-    <parent>
-        <groupId>org.fischermatte</groupId>
-        <artifactId>icke</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
-    </parent>
+  <dependencies>
+    <dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>icke-api</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+  </dependencies>
 
-    <dependencies>
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>icke-api</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-    </dependencies>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>com.github.eirslett</groupId>
+        <artifactId>frontend-maven-plugin</artifactId>
+        <version>${frontend-maven-plugin.version}</version>
+        <executions>
+          <!-- NPM AND NODE -->
+          <execution>
+            <id>install node and npm</id>
+            <goals>
+              <goal>install-node-and-npm</goal>
+            </goals>
+          </execution>
+          <!-- NPM INSTALL -->
+          <execution>
+            <id>npm install</id>
+            <goals>
+              <goal>npm</goal>
+            </goals>
+            <configuration>
+              <arguments>install</arguments>
+            </configuration>
+          </execution>
+          <!-- NG BUILD PROD -->
+          <execution>
+            <id>ng build prod</id>
+            <goals>
+              <goal>npm</goal>
+            </goals>
+            <configuration>
+              <arguments>run-script build-prod</arguments>
+            </configuration>
+            <phase>generate-resources</phase>
+          </execution>
+        </executions>
+        <configuration>
+          <nodeVersion>v8.5.0</nodeVersion>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
 
 </project>
