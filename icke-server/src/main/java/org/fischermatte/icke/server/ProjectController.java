@@ -1,11 +1,11 @@
 package org.fischermatte.icke.server;
 
+import io.reactivex.Observable;
 import org.fischermatte.icke.api.IckeAPIPaths;
 import org.fischermatte.icke.api.Project;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import reactor.core.publisher.Flux;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
@@ -14,17 +14,13 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 public class ProjectController {
 
     @RequestMapping(method = RequestMethod.GET)
-    public Flux<Project> getAll() {
-        return Flux.just(new Project()
-                .withId("1")
-                .withTitle("example project"));
+    public Observable<Project> getAll() {
+        return Observable.just(
+                new Project()
+                        .withId("1")
+                        .withTitle("example project 1"),
+                new Project()
+                        .withId("2")
+                        .withTitle("example project 2"));
     }
-
-//
-//    @RequestMapping(method = RequestMethod.GET)
-//    public ResponseEntity<Project> getAll() {
-//        return new ResponseEntity<Project>(new Project()
-//                .withId("1")
-//                .withTitle("example project"), HttpStatus.OK);
-//    }
 }

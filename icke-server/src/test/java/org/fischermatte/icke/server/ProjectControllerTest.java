@@ -5,14 +5,10 @@ import org.fischermatte.icke.api.Project;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
-import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.web.reactive.function.client.WebClient;
-import reactor.core.publisher.Flux;
+import org.springframework.test.web.reactive.server.WebTestClient;
 
-import static org.junit.Assert.assertNotNull;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
 
 @RunWith(SpringRunner.class)
@@ -22,23 +18,21 @@ public class ProjectControllerTest {
     @LocalServerPort
     private int port;
 
-    private TestRestTemplate restTemplate = new TestRestTemplate();
-
     @Test
     public void getAll() throws Exception {
 
-        WebClient webClient = WebClient.create();
+        WebTestClient client = WebTestClient.bindToServer()
+                .baseUrl("http://localhost:" + port)
+                .build();
 
-        Flux<Project> projects = webClient.get()
-                .uri("http://localhost:" + port + IckeAPIPaths.Projects.PATH)
-                .accept(MediaType.APPLICATION_JSON)
-                .exchange()
-                .flatMapMany(response -> response.bodyToFlux(Project.class))
-                .log();
-        assertNotNull(projects);
-        projects.subscribe(project -> {
-            System.out.println(project.toString());
-        });
+        client.get().uri(IckeAPIPaths.Projects.PATH).exchange()
+                .expectStatus().isOk()
+                .expectBody(Project[].class)
+                .isEqualTo(new Project[]{
+                        new Project().withId("1").withTitle("example project 1"),
+                        new Project().withId("2").withTitle("example project 2")
+                });
+
 
     }
 
