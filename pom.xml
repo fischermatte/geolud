@@ -11,8 +11,6 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <rxjava.version>2.1.3</rxjava.version>
-
         <node.version>v8.5.0</node.version>
     </properties>
 

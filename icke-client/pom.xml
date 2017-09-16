@@ -22,6 +22,7 @@
       <groupId>${project.groupId}</groupId>
       <artifactId>icke-api</artifactId>
       <version>${project.version}</version>
+      <scope>provided</scope>
     </dependency>
   </dependencies>
 
@@ -29,7 +30,7 @@
 
     <resources>
       <resource>
-        <directory>src/main/resources</directory>
+        <directory>dist</directory>
       </resource>
     </resources>
 

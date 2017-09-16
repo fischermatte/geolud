@@ -7,9 +7,6 @@
     <artifactId>icke-api</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <properties>
-        <commons-lang.version>2.6</commons-lang.version>
-        <jackson-databind.version>2.8.5</jackson-databind.version>
-        <validation-api.version>1.1.0.Final</validation-api.version>
         <jsonschema2pojo-maven-plugin.version>0.4.29</jsonschema2pojo-maven-plugin.version>
         <apikana-maven-plugin.version>0.1.20</apikana-maven-plugin.version>
     </properties>
@@ -81,17 +78,17 @@
         <dependency>
             <groupId>commons-lang</groupId>
             <artifactId>commons-lang</artifactId>
-            <version>${commons-lang.version}</version>
+            <version>2.6</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>${jackson-databind.version}</version>
+            <version>2.9.1</version>
         </dependency>
         <dependency>
             <groupId>javax.validation</groupId>
             <artifactId>validation-api</artifactId>
-            <version>${validation-api.version}</version>
+            <version>1.1.0.Final</version>
         </dependency>
     </dependencies>
 
