@@ -4,11 +4,11 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import { ProjectsComponent } from './projects/projects.component';
-import { ContactComponent } from './contact/contact.component';
-import { ResumeComponent } from './resume/resume.component';
-import { SkillsComponent } from './skills/skills.component';
-import { HomeComponent } from './home/home.component';
+import {ProjectsComponent} from './projects/projects.component';
+import {ContactComponent} from './contact/contact.component';
+import {ResumeComponent} from './resume/resume.component';
+import {SkillsComponent} from './skills/skills.component';
+import {HomeComponent} from './home/home.component';
 
 @NgModule({
   declarations: [
