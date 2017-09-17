@@ -1,7 +1,7 @@
 <div class="container" style="padding-left: 0; padding-right: 0;">
-  <header class="navbar navbar-light navbar-fixed-top navbar-expand-lg">
+  <header class="navbar navbar-light navbar-expand-lg">
 
-    <a class="navbar-brand" [routerLink]="['/']" (click)="navbarCollapsed = true">ng-bootstrap</a>
+    <a class="navbar-brand" [routerLink]="['/']" (click)="navbarCollapsed = true">Georg Ludewig</a>
 
     <button class="navbar-toggler navbar-toggler-right" type="button" (click)="navbarCollapsed = !navbarCollapsed"
             [attr.aria-expanded]="!navbarCollapsed" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -14,7 +14,16 @@
           <a class="nav-link" [routerLink]="['/home']" (click)="navbarCollapsed = true">Home</a>
         </li>
         <li class="nav-item" [routerLinkActive]="['active']">
+          <a class="nav-link" [routerLink]="['/resume']" (click)="navbarCollapsed = true">Résumé</a>
+        </li>
+        <li class="nav-item" [routerLinkActive]="['active']">
           <a class="nav-link" [routerLink]="['/skills']" (click)="navbarCollapsed = true">Skills</a>
+        </li>
+        <li class="nav-item" [routerLinkActive]="['active']">
+          <a class="nav-link" [routerLink]="['/projects']" (click)="navbarCollapsed = true">Projects</a>
+        </li>
+        <li class="nav-item" [routerLinkActive]="['active']">
+          <a class="nav-link" [routerLink]="['/contact']" (click)="navbarCollapsed = true">Contact</a>
         </li>
       </ul>
 
