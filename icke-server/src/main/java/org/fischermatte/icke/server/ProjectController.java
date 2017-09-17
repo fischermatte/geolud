@@ -3,17 +3,15 @@ package org.fischermatte.icke.server;
 import io.reactivex.Observable;
 import org.fischermatte.icke.api.IckeAPIPaths;
 import org.fischermatte.icke.api.Project;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
-
 @RestController
-@RequestMapping(path = IckeAPIPaths.Projects.PATH, produces = APPLICATION_JSON_VALUE)
+@RequestMapping(path = IckeAPIPaths.Projects.PATH)
 public class ProjectController {
 
-    @RequestMapping(method = RequestMethod.GET)
+    @GetMapping
     public Observable<Project> getAll() {
         return Observable.just(
                 new Project()
