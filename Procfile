@@ -1,0 +1,1 @@
+web: java -Dserver.port=$PORT -jar icke-server/target/icke-server-0.0.1-SNAPSHOT.jar
