@@ -1,34 +1,69 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-  <div class="container">
-    <a class="navbar-brand" [routerLink]="['/']" (click)="navbarCollapsed = true">Georg Ludewig</a>
+<div class="container">
+  <div class="row">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+      <div class="container">
+        <a class="navbar-brand" [routerLink]="['/']" (click)="navbarCollapsed = true">Georg Ludewig</a>
 
-    <button class="navbar-toggler navbar-toggler-right" type="button" (click)="navbarCollapsed = !navbarCollapsed"
-            [attr.aria-expanded]="!navbarCollapsed" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+        <button class="navbar-toggler navbar-toggler-right" type="button" (click)="navbarCollapsed = !navbarCollapsed"
+                [attr.aria-expanded]="!navbarCollapsed" aria-controls="navbarContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-    <div id="navbarContent" class="navbar-collapse" [ngbCollapse]="navbarCollapsed">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item" [routerLinkActive]="['active']">
-          <a class="nav-link" [routerLink]="['/home']" (click)="navbarCollapsed = true">Home</a>
-        </li>
-        <li class="nav-item" [routerLinkActive]="['active']">
-          <a class="nav-link" [routerLink]="['/resume']" (click)="navbarCollapsed = true">Résumé</a>
-        </li>
-        <li class="nav-item" [routerLinkActive]="['active']">
-          <a class="nav-link" [routerLink]="['/skills']" (click)="navbarCollapsed = true">Skills</a>
-        </li>
-        <li class="nav-item" [routerLinkActive]="['active']">
-          <a class="nav-link" [routerLink]="['/projects']" (click)="navbarCollapsed = true">Projects</a>
-        </li>
-        <li class="nav-item" [routerLinkActive]="['active']">
-          <a class="nav-link" [routerLink]="['/contact']" (click)="navbarCollapsed = true">Contact</a>
-        </li>
-      </ul>
-    </div>
+        <div id="navbarContent" class="navbar-collapse justify-content-end" [ngbCollapse]="navbarCollapsed">
+          <ul class="navbar-nav">
+            <li class="nav-item" [routerLinkActive]="['active']">
+              <a class="nav-link" [routerLink]="['/home']" (click)="navbarCollapsed = true">Home</a>
+            </li>
+            <li class="nav-item" [routerLinkActive]="['active']">
+              <a class="nav-link" [routerLink]="['/resume']" (click)="navbarCollapsed = true">Résumé</a>
+            </li>
+            <li class="nav-item" [routerLinkActive]="['active']">
+              <a class="nav-link" [routerLink]="['/skills']" (click)="navbarCollapsed = true">Skills</a>
+            </li>
+            <li class="nav-item" [routerLinkActive]="['active']">
+              <a class="nav-link" [routerLink]="['/projects']" (click)="navbarCollapsed = true">Projects</a>
+            </li>
+            <li class="nav-item" [routerLinkActive]="['active']">
+              <a class="nav-link" [routerLink]="['/contact']" (click)="navbarCollapsed = true">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
   </div>
-</nav>
+</div>
 
 <div class="container">
   <router-outlet></router-outlet>
 </div>
+<!--<footer class="site-footer">-->
+  <!--<div class="container">-->
+    <!--<div class="row">-->
+      <!--<div class="col-sm-12 text-center">-->
+        <!--<h1 class="footer-theme-name">Georg Ludewig</h1>-->
+        <!--<p>-->
+          <!--© Copyright 2017  -  Created by <a target="_blank" href="https://github.com/fischermatte">Fischer Matte</a>-->
+        <!--</p>-->
+      <!--</div>-->
+    <!--</div> &lt;!&ndash; END row&ndash;&gt;-->
+  <!--</div> &lt;!&ndash; END container&ndash;&gt;-->
+<!--</footer>-->
+<footer class="footer bg-light">
+  <div class="container container text-center">
+    <ul class="social mb-60">
+      <li>
+        <a target="_blank" href="https://github.com/fischermatte"><i class="fa fa-github"></i></a>
+      </li>
+      <li>
+        <a target="_blank" href="https://twitter.com/fischermatte"><i class="fa fa-twitter"></i></a>
+      </li>
+      <li>
+        <a target="_blank" href="https://stackoverflow.com/users/524906/fischermatte"><i class="fa fa-stack-overflow"></i></a>
+      </li>
+    </ul>
+    <p class="copyright">
+      <a class="copy-link" href="https://github.com/fischermatte">© FISCHERMATTE 2017</a>
+    </p>
+  </div>
+</footer>
