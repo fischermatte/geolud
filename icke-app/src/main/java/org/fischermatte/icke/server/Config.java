@@ -39,7 +39,7 @@ public class Config {
     }
 
 
-    // FIXME make html 5 routing more generic
+    // FIXME make html 5 routing more generic, use regex
     private boolean isAppState(ServerWebExchange exchange) {
         return APP_STATES.stream().anyMatch(exchange.getRequest().getURI().getPath()::startsWith);
     }
