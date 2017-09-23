@@ -3,7 +3,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <artifactId>icke-client</artifactId>
+  <artifactId>icke-ui</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <properties>
     <frontend-maven-plugin.version>1.5</frontend-maven-plugin.version>

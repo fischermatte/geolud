@@ -1,6 +1,6 @@
 import {AppPage} from './app.po';
 
-describe('icke-client App', () => {
+describe('icke-ui App', () => {
   let page: AppPage;
 
   beforeEach(() => {
