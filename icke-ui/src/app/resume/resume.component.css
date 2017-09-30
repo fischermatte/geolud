@@ -1,5 +1,5 @@
 .timeline {
-  border-left: 3px solid #00BCD4;
+  border-left: 3px solid #18BC9C; /* FIXME: use scss variable from theme */
   border-bottom-right-radius: 2px;
   border-top-right-radius: 2px;
   position: relative;
@@ -28,7 +28,7 @@
   border-radius: 50%;
   background-clip: padding-box;
   background: #fff;
-  border: 3px solid #00BCD4;
+  border: 3px solid #18BC9C; /* FIXME: use scss variable from theme */
 }
 
 .timeline .item:after {
@@ -41,7 +41,7 @@
   height: 10px;
   border-radius: 50%;
   background-clip: padding-box;
-  background: #00BCD4;
+  background: #18BC9C; /* FIXME: use scss variable from theme */
   z-index: 10;
 }
 
@@ -72,7 +72,7 @@
 
 .timeline .job-meta .title {
   font-size: 18px;
-  color: #00BCD4;
+  color: #18BC9C; /* FIXME: use scss variable from theme */
 }
 
 .timeline .job-meta .time {
