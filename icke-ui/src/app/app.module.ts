@@ -7,7 +7,6 @@ import {AppComponent} from './app.component';
 import {ProjectsComponent} from './projects/projects.component';
 import {ContactComponent} from './contact/contact.component';
 import {ResumeComponent} from './resume/resume.component';
-import {SkillsComponent} from './skills/skills.component';
 import {HomeComponent} from './home/home.component';
 
 @NgModule({
@@ -16,7 +15,6 @@ import {HomeComponent} from './home/home.component';
     ProjectsComponent,
     ContactComponent,
     ResumeComponent,
-    SkillsComponent,
     HomeComponent
   ],
   imports: [
