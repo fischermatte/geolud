@@ -71,7 +71,7 @@
 }
 
 .timeline .job-meta .title {
-  font-size: 18px;
+  font-size: 1.2em;
   color: #18BC9C; /* FIXME: use scss variable from theme */
 }
 
@@ -81,4 +81,16 @@
 
 .timeline .job-desc {
   color: #666;
+}
+
+.certificates ul {
+
+}
+.certificates ul li {
+  list-style: none;
+}
+
+.certificates .title {
+  font-size: 1.2em;
+  color: #18BC9C; /* FIXME: use scss variable from theme */
 }
