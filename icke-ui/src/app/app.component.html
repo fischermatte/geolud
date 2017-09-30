@@ -9,20 +9,25 @@
     </button>
     <div id="navbarResponsive" class="collapse navbar-collapse  justify-content-end" [ngbCollapse]="navbarCollapsed">
       <ul class="navbar-nav">
-        <li class="nav-item" [routerLinkActive]="['active']">
-          <a class="nav-link" [routerLink]="['/home']" fragment="aboutme" (click)="navbarCollapsed = true">About me</a>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/home']" fragment="aboutme" [routerLinkActive]="['active']"
+             (click)="navbarCollapsed = true">About me</a>
         </li>
-        <li class="nav-item" [routerLinkActive]="['active']">
-          <a class="nav-link" [routerLink]="['/resume']" (click)="navbarCollapsed = true">Résumé</a>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/resume']" [routerLinkActive]="['active']"
+             (click)="navbarCollapsed = true">Résumé</a>
         </li>
-        <li class="nav-item" [routerLinkActive]="['active']">
-          <a class="nav-link" [routerLink]="['/skills']" (click)="navbarCollapsed = true">Skills</a>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/skills']" [routerLinkActive]="['active']"
+             (click)="navbarCollapsed = true">Skills</a>
         </li>
-        <li class="nav-item" [routerLinkActive]="['active']">
-          <a class="nav-link" [routerLink]="['/projects']" (click)="navbarCollapsed = true">Projects</a>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/projects']" [routerLinkActive]="['active']"
+             (click)="navbarCollapsed = true">Projects</a>
         </li>
-        <li class="nav-item" [routerLinkActive]="['active']">
-          <a class="nav-link" [routerLink]="['/contact']" (click)="navbarCollapsed = true">Contact</a>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/contact']" [routerLinkActive]="['active']"
+             (click)="navbarCollapsed = true">Contact</a>
         </li>
       </ul>
     </div>
