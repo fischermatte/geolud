@@ -1,69 +1,82 @@
-<div class="container">
-  <div class="row">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-      <div class="container">
-        <a class="navbar-brand" [routerLink]="['/']" (click)="navbarCollapsed = true">Georg Ludewig</a>
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand" [routerLink]="['/home']">Georg Ludewig</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" (click)="navbarCollapsed = !navbarCollapsed"
+            [attr.aria-expanded]="!navbarCollapsed" aria-controls="navbarResponsive" aria-expanded="false"
+            aria-label="Toggle navigation">
+      Menu
+      <i class="fa fa-bars"></i>
+    </button>
+    <div id="navbarResponsive" class="collapse navbar-collapse  justify-content-end" [ngbCollapse]="navbarCollapsed">
+      <ul class="navbar-nav">
+        <li class="nav-item" [routerLinkActive]="['active']">
+          <a class="nav-link" [routerLink]="['/home']" (click)="navbarCollapsed = true">Who I am</a>
+        </li>
+        <li class="nav-item" [routerLinkActive]="['active']">
+          <a class="nav-link" [routerLink]="['/resume']" (click)="navbarCollapsed = true">Résumé</a>
+        </li>
+        <li class="nav-item" [routerLinkActive]="['active']">
+          <a class="nav-link" [routerLink]="['/skills']" (click)="navbarCollapsed = true">Skills</a>
+        </li>
+        <li class="nav-item" [routerLinkActive]="['active']">
+          <a class="nav-link" [routerLink]="['/projects']" (click)="navbarCollapsed = true">Projects</a>
+        </li>
+        <li class="nav-item" [routerLinkActive]="['active']">
+          <a class="nav-link" [routerLink]="['/contact']" (click)="navbarCollapsed = true">Contact</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
 
-        <button class="navbar-toggler navbar-toggler-right" type="button" (click)="navbarCollapsed = !navbarCollapsed"
-                [attr.aria-expanded]="!navbarCollapsed" aria-controls="navbarContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+<div>
+  <router-outlet></router-outlet>
+</div>
 
-        <div id="navbarContent" class="navbar-collapse justify-content-end" [ngbCollapse]="navbarCollapsed">
-          <ul class="navbar-nav">
-            <li class="nav-item" [routerLinkActive]="['active']">
-              <a class="nav-link" [routerLink]="['/home']" (click)="navbarCollapsed = true">Home</a>
+<footer class="text-center">
+  <div class="footer-above">
+    <div class="container">
+      <div class="row">
+        <div class="footer-col col-md-4">
+          <h3>Location</h3>
+          <p>3005 Bern
+            <br>Switzerland</p>
+        </div>
+        <div class="footer-col col-md-4">
+          <h3>Around the Web</h3>
+          <ul class="list-inline">
+            <li class="list-inline-item">
+              <a class="btn-social btn-outline" href="https://github.com/fischermatte">
+                <i class="fa fa-fw fa-github"></i>
+              </a>
             </li>
-            <li class="nav-item" [routerLinkActive]="['active']">
-              <a class="nav-link" [routerLink]="['/resume']" (click)="navbarCollapsed = true">Résumé</a>
+            <li class="list-inline-item">
+              <a class="btn-social btn-outline" href="https://twitter.com/fischermatte">
+                <i class="fa fa-fw fa-twitter"></i>
+              </a>
             </li>
-            <li class="nav-item" [routerLinkActive]="['active']">
-              <a class="nav-link" [routerLink]="['/skills']" (click)="navbarCollapsed = true">Skills</a>
-            </li>
-            <li class="nav-item" [routerLinkActive]="['active']">
-              <a class="nav-link" [routerLink]="['/projects']" (click)="navbarCollapsed = true">Projects</a>
-            </li>
-            <li class="nav-item" [routerLinkActive]="['active']">
-              <a class="nav-link" [routerLink]="['/contact']" (click)="navbarCollapsed = true">Contact</a>
+            <li class="list-inline-item">
+              <a class="btn-social btn-outline" href="https://stackoverflow.com/users/524906/fischermatte">
+                <i class="fa fa-fw fa-stack-overflow"></i>
+              </a>
             </li>
           </ul>
         </div>
+        <div class="footer-col col-md-4">
+          <h3>Contact</h3>
+          <p><a href="mailto:geolud@posteo.net">geolud@posteo.net</a>.</p>
+        </div>
       </div>
-    </nav>
+    </div>
   </div>
-</div>
-
-<div class="container">
-  <router-outlet></router-outlet>
-</div>
-<!--<footer class="site-footer">-->
-  <!--<div class="container">-->
-    <!--<div class="row">-->
-      <!--<div class="col-sm-12 text-center">-->
-        <!--<h1 class="footer-theme-name">Georg Ludewig</h1>-->
-        <!--<p>-->
-          <!--© Copyright 2017  -  Created by <a target="_blank" href="https://github.com/fischermatte">Fischer Matte</a>-->
-        <!--</p>-->
-      <!--</div>-->
-    <!--</div> &lt;!&ndash; END row&ndash;&gt;-->
-  <!--</div> &lt;!&ndash; END container&ndash;&gt;-->
-<!--</footer>-->
-<footer class="footer bg-light">
-  <div class="container container text-center">
-    <ul class="social mb-60">
-      <li>
-        <a target="_blank" href="https://github.com/fischermatte"><i class="fa fa-github"></i></a>
-      </li>
-      <li>
-        <a target="_blank" href="https://twitter.com/fischermatte"><i class="fa fa-twitter"></i></a>
-      </li>
-      <li>
-        <a target="_blank" href="https://stackoverflow.com/users/524906/fischermatte"><i class="fa fa-stack-overflow"></i></a>
-      </li>
-    </ul>
-    <p class="copyright">
-      <a class="copy-link" href="https://github.com/fischermatte">© FISCHERMATTE 2017</a>
-    </p>
+  <div class="footer-below">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          Copyright © Georg Ludewig 2017
+        </div>
+      </div>
+    </div>
   </div>
 </footer>
+
