@@ -1,0 +1,84 @@
+.timeline {
+  border-left: 3px solid #00BCD4;
+  border-bottom-right-radius: 2px;
+  border-top-right-radius: 2px;
+  position: relative;
+  padding: 0 30px;
+  margin-left: 280px;
+}
+
+.timeline .item {
+  position: relative;
+  margin-bottom: 45px;
+}
+
+.timeline .item:last-child {
+  margin-bottom: 0;
+}
+
+.timeline .item:before {
+  content: "";
+  position: absolute;
+  left: -43px;
+  top: 0;
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  -o-border-radius: 50%;
+  border-radius: 50%;
+  background-clip: padding-box;
+  background: #fff;
+  border: 3px solid #00BCD4;
+}
+
+.timeline .item:after {
+  content: "";
+  position: absolute;
+  left: -37px;
+  top: 6px;
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-clip: padding-box;
+  background: #00BCD4;
+  z-index: 10;
+}
+
+.timeline .work-place {
+  position: relative;
+}
+
+.timeline .location {
+  color: #8a8a8a;
+}
+
+.timeline .location .fa {
+  margin-right: 5px;
+}
+
+.timeline .place {
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 20px;
+  font-weight: 300;
+}
+
+.timeline .job-meta {
+  position: absolute;
+  left: -280px;
+  top: 0;
+}
+
+.timeline .job-meta .title {
+  font-size: 18px;
+  color: #00BCD4;
+}
+
+.timeline .job-meta .time {
+  color: #8a8a8a;
+}
+
+.timeline .job-desc {
+  color: #666;
+}
