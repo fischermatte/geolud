@@ -1,5 +1,3 @@
-import {Int} from "apikana/default-types";
-
 export interface Project {
     id: string // the id
 
