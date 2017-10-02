@@ -17,7 +17,7 @@
 
     <modules>
         <module>icke-api</module>
-        <module>icke-app</module>
+        <module>icke-server</module>
         <module>icke-ui</module>
     </modules>
 
