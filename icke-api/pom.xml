@@ -15,7 +15,7 @@
     </properties>
 
     <parent>
-        <groupId>org.fischermatte</groupId>
+        <groupId>io.fischermatte</groupId>
         <artifactId>icke</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
@@ -56,7 +56,7 @@
                     <configuration>
                         <serve>false</serve>
                         <global>false</global>
-                        <javaPackage>org.fischermatte.icke.api</javaPackage>
+                        <javaPackage>io.fischermatte.icke.api</javaPackage>
                         <nodeWorkingDir>../node</nodeWorkingDir>
                         <nodeVersion>${node.version}</nodeVersion>
                         <openBrowser>false</openBrowser>

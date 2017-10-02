@@ -12,7 +12,7 @@
   <packaging>jar</packaging>
 
   <parent>
-    <groupId>org.fischermatte</groupId>
+    <groupId>io.fischermatte</groupId>
     <artifactId>icke</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>

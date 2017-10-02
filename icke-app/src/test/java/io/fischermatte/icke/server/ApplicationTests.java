@@ -1,4 +1,4 @@
-package org.fischermatte.icke.server;
+package io.fischermatte.icke.server;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
