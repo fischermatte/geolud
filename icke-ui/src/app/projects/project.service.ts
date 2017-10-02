@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Project} from "../../../../icke-api/src/model/ts/project";
+import {Project} from "../../../../icke-api/target/api/model/ts/project";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs/Observable";
 import 'rxjs/add/operator/map'

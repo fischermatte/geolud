@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ProjectService} from "./project.service";
-import {Project} from "../../../../icke-api/src/model/ts/project";
+import {Project} from "../../../../icke-api/target/api/model/ts/project";
 
 @Component({
   selector: 'app-projects',

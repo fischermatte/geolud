@@ -4,32 +4,36 @@
     <hr class="star-primary">
     <div class="row">
       <div class="col-lg-8 mx-auto">
-        <form name="sentMessage" id="contactForm" novalidate="">
+        <form (ngSubmit)="onSubmit()" name="sentMessage" id="contactForm" novalidate="">
           <div class="control-group">
             <div class="form-group floating-label-form-group controls">
               <label>Name</label>
-              <input class="form-control" id="name" type="text" placeholder="Name" required="" data-validation-required-message="Please enter your name.">
+              <input class="form-control" id="name" type="text" placeholder="Name" required="" data-validation-required-message="Please enter your name." name="name"
+                     [(ngModel)]="contactRequest.name">
               <p class="form-text text-danger"></p>
             </div>
           </div>
           <div class="control-group">
             <div class="form-group floating-label-form-group controls">
               <label>Email Address</label>
-              <input class="form-control" id="email" type="email" placeholder="Email Address" required="" data-validation-required-message="Please enter your email address.">
+              <input class="form-control" id="email" type="email" placeholder="Email Address" required="" data-validation-required-message="Please enter your email address."
+                     name="email" [(ngModel)]="contactRequest.email">
               <p class="form-text text-danger"></p>
             </div>
           </div>
           <div class="control-group">
             <div class="form-group floating-label-form-group controls">
               <label>Phone Number</label>
-              <input class="form-control" id="phone" type="tel" placeholder="Phone Number" required="" data-validation-required-message="Please enter your phone number.">
+              <input class="form-control" id="phone" type="tel" placeholder="Phone Number" required="" data-validation-required-message="Please enter your phone number."
+                     name="phone" [(ngModel)]="contactRequest.phone">
               <p class="form-text text-danger"></p>
             </div>
           </div>
           <div class="control-group">
             <div class="form-group floating-label-form-group controls">
               <label>Message</label>
-              <textarea class="form-control" id="message" rows="5" placeholder="Message" required="" data-validation-required-message="Please enter a message."></textarea>
+              <textarea class="form-control" id="message" rows="5" placeholder="Message" required="" data-validation-required-message="Please enter a message." name="message"
+                        [(ngModel)]="contactRequest.message"></textarea>
               <p class="form-text text-danger"></p>
             </div>
           </div>

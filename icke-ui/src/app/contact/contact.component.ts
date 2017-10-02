@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+import {HttpClient} from "@angular/common/http";
+import {ContactRequest} from "../../../../icke-api/target/api/model/ts/contact";
 
 @Component({
   selector: 'app-contact',
@@ -7,10 +9,18 @@ import {Component, OnInit} from '@angular/core';
 })
 export class ContactComponent implements OnInit {
 
-  constructor() {
+  contactRequest: ContactRequest;
+  submitted = false;
+
+  constructor(private http: HttpClient) {
   }
 
   ngOnInit() {
+    this.contactRequest = <ContactRequest>{};
+  }
+
+  onSubmit() {
+    this.http.post("/api/contact", this.contactRequest);
   }
 
 }
