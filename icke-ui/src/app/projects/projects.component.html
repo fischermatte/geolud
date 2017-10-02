@@ -3,13 +3,16 @@
     <h2 class="text-center">Projects</h2>
     <hr class="star-primary">
     <div class="row">
-      <div class="col-md-12">
-        <ul>
-          <li *ngFor="let project of projects">
-            {{project.title}}
-          </li>
-        </ul>
+      <div class="col-md-2"></div>
+      <div class="col-md-8">
+        <div *ngFor="let project of projects" class="project-item">
+          <div class="project-period">{{project.period}}</div>
+          <div class="project-title">{{project.title}}</div>
+          <div class="project-client"><a href="{{project.client.link}}">{{project.client.name}}</a></div>
+          <div class="project-description">{{project.description}}</div>
+        </div>
       </div>
+      <div class="col-md-2"></div>
     </div>
   </div>
 </section>

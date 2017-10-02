@@ -6,7 +6,16 @@
       "link": "https://www.postauto.ch"
     },
     "period": "2016-2017",
-    "description": "Technologies: Docker, Vert.x, AngularJS, Spring, HTML 5, JavaScript, SASS, Java, Spring Security, OpenShift"
+    "description": "Technologies: OpenShift, Docker, Vert.x, AngularJS, Spring,Spring Security, HTML 5, JavaScript, Java"
+  },
+  {
+    "title": "Post - Metering",
+    "client": {
+      "name": "Post CH AG",
+      "link": "https://www.post.ch"
+    },
+    "period": "2017",
+    "description": "Technologies: Angular, Bootstrap, Spring, Spring Security, Spring Batch, HTML 5, JavaScript, SASS, Java"
   },
   {
     "title": "Swiss Voting and Election Administration System",
