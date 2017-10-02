@@ -1,8 +1,8 @@
 ---
 # Cloud Foundry Manifest
 applications:
-- name: icke-app
-  path: icke-app/target/icke-app-0.0.1-SNAPSHOT.jar
+- name: icke-server
+  path: icke-server/target/icke-server-0.0.1-SNAPSHOT.jar
   instances: 1
   buildpack: https://github.com/cloudfoundry/java-buildpack.git
   memory: 1G

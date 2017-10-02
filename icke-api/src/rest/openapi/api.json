@@ -75,9 +75,30 @@
           }
         }
       }
+    },
+    "/contact": {
+      "post": {
+        "description": "Submits a contact request.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "contact",
+            "required": true,
+            "schema": {
+              "$ref" : "#/definitions/ContactRequest"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
+      }
     }
   },
   "tsModels": [
-    "../../model/ts/project.ts"
+    "../../model/ts/project.ts",
+    "../../model/ts/contact.ts"
   ]
 }

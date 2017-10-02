@@ -1,9 +1,11 @@
 package io.fischermatte.icke.server;
 
 import org.springframework.context.annotation.Configuration;
+import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+@EnableAsync
 @Configuration
 public class Config {
 
