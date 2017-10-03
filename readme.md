@@ -3,7 +3,7 @@
 [![WTFPL](https://img.shields.io/badge/license-WTFPL-blue.svg)](http://www.wtfpl.net/txt/copying)
 [![Build Status](https://travis-ci.org/fischermatte/icke.svg?branch=develop)](https://travis-ci.org/fischermatte/icke) 
 
-My personal Homepage total over-engineered using the following technology stack:
+My personal Homepage, totally over-engineered using the following technology stack:
 
 - Spring Boot
 - Angular 4
