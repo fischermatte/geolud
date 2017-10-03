@@ -2,6 +2,11 @@
   <div class="container">
     <h2 class="text-center">Contact Me</h2>
     <hr class="star-primary">
+    <div class="row" *ngIf="feedback">
+      <div class="col-lg-8 mx-auto">
+        <ngb-alert [type]="feedback.type" (close)="closeAlert()">{{ feedback.message }}</ngb-alert>
+      </div>
+    </div>
     <div class="row">
       <div class="col-lg-8 mx-auto">
         <form (ngSubmit)="onSubmit()" name="sentMessage" id="contactForm" #contactForm="ngForm" class="was-validated" novalidate>
