@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
 
+import static org.springframework.util.MimeTypeUtils.APPLICATION_JSON_VALUE;
+
 @RestController
-@RequestMapping(path = IckeAPIPaths.Contact.PATH)
+@RequestMapping(path = IckeAPIPaths.Contact.PATH, consumes = APPLICATION_JSON_VALUE)
 public class ContactController {
 
     private final MailService mailService;

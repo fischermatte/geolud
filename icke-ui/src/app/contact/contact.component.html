@@ -4,43 +4,43 @@
     <hr class="star-primary">
     <div class="row">
       <div class="col-lg-8 mx-auto">
-        <form (ngSubmit)="onSubmit()" name="sentMessage" id="contactForm" novalidate="">
+        <form (ngSubmit)="onSubmit()" name="sentMessage" id="contactForm" #contactForm="ngForm" class="was-validated" novalidate>
+          <!--NAME-->
           <div class="control-group">
             <div class="form-group floating-label-form-group controls">
               <label>Name</label>
-              <input class="form-control" id="name" type="text" placeholder="Name" required="" data-validation-required-message="Please enter your name." name="name"
-                     [(ngModel)]="contactRequest.name">
-              <p class="form-text text-danger"></p>
+              <input class="form-control" id="name" type="text" name="name" #name="ngModel" placeholder="Name" [(ngModel)]="contactRequest.name">
             </div>
           </div>
+          <!--EMAIL-->
           <div class="control-group">
             <div class="form-group floating-label-form-group controls">
               <label>Email Address</label>
-              <input class="form-control" id="email" type="email" placeholder="Email Address" required="" data-validation-required-message="Please enter your email address."
-                     name="email" [(ngModel)]="contactRequest.email">
-              <p class="form-text text-danger"></p>
+              <input class="form-control" id="email" type="email" name="email" #email="ngModel" placeholder="Email Address *" required
+                     [(ngModel)]="contactRequest.email" pattern="[^ @]*@[^ @]*">
+              <small [hidden]="email.valid || email.pristine" class="was-validated invalid-feedback">A valid email is required</small>
             </div>
           </div>
+          <!--PHONE-->
           <div class="control-group">
             <div class="form-group floating-label-form-group controls">
               <label>Phone Number</label>
-              <input class="form-control" id="phone" type="tel" placeholder="Phone Number" required="" data-validation-required-message="Please enter your phone number."
-                     name="phone" [(ngModel)]="contactRequest.phone">
-              <p class="form-text text-danger"></p>
+              <input class="form-control" id="phone" type="tel" placeholder="Phone Number" name="phone" [(ngModel)]="contactRequest.phone">
             </div>
           </div>
+          <!--MESSAGE-->
           <div class="control-group">
             <div class="form-group floating-label-form-group controls">
               <label>Message</label>
-              <textarea class="form-control" id="message" rows="5" placeholder="Message" required="" data-validation-required-message="Please enter a message." name="message"
+              <textarea class="form-control" id="message" name="message" #message="ngModel" rows="5" placeholder="Message *" required
                         [(ngModel)]="contactRequest.message"></textarea>
-              <p class="form-text text-danger"></p>
+              <small [hidden]="message.valid || message.pristine" class="was-validated invalid-feedback">Message is required</small>
             </div>
           </div>
           <br>
           <div id="success"></div>
           <div class="form-group">
-            <button type="submit" class="btn btn-success btn-lg" id="sendMessageButton">Send</button>
+            <button type="submit" class="btn btn-success btn-lg" id="sendMessageButton" [disabled]="contactForm.invalid">Send</button>
           </div>
         </form>
       </div>

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {ContactRequest} from "../../../../icke-api/target/api/model/ts/contact";
 
@@ -10,7 +10,7 @@ import {ContactRequest} from "../../../../icke-api/target/api/model/ts/contact";
 export class ContactComponent implements OnInit {
 
   contactRequest: ContactRequest;
-  submitted = false;
+  @ViewChild('contactForm') contactForm: any;
 
   constructor(private http: HttpClient) {
   }
@@ -20,7 +20,17 @@ export class ContactComponent implements OnInit {
   }
 
   onSubmit() {
-    this.http.post("/api/contact", this.contactRequest);
+    if (this.contactForm.valid) {
+      // note we set the response type to text due to this issue:  https://github.com/angular/angular/issues/18680
+      this.http.post("/api/contact", this.contactRequest, {responseType: 'text'}).subscribe(
+        response => {
+          this.contactForm.reset();
+        },
+        error => {
+          console.log("Error occured" + error);
+        }
+      );
+    }
   }
 
 }
