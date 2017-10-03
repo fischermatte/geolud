@@ -26,7 +26,7 @@ public class ContactController {
     @PostMapping
     public ResponseEntity<Void> submitContactRequest(@Valid @RequestBody ContactRequest contactRequest) {
         mailService.sendEmail(contactRequest);
-        return new ResponseEntity<Void>(HttpStatus.CREATED);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
 }
