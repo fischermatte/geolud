@@ -8,7 +8,7 @@ My personal Homepage, totally over-engineered using the following technology sta
 - Spring Boot
 - Angular 4
 - Bootstrap 4 
-- Apikana for contract first API integration with Typescript and Java (might by replaced by swagger-codegen-maven-plugin)
+- Apikana for contract first API integration with Typescript and Java (will by replaced by swagger-codegen-maven-plugin)
     
 Build and run it:
 
