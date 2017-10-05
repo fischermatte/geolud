@@ -1,4 +1,4 @@
-package io.fischermatte.icke.server;
+package io.fischermatte.icke.server.project;
 
 
 import io.fischermatte.icke.api.IckeAPIPaths;
