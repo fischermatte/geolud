@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ProjectService} from "./project.service";
 import {Project} from "../../../../icke-api/target/api/model/ts/project";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-projects',
@@ -11,13 +12,12 @@ import {Project} from "../../../../icke-api/target/api/model/ts/project";
 export class ProjectsComponent implements OnInit {
   projects: Project[];
 
-  constructor(public projectService: ProjectService) {
+  constructor(private route: ActivatedRoute) {
   }
 
-  ngOnInit() {
-    this.projectService.getAll().subscribe((projects: Project[]) => {
-      this.projects = projects;
-    });
+  ngOnInit(): void {
+    this.projects = this.route.snapshot.data['projects'];
   }
+
 
 }
