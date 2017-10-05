@@ -3,9 +3,11 @@ package io.fischermatte.icke.server.contact;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.validation.annotation.Validated;
 
 import javax.validation.constraints.NotNull;
 
+@Validated
 @Configuration
 @PropertySource("classpath:application.properties")
 @ConfigurationProperties(prefix = "application.mail")
