@@ -1,13 +1,9 @@
+import {Customer} from "./customer";
+
 export interface Project {
-    id: string // the id
-
-    /**
-     * The given title
-     * @pattern [A-Z][a-z]+
-     *
-     */
-    title: string
-
+    id: string;
+    title: string;
+    period: string;
+    customer: Customer;
+    description: string;
 }
-
-
