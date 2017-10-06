@@ -24,14 +24,11 @@ public class ProjectControllerTest {
     @Autowired
     private TestRestTemplate restTemplate;
 
-
     @Test
     public void getAll() throws Exception {
         Project[] projects = restTemplate.getForObject("http://localhost:" + port + "/" + IckeAPIPaths.Projects.PATH, Project[].class);
         assertNotNull(projects);
-        assertEquals(2,projects.length);
-
-
+        assertEquals(2, projects.length);
     }
 
 }
