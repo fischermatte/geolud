@@ -19,14 +19,13 @@
         <spring-boot-dependencies.version>1.5.7.RELEASE</spring-boot-dependencies.version>
         <de.flapdoodle.embed.mongo.version>2.0.0</de.flapdoodle.embed.mongo.version>
         <embedmongo-spring.version>1.3.1</embedmongo-spring.version>
+        <swagger-codegen-maven-plugin.version>2.2.3</swagger-codegen-maven-plugin.version>
+        <build-helper-maven-plugin.version>3.0.0</build-helper-maven-plugin.version>
+        <springfox-swagger.version>2.7.0</springfox-swagger.version>
+        <commons-lang.version>2.6</commons-lang.version>
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>icke-api</artifactId>
-            <version>${project.version}</version>
-        </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>icke-ui</artifactId>
@@ -52,22 +51,21 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-mongodb</artifactId>
         </dependency>
-
         <dependency>
-            <groupId>de.flapdoodle.embed</groupId>
-            <artifactId>de.flapdoodle.embed.mongo</artifactId>
-            <version>${de.flapdoodle.embed.mongo.version}</version>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>${springfox-swagger.version}</version>
         </dependency>
         <dependency>
-            <groupId>cz.jirutka.spring</groupId>
-            <artifactId>embedmongo-spring</artifactId>
-            <version>${embedmongo-spring.version}</version>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>${springfox-swagger.version}</version>
         </dependency>
-        <!--<dependency>-->
-        <!--<groupId>io.reactivex.rxjava2</groupId>-->
-        <!--<artifactId>rxjava</artifactId>-->
-        <!--<version>${rxjava.version}</version>-->
-        <!--</dependency>-->
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>${commons-lang.version}</version>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -113,6 +111,52 @@
                     <tag>${project.version}</tag>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>io.swagger</groupId>
+                <artifactId>swagger-codegen-maven-plugin</artifactId>
+                <version>${swagger-codegen-maven-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <inputSpec>${project.parent.basedir}/api/openapi-2/icke-api.yml</inputSpec>
+                            <language>spring</language>
+                            <apiPackage>io.fischermatte.icke.api</apiPackage>
+                            <modelPackage>io.fischermatte.icke.api.model</modelPackage>
+                            <output>${project.build.directory}/generated</output>
+                            <modelNameSuffix>Dto</modelNameSuffix>
+                            <configOptions>
+                                <!--<interfaceOnly>true</interfaceOnly>-->
+                                <sourceFolder>/src/main/java</sourceFolder>
+                                <library>spring-mvc</library>
+                                <dateLibrary>java8</dateLibrary>
+                            </configOptions>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <version>${build-helper-maven-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>add-source</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>add-source</goal>
+                        </goals>
+                        <configuration>
+                            <sources>
+                                <source>${basedir}/target/generated/src/main/java</source>
+                            </sources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
         </plugins>
     </build>
 

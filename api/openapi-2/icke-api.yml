@@ -1,0 +1,115 @@
+swagger: "2.0"
+info:
+  version: 1.0.0
+  title: Swagger Icke
+  license:
+    name: MIT
+host: icke.swagger.io
+basePath: /api/v1
+schemes:
+  - http
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /projects:
+    get:
+      summary: List all projects
+      operationId: getProjects
+      tags:
+        - projects
+      parameters:
+        - name: limit
+          in: query
+          description: How many items to return at one time (max 100)
+          required: false
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: An paged array of projects
+          schema:
+            $ref: '#/definitions/Projects'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /projects/{projectId}:
+    get:
+      summary: Info for a specific project
+      operationId: getProjectById
+      tags:
+        - projects
+      parameters:
+        - name: projectId
+          in: path
+          required: true
+          description: The id of the project to retrieve
+          type: string
+      responses:
+        "200":
+          description: Expected response to a valid request
+          schema:
+            $ref: '#/definitions/Projects'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /contact:
+    post:
+      description: Submit a new contact Request
+      operationId: submitContactRequest
+      parameters:
+       - name: contactRequest
+         in: body
+         description: ContactRequest to submit
+         required: true
+         schema:
+           $ref: '#/definitions/ContactRequest'
+      responses:
+       "200":
+         description: OK
+       default:
+         description: unexpected error
+         schema:
+           $ref: '#/definitions/Error'
+
+definitions:
+  Project:
+    required:
+      - id
+      - name
+    properties:
+      id:
+        type: string
+        format: uuid
+      title:
+        type: string
+      description:
+        type: string
+  Projects:
+    type: array
+    items:
+      $ref: '#/definitions/Project'
+  ContactRequest:
+    required:
+      - email
+      - message
+    properties:
+      name:
+        type: string
+      email:
+        type: string
+      message:
+        type: string
+  Error:
+    required:
+      - code
+      - message
+    properties:
+      code:
+        type: integer
+        format: int32
+      message:
+        type: string
