@@ -27,3 +27,4 @@ nbdist/
 /icke-api/src/model/ts/contact.js
 /icke-api/src/model/ts/project.js
 /manifest.yml
+/icke-api/src/model/ts/customer.js
