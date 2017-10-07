@@ -1,6 +1,7 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {ContactRequest} from "../../../../icke-api/target/api/model/ts/contact";
+import {Title} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-contact',
@@ -13,7 +14,8 @@ export class ContactComponent implements OnInit {
   feedback: Alert;
   @ViewChild('contactForm') contactForm: any;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, title: Title) {
+    title.setTitle('Georg Ludewig - Software Engineer - Contact');
   }
 
   ngOnInit() {
