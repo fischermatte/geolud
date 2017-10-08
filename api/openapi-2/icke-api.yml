@@ -4,7 +4,7 @@ info:
   title: Swagger Icke
   license:
     name: MIT
-host: icke.swagger.io
+host: localhost
 basePath: /api/v1
 schemes:
   - http
@@ -18,7 +18,7 @@ paths:
       summary: List all projects
       operationId: getProjects
       tags:
-        - projects
+        - project
       parameters:
         - name: limit
           in: query
@@ -36,7 +36,7 @@ paths:
         default:
           description: unexpected error
           schema:
-            $ref: '#/definitions/Error'
+            $ref: '#/definitions/ErrorResponse'
   /projects/{projectId}:
     get:
       summary: Info for a specific project
@@ -58,11 +58,13 @@ paths:
         default:
           description: unexpected error
           schema:
-            $ref: '#/definitions/Error'
+            $ref: '#/definitions/ErrorResponse'
   /contact:
     post:
-      description: Submit a new contact Request
+      summary: Submit a new contact Request
       operationId: submitContactRequest
+      tags:
+        - contact
       parameters:
        - name: contactRequest
          in: body
@@ -76,8 +78,7 @@ paths:
        default:
          description: unexpected error
          schema:
-           $ref: '#/definitions/Error'
-
+           $ref: '#/definitions/ErrorResponse'
 definitions:
   Project:
     required:
@@ -114,7 +115,7 @@ definitions:
         type: string
       url:
         type: string
-  Error:
+  ErrorResponse:
     required:
       - code
       - message

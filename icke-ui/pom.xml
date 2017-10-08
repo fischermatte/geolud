@@ -8,6 +8,7 @@
   <properties>
     <frontend-maven-plugin.version>1.5</frontend-maven-plugin.version>
     <maven-clean-plugin.version>2.6.1</maven-clean-plugin.version>
+    <swagger-codegen-maven-plugin.version>2.2.3</swagger-codegen-maven-plugin.version>
   </properties>
   <packaging>jar</packaging>
 
@@ -41,6 +42,16 @@
               </includes>
             </fileset>
           </filesets>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>io.swagger</groupId>
+        <artifactId>swagger-codegen-maven-plugin</artifactId>
+        <version>${swagger-codegen-maven-plugin.version}</version>
+        <configuration>
+          <inputSpec>${project.parent.basedir}/api/openapi-2/icke-api.yml</inputSpec>
+          <language>typescript-angular2</language>
+          <output>${project.build.directory}/generated</output>
         </configuration>
       </plugin>
       <plugin>

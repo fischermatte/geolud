@@ -125,25 +125,25 @@
                 <groupId>io.swagger</groupId>
                 <artifactId>swagger-codegen-maven-plugin</artifactId>
                 <version>${swagger-codegen-maven-plugin.version}</version>
+                <configuration>
+                    <inputSpec>${project.parent.basedir}/api/openapi-2/icke-api.yml</inputSpec>
+                    <language>spring</language>
+                    <apiPackage>io.fischermatte.icke.api</apiPackage>
+                    <modelPackage>io.fischermatte.icke.api.model</modelPackage>
+                    <output>${project.build.directory}/generated</output>
+                    <modelNameSuffix>Dto</modelNameSuffix>
+                    <configOptions>
+                        <interfaceOnly>true</interfaceOnly>
+                        <sourceFolder>/src/main/java</sourceFolder>
+                        <library>spring-mvc</library>
+                        <dateLibrary>java8</dateLibrary>
+                    </configOptions>
+                </configuration>
                 <executions>
                     <execution>
                         <goals>
                             <goal>generate</goal>
                         </goals>
-                        <configuration>
-                            <inputSpec>${project.parent.basedir}/api/openapi-2/icke-api.yml</inputSpec>
-                            <language>spring</language>
-                            <apiPackage>io.fischermatte.icke.api</apiPackage>
-                            <modelPackage>io.fischermatte.icke.api.model</modelPackage>
-                            <output>${project.build.directory}/generated</output>
-                            <modelNameSuffix>Dto</modelNameSuffix>
-                            <configOptions>
-                                <interfaceOnly>true</interfaceOnly>
-                                <sourceFolder>/src/main/java</sourceFolder>
-                                <library>spring-mvc</library>
-                                <dateLibrary>java8</dateLibrary>
-                            </configOptions>
-                        </configuration>
                     </execution>
                 </executions>
             </plugin>

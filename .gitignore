@@ -1,4 +1,4 @@
-target/
+cdtarget/
 node/
 /node/
 !.mvn/wrapper/maven-wrapper.jar
@@ -28,3 +28,4 @@ nbdist/
 /icke-api/src/model/ts/project.js
 /manifest.yml
 /icke-api/src/model/ts/customer.js
+/test/
