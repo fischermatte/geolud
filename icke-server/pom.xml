@@ -62,6 +62,16 @@
             <version>${springfox-swagger.version}</version>
         </dependency>
         <dependency>
+            <groupId>de.flapdoodle.embed</groupId>
+            <artifactId>de.flapdoodle.embed.mongo</artifactId>
+            <version>${de.flapdoodle.embed.mongo.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>cz.jirutka.spring</groupId>
+            <artifactId>embedmongo-spring</artifactId>
+            <version>${embedmongo-spring.version}</version>
+        </dependency>
+        <dependency>
             <groupId>commons-lang</groupId>
             <artifactId>commons-lang</artifactId>
             <version>${commons-lang.version}</version>
@@ -128,7 +138,7 @@
                             <output>${project.build.directory}/generated</output>
                             <modelNameSuffix>Dto</modelNameSuffix>
                             <configOptions>
-                                <!--<interfaceOnly>true</interfaceOnly>-->
+                                <interfaceOnly>true</interfaceOnly>
                                 <sourceFolder>/src/main/java</sourceFolder>
                                 <library>spring-mvc</library>
                                 <dateLibrary>java8</dateLibrary>

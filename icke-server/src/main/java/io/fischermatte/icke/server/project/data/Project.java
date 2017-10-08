@@ -2,19 +2,21 @@ package io.fischermatte.icke.server.project.data;
 
 import org.springframework.data.annotation.Id;
 
-public class ProjectData {
+import java.util.UUID;
+
+public class Project {
     @Id
-    private String id;
+    private UUID id;
 
     private String title;
 
-    private IntervalData interval;
+    private Interval interval;
 
     private String description;
 
-    private CustomerData customer;
+    private Customer customer;
 
-    public String getId() {
+    public UUID getId() {
         return id;
     }
 
@@ -22,7 +24,7 @@ public class ProjectData {
         return title;
     }
 
-    public IntervalData getInterval() {
+    public Interval getInterval() {
         return interval;
     }
 
@@ -30,31 +32,31 @@ public class ProjectData {
         return description;
     }
 
-    public CustomerData getCustomer() {
+    public Customer getCustomer() {
         return customer;
     }
 
-    public ProjectData withId(String id) {
+    public Project withId(UUID id) {
         this.id = id;
         return this;
     }
 
-    public ProjectData withTitle(String title) {
+    public Project withTitle(String title) {
         this.title = title;
         return this;
     }
 
-    public ProjectData withInterval(IntervalData interval) {
+    public Project withInterval(Interval interval) {
         this.interval = interval;
         return this;
     }
 
-    public ProjectData withCustomer(CustomerData customer) {
+    public Project withCustomer(Customer customer) {
         this.customer = customer;
         return this;
     }
 
-    public ProjectData withDescription(String description) {
+    public Project withDescription(String description) {
         this.description = description;
         return this;
     }

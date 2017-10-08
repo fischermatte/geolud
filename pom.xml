@@ -16,7 +16,6 @@
     </properties>
 
     <modules>
-        <module>icke-api</module>
         <module>icke-server</module>
         <module>icke-ui</module>
     </modules>
