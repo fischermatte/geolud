@@ -30,7 +30,9 @@ paths:
         "200":
           description: An paged array of projects
           schema:
-            $ref: '#/definitions/Projects'
+            type: array
+            items:
+              $ref: '#/definitions/Project'
         default:
           description: unexpected error
           schema:
@@ -89,12 +91,10 @@ definitions:
         type: string
       description:
         type: string
+      period:
+        type: string
       customer:
         $ref: '#/definitions/Customer'
-  Projects:
-    type: array
-    items:
-      $ref: '#/definitions/Project'
   ContactRequest:
     required:
       - email
@@ -109,10 +109,11 @@ definitions:
   Customer:
     required:
       - name
-    name:
-      type: string
-    url:
-      type: string
+    properties:
+      name:
+        type: string
+      url:
+        type: string
   Error:
     required:
       - code

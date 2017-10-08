@@ -2,8 +2,9 @@ package io.fischermatte.icke.server.project;
 
 
 import io.fischermatte.icke.api.ProjectsApi;
+import io.fischermatte.icke.api.model.CustomerDto;
 import io.fischermatte.icke.api.model.ProjectDto;
-import io.fischermatte.icke.api.model.ProjectsDto;
+import io.fischermatte.icke.server.project.data.Customer;
 import io.fischermatte.icke.server.project.data.Interval;
 import io.fischermatte.icke.server.project.data.Project;
 import io.fischermatte.icke.server.project.data.ProjectRepository;
@@ -11,9 +12,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import static java.util.Collections.emptyList;
 import static org.springframework.util.CollectionUtils.isEmpty;
 import static org.springframework.util.StringUtils.hasText;
 
@@ -32,15 +35,15 @@ public class ProjectController implements ProjectsApi {
     }
 
     @Override
-    public ResponseEntity<ProjectsDto> getProjects(Integer limit) {
+    public ResponseEntity<List<ProjectDto>> getProjects(Integer limit) {
         return new ResponseEntity<>(toDto(projectRepository.findAll()), HttpStatus.OK);
     }
 
-    private ProjectsDto toDto(List<Project> source) {
+    private List<ProjectDto> toDto(List<Project> source) {
         if (isEmpty(source)) {
-            return new ProjectsDto();
+            return emptyList();
         }
-        ProjectsDto target = new ProjectsDto();
+        List<ProjectDto> target = new ArrayList<>();
         source.forEach(project -> target.add(toDto(project)));
         return target;
     }
@@ -49,8 +52,8 @@ public class ProjectController implements ProjectsApi {
         ProjectDto target = new ProjectDto();
         target.setId(source.getId());
         target.setTitle(source.getTitle());
-//        target.setCustomer(toDto(source.getCustomer()));
-//        target.setPeriod(toPeriod(source.getInterval()));
+        target.setCustomer(toDto(source.getCustomer()));
+        target.setPeriod(toPeriod(source.getInterval()));
         return target;
     }
 
@@ -74,11 +77,11 @@ public class ProjectController implements ProjectsApi {
         return period;
     }
 
-//    private Customer toDto(CustomerData source) {
-//        Customer target = new Customer();
-//        target.setName(source.getName());
-//        target.setUrl(source.getUrl());
-//        return target;
-//
-//    }
+    private CustomerDto toDto(Customer source) {
+        CustomerDto target = new CustomerDto();
+        target.setName(source.getName());
+        target.setUrl(source.getUrl());
+        return target;
+
+    }
 }

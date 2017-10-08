@@ -1,6 +1,6 @@
 package io.fischermatte.icke.server.project;
 
-import io.fischermatte.icke.api.model.ProjectsDto;
+import io.fischermatte.icke.api.model.ProjectDto;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -10,6 +10,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.List;
+
+import static java.util.Arrays.asList;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
@@ -27,7 +30,7 @@ public class ProjectControllerTest {
 
     @Test
     public void getAll() throws Exception {
-        ProjectsDto projects = restTemplate.getForObject("http://localhost:" + port + "/api/projects", ProjectsDto.class);
+        List<ProjectDto> projects = asList(restTemplate.getForObject("http://localhost:" + port + "/api/projects", ProjectDto[].class));
         assertNotNull(projects);
         assertEquals(2, projects.size());
     }
