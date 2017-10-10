@@ -3,11 +3,9 @@ package io.fischermatte.icke.server.project;
 
 import io.fischermatte.icke.api.ProjectsApi;
 import io.fischermatte.icke.api.model.CustomerDto;
+import io.fischermatte.icke.api.model.LinkDto;
 import io.fischermatte.icke.api.model.ProjectDto;
-import io.fischermatte.icke.server.project.data.Customer;
-import io.fischermatte.icke.server.project.data.Interval;
-import io.fischermatte.icke.server.project.data.Project;
-import io.fischermatte.icke.server.project.data.ProjectRepository;
+import io.fischermatte.icke.server.project.data.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,33 +31,53 @@ public class ProjectController implements ProjectsApi {
 
     @Override
     public ResponseEntity<ProjectDto> getProjectById(UUID projectId) {
-        return new ResponseEntity<>(toDto(projectRepository.findOne(projectId)), HttpStatus.OK);
+        return new ResponseEntity<>(mapProject(projectRepository.findOne(projectId)), HttpStatus.OK);
     }
 
     @Override
     public ResponseEntity<List<ProjectDto>> getProjects(Integer limit) {
-        return new ResponseEntity<>(toDto(projectRepository.findAll()), HttpStatus.OK);
+        return new ResponseEntity<>(mapProjects(projectRepository.findAll()), HttpStatus.OK);
     }
 
-    private List<ProjectDto> toDto(List<Project> source) {
+    private List<ProjectDto> mapProjects(List<Project> source) {
         if (isEmpty(source)) {
             return emptyList();
         }
         List<ProjectDto> target = new ArrayList<>();
-        source.forEach(project -> target.add(toDto(project)));
+        source.forEach(project -> target.add(mapProject(project)));
         return target;
     }
 
-    private ProjectDto toDto(Project source) {
+    private ProjectDto mapProject(Project source) {
         ProjectDto target = new ProjectDto();
         target.setId(source.getId());
+        target.setDescription(source.getDescription());
         target.setTitle(source.getTitle());
-        target.setCustomer(toDto(source.getCustomer()));
-        target.setPeriod(toPeriod(source.getInterval()));
+        target.setCustomer(mapCustomer(source.getCustomer()));
+        target.setPeriod(mapInterval(source.getInterval()));
+        target.setLinks(mapLinks(source.getLinks()));
         return target;
     }
 
-    private String toPeriod(Interval interval) {
+    private List<LinkDto> mapLinks(List<Link> source) {
+        if (isEmpty(source)) {
+            return emptyList();
+        }
+        List<LinkDto> target = new ArrayList<>();
+        for (Link link : source) {
+            target.add(mapLink(link));
+        }
+        return target;
+    }
+
+    private LinkDto mapLink(Link source) {
+        LinkDto target = new LinkDto();
+        target.setTitle(source.getTitle());
+        target.setUrl(source.getUrl());
+        return target;
+    }
+
+    private String mapInterval(Interval interval) {
         if (interval == null) {
             return null;
         }
@@ -79,7 +97,7 @@ public class ProjectController implements ProjectsApi {
         return period;
     }
 
-    private CustomerDto toDto(Customer source) {
+    private CustomerDto mapCustomer(Customer source) {
         CustomerDto target = new CustomerDto();
         target.setName(source.getName());
         target.setUrl(source.getUrl());

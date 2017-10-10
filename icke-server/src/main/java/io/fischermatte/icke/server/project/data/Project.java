@@ -2,6 +2,8 @@ package io.fischermatte.icke.server.project.data;
 
 import org.springframework.data.annotation.Id;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 public class Project {
@@ -15,6 +17,8 @@ public class Project {
     private String description;
 
     private Customer customer;
+
+    private List<Link> links = new ArrayList<>();
 
     public UUID getId() {
         return id;
@@ -34,6 +38,10 @@ public class Project {
 
     public Customer getCustomer() {
         return customer;
+    }
+
+    public List<Link> getLinks() {
+        return links;
     }
 
     public Project withId(UUID id) {
@@ -58,6 +66,11 @@ public class Project {
 
     public Project withDescription(String description) {
         this.description = description;
+        return this;
+    }
+
+    public Project withLink(Link link) {
+        this.links.add(link);
         return this;
     }
 }
