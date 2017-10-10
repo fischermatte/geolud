@@ -96,6 +96,16 @@ definitions:
         type: string
       customer:
         $ref: '#/definitions/Customer'
+      links:
+        type: array
+        items:
+          $ref: '#/definitions/Link'
+  Link:
+    properties:
+      title:
+        type: string
+      url:
+        type: string
   ContactRequest:
     required:
       - email

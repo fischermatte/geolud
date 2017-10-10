@@ -10,6 +10,7 @@ import io.fischermatte.icke.server.project.data.Project;
 import io.fischermatte.icke.server.project.data.ProjectRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
@@ -21,6 +22,7 @@ import static org.springframework.util.CollectionUtils.isEmpty;
 import static org.springframework.util.StringUtils.hasText;
 
 @RestController
+@RequestMapping(value = "/api/v1")
 public class ProjectController implements ProjectsApi {
 
     private final ProjectRepository projectRepository;
@@ -85,3 +87,4 @@ public class ProjectController implements ProjectsApi {
 
     }
 }
+

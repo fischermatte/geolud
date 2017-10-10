@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ProjectService} from "./project.service";
-import {Project} from "../../../../icke-api/target/api/model/ts/project";
 import {ActivatedRoute} from "@angular/router";
+import {Project} from "../../../generated-api/model/Project";
 
 @Component({
   selector: 'app-projects',

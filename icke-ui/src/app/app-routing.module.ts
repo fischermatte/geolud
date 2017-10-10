@@ -6,6 +6,8 @@ import {ProjectsComponent} from "./projects/projects.component";
 import {ContactComponent} from "./contact/contact.component";
 import {ProjectsResolver} from "./projects/projects.resolver";
 import {ProjectService} from "./projects/project.service";
+import {RestHttpInterceptor} from "./core/rest.http.interceptor";
+import {HTTP_INTERCEPTORS} from "@angular/common/http";
 
 
 @NgModule({
@@ -23,7 +25,11 @@ import {ProjectService} from "./projects/project.service";
     {path: 'contact', component: ContactComponent}
   ])],
   exports: [RouterModule],
-  providers: [ProjectService, ProjectsResolver]
+  providers: [ProjectService, ProjectsResolver, /* TODO what is best practise so set content type in http client ?*/{
+    provide: HTTP_INTERCEPTORS,
+    useClass: RestHttpInterceptor,
+    multi: true
+  }]
 })
 export class AppRoutingModule {
 }

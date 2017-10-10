@@ -9,6 +9,8 @@
     <frontend-maven-plugin.version>1.5</frontend-maven-plugin.version>
     <maven-clean-plugin.version>2.6.1</maven-clean-plugin.version>
     <swagger-codegen-maven-plugin.version>2.2.3</swagger-codegen-maven-plugin.version>
+    <frontend-maven-plugin.npmVersion>5.0.0</frontend-maven-plugin.npmVersion>
+    <frontend-maven-plugin.nodeVersion>v8.0.0</frontend-maven-plugin.nodeVersion>
   </properties>
   <packaging>jar</packaging>
 
@@ -51,7 +53,7 @@
         <configuration>
           <inputSpec>${project.parent.basedir}/api/openapi-2/icke-api.yml</inputSpec>
           <language>typescript-angular2</language>
-          <output>${project.build.directory}/generated</output>
+          <output>generated-api</output>
         </configuration>
       </plugin>
       <plugin>
@@ -89,8 +91,8 @@
           </execution>
         </executions>
         <configuration>
-          <nodeVersion>${node.version}</nodeVersion>
-          <installDirectory>../node</installDirectory>
+          <nodeVersion>${frontend-maven-plugin.nodeVersion}</nodeVersion>
+          <npmVersion>${frontend-maven-plugin.npmVersion}</npmVersion>
         </configuration>
       </plugin>
     </plugins>
