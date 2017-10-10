@@ -1,6 +1,6 @@
 package io.fischermatte.icke.server.project.data;
 
-public class CustomerData {
+public class Customer {
     private String name;
     private String url;
 
@@ -12,11 +12,11 @@ public class CustomerData {
         return url;
     }
 
-    public CustomerData withUrl(String url) {
+    public Customer withUrl(String url) {
         this.url = url;
         return this;
     }
-    public CustomerData withName(String name) {
+    public Customer withName(String name) {
         this.name = name;
         return this;
     }

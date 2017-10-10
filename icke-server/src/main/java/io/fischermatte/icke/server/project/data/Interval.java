@@ -2,7 +2,7 @@ package io.fischermatte.icke.server.project.data;
 
 import java.time.LocalDate;
 
-public class IntervalData {
+public class Interval {
 
     private LocalDate from;
     private LocalDate to;
@@ -15,12 +15,12 @@ public class IntervalData {
         return to;
     }
 
-    public IntervalData withFrom(LocalDate from) {
+    public Interval withFrom(LocalDate from) {
         this.from = from;
         return this;
     }
 
-    public IntervalData withTo(LocalDate to) {
+    public Interval withTo(LocalDate to) {
         this.to = to;
         return this;
     }
