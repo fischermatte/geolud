@@ -16,7 +16,8 @@ export class ProjectService {
   }
 
   getAll(): Observable<Project[]> {
-    return this.http.get<Project[]>(`api/v1/projects`);
+    // return this.http.get<Project[]>(`api/v1/projects`);
+    return this.http.get<Project[]>(`assets/projects.json`);
   }
 
 }
