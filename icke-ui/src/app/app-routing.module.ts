@@ -25,11 +25,7 @@ import {HTTP_INTERCEPTORS} from "@angular/common/http";
     {path: 'contact', component: ContactComponent}
   ])],
   exports: [RouterModule],
-  providers: [ProjectService, ProjectsResolver, /* TODO what is best practise so set content type in http client ?*/{
-    provide: HTTP_INTERCEPTORS,
-    useClass: RestHttpInterceptor,
-    multi: true
-  }]
+  providers: [ProjectService, ProjectsResolver]
 })
 export class AppRoutingModule {
 }
