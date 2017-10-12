@@ -1,7 +1,8 @@
-package io.fischermatte.icke.server.contact;
+package io.fischermatte.icke.server.rest.api.v1;
 
-import io.fischermatte.icke.api.ContactApi;
-import io.fischermatte.icke.api.model.ContactRequestDto;
+import io.fischermatte.icke.api.v1.ContactApi;
+import io.fischermatte.icke.api.v1.model.ContactRequestDto;
+import io.fischermatte.icke.server.service.mail.MailService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -10,8 +11,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
 
+import static io.fischermatte.icke.server.rest.api.v1.ApiContext.API_BASE_PATH;
+
 @RestController
-@RequestMapping(value = "/api/v1")
+@RequestMapping(value = API_BASE_PATH)
 public class ContactController implements ContactApi {
 
     private final MailService mailService;

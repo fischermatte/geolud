@@ -1,6 +1,6 @@
-package io.fischermatte.icke.server.contact;
+package io.fischermatte.icke.server.service.mail;
 
-import io.fischermatte.icke.api.model.ContactRequestDto;
+import io.fischermatte.icke.api.v1.model.ContactRequestDto;
 import org.apache.commons.lang.CharEncoding;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,7 +24,7 @@ public class MailService {
     }
 
     @Async
-    void sendEmail(ContactRequestDto contactRequest) {
+    public void sendEmail(ContactRequestDto contactRequest) {
         LOG.debug("sending email from {} to {} ", contactRequest.getEmail(), mailProperties.getTo());
         // Prepare message using a Spring helper
         MimeMessage mimeMessage = javaMailSender.createMimeMessage();

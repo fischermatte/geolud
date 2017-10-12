@@ -109,8 +109,8 @@
                 <configuration>
                     <inputSpec>${project.parent.basedir}/api/openapi-2/icke-api.yml</inputSpec>
                     <language>spring</language>
-                    <apiPackage>io.fischermatte.icke.api</apiPackage>
-                    <modelPackage>io.fischermatte.icke.api.model</modelPackage>
+                    <apiPackage>io.fischermatte.icke.api.v1</apiPackage>
+                    <modelPackage>io.fischermatte.icke.api.v1.model</modelPackage>
                     <output>${project.build.directory}/generated</output>
                     <modelNameSuffix>Dto</modelNameSuffix>
                     <configOptions>

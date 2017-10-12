@@ -1,4 +1,4 @@
-package io.fischermatte.icke.server.project.data;
+package io.fischermatte.icke.server.domain.project;
 
 import org.springframework.stereotype.Repository;
 

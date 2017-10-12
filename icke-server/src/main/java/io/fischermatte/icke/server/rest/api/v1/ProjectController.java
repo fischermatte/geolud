@@ -1,11 +1,11 @@
-package io.fischermatte.icke.server.project;
+package io.fischermatte.icke.server.rest.api.v1;
 
 
-import io.fischermatte.icke.api.ProjectsApi;
-import io.fischermatte.icke.api.model.CustomerDto;
-import io.fischermatte.icke.api.model.LinkDto;
-import io.fischermatte.icke.api.model.ProjectDto;
-import io.fischermatte.icke.server.project.data.*;
+import io.fischermatte.icke.api.v1.ProjectsApi;
+import io.fischermatte.icke.api.v1.model.CustomerDto;
+import io.fischermatte.icke.api.v1.model.LinkDto;
+import io.fischermatte.icke.api.v1.model.ProjectDto;
+import io.fischermatte.icke.server.domain.project.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,12 +17,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import static io.fischermatte.icke.server.rest.api.v1.ApiContext.API_BASE_PATH;
 import static java.util.Collections.emptyList;
 import static org.springframework.util.CollectionUtils.isEmpty;
 import static org.springframework.util.StringUtils.hasText;
 
 @RestController
-@RequestMapping(value = "/api/v1")
+@RequestMapping(value = API_BASE_PATH)
 public class ProjectController implements ProjectsApi {
 
     private final ProjectRepository projectRepository;
@@ -37,7 +38,7 @@ public class ProjectController implements ProjectsApi {
     }
 
     @Override
-    public ResponseEntity<List<ProjectDto>> getProjects(@RequestParam Integer limit) {
+    public ResponseEntity<List<ProjectDto>> getProjects(@RequestParam(required = false) Integer limit) {
         return new ResponseEntity<>(mapProjects(projectRepository.findAll()), HttpStatus.OK);
     }
 
