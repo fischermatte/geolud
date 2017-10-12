@@ -8,13 +8,13 @@ host: localhost
 basePath: /api/v1
 schemes:
   - http
-produces:
-  - application/json
 paths:
   /projects:
     get:
       summary: List all projects
       operationId: getProjects
+      produces:
+        - application/json
       tags:
         - project
       parameters:
@@ -39,6 +39,8 @@ paths:
     get:
       summary: Info for a specific project
       operationId: getProjectById
+      produces:
+        - application/json
       tags:
         - project
       parameters:
@@ -61,6 +63,8 @@ paths:
     post:
       summary: Submit a new contact Request
       operationId: submitContactRequest
+      consumes:
+        - application/json
       tags:
         - contact
       parameters:

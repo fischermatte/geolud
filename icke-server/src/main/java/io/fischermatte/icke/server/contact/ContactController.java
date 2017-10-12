@@ -7,6 +7,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping(value = "/api/v1")
 public class ContactController implements ContactApi {
@@ -18,7 +20,7 @@ public class ContactController implements ContactApi {
     }
 
     @Override
-    public ResponseEntity<Void> submitContactRequest(ContactRequestDto contactRequest) {
+    public ResponseEntity<Void> submitContactRequest(@Valid ContactRequestDto contactRequest) {
         mailService.sendEmail(contactRequest);
         return new ResponseEntity<>(HttpStatus.OK);
     }
