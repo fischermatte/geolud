@@ -8,7 +8,9 @@ import io.fischermatte.icke.api.model.ProjectDto;
 import io.fischermatte.icke.server.project.data.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
@@ -30,12 +32,12 @@ public class ProjectController implements ProjectsApi {
     }
 
     @Override
-    public ResponseEntity<ProjectDto> getProjectById(UUID projectId) {
+    public ResponseEntity<ProjectDto> getProjectById(@PathVariable UUID projectId) {
         return new ResponseEntity<>(mapProject(projectRepository.findOne(projectId)), HttpStatus.OK);
     }
 
     @Override
-    public ResponseEntity<List<ProjectDto>> getProjects(Integer limit) {
+    public ResponseEntity<List<ProjectDto>> getProjects(@RequestParam Integer limit) {
         return new ResponseEntity<>(mapProjects(projectRepository.findAll()), HttpStatus.OK);
     }
 

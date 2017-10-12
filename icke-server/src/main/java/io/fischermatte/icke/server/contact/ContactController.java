@@ -4,6 +4,7 @@ import io.fischermatte.icke.api.ContactApi;
 import io.fischermatte.icke.api.model.ContactRequestDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,7 +21,7 @@ public class ContactController implements ContactApi {
     }
 
     @Override
-    public ResponseEntity<Void> submitContactRequest(@Valid ContactRequestDto contactRequest) {
+    public ResponseEntity<Void> submitContactRequest(@Valid @RequestBody ContactRequestDto contactRequest) {
         mailService.sendEmail(contactRequest);
         return new ResponseEntity<>(HttpStatus.OK);
     }

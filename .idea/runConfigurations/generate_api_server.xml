@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="generate-api-ui" type="MavenRunConfiguration" factoryName="Maven" singleton="true">
+  <configuration default="false" name="generate-api-server" type="MavenRunConfiguration" factoryName="Maven" singleton="true">
     <MavenSettings>
       <option name="myGeneralSettings" />
       <option name="myRunnerSettings" />
@@ -17,7 +17,7 @@
             <map />
           </option>
           <option name="resolveToWorkspace" value="false" />
-          <option name="workingDirPath" value="$PROJECT_DIR$/icke-ui" />
+          <option name="workingDirPath" value="$PROJECT_DIR$/icke-server" />
         </MavenRunnerParameters>
       </option>
     </MavenSettings>
