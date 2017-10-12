@@ -12,7 +12,6 @@ node/
 .springBeans
 
 ### IntelliJ IDEA ###
-.idea
 *.iws
 *.iml
 *.ipr
@@ -37,5 +36,17 @@ nbdist/
 /icke-ui/src/api/.swagger-codegen/
 /icke-ui/src/api/index.ts
 */.
-/icke-ui/manifest.yml
 /icke-server/manifest.yml
+/.idea/typescript-compiler.xml
+/.idea/libraries/
+/.idea/modules.xml
+/.idea/jsLibraryMappings.xml
+/.idea/mongoSettings.xml
+/.idea/compiler.xml
+/.idea/misc.xml
+/.idea/codeStyleSettings.xml
+/.idea/vcs.xml
+/.idea/artifacts/
+/.idea/inspectionProfiles/
+/.idea/workspace.xml
+/.idea/encodings.xml

@@ -1,0 +1,7 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="debug-ui" type="JavascriptDebugType" factoryName="JavaScript Debug" engineId="98ca6316-2f89-46d9-a9e5-fa9e2b0625b3" uri="http://localhost:4200/">
+    <mapping url="webpack://." local-file="$PROJECT_DIR$/icke-ui" />
+    <mapping url="webpack://./src" local-file="$PROJECT_DIR$/icke-ui/src" />
+    <method />
+  </configuration>
+</component>
