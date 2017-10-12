@@ -3,38 +3,10 @@ node/
 /node/
 !.mvn/wrapper/maven-wrapper.jar
 
-### STS ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
-
 ### IntelliJ IDEA ###
 *.iws
 *.iml
 *.ipr
-
-### NetBeans ###
-nbproject/private/
-build/
-nbbuild/
-dist/
-nbdist/
-.nb-gradle/
-/icke-api/src/model/ts/contact.js
-/icke-api/src/model/ts/project.js
-/manifest.yml
-/icke-api/src/model/ts/customer.js
-/test/
-/icke-ui/src/api/.gitignore
-/icke-ui/src/api/configuration.ts
-/icke-ui/src/api/.swagger-codegen-ignore
-/icke-ui/src/api/git_push.sh
-/icke-ui/src/api/variables.ts
-/icke-ui/src/api/.swagger-codegen/
-/icke-ui/src/api/index.ts
 */.
 /icke-server/manifest.yml
 /.idea/typescript-compiler.xml
