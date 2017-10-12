@@ -7,6 +7,7 @@ import 'rxjs/add/operator/switchMap'
 import 'rxjs/add/operator/catch';
 import {Title} from "@angular/platform-browser";
 import {Project} from "../../../generated-api/model/Project";
+import {environment} from "../../environments/environment";
 
 @Injectable()
 export class ProjectService {
@@ -16,8 +17,7 @@ export class ProjectService {
   }
 
   getAll(): Observable<Project[]> {
-    // return this.http.get<Project[]>(`api/v1/projects`);
-    return this.http.get<Project[]>(`assets/projects.json`);
+    return this.http.get<Project[]>(environment.apiBase + `/projects`);
   }
 
 }

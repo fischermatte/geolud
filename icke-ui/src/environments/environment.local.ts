@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  apiBase: 'https://geolud-server.mybluemix.net/api/v1'
+  apiBase: 'http://localhost:8080/api/v1'
 };
