@@ -91,7 +91,6 @@ export class ProjectApi {
         }
         // to determine the Content-Type header
         let consumes: string[] = [
-            'application/json'
         ];
 
         // to determine the Accept header
@@ -129,7 +128,6 @@ export class ProjectApi {
 
         // to determine the Content-Type header
         let consumes: string[] = [
-            'application/json'
         ];
 
         // to determine the Accept header
