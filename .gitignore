@@ -36,3 +36,6 @@ nbdist/
 /icke-ui/src/api/variables.ts
 /icke-ui/src/api/.swagger-codegen/
 /icke-ui/src/api/index.ts
+*/.
+/icke-ui/manifest.yml
+/icke-server/manifest.yml
