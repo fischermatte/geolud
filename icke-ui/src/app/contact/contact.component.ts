@@ -2,6 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Title} from "@angular/platform-browser";
 import {ContactRequest} from "../../../generated-api/model/ContactRequest";
+import {environment} from "../../environments/environment";
 
 @Component({
   selector: 'app-contact',
@@ -25,7 +26,7 @@ export class ContactComponent implements OnInit {
   onSubmit() {
     if (this.contactForm.valid) {
       // note we set the response type to text due to this issue:  https://github.com/angular/angular/issues/18680
-      this.http.post("/api/v1/contact", this.contactRequest, {responseType: 'text'}).subscribe(
+      this.http.post(environment.apiBase + '/contact', this.contactRequest, {responseType: 'text'}).subscribe(
         response => {
           this.feedback = <Alert>{
             type: "success",
