@@ -1,13 +1,10 @@
 package io.fischermatte.icke.server.project.data;
 
-import org.springframework.data.annotation.Id;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
 public class Project {
-    @Id
     private UUID id;
 
     private String title;
