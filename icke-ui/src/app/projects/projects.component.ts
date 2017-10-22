@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ProjectService} from "./project.service";
-import {ActivatedRoute} from "@angular/router";
 import {Project} from "../../../generated-api/model/Project";
+import {BlockUI, NgBlockUI} from "ng-block-ui";
 
 @Component({
   selector: 'app-projects',
@@ -12,12 +12,16 @@ import {Project} from "../../../generated-api/model/Project";
 export class ProjectsComponent implements OnInit {
   projects: Project[];
 
-  constructor(private route: ActivatedRoute) {
+  @BlockUI('project-list') blockUI: NgBlockUI;
+
+  constructor(private projectService: ProjectService) {
   }
 
   ngOnInit(): void {
-    this.projects = this.route.snapshot.data['projects'];
+    this.blockUI.start('Loading...');
+    this.projectService.getAll().subscribe((projects: Project[]) => {
+      this.projects = projects;
+      this.blockUI.stop();
+    });
   }
-
-
 }

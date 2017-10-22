@@ -10,13 +10,16 @@ import {Project} from "../../../generated-api/model/Project";
 
 @Injectable()
 export class ProjectsResolver implements Resolve<Project[]> {
+  private projects: Project[];
 
   constructor(public projectService: ProjectService) {
   }
 
   resolve( route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any>|Promise<any>|any {
-    return this.projectService.getAll();
+    let projectsPublisher = this.projectService.getAll();
+    projectsPublisher.subscribe((projects: Project[]) => {
+      this.projects = projects;
+    });
+    return projectsPublisher;
   }
-
-
 }

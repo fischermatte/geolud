@@ -10,6 +10,7 @@ import {ProjectsComponent} from './projects/projects.component';
 import {ContactComponent} from './contact/contact.component';
 import {ResumeComponent} from './resume/resume.component';
 import {HomeComponent} from './home/home.component';
+import {BlockUIModule} from "ng-block-ui";
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import {HomeComponent} from './home/home.component';
   imports: [
     NgbModule.forRoot(),
     BrowserModule,
+    BlockUIModule,
     FormsModule,
     HttpClientModule,
     AppRoutingModule

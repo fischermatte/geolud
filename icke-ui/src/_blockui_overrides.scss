@@ -1,0 +1,14 @@
+div.block-ui-wrapper {
+  background-color: transparent;
+}
+
+/* Spinner */
+div.block-ui-wrapper .loader {
+  border-color: #e4dfdc; /* Circle color */
+  border-left-color: $theme-success; /* Spinning section in circle color */
+}
+
+/* Message */
+div.block-ui-spinner .message {
+  color: $theme-success; /* Loading text color */
+}
