@@ -17,13 +17,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import static io.fischermatte.icke.server.rest.api.v1.ApiContext.API_BASE_PATH;
+import static io.fischermatte.icke.server.rest.api.v1.ApiContext.API_V1_BASE_PATH;
 import static java.util.Collections.emptyList;
 import static org.springframework.util.CollectionUtils.isEmpty;
 import static org.springframework.util.StringUtils.hasText;
 
 @RestController
-@RequestMapping(value = API_BASE_PATH)
+@RequestMapping(value = API_V1_BASE_PATH)
 public class ProjectController implements ProjectsApi {
 
     private final ProjectRepository projectRepository;

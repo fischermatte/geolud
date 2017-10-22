@@ -11,7 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import static io.fischermatte.icke.server.rest.api.v1.ApiContext.API_BASE_PATH;
+import static io.fischermatte.icke.server.rest.api.v1.ApiContext.API_V1_BASE_PATH;
 import static org.junit.Assert.assertEquals;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
 
@@ -32,7 +32,7 @@ public class ContactControllerTest {
         contactRequest.setName("John Do");
         contactRequest.setMessage("get in touch with me");
 
-        ResponseEntity<Void> response = restTemplate.postForEntity("http://localhost:" + port + API_BASE_PATH + "/contact", contactRequest, Void.class);
+        ResponseEntity<Void> response = restTemplate.postForEntity("http://localhost:" + port + API_V1_BASE_PATH + "/contact", contactRequest, Void.class);
         assertEquals(HttpStatus.OK, response.getStatusCode());
     }
 

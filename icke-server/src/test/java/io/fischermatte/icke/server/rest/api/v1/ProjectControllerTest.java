@@ -11,7 +11,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
 
-import static io.fischermatte.icke.server.rest.api.v1.ApiContext.API_BASE_PATH;
+import static io.fischermatte.icke.server.rest.api.v1.ApiContext.API_V1_BASE_PATH;
 import static java.util.Arrays.asList;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -29,7 +29,7 @@ public class ProjectControllerTest {
 
     @Test
     public void getAll() throws Exception {
-        List<ProjectDto> projects = asList(restTemplate.getForObject("http://localhost:" + port + API_BASE_PATH + "/projects", ProjectDto[].class));
+        List<ProjectDto> projects = asList(restTemplate.getForObject("http://localhost:" + port + API_V1_BASE_PATH + "/projects", ProjectDto[].class));
         assertNotNull(projects);
         assertEquals(23, projects.size());
     }

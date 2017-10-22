@@ -11,10 +11,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
 
-import static io.fischermatte.icke.server.rest.api.v1.ApiContext.API_BASE_PATH;
+import static io.fischermatte.icke.server.rest.api.v1.ApiContext.API_V1_BASE_PATH;
 
 @RestController
-@RequestMapping(value = API_BASE_PATH)
+@RequestMapping(value = API_V1_BASE_PATH)
 public class ContactController implements ContactApi {
 
     private final MailService mailService;

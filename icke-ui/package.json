@@ -8,6 +8,7 @@
     "start-local": "ng serve --target development --environment local",
     "start-proxy": "ng serve --proxy-config proxy.conf.json",
     "build": "ng build",
+    "build-staging": "ng build --staging",
     "build-prod": "ng build --prod",
     "test": "ng test --browser PhantomJS --watch=false",
     "test-ci": "ng test --browser PhantomJS --watch=false",
