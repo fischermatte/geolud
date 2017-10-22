@@ -9,6 +9,7 @@ node/
 *.ipr
 */.
 /icke-server/manifest.yml
+/icke-server/manifest.prod.yml
 /.idea/typescript-compiler.xml
 /.idea/libraries/
 /.idea/modules.xml
