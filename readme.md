@@ -10,14 +10,25 @@ My personal Homepage, totally over-engineered using the following technology sta
 - Spring Boot
 - Angular 4
 - Bootstrap 4 
-- Apikana for contract first API integration with Typescript and Java (will by replaced by swagger-codegen-maven-plugin)
+- swagger-codegen for API First integration with Typescript and Java. Client and Server interfaces are generated from OpenApi 2 yml.
     
-Build and run it:
+## How to run it locally?
+
+### Backend (icker-server)
 
     mvn clean install
     mvn spring-boot:run -f icke-server/pom.xml
     
-Open `http://localhost:8080` in browser - et voila!
+This will start tomcat at http://localhost:8080
+    
+### Frontend (icke-ui)
+
+    npm install
+    npm run-script start-local
+    
+This will run the ui locally at port 4200, connecting to the backend above at port 8080. 
+
+So open `http://localhost:4200` in browser - et voila!
 
 ## Push To Cloud Foundry
 
