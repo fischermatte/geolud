@@ -26,6 +26,8 @@ Pack. It's memory calculator defaults to 1GB ram per instance. This was at
 least the case when I tried on it Pivotal and IBM Bluemix Cloud Foundry. In order 
 to use less, it is not enough to define `memory:256m` in your manifest.  
 
+### Java Backend (icke-server)
+
 This example below configures the app to be used with 256m. At IBM Bluemix for example up
 to 512MB are free. It also shows how to configure spring boot properties to configure
 the mail service within icke-server.
@@ -33,7 +35,7 @@ the mail service within icke-server.
 ```yml
 # Cloud Foundry Example Manifest with 256m memory
 applications:
-- name: icke
+- name: icke-api
   path: icke-server/target/icke-server-0.0.1-SNAPSHOT.jar
   instances: 1
   buildpack: https://github.com/cloudfoundry/java-buildpack.git
@@ -48,6 +50,19 @@ applications:
     spring.mail.password: [smtp password]
     spring.mail.properties.mail.smtp.auth: true
     spring.mail.properties.mail.smtp.starttls.enable: true
+```
+
+### Angular Frontent (icke-ui)
+The ui app is a plain angular project with static files. For this one uses the Cloud Foudnry static file build pack:
+
+```yml
+applications:
+- name: icke-ui
+  path: dist
+  instances: 1
+  buildpack: https://github.com/cloudfoundry/staticfile-buildpack.git
+  memory: 32m
+
 ```
 
 Save the file as manifest.yml in root folder of this project. Build the project and then push it
