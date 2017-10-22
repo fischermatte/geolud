@@ -5,10 +5,10 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "start-staging": "ng serve --target development --environment staging",
     "start-local": "ng serve --target development --environment local",
-    "start-proxy": "ng serve --proxy-config proxy.conf.json",
     "build": "ng build",
-    "build-staging": "ng build --staging",
+    "build-staging": "ng build --environment=staging",
     "build-prod": "ng build --prod",
     "test": "ng test --browser PhantomJS --watch=false",
     "test-ci": "ng test --browser PhantomJS --watch=false",
@@ -30,7 +30,7 @@
     "bootstrap": "4.0.0-beta",
     "core-js": "2.5.1",
     "font-awesome": "4.7.0",
-    "ng-block-ui": "^1.0.0-beta.15",
+    "ng-block-ui": "1.0.0-beta.15",
     "rxjs": "5.5.0",
     "startbootstrap-freelancer": "github:BlackrockDigital/startbootstrap-freelancer#master",
     "zone.js": "0.8.18"
