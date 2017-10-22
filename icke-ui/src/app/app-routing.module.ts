@@ -4,8 +4,6 @@ import {HomeComponent} from "./home/home.component";
 import {ResumeComponent} from "./resume/resume.component";
 import {ProjectsComponent} from "./projects/projects.component";
 import {ContactComponent} from "./contact/contact.component";
-import {ProjectService} from "./projects/project.service";
-import {RestHttpInterceptorProvider} from "./core/rest.http.interceptor";
 
 
 @NgModule({
@@ -16,8 +14,7 @@ import {RestHttpInterceptorProvider} from "./core/rest.http.interceptor";
     {path: 'projects', component: ProjectsComponent},
     {path: 'contact', component: ContactComponent}
   ])],
-  exports: [RouterModule],
-  providers: [ProjectService, RestHttpInterceptorProvider]
+  exports: [RouterModule]
 })
 
 export class AppRoutingModule {

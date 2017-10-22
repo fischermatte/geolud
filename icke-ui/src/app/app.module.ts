@@ -11,6 +11,7 @@ import {ContactComponent} from './contact/contact.component';
 import {ResumeComponent} from './resume/resume.component';
 import {HomeComponent} from './home/home.component';
 import {BlockUIModule} from "ng-block-ui";
+import {ProjectService} from "./projects/project.service";
 
 @NgModule({
   declarations: [
@@ -28,7 +29,7 @@ import {BlockUIModule} from "ng-block-ui";
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [ProjectService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
