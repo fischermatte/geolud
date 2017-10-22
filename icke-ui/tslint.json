@@ -1,4 +1,7 @@
 {
+  "linterOptions": {
+    "exclude": ["**/generated-api/**"]
+  },
   "rulesDirectory": [
     "node_modules/codelyzer"
   ],

@@ -1,6 +1,10 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {ProjectsComponent} from './projects.component';
+import {HttpClientModule} from '@angular/common/http';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {BlockUIModule} from 'ng-block-ui';
+import {ProjectService} from './project.service';
 
 describe('ProjectsComponent', () => {
   let component: ProjectsComponent;
@@ -8,7 +12,9 @@ describe('ProjectsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ProjectsComponent]
+      imports: [HttpClientModule, NgbModule.forRoot(), BlockUIModule],
+      declarations: [ProjectsComponent],
+      providers: [ProjectService]
     })
       .compileComponents();
   }));

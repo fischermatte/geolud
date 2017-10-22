@@ -1,9 +1,9 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {Title} from "@angular/platform-browser";
-import {ContactRequest} from "../../../generated-api/model/ContactRequest";
-import {environment} from "../../environments/environment";
-import {Alert} from "../core/alert";
+import {HttpClient} from '@angular/common/http';
+import {Title} from '@angular/platform-browser';
+import {ContactRequest} from '../../../generated-api/model/ContactRequest';
+import {environment} from '../../environments/environment';
+import {Alert} from '../core/alert';
 
 @Component({
   selector: 'app-contact',
@@ -30,15 +30,15 @@ export class ContactComponent implements OnInit {
       this.http.post(environment.apiBase + '/contact', this.contactRequest, {responseType: 'text'}).subscribe(
         response => {
           this.feedback = <Alert>{
-            type: "success",
-            message: "Contact request was submitted!"
+            type: 'success',
+            message: 'Contact request was submitted!'
           };
           this.contactForm.reset();
         },
         error => {
           this.feedback = <Alert>{
-            type: "danger",
-            message: "Failed to submit contact request due to some very mysterious reasons !"
+            type: 'danger',
+            message: 'Failed to submit contact request due to some very mysterious reasons !'
           };
         }
       );

@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {ProjectService} from "./project.service";
-import {Project} from "../../../generated-api/model/Project";
-import {BlockUI, NgBlockUI} from "ng-block-ui";
-import {Alert} from "../core/alert";
-import {Title} from "@angular/platform-browser";
+import {ProjectService} from './project.service';
+import {Project} from '../../../generated-api/model/Project';
+import {BlockUI, NgBlockUI} from 'ng-block-ui';
+import {Alert} from '../core/alert';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-projects',
@@ -24,13 +24,13 @@ export class ProjectsComponent implements OnInit {
     this.blockUI.start('Loading...');
     this.projectService.getAll().subscribe((projects: Project[]) => {
       this.projects = projects;
-    },error => {
+    }, error => {
       this.feedback = <Alert>{
-        type: "danger",
-        message: "Failed to load project list !"
+        type: 'danger',
+        message: 'Failed to load project list !'
       };
       this.blockUI.stop();
-    },() => {
+    }, () => {
       this.blockUI.stop();
     });
   }

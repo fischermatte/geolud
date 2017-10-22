@@ -89,6 +89,28 @@
             </configuration>
             <phase>generate-resources</phase>
           </execution>
+          <!-- NG LINT -->
+          <execution>
+            <id>ng lint</id>
+            <goals>
+              <goal>npm</goal>
+            </goals>
+            <phase>process-resources</phase>
+            <configuration>
+              <arguments>run-script lint</arguments>
+            </configuration>
+          </execution>
+          <!-- NG TEST -->
+          <execution>
+            <id>ng test</id>
+            <goals>
+              <goal>npm</goal>
+            </goals>
+            <phase>test</phase>
+            <configuration>
+              <arguments>run-script test-ci</arguments>
+            </configuration>
+          </execution>
         </executions>
         <configuration>
           <nodeVersion>${frontend-maven-plugin.nodeVersion}</nodeVersion>
