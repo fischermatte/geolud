@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ProjectService} from "./project.service";
 import {Project} from "../../../generated-api/model/Project";
 import {BlockUI, NgBlockUI} from "ng-block-ui";
+import {Alert} from "../core/alert";
 
 @Component({
   selector: 'app-projects',
@@ -10,6 +11,7 @@ import {BlockUI, NgBlockUI} from "ng-block-ui";
   providers: [ProjectService]
 })
 export class ProjectsComponent implements OnInit {
+  feedback: Alert;
   projects: Project[];
 
   @BlockUI('project-list') blockUI: NgBlockUI;
@@ -21,7 +23,18 @@ export class ProjectsComponent implements OnInit {
     this.blockUI.start('Loading...');
     this.projectService.getAll().subscribe((projects: Project[]) => {
       this.projects = projects;
+    },error => {
+      this.feedback = <Alert>{
+        type: "danger",
+        message: "Failed to load project list !"
+      };
+      this.blockUI.stop();
+    },() => {
       this.blockUI.stop();
     });
+  }
+
+  public closeAlert() {
+    this.feedback = null;
   }
 }

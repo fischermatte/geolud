@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {Title} from "@angular/platform-browser";
 import {ContactRequest} from "../../../generated-api/model/ContactRequest";
 import {environment} from "../../environments/environment";
+import {Alert} from "../core/alert";
 
 @Component({
   selector: 'app-contact',
@@ -50,9 +51,3 @@ export class ContactComponent implements OnInit {
 
 
 }
-
-class Alert {
-  type: string;
-  message: string;
-}
-
