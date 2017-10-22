@@ -36,7 +36,7 @@ the mail service within icke-server.
 # Cloud Foundry Example Manifest with 256m memory
 applications:
 - name: icke-api
-  path: icke-server/target/icke-server-0.0.1-SNAPSHOT.jar
+  path: icke-server/target/icke-server-1.0.0.jar
   instances: 1
   buildpack: https://github.com/cloudfoundry/java-buildpack.git
   memory: 256m
