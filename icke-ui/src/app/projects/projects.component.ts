@@ -3,12 +3,12 @@ import {ProjectService} from "./project.service";
 import {Project} from "../../../generated-api/model/Project";
 import {BlockUI, NgBlockUI} from "ng-block-ui";
 import {Alert} from "../core/alert";
+import {Title} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-projects',
   templateUrl: './projects.component.html',
-  styleUrls: ['./projects.component.scss'],
-  providers: [ProjectService]
+  styleUrls: ['./projects.component.scss']
 })
 export class ProjectsComponent implements OnInit {
   feedback: Alert;
@@ -16,7 +16,8 @@ export class ProjectsComponent implements OnInit {
 
   @BlockUI('project-list') blockUI: NgBlockUI;
 
-  constructor(private projectService: ProjectService) {
+  constructor(private projectService: ProjectService, title: Title) {
+    title.setTitle('Georg Ludewig - Software Engineer - Projects');
   }
 
   ngOnInit(): void {

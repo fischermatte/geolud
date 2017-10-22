@@ -59,8 +59,7 @@ public class ApplicationConfiguration {
 
             @Override
             public List<Project> findAll() {
-//                return projects;
-                throw new IllegalArgumentException("fasd");
+                return projects;
             }
 
             @Override
