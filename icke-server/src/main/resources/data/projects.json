@@ -57,8 +57,7 @@
       "from": "2014-01-01",
       "to": "2014-01-01"
     },
-    "description":  "period": "2014",
-    "Technologies: AngularJS, Bootstrap, HTML 5, Javascript, CSS, Java, Spring, Spring Security, JPA/Hibernate, JSF/Primefaces, Maven, Jenkins, Sonar, Nexus"
+    "description": "Technologies: AngularJS, Bootstrap, HTML 5, Javascript, CSS, Java, Spring, Spring Security, JPA/Hibernate, JSF/Primefaces, Maven, Jenkins, Sonar, Nexus"
   },
   {
     "title": "Applikationsplattform Verbraucherschutz",
@@ -178,24 +177,23 @@
       "from": "2008-01-01",
       "to": "2008-01-01"
     },
-
     "description": "A multi-level board game based on Java Swing. Result of a programming course during summer semester of 2008 (Kurs 01580 Programmierpraktikum).",
     "links": [
       {
         "title": "run",
-        "href": "assets/projects/atomica/webstart/launch.jnlp"
+        "url": "assets/projects/atomica/webstart/launch.jnlp"
       },
       {
         "title": "source",
-        "href": "https://github.com/fischermatte/atomica/"
+        "url": "https://github.com/fischermatte/atomica/"
       },
       {
         "title": "javadoc",
-        "href": "assets/projects/atomica/javadoc/index.html"
+        "url": "assets/projects/atomica/javadoc/index.html"
       },
       {
         "title": "documentation",
-        "href": "assets/projects/atomica/atomica_documentation_ludewig.pdf"
+        "url": "assets/projects/atomica/atomica_documentation_ludewig.pdf"
       }
     ]
   },
@@ -285,11 +283,11 @@
     "links": [
       {
         "title": "screenshot 1",
-        "href": "assets/projects/twin/screenshot_germany.png"
+        "url": "assets/projects/twin/screenshot_germany.png"
       },
       {
         "title": "screenshot 2",
-        "href": "assets/projects/twin/screenshot_russia.png"
+        "url": "assets/projects/twin/screenshot_russia.png"
       }
     ]
   },
@@ -307,11 +305,11 @@
     "links": [
       {
         "title": "screenshot 1",
-        "href": "assets/projects/tour/tour_screenshot_overview.png"
+        "url": "assets/projects/tour/tour_screenshot_overview.png"
       },
       {
         "title": "screenshot 2",
-        "href": "assets/projects/tour/tour_screenshot_etappe.png"
+        "url": "assets/projects/tour/tour_screenshot_etappe.png"
       }
     ]
   }
