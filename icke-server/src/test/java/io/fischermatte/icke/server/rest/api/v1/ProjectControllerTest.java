@@ -31,7 +31,7 @@ public class ProjectControllerTest {
     public void getAll() throws Exception {
         List<ProjectDto> projects = asList(restTemplate.getForObject("http://localhost:" + port + API_BASE_PATH + "/projects", ProjectDto[].class));
         assertNotNull(projects);
-        assertEquals(2, projects.size());
+        assertEquals(23, projects.size());
     }
 
 }
