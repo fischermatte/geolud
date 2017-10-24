@@ -5,13 +5,14 @@
 
 ## Whats this?
 
-My personal Homepage, totally over-engineered using the following technology stack:
+My personal 'cloud-native' Homepage, totally over-engineered using the following technology stack:
 
 - Spring Boot
+- Spring Cloud
 - Angular 4
 - Bootstrap 4 
-- swagger-codegen for API First integration with Typescript and Java. Client and Server interfaces are generated from OpenApi 2 yml.
-    
+- Swagger-Codegen for API First integration with Typescript and Java. Client and Server interfaces are generated from OpenApi 2 yml.
+
 ## How to run it locally?
 
 ### Backend (icker-server)
