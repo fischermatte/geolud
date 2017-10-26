@@ -23,3 +23,5 @@ node/
 /.idea/inspectionProfiles/
 /.idea/workspace.xml
 /.idea/encodings.xml
+/icke-server/src/main/resources/application-dev.properties
+/_local/
