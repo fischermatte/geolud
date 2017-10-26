@@ -1,15 +1,12 @@
 package io.fischermatte.icke.server.domain.project;
 
+import org.springframework.data.couchbase.core.query.ViewIndexed;
+import org.springframework.data.couchbase.repository.CouchbaseRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
 import java.util.UUID;
 
+@ViewIndexed(designDoc = "project", viewName = "all")
 @Repository
-public interface ProjectRepository {
-    Project findOne(UUID projectId);
-
-    List<Project> findAll();
-
-    void save(List<Project> projects);
+public interface ProjectRepository extends CouchbaseRepository<Project, UUID> {
 }

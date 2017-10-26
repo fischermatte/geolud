@@ -42,8 +42,8 @@ public class ProjectController implements ProjectsApi {
         return new ResponseEntity<>(mapProjects(projectRepository.findAll()), HttpStatus.OK);
     }
 
-    private List<ProjectDto> mapProjects(List<Project> source) {
-        if (isEmpty(source)) {
+    private List<ProjectDto> mapProjects(Iterable<Project> source) {
+        if (source == null) {
             return emptyList();
         }
         List<ProjectDto> target = new ArrayList<>();

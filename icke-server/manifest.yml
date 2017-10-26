@@ -7,6 +7,7 @@ applications:
   memory: 224m
   services:
     - geolud-mailservice
+    - geolud-db
   env:
     JAVA_OPTS: '-XX:ReservedCodeCacheSize=16M -XX:MaxDirectMemorySize=16M'
     JBP_CONFIG_OPEN_JDK_JRE: '{ jre: { version: 1.8.0_+ }, memory_calculator: { stack_threads: 20 } }'

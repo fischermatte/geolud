@@ -28,7 +28,7 @@ public class DataInitializer {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.setDateFormat(new SimpleDateFormat("YYYY-MM-dd"));
         objectMapper.registerModule(new JavaTimeModule());
-        Project[] projects = objectMapper.readValue(ApplicationConfiguration.class.getResourceAsStream("/data/projects.json"), Project[].class);
+        Project[] projects = objectMapper.readValue(ApplicationConfig.class.getResourceAsStream("/data/projects.json"), Project[].class);
         Arrays.stream(projects).forEach(project -> project.withId(UUID.randomUUID()));
         projectRepository.save(asList(projects));
     }

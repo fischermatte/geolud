@@ -1,20 +1,31 @@
 package io.fischermatte.icke.server.domain.project;
 
+import com.couchbase.client.java.repository.annotation.Field;
+import com.couchbase.client.java.repository.annotation.Id;
+import org.springframework.data.couchbase.core.mapping.Document;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+@Document
 public class Project {
+    @Id
     private UUID id;
 
+    @Field
     private String title;
 
+    @Field
     private Interval interval;
 
+    @Field
     private String description;
 
+    @Field
     private Customer customer;
 
+    @Field
     private List<Link> links = new ArrayList<>();
 
     public UUID getId() {
