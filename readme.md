@@ -43,13 +43,8 @@ applications:
   env:
     JAVA_OPTS: '-XX:ReservedCodeCacheSize=32M -XX:MaxDirectMemorySize=32M'
     JBP_CONFIG_OPEN_JDK_JRE: '{ jre: { version: 1.8.0_+ }, memory_calculator: { stack_threads: 30 } }'
+    spring.profiles.active: cloud
     application.mail.to: [email address]
-    spring.mail.host: [email host]
-    spring.mail.port: [email smtp host]
-    spring.mail.username: [smtp user name]
-    spring.mail.password: [smtp password]
-    spring.mail.properties.mail.smtp.auth: true
-    spring.mail.properties.mail.smtp.starttls.enable: true
 ```
 
 ### Angular Frontent (icke-ui)

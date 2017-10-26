@@ -1,0 +1,14 @@
+# Cloud Foundry Example Manifest with 256m memory
+applications:
+- name: dev-geolud-api
+  path: target/icke-server-1.1.0-SNAPSHOT.jar
+  instances: 1
+  buildpack: https://github.com/cloudfoundry/java-buildpack.git
+  memory: 224m
+  services:
+    - geolud-mailservice
+  env:
+    JAVA_OPTS: '-XX:ReservedCodeCacheSize=16M -XX:MaxDirectMemorySize=16M'
+    JBP_CONFIG_OPEN_JDK_JRE: '{ jre: { version: 1.8.0_+ }, memory_calculator: { stack_threads: 20 } }'
+    spring.profiles.active: cloud
+    application.mail.to: fischermatte@posteo.net

@@ -23,6 +23,7 @@
         <swagger-annotations.version>1.5.13</swagger-annotations.version>
         <jackson-datatype-jsr310.version>2.8.6</jackson-datatype-jsr310.version>
         <jackson-datatype-jdk8.version>2.8.4</jackson-datatype-jdk8.version>
+        <spring-cloud-connector.version>1.2.4.RELEASE</spring-cloud-connector.version>
     </properties>
 
     <dependencies>
@@ -37,6 +38,21 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-mail</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-localconfig-connector</artifactId>
+            <version>${spring-cloud-connector.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-cloudfoundry-connector</artifactId>
+            <version>${spring-cloud-connector.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-spring-service-connector</artifactId>
+            <version>${spring-cloud-connector.version}</version>
         </dependency>
         <!--<dependency>-->
             <!--<groupId>org.jolokia</groupId>-->
