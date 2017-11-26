@@ -1,7 +1,6 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
     <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-    <extension name="krasa.grepconsole.plugin.runConfiguration.GrepRunConfigurationExtension" selectedProfileId="1476632383699" />
     <option name="SPRING_BOOT_MAIN_CLASS" value="io.fischermatte.icke.server.Application" />
     <option name="ALTERNATIVE_JRE_PATH" />
     <module name="icke-server" />
