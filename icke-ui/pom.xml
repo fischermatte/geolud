@@ -8,8 +8,8 @@
     <frontend-maven-plugin.version>1.5</frontend-maven-plugin.version>
     <maven-clean-plugin.version>2.6.1</maven-clean-plugin.version>
     <swagger-codegen-maven-plugin.version>2.2.3</swagger-codegen-maven-plugin.version>
-    <frontend-maven-plugin.npmVersion>5.0.0</frontend-maven-plugin.npmVersion>
-    <frontend-maven-plugin.nodeVersion>v8.0.0</frontend-maven-plugin.nodeVersion>
+    <frontend-maven-plugin.npmVersion>5.5.0</frontend-maven-plugin.npmVersion>
+    <frontend-maven-plugin.nodeVersion>v9.2.0</frontend-maven-plugin.nodeVersion>
   </properties>
   <packaging>jar</packaging>
 
