@@ -1,23 +1,23 @@
 package io.fischermatte.icke.server.rest.api.v1;
 
 import io.fischermatte.icke.api.v1.model.ProjectDto;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.embedded.LocalServerPort;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.boot.web.server.LocalServerPort;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.List;
 
 import static io.fischermatte.icke.server.rest.api.v1.ApiContext.API_V1_BASE_PATH;
 import static java.util.Arrays.asList;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
 
-@RunWith(SpringRunner.class)
+@ExtendWith(SpringExtension.class)
 @SpringBootTest(webEnvironment = RANDOM_PORT)
 public class ProjectControllerTest {
 
@@ -28,7 +28,7 @@ public class ProjectControllerTest {
     private TestRestTemplate restTemplate;
 
     @Test
-    public void getAll() throws Exception {
+    public void getAll() {
         List<ProjectDto> projects = asList(restTemplate.getForObject("http://localhost:" + port + API_V1_BASE_PATH + "/projects", ProjectDto[].class));
         assertNotNull(projects);
         assertEquals(23, projects.size());
