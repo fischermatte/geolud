@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg bg-secondary fixed-top text-uppercase" id="mainNav">
   <div class="container">
     <a class="navbar-brand" [routerLink]="['/home']" fragment="page-top">Georg Ludewig</a>
-    <button class="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded" type="button"
+    <button class="navbar-toggler text-uppercase bg-primary text-white rounded" type="button"
             (click)="navbarCollapsed = !navbarCollapsed"
             [attr.aria-expanded]="!navbarCollapsed" aria-controls="navbarResponsive" aria-expanded="false"
             aria-label="Toggle navigation">
@@ -37,41 +37,39 @@
 </div>
 
 <footer class="footer text-center">
-  <div class="footer-above">
-    <div class="container">
-      <div class="row">
-        <div class="footer-col col-md-4">
-          <h3>Location</h3>
-          <p>3005 Bern
-            <br>Switzerland</p>
-        </div>
-        <div class="footer-col col-md-4">
-          <h3>Around the Web</h3>
-          <ul class="list-inline">
-            <li class="list-inline-item">
-              <a class="btn-social btn-outline" href="https://github.com/fischermatte">
-                <i class="fa fa-fw fa-github"></i>
-              </a>
-            </li>
-            <li class="list-inline-item">
-              <a class="btn-social btn-outline" href="https://twitter.com/fischermatte">
-                <i class="fa fa-fw fa-twitter"></i>
-              </a>
-            </li>
-            <li class="list-inline-item">
-              <a class="btn-social btn-outline" href="https://stackoverflow.com/users/524906/fischermatte">
-                <i class="fa fa-fw fa-stack-overflow"></i>
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div class="footer-col col-md-4">
-          <h3>Contact</h3>
-          <p>
-            Georg Ludewig <br>
-            <a [routerLink]="['/contact']">Contact me!</a>
-          </p>
-        </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <h3 class="text-uppercase">Location</h3>
+        <p>3005 Bern
+          <br>Switzerland</p>
+      </div>
+      <div class="col-md-4">
+        <h3 class="text-uppercase">Around the Web</h3>
+        <ul class="list-inline">
+          <li class="list-inline-item">
+            <a class="btn btn-outline-light btn-social text-center rounded-circle" href="https://github.com/fischermatte">
+              <i class="fa fa-fw fa-github"></i>
+            </a>
+          </li>
+          <li class="list-inline-item">
+            <a class="btn btn-outline-light btn-social text-center rounded-circle" href="https://twitter.com/fischermatte">
+              <i class="fa fa-fw fa-twitter"></i>
+            </a>
+          </li>
+          <li class="list-inline-item">
+            <a class="btn btn-outline-light btn-social text-center rounded-circle" href="https://stackoverflow.com/users/524906/fischermatte">
+              <i class="fa fa-fw fa-stack-overflow"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <h3 class="text-uppercase">Contact</h3>
+        <p>
+          Georg Ludewig <br>
+          <a [routerLink]="['/contact']">Contact me!</a>
+        </p>
       </div>
     </div>
   </div>

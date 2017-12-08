@@ -5,7 +5,7 @@
     <scripts>
       <script value="start" />
     </scripts>
-    <node-interpreter value="$PROJECT_DIR$/icke-ui/node/node" />
+    <node-interpreter value="C:/Program Files/nodejs/node" />
     <envs />
     <method />
   </configuration>
