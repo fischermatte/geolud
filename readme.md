@@ -7,9 +7,9 @@
 
 My personal 'cloud-native' Homepage, totally over-engineered using the following technology stack:
 
-- Spring Boot
+- Spring Boot 2
 - Spring Cloud
-- Angular 4
+- Angular 5
 - Bootstrap 4 
 - Swagger-Codegen for API First integration with Typescript and Java. Client and Server interfaces are generated from OpenApi 2 yml.
 
@@ -48,7 +48,7 @@ the mail service within icke-server.
 # Cloud Foundry Example Manifest with 256m memory
 applications:
 - name: icke-api
-  path: icke-server/target/icke-server-1.1.0-SNAPSHOT.jar
+  path: icke-server/target/icke-server-1.1.0.jar
   instances: 1
   buildpack: https://github.com/cloudfoundry/java-buildpack.git
   memory: 256m
