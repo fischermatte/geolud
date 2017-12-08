@@ -8,8 +8,6 @@ node/
 *.iml
 *.ipr
 */.
-/icke-server/manifest.yml
-/icke-server/manifest.prod.yml
 /.idea/typescript-compiler.xml
 /.idea/libraries/
 /.idea/modules.xml
@@ -23,3 +21,4 @@ node/
 /.idea/inspectionProfiles/
 /.idea/workspace.xml
 /.idea/encodings.xml
+/_local/

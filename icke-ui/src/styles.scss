@@ -1,7 +1,12 @@
-@import 'variables';
 $fa-font-path: "../node_modules/font-awesome/fonts";
+$lato-font-path: "../node_modules/lato-font/fonts";
+$montserrat-font-path: "../node_modules/montserrat-font/fonts";
+
+@import 'variables';
 @import '../node_modules/bootstrap/scss/bootstrap';
 @import '../node_modules/font-awesome/scss/font-awesome';
+@import '../node_modules/lato-font/scss/lato-font';
+@import '../node_modules/montserrat-font/scss/montserrat-font';
 @import '../node_modules/startbootstrap-freelancer/scss/freelancer';
 @import 'theme_overrides';
 @import 'blockui_overrides';

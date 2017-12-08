@@ -20,13 +20,16 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
+        "../node_modules/lato-font/scss/lato-font.scss",
+        "../node_modules/montserrat-font/scss/montserrat-font.scss",
+        "../node_modules/bootstrap/scss/bootstrap.scss",
+        "../node_modules/startbootstrap-freelancer/scss/freelancer.scss",
         "styles.scss"
       ],
       "scripts": [],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",
-        "staging": "environments/environment.staging.ts",
         "prod": "environments/environment.prod.ts",
         "local": "environments/environment.local.ts"
       }
@@ -41,13 +44,15 @@
     {
       "project": "src/tsconfig.app.json",
       "exclude": [
-        "**/generated-api/**"
+        "**/generated-api/**",
+        "**/node_modules/**"
       ]
     },
     {
       "project": "src/tsconfig.spec.json",
       "exclude": [
-        "**/generated-api/**"
+        "**/generated-api/**",
+        "**/node_modules/**"
       ]
     },
     {

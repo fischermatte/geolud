@@ -3,20 +3,20 @@
   <modelVersion>4.0.0</modelVersion>
 
   <artifactId>icke-ui</artifactId>
-  <version>1.0.0</version>
+  <version>1.1.0-SNAPSHOT</version>
   <properties>
-    <frontend-maven-plugin.version>1.5</frontend-maven-plugin.version>
+    <frontend-maven-plugin.version>1.6</frontend-maven-plugin.version>
     <maven-clean-plugin.version>2.6.1</maven-clean-plugin.version>
     <swagger-codegen-maven-plugin.version>2.2.3</swagger-codegen-maven-plugin.version>
-    <frontend-maven-plugin.npmVersion>5.0.0</frontend-maven-plugin.npmVersion>
-    <frontend-maven-plugin.nodeVersion>v8.0.0</frontend-maven-plugin.nodeVersion>
+    <frontend-maven-plugin.yarnVersion>v1.3.2</frontend-maven-plugin.yarnVersion>
+    <frontend-maven-plugin.nodeVersion>v9.2.0</frontend-maven-plugin.nodeVersion>
   </properties>
   <packaging>jar</packaging>
 
   <parent>
     <groupId>io.fischermatte</groupId>
     <artifactId>icke</artifactId>
-    <version>1.0.0</version>
+    <version>1.1.0-SNAPSHOT</version>
   </parent>
 
   <dependencies>
@@ -62,16 +62,16 @@
         <executions>
           <!-- NPM AND NODE -->
           <execution>
-            <id>install node and npm</id>
+            <id>install node and yarn</id>
             <goals>
-              <goal>install-node-and-npm</goal>
+              <goal>install-node-and-yarn</goal>
             </goals>
           </execution>
           <!-- NPM INSTALL -->
           <execution>
-            <id>npm install</id>
+            <id>yarn install</id>
             <goals>
-              <goal>npm</goal>
+              <goal>yarn</goal>
             </goals>
             <configuration>
               <arguments>install</arguments>
@@ -81,10 +81,10 @@
           <execution>
             <id>ng build prod</id>
             <goals>
-              <goal>npm</goal>
+              <goal>yarn</goal>
             </goals>
             <configuration>
-              <arguments>run-script build-staging</arguments>
+              <arguments>run build-prod</arguments>
             </configuration>
             <phase>generate-resources</phase>
           </execution>
@@ -92,28 +92,28 @@
           <execution>
             <id>ng lint</id>
             <goals>
-              <goal>npm</goal>
+              <goal>yarn</goal>
             </goals>
             <phase>process-resources</phase>
             <configuration>
-              <arguments>run-script lint</arguments>
+              <arguments>run lint</arguments>
             </configuration>
           </execution>
           <!-- NG TEST -->
           <execution>
             <id>ng test</id>
             <goals>
-              <goal>npm</goal>
+              <goal>yarn</goal>
             </goals>
             <phase>test</phase>
             <configuration>
-              <arguments>run-script test-ci</arguments>
+              <arguments>run test-ci</arguments>
             </configuration>
           </execution>
         </executions>
         <configuration>
           <nodeVersion>${frontend-maven-plugin.nodeVersion}</nodeVersion>
-          <npmVersion>${frontend-maven-plugin.npmVersion}</npmVersion>
+          <yarnVersion>${frontend-maven-plugin.yarnVersion}</yarnVersion>
         </configuration>
       </plugin>
     </plugins>
