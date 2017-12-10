@@ -1,7 +1,7 @@
 # Cloud Foundry Example Manifest with 256m memory
 applications:
 - name: dev-geolud-api
-  path: target/icke-server-1.2.0-SNAPSHOT.jar
+  path: target/icke-server-1.2.0.jar
   instances: 1
   buildpack: https://github.com/cloudfoundry/java-buildpack.git
   memory: 224m
