@@ -40,6 +40,9 @@ export class ContactComponent implements OnInit {
             type: 'danger',
             message: 'Failed to submit contact request due to some very mysterious reasons !'
           };
+        },
+        () => {
+          window.scrollTo(0, 0);
         }
       );
     }
