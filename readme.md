@@ -40,23 +40,25 @@ to use less, it is not enough to define `memory:256m` in your manifest.
 
 ### Java Backend (icke-server)
 
-This example below configures the app to be used with 256m. At IBM Bluemix for example up
-to 512MB are free. It also shows how to configure spring boot properties to configure
-the mail service within icke-server.
+This example below configures the app to be used with less than 1GB. It also shows how to configure 
+spring boot properties to configure the mail service within icke-server.
+
+Note: the example below does not use the memory calculator of the build pack but has hardcoded VM properties. This
+is not a good approach when you want to scale dynamically. 
 
 ```yml
-# Cloud Foundry Example Manifest with 256m memory
+# Cloud Foundry Example Manifest with 400m memory
 applications:
 - name: icke-api
   path: icke-server/target/icke-server-1.2.0.jar
   instances: 1
   buildpack: https://github.com/cloudfoundry/java-buildpack.git
-  memory: 256m
+  memory: 400m
   env:
-    JAVA_OPTS: '-XX:ReservedCodeCacheSize=32M -XX:MaxDirectMemorySize=32M'
-    JBP_CONFIG_OPEN_JDK_JRE: '{ jre: { version: 1.8.0_+ }, memory_calculator: { stack_threads: 30 } }'
+    JAVA_OPTS: '-XX:MaxMetaspaceSize=80780K -Xss512k -Xmx200M -XX:ReservedCodeCacheSize=16M -XX:MaxDirectMemorySize=16M'
+    JBP_CONFIG_OPEN_JDK_JRE: '{ jre: { version: 9.+ } }'
     spring.profiles.active: cloud
-    application.mail.to: [email address]
+    application.mail.to: fischermatte@posteo.net
 ```
 
 ### Angular Frontent (icke-ui)
