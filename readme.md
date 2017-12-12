@@ -50,15 +50,14 @@ is not a good approach when you want to scale dynamically.
 # Cloud Foundry Example Manifest with 400m memory
 applications:
 - name: icke-api
-  path: icke-server/target/icke-server-1.2.0.jar
+  path: icke-server/target/icke-server-1.2.1.jar
   instances: 1
   buildpack: https://github.com/cloudfoundry/java-buildpack.git
   memory: 400m
   env:
     JAVA_OPTS: '-XX:MaxMetaspaceSize=80780K -Xss512k -Xmx200M -XX:ReservedCodeCacheSize=16M -XX:MaxDirectMemorySize=16M'
     JBP_CONFIG_OPEN_JDK_JRE: '{ jre: { version: 9.+ } }'
-    spring.profiles.active: cloud
-    application.mail.to: fischermatte@posteo.net
+    SPRING_PROFILES_ACTIVE: cloud
 ```
 
 ### Angular Frontent (icke-ui)
@@ -70,7 +69,7 @@ applications:
   path: dist
   instances: 1
   buildpack: https://github.com/cloudfoundry/staticfile-buildpack.git
-  memory: 32m
+  memory: 12m
 
 ```
 
