@@ -7,7 +7,6 @@
   <properties>
     <frontend-maven-plugin.version>1.6</frontend-maven-plugin.version>
     <maven-clean-plugin.version>2.6.1</maven-clean-plugin.version>
-    <swagger-codegen-maven-plugin.version>2.2.3</swagger-codegen-maven-plugin.version>
     <frontend-maven-plugin.yarnVersion>v1.3.2</frontend-maven-plugin.yarnVersion>
     <frontend-maven-plugin.nodeVersion>v9.2.0</frontend-maven-plugin.nodeVersion>
   </properties>
