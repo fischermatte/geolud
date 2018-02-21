@@ -50,7 +50,7 @@ is not a good approach when you want to scale dynamically.
 # Cloud Foundry Example Manifest with 400m memory
 applications:
 - name: icke-api
-  path: icke-server/target/icke-server-1.2.1.jar
+  path: icke-server/target/icke-server-1.2.2.jar
   instances: 1
   buildpack: https://github.com/cloudfoundry/java-buildpack.git
   memory: 400m
