@@ -3,19 +3,19 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>icke-server</artifactId>
-    <version>1.2.1</version>
+    <version>1.2.2</version>
     <packaging>jar</packaging>
 
     <parent>
         <groupId>io.fischermatte</groupId>
         <artifactId>icke</artifactId>
-        <version>1.2.1</version>
+        <version>1.2.2</version>
     </parent>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <spring-boot-dependencies.version>2.0.0.M7</spring-boot-dependencies.version>
+        <spring-boot-dependencies.version>2.0.0.RC1</spring-boot-dependencies.version>
         <build-helper-maven-plugin.version>3.0.0</build-helper-maven-plugin.version>
         <springfox-swagger.version>2.7.0</springfox-swagger.version>
         <commons-lang.version>2.6</commons-lang.version>

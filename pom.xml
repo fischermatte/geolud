@@ -4,7 +4,7 @@
 
     <groupId>io.fischermatte</groupId>
     <artifactId>icke</artifactId>
-    <version>1.2.1</version>
+    <version>1.2.2</version>
     <packaging>pom</packaging>
 
     <properties>
@@ -79,7 +79,7 @@
         <url>https://github.com/fischermatte/icke</url>
         <connection>scm:git:git://github.com/fischermatte/icke.git</connection>
         <developerConnection>scm:git:git@github.com:fischermatte/icke.git</developerConnection>
-        <tag>1.2.1</tag>
+        <tag>1.2.2</tag>
     </scm>
 
     <distributionManagement>
