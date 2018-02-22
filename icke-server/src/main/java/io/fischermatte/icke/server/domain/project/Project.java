@@ -29,6 +29,7 @@ public class Project {
     @Embedded
     private Customer customer;
 
+//    @BatchSize(size=100)
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "project")
     @Column
     private List<Link> links = new ArrayList<>();

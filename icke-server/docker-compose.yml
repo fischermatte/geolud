@@ -7,7 +7,7 @@ services:
     ports:
       - 5432:5432
     environment:
-      - POSTGRES_PASSWORD=docker
-      - POSTGRES_USER=docker
+      - POSTGRES_PASSWORD=icke
+      - POSTGRES_USER=icke
       - POSTGRES_DB=icke
       - PGDATA=/var/lib/icke/data/pgdata
