@@ -3,7 +3,6 @@ package io.fischermatte.icke.server.config;
 import io.fischermatte.icke.server.DataInitializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.task.SimpleAsyncTaskExecutor;
@@ -20,8 +19,11 @@ import java.util.concurrent.Executor;
 public class ApplicationConfiguration {
     private static final Logger LOG = LoggerFactory.getLogger(ApplicationConfiguration.class);
 
-    @Autowired
-    private DataInitializer dataInitializer;
+    private final DataInitializer dataInitializer;
+
+    public ApplicationConfiguration(DataInitializer dataInitializer) {
+        this.dataInitializer = dataInitializer;
+    }
 
     /**
      * TaskExecutor so we can use @Async annotation. E.g. when sending emails.
