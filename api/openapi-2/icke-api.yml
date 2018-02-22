@@ -49,7 +49,6 @@ paths:
           required: true
           description: The id of the project to retrieve
           type: string
-          format: uuid
       responses:
         "200":
           description: Expected response to a valid request
@@ -89,7 +88,6 @@ definitions:
     properties:
       id:
         type: string
-        format: uuid
       title:
         type: string
       description:

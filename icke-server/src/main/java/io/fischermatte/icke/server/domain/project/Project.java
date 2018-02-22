@@ -1,23 +1,39 @@
 package io.fischermatte.icke.server.domain.project;
 
+
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
+@Table
+@Entity
 public class Project {
-    private UUID id;
+    @Id
+    @Column(length = 40)
+    @GeneratedValue(generator = "randomId")
+    @GenericGenerator(name = "randomId", strategy = "io.fischermatte.icke.server.domain.project.RandomIdGenerator")
+    private String id;
 
+    @Column(length = 1024)
     private String title;
 
+    @Embedded
     private Interval interval;
 
+    @Lob
+    @Column
     private String description;
 
+    @Embedded
     private Customer customer;
 
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "project")
+    @Column
     private List<Link> links = new ArrayList<>();
 
-    public UUID getId() {
+    public String getId() {
         return id;
     }
 
@@ -41,7 +57,7 @@ public class Project {
         return links;
     }
 
-    public Project withId(UUID id) {
+    public Project withId(String id) {
         this.id = id;
         return this;
     }

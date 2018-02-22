@@ -1,6 +1,7 @@
 package io.fischermatte.icke.server.service.mail;
 
 import io.fischermatte.icke.api.v1.model.ContactRequestDto;
+import io.fischermatte.icke.server.config.MailProperties;
 import org.apache.commons.lang.CharEncoding;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

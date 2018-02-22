@@ -1,7 +1,15 @@
 package io.fischermatte.icke.server.domain.project;
 
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+
+@Embeddable
 public class Customer {
+
+    @Column(name = "CUSTOMER_NAME")
     private String name;
+
+    @Column(name = "CUSTOMER_URL")
     private String url;
 
     public String getName() {
@@ -16,6 +24,7 @@ public class Customer {
         this.url = url;
         return this;
     }
+
     public Customer withName(String name) {
         this.name = name;
         return this;

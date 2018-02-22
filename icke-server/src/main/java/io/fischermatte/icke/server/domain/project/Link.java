@@ -1,7 +1,24 @@
 package io.fischermatte.icke.server.domain.project;
 
-public class Link {
+import javax.persistence.*;
+import java.io.Serializable;
+import java.util.Objects;
+
+@Table
+@Entity
+public class Link implements Serializable {
+
+    @Id
+    @ManyToOne
+    @JoinColumn(nullable = false)
+    private Project project;
+
+    @Id
+    @Column(length = 1024)
     private String title;
+
+    @Id
+    @Column(length = 1024)
     private String url;
 
     public String getTitle() {
@@ -12,13 +29,23 @@ public class Link {
         return url;
     }
 
-    public Link withTitle(String title) {
-        this.title = title;
-        return this;
+    // FIXME -> used for data import only, should be removed
+    public void setProject(Project project) {
+        this.project = project;
     }
 
-    public Link withUrl(String url) {
-        this.url = url;
-        return this;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Link link = (Link) o;
+        return Objects.equals(title, link.title) &&
+                Objects.equals(url, link.url);
     }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(title, url);
+    }
+
 }
