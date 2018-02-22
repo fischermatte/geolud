@@ -1,4 +1,4 @@
-package io.fischermatte.icke.server.service.mail;
+package io.fischermatte.icke.server.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;

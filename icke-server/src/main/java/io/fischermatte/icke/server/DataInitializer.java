@@ -1,7 +1,9 @@
 package io.fischermatte.icke.server;
 
+import com.cloudant.client.api.CloudantClient;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import io.fischermatte.icke.server.config.ApplicationConfiguration;
 import io.fischermatte.icke.server.domain.project.Project;
 import io.fischermatte.icke.server.domain.project.ProjectRepository;
 import org.springframework.scheduling.annotation.Async;
@@ -18,9 +20,11 @@ import static java.util.Arrays.asList;
 public class DataInitializer {
 
     private final ProjectRepository projectRepository;
+    private final CloudantClient client;
 
-    public DataInitializer(ProjectRepository projectRepository) {
+    public DataInitializer(ProjectRepository projectRepository, CloudantClient client) {
         this.projectRepository = projectRepository;
+        this.client = client;
     }
 
     @Async

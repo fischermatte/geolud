@@ -5,6 +5,19 @@ import java.util.List;
 import java.util.UUID;
 
 public class Project {
+
+    /**
+     * Revision of the document in the cloudant database.
+     * Cloudant will create this value for new documents.
+     */
+    private String _rev;
+
+    /**
+     * ID of the document in the cloudant database
+     * Cloudant will create this value for new documents.
+     */
+    private String _id;
+
     private UUID id;
 
     private String title;
@@ -16,6 +29,14 @@ public class Project {
     private Customer customer;
 
     private List<Link> links = new ArrayList<>();
+
+    public String get_rev() {
+        return _rev;
+    }
+
+    public String get_id() {
+        return _id;
+    }
 
     public UUID getId() {
         return id;
