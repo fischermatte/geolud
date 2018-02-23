@@ -16,7 +16,7 @@ public class Project {
     @Id
     @Column(length = 40)
     @GeneratedValue(generator = "randomId")
-    @GenericGenerator(name = "randomId", strategy = "io.fischermatte.icke.server.domain.project.RandomIdGenerator")
+    @GenericGenerator(name = "randomId", strategy = "io.fischermatte.icke.server.domain.project.UuidStringGenerator")
     private String id;
 
     @Column(length = 1024)
@@ -32,7 +32,7 @@ public class Project {
     @Embedded
     private Customer customer;
 
-    @ElementCollection
+    @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(
             name="LINK",
             foreignKey = @ForeignKey(name="FK_PROJECT_ID"),

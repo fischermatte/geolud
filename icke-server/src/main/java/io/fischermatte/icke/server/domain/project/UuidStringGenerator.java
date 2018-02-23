@@ -7,7 +7,7 @@ import org.hibernate.id.IdentifierGenerator;
 import java.io.Serializable;
 import java.util.UUID;
 
-public class RandomIdGenerator implements IdentifierGenerator {
+public class UuidStringGenerator implements IdentifierGenerator {
 
     public String generateId() {
         return UUID.randomUUID().toString();
