@@ -7,7 +7,10 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Table
+
+@Table(uniqueConstraints = {
+        @UniqueConstraint(name = "IDX_UNIQUE_TITLE_INTERVAL", columnNames = {"TITLE", "INTERVAL_FROM", "INTERVAL_TO"})
+})
 @Entity
 public class Project {
     @Id
@@ -29,7 +32,7 @@ public class Project {
     @Embedded
     private Customer customer;
 
-//    @BatchSize(size=100)
+    //    @BatchSize(size=100)
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "project")
     @Column
     private List<Link> links = new ArrayList<>();
