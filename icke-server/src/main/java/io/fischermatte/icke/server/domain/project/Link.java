@@ -4,20 +4,12 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 
-@Table
-@Entity
+@Embeddable
 public class Link implements Serializable {
 
-    @Id
-    @ManyToOne
-    @JoinColumn(nullable = false)
-    private Project project;
-
-    @Id
     @Column(length = 1024)
     private String title;
 
-    @Id
     @Column(length = 1024)
     private String url;
 
@@ -27,11 +19,6 @@ public class Link implements Serializable {
 
     public String getUrl() {
         return url;
-    }
-
-    // FIXME -> used for data import only, should be removed
-    public void setProject(Project project) {
-        this.project = project;
     }
 
     @Override

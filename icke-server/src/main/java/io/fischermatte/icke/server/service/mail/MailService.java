@@ -16,6 +16,7 @@ import javax.mail.internet.MimeMessage;
 public class MailService {
 
     private static final Logger LOG = LoggerFactory.getLogger(MailService.class);
+
     private final JavaMailSender javaMailSender;
     private final MailProperties mailProperties;
 

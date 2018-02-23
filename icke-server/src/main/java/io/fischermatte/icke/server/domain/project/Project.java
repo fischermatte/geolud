@@ -9,7 +9,7 @@ import java.util.List;
 
 
 @Table(uniqueConstraints = {
-        @UniqueConstraint(name = "IDX_UNIQUE_TITLE_INTERVAL", columnNames = {"TITLE", "INTERVAL_FROM", "INTERVAL_TO"})
+        @UniqueConstraint(name = "UNIQUE_TITLE_INTERVAL", columnNames = {"TITLE", "INTERVAL_FROM", "INTERVAL_TO"})
 })
 @Entity
 public class Project {
@@ -32,9 +32,12 @@ public class Project {
     @Embedded
     private Customer customer;
 
-    //    @BatchSize(size=100)
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "project")
-    @Column
+    @ElementCollection
+    @CollectionTable(
+            name="LINK",
+            foreignKey = @ForeignKey(name="FK_PROJECT_ID"),
+            joinColumns=@JoinColumn(name="PROJECT_ID")
+    )
     private List<Link> links = new ArrayList<>();
 
     public String getId() {
