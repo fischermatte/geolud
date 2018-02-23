@@ -3,9 +3,10 @@ package io.fischermatte.icke.server;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import io.fischermatte.icke.server.config.ApplicationConfiguration;
-import io.fischermatte.icke.server.domain.project.Link;
 import io.fischermatte.icke.server.domain.project.Project;
-import org.springframework.data.repository.CrudRepository;
+import io.fischermatte.icke.server.repository.ProjectRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 
@@ -13,14 +14,15 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 
-import static java.util.Arrays.asList;
+import static io.fischermatte.icke.server.repository.ProjectSpecifications.titleAndIntervalAreEqual;
 
 @Component
 public class DataInitializer {
+    private static final Logger LOG = LoggerFactory.getLogger(DataInitializer.class);
 
-    private final CrudRepository<Project, String> projectRepository;
+    private final ProjectRepository projectRepository;
 
-    public DataInitializer(CrudRepository<Project, String> projectRepository) {
+    public DataInitializer(ProjectRepository projectRepository) {
         this.projectRepository = projectRepository;
     }
 
@@ -31,10 +33,14 @@ public class DataInitializer {
         objectMapper.registerModule(new JavaTimeModule());
         Project[] projects = objectMapper.readValue(ApplicationConfiguration.class.getResourceAsStream("/data/projects.json"), Project[].class);
         Arrays.stream(projects).forEach(project -> {
-            for (Link link : project.getLinks()) {
-                link.setProject(project);
+            if (!projectRepository.exists(titleAndIntervalAreEqual(project.getTitle(), project.getInterval()))) {
+                projectRepository.save(project);
+            } else {
+                LOG.debug("project was already inserted: {}", project.getTitle());
             }
         });
-        projectRepository.saveAll(asList(projects));
+
+
     }
+
 }
