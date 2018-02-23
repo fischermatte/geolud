@@ -1,4 +1,4 @@
-package io.fischermatte.icke.server.config.data;
+package io.fischermatte.icke.server.config;
 
 import org.springframework.cloud.config.java.AbstractCloudConfig;
 import org.springframework.cloud.service.PooledServiceConnectorConfig.PoolConfig;
@@ -9,11 +9,9 @@ import org.springframework.context.annotation.Profile;
 
 import javax.sql.DataSource;
 
-// FAB added for pooling
-
 @Configuration
-@Profile({"postgres-cloud"})
-public class PostgresCloudDataSourceConfig extends AbstractCloudConfig implements ExternalDataSourceConfig {
+@Profile({"cloud"})
+public class CloudDataSourceConfig extends AbstractCloudConfig {
 
     @Bean
     public DataSource dataSource() {

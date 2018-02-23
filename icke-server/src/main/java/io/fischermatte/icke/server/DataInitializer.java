@@ -2,7 +2,7 @@ package io.fischermatte.icke.server;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import io.fischermatte.icke.server.config.ApplicationConfiguration;
+import io.fischermatte.icke.server.config.ApplicationConfig;
 import io.fischermatte.icke.server.domain.project.Project;
 import io.fischermatte.icke.server.repository.ProjectRepository;
 import org.slf4j.Logger;
@@ -31,7 +31,7 @@ public class DataInitializer {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.setDateFormat(new SimpleDateFormat("YYYY-MM-dd"));
         objectMapper.registerModule(new JavaTimeModule());
-        Project[] projects = objectMapper.readValue(ApplicationConfiguration.class.getResourceAsStream("/data/projects.json"), Project[].class);
+        Project[] projects = objectMapper.readValue(ApplicationConfig.class.getResourceAsStream("/data/projects.json"), Project[].class);
         Arrays.stream(projects).forEach(project -> {
             if (!projectRepository.exists(titleAndIntervalAreEqual(project.getTitle(), project.getInterval()))) {
                 projectRepository.save(project);

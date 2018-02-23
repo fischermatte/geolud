@@ -16,12 +16,12 @@ import java.util.concurrent.Executor;
 
 @EnableAsync
 @Configuration
-public class ApplicationConfiguration {
-    private static final Logger LOG = LoggerFactory.getLogger(ApplicationConfiguration.class);
+public class ApplicationConfig {
+    private static final Logger LOG = LoggerFactory.getLogger(ApplicationConfig.class);
 
     private final DataInitializer dataInitializer;
 
-    public ApplicationConfiguration(DataInitializer dataInitializer) {
+    public ApplicationConfig(DataInitializer dataInitializer) {
         this.dataInitializer = dataInitializer;
     }
 
