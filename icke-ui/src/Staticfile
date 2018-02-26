@@ -1,2 +1,0 @@
-# enable pushstate routing, see http://docs.cloudfoundry.org/buildpacks/staticfile/index.html
-pushstate: enabled
