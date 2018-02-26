@@ -900,153 +900,161 @@
       <Charset>utf8mb4</Charset>
       <DefaultForCharset>0</DefaultForCharset>
     </collation>
-    <table id="226" parent="2" name="LINK">
-      <Engine>MyISAM</Engine>
-    </table>
-    <table id="227" parent="2" name="PROJECT">
-      <Engine>MyISAM</Engine>
-    </table>
-    <table id="228" parent="2" name="flyway_schema_history">
+    <table id="226" parent="2" name="flyway_schema_history">
       <Engine>InnoDB</Engine>
     </table>
-    <column id="229" parent="226" name="PROJECT_ID">
-      <Position>1</Position>
-      <DataType>char(40)|0</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="230" parent="226" name="TITLE">
-      <Position>2</Position>
-      <DataType>varchar(1024)|0</DataType>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="231" parent="226" name="URL">
-      <Position>3</Position>
-      <DataType>varchar(1024)|0</DataType>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <index id="232" parent="226" name="FK_PROJECT_ID">
-      <ColNames>PROJECT_ID</ColNames>
-    </index>
-    <column id="233" parent="227" name="ID">
-      <Position>1</Position>
-      <DataType>char(40)|0</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="234" parent="227" name="CUSTOMER_NAME">
-      <Position>2</Position>
-      <DataType>varchar(255)|0</DataType>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="235" parent="227" name="CUSTOMER_URL">
-      <Position>3</Position>
-      <DataType>varchar(255)|0</DataType>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="236" parent="227" name="DESCRIPTION">
-      <Position>4</Position>
-      <DataType>longtext|0</DataType>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="237" parent="227" name="INTERVAL_FROM">
-      <Position>5</Position>
-      <DataType>date|0</DataType>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="238" parent="227" name="INTERVAL_TO">
-      <Position>6</Position>
-      <DataType>date|0</DataType>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="239" parent="227" name="TITLE">
-      <Position>7</Position>
-      <DataType>varchar(500)|0</DataType>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <index id="240" parent="227" name="UNIQUE_TITLE_INTERVAL">
-      <ColNames>TITLE
-INTERVAL_FROM
-INTERVAL_TO</ColNames>
-      <Unique>1</Unique>
-    </index>
-    <key id="241" parent="227" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>ID</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <key id="242" parent="227" name="UNIQUE_TITLE_INTERVAL">
-      <ColNames>TITLE
-INTERVAL_FROM
-INTERVAL_TO</ColNames>
-      <UnderlyingIndexName>UNIQUE_TITLE_INTERVAL</UnderlyingIndexName>
-    </key>
-    <column id="243" parent="228" name="installed_rank">
+    <table id="227" parent="2" name="link">
+      <Engine>InnoDB</Engine>
+      <Collation>utf8_bin</Collation>
+    </table>
+    <table id="228" parent="2" name="project">
+      <Engine>InnoDB</Engine>
+      <Collation>utf8_bin</Collation>
+    </table>
+    <column id="229" parent="226" name="installed_rank">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="244" parent="228" name="version">
+    <column id="230" parent="226" name="version">
       <Position>2</Position>
       <DataType>varchar(50)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="245" parent="228" name="description">
+    <column id="231" parent="226" name="description">
       <Position>3</Position>
       <DataType>varchar(200)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="246" parent="228" name="type">
+    <column id="232" parent="226" name="type">
       <Position>4</Position>
       <DataType>varchar(20)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="247" parent="228" name="script">
+    <column id="233" parent="226" name="script">
       <Position>5</Position>
       <DataType>varchar(1000)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="248" parent="228" name="checksum">
+    <column id="234" parent="226" name="checksum">
       <Position>6</Position>
       <DataType>int(11)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="249" parent="228" name="installed_by">
+    <column id="235" parent="226" name="installed_by">
       <Position>7</Position>
       <DataType>varchar(100)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="250" parent="228" name="installed_on">
+    <column id="236" parent="226" name="installed_on">
       <Position>8</Position>
       <DataType>timestamp|0</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="251" parent="228" name="execution_time">
+    <column id="237" parent="226" name="execution_time">
       <Position>9</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="252" parent="228" name="success">
+    <column id="238" parent="226" name="success">
       <Position>10</Position>
       <DataType>tinyint(1)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="253" parent="228" name="flyway_schema_history_s_idx">
+    <index id="239" parent="226" name="flyway_schema_history_s_idx">
       <ColNames>success</ColNames>
     </index>
-    <key id="254" parent="228" name="PRIMARY">
+    <key id="240" parent="226" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>installed_rank</ColNames>
       <Primary>1</Primary>
+    </key>
+    <column id="241" parent="227" name="project_id">
+      <Position>1</Position>
+      <DataType>varchar(40)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="242" parent="227" name="title">
+      <Position>2</Position>
+      <DataType>varchar(1024)|0</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="243" parent="227" name="url">
+      <Position>3</Position>
+      <DataType>varchar(1024)|0</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="244" parent="227" name="FK_PROJECT_ID">
+      <ColNames>project_id</ColNames>
+    </index>
+    <foreign-key id="245" parent="227" name="FK_PROJECT_ID">
+      <ColNames>project_id</ColNames>
+      <RefSchemaName>icke</RefSchemaName>
+      <RefTableName>project</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="246" parent="228" name="id">
+      <Position>1</Position>
+      <DataType>varchar(40)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="247" parent="228" name="customer_name">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="248" parent="228" name="customer_url">
+      <Position>3</Position>
+      <DataType>varchar(255)|0</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="249" parent="228" name="description">
+      <Position>4</Position>
+      <DataType>longtext|0</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="250" parent="228" name="interval_from">
+      <Position>5</Position>
+      <DataType>date|0</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="251" parent="228" name="interval_to">
+      <Position>6</Position>
+      <DataType>date|0</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="252" parent="228" name="title">
+      <Position>7</Position>
+      <DataType>varchar(500)|0</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="253" parent="228" name="UNIQUE_TITLE_INTERVAL">
+      <ColNames>title
+interval_from
+interval_to</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="254" parent="228" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="255" parent="228" name="UNIQUE_TITLE_INTERVAL">
+      <ColNames>title
+interval_from
+interval_to</ColNames>
+      <UnderlyingIndexName>UNIQUE_TITLE_INTERVAL</UnderlyingIndexName>
     </key>
   </database-model>
 </dataSource>
