@@ -21,17 +21,4 @@ public class CloudDataSourceConfig extends AbstractCloudConfig {
         return connectionFactory().dataSource(dataSourceConfig);
     }
 
-//    @Bean
-//    public DataSource dataSource(@Value("${application.cloud.datasource.uri}") String uri) {
-//        // Note: lookup via connectionFactory().dataSource(); did not work with elephant sql on ibm bluemix
-//        PostgresqlServiceInfo serviceInfo = new PostgresqlServiceInfo("geolud-db", uri);
-//        BasicDataSource dataSource = new BasicDataSource();
-//        dataSource.setUrl(serviceInfo.getJdbcUrl() );
-//        dataSource.setDriverClassName("org.postgresql.Driver");
-//        dataSource.setUsername(serviceInfo.getUserName());
-//        dataSource.setPassword(serviceInfo.getPassword());
-//        return dataSource;
-//
-//    }
-
 }
