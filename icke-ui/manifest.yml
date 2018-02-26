@@ -2,7 +2,7 @@
 # Cloud Foundry Manifest
 applications:
 - name: dev-geolud-ui
-  path: dist
+  path: dist_cloudfoundry
   instances: 1
   buildpack: https://github.com/cloudfoundry/staticfile-buildpack.git#v1.4.20
   memory: 12m
