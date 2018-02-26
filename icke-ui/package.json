@@ -12,7 +12,7 @@
     "build-dev": "ng build --target production --environment=dev",
     "postbuild-dev": "cpx dist/** dist_cloudfoundry/app",
     "build-prod": "ng build --target production --environment=prod",
-    "postbuild-prod": "cpx dist/** dist_cloudfoundry/app",
+    "postbuild-prod": "cpx \"dist/**\" dist_cloudfoundry/app",
     "test": "ng test --browser PhantomJS --watch=false",
     "test-ci": "ng test --browser PhantomJS --watch=false",
     "lint": "ng lint",
