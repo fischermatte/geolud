@@ -1,0 +1,6 @@
+# enable pushstate routing, see http://docs.cloudfoundry.org/buildpacks/staticfile/index.html
+pushstate: enabled
+# set the root of the application (needed for custom location conf below)
+root: app
+# configure header
+location_include: includes/*.conf

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
   <artifactId>icke-ui</artifactId>
@@ -9,6 +10,7 @@
     <maven-clean-plugin.version>2.6.1</maven-clean-plugin.version>
     <frontend-maven-plugin.yarnVersion>v1.3.2</frontend-maven-plugin.yarnVersion>
     <frontend-maven-plugin.nodeVersion>v9.2.0</frontend-maven-plugin.nodeVersion>
+    <maven-assembly-plugin.version>3.1.0</maven-assembly-plugin.version>
   </properties>
   <packaging>jar</packaging>
 
@@ -38,7 +40,13 @@
             <fileset>
               <directory>dist</directory>
               <includes>
-                <include>*</include>
+                <include>**</include>
+              </includes>
+            </fileset>
+            <fileset>
+              <directory>dist_cloudfoundry/app</directory>
+              <includes>
+                <include>**</include>
               </includes>
             </fileset>
           </filesets>
@@ -50,8 +58,11 @@
         <version>${swagger-codegen-maven-plugin.version}</version>
         <configuration>
           <inputSpec>${project.parent.basedir}/api/openapi-2/icke-api.yml</inputSpec>
-          <language>typescript-angular2</language>
-          <output>generated-api</output>
+          <language>typescript-angular</language>
+          <output>src/generated-api</output>
+          <configOptions>
+            <ngVersion>5.1.0</ngVersion>
+          </configOptions>
         </configuration>
       </plugin>
       <plugin>
@@ -114,6 +125,24 @@
           <nodeVersion>${frontend-maven-plugin.nodeVersion}</nodeVersion>
           <yarnVersion>${frontend-maven-plugin.yarnVersion}</yarnVersion>
         </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <version>${maven-assembly-plugin.version}</version>
+        <configuration>
+          <descriptors>
+            <descriptor>build-assembly.xml</descriptor>
+          </descriptors>
+          <finalName>${project.artifactId}-${project.version}</finalName>
+        </configuration>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>single</goal>
+            </goals>
+          </execution>
+        </executions>
       </plugin>
     </plugins>
   </build>

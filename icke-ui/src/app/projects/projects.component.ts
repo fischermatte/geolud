@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ProjectService} from './project.service';
-import {Project} from '../../../generated-api/model/Project';
+import {Project} from '../../generated-api/model/project';
 import {BlockUI, NgBlockUI} from 'ng-block-ui';
 import {Alert} from '../core/alert';
 import {Title} from '@angular/platform-browser';
