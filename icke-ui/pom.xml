@@ -9,6 +9,7 @@
     <maven-clean-plugin.version>2.6.1</maven-clean-plugin.version>
     <frontend-maven-plugin.yarnVersion>v1.3.2</frontend-maven-plugin.yarnVersion>
     <frontend-maven-plugin.nodeVersion>v9.2.0</frontend-maven-plugin.nodeVersion>
+    <maven-assembly-plugin.version>3.1.0</maven-assembly-plugin.version>
   </properties>
   <packaging>jar</packaging>
 
@@ -56,8 +57,11 @@
         <version>${swagger-codegen-maven-plugin.version}</version>
         <configuration>
           <inputSpec>${project.parent.basedir}/api/openapi-2/icke-api.yml</inputSpec>
-          <language>typescript-angular2</language>
-          <output>generated-api</output>
+          <language>typescript-angular</language>
+          <output>src/generated-api</output>
+          <configOptions>
+            <ngVersion>5.1.0</ngVersion>
+          </configOptions>
         </configuration>
       </plugin>
       <plugin>
@@ -121,6 +125,13 @@
           <yarnVersion>${frontend-maven-plugin.yarnVersion}</yarnVersion>
         </configuration>
       </plugin>
+      <plugin>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <version>${maven-assembly-plugin.version}</version>
+        <configuration>
+          <descriptor>build-assembly.xml</descriptor>
+        </configuration>
+        </plugin>
     </plugins>
   </build>
 

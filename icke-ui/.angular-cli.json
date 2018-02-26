@@ -43,14 +43,14 @@
     {
       "project": "src/tsconfig.app.json",
       "exclude": [
-        "**/generated-api/**",
+        "**/src/generated-api/**",
         "**/node_modules/**"
       ]
     },
     {
       "project": "src/tsconfig.spec.json",
       "exclude": [
-        "**/generated-api/**",
+        "**/src/generated-api/**",
         "**/node_modules/**"
       ]
     },
