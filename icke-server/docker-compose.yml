@@ -1,0 +1,28 @@
+version: '3'
+services:
+  db:
+
+# PostGres
+
+#    container_name: icke-db
+#    hostname: icke-db
+#    image: postgres:9.5.11
+#    ports:
+#      - 5432:5432
+#    environment:
+#      - POSTGRES_PASSWORD=icke
+#      - POSTGRES_USER=icke
+#      - POSTGRES_DB=icke
+#      - PGDATA=/var/lib/icke/data/pgdata
+
+# MariaDb
+
+    image: mysql:5.7.21
+    restart: always
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=icke
+      - MYSQL_DATABASE=icke
+      - MYSQL_USER=icke
+      - MYSQL_PASSWORD=icke

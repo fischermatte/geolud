@@ -5,7 +5,11 @@ import io.fischermatte.icke.api.v1.ProjectsApi;
 import io.fischermatte.icke.api.v1.model.CustomerDto;
 import io.fischermatte.icke.api.v1.model.LinkDto;
 import io.fischermatte.icke.api.v1.model.ProjectDto;
-import io.fischermatte.icke.server.domain.project.*;
+import io.fischermatte.icke.server.domain.project.Customer;
+import io.fischermatte.icke.server.domain.project.Interval;
+import io.fischermatte.icke.server.domain.project.Link;
+import io.fischermatte.icke.server.domain.project.Project;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
+import java.util.Optional;
 
 import static io.fischermatte.icke.server.rest.api.v1.ApiContext.API_V1_BASE_PATH;
 import static java.util.Collections.emptyList;
@@ -26,15 +30,19 @@ import static org.springframework.util.StringUtils.hasText;
 @RequestMapping(value = API_V1_BASE_PATH)
 public class ProjectController implements ProjectsApi {
 
-    private final ProjectRepository projectRepository;
+    private final CrudRepository<Project, String> projectRepository;
 
-    public ProjectController(ProjectRepository projectRepository) {
+    public ProjectController(CrudRepository<Project, String> projectRepository) {
         this.projectRepository = projectRepository;
     }
 
     @Override
-    public ResponseEntity<ProjectDto> getProjectById(@PathVariable UUID projectId) {
-        return new ResponseEntity<>(mapProject(projectRepository.findOne(projectId)), HttpStatus.OK);
+    public ResponseEntity<ProjectDto> getProjectById(@PathVariable String projectId) {
+        Optional<Project> result = projectRepository.findById(projectId);
+        if (!result.isPresent()) {
+            throw new IllegalArgumentException("project not found for id ");
+        }
+        return new ResponseEntity<>(mapProject(result.get()), HttpStatus.OK);
     }
 
     @Override
@@ -42,8 +50,8 @@ public class ProjectController implements ProjectsApi {
         return new ResponseEntity<>(mapProjects(projectRepository.findAll()), HttpStatus.OK);
     }
 
-    private List<ProjectDto> mapProjects(List<Project> source) {
-        if (isEmpty(source)) {
+    private List<ProjectDto> mapProjects(Iterable<Project> source) {
+        if (source == null) {
             return emptyList();
         }
         List<ProjectDto> target = new ArrayList<>();

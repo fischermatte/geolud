@@ -1,6 +1,6 @@
 {
   "name": "icke-ui",
-  "version": "1.2.3",
+  "version": "1.3.0",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
@@ -10,7 +10,7 @@
     "start-prod-with-local-api": "ng serve --target production --environment local",
     "build": "ng build",
     "build-dev": "ng build --target production --environment=dev",
-    "postbuild-dev": "cpx dist/** dist_cloudfoundry/app",
+    "postbuild-dev": "cpx \"dist/**\" dist_cloudfoundry/app",
     "build-prod": "ng build --target production --environment=prod",
     "postbuild-prod": "cpx \"dist/**\" dist_cloudfoundry/app",
     "test": "ng test --browser PhantomJS --watch=false",

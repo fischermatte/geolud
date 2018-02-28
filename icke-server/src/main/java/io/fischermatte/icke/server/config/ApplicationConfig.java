@@ -1,10 +1,8 @@
-package io.fischermatte.icke.server;
+package io.fischermatte.icke.server.config;
 
-import io.fischermatte.icke.server.domain.project.Project;
-import io.fischermatte.icke.server.domain.project.ProjectRepository;
+import io.fischermatte.icke.server.DataInitializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.task.SimpleAsyncTaskExecutor;
@@ -14,18 +12,18 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import javax.annotation.PostConstruct;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
 import java.util.concurrent.Executor;
 
 @EnableAsync
 @Configuration
-public class ApplicationConfiguration {
-    private static final Logger LOG = LoggerFactory.getLogger(ApplicationConfiguration.class);
+public class ApplicationConfig {
+    private static final Logger LOG = LoggerFactory.getLogger(ApplicationConfig.class);
 
-    @Autowired
-    private DataInitializer dataInitializer;
+    private final DataInitializer dataInitializer;
+
+    public ApplicationConfig(DataInitializer dataInitializer) {
+        this.dataInitializer = dataInitializer;
+    }
 
     /**
      * TaskExecutor so we can use @Async annotation. E.g. when sending emails.
@@ -43,30 +41,6 @@ public class ApplicationConfiguration {
                 registry.addMapping("/v1/**")
                         .allowedOrigins("*")
                         .allowedMethods("*");
-            }
-        };
-    }
-
-
-    @Bean
-    public ProjectRepository projectRepository() {
-        return new ProjectRepository() {
-            private List<Project> projects = new ArrayList<>();
-
-            @Override
-            public Project findOne(UUID projectId) {
-                return this.projects.stream().filter(project -> project.getId().equals(projectId))
-                        .findFirst().orElse(null);
-            }
-
-            @Override
-            public List<Project> findAll() {
-                return projects;
-            }
-
-            @Override
-            public void save(List<Project> projects) {
-                this.projects = projects;
             }
         };
     }
