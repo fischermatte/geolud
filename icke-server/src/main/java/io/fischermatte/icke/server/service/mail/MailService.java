@@ -1,6 +1,7 @@
 package io.fischermatte.icke.server.service.mail;
 
 import io.fischermatte.icke.api.v1.model.ContactRequestDto;
+import io.fischermatte.icke.server.config.MailProperties;
 import org.apache.commons.lang.CharEncoding;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,6 +16,7 @@ import javax.mail.internet.MimeMessage;
 public class MailService {
 
     private static final Logger LOG = LoggerFactory.getLogger(MailService.class);
+
     private final JavaMailSender javaMailSender;
     private final MailProperties mailProperties;
 

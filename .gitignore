@@ -25,5 +25,4 @@ node/
 /.idea/.name
 /.idea/uiDesigner.xml
 /icke-ui/dist_cloudfoundry/app/
-/.idea/dataSources/
-/.idea/dataSources.xml
+
