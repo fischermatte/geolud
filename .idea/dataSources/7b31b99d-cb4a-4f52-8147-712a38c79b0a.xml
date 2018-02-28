@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dataSource name="icke@localhost">
+<dataSource name="icke@localhost MySQL">
   <database-model serializer="dbm" rdbms="MYSQL" format-version="4.7">
     <root id="1">
       <DefaultCasing>exact</DefaultCasing>
@@ -986,7 +986,7 @@
     </column>
     <column id="242" parent="227" name="title">
       <Position>2</Position>
-      <DataType>varchar(1024)|0</DataType>
+      <DataType>varchar(255)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="243" parent="227" name="url">
@@ -1036,7 +1036,7 @@
     </column>
     <column id="252" parent="228" name="title">
       <Position>7</Position>
-      <DataType>varchar(500)|0</DataType>
+      <DataType>varchar(255)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <index id="253" parent="228" name="UNIQUE_TITLE_INTERVAL">

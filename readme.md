@@ -11,6 +11,7 @@ My personal 'cloud-native' Homepage, totally over-engineered using the following
 - Spring Cloud
 - Angular 5
 - Bootstrap 4 
+- MySQL
 - Swagger-Codegen for API First integration with Typescript and Java. Client and Server interfaces are generated from OpenApi 2 yml.
 
 ## How to run it locally?
@@ -52,10 +53,10 @@ applications:
 - name: icke-api
   path: icke-server/target/icke-server-1.3.0.jar
   instances: 1
-  buildpack: https://github.com/cloudfoundry/java-buildpack.git
-  memory: 400m
+  buildpack: https://github.com/cloudfoundry/java-buildpack.git#v4.8
+  memory: 600m
   env:
-    JAVA_OPTS: '-XX:MaxMetaspaceSize=80780K -Xss512k -Xmx200M -XX:ReservedCodeCacheSize=16M -XX:MaxDirectMemorySize=16M'
+    JAVA_OPTS: '-XX:MaxMetaspaceSize=80000K -Xss512k -XX:ReservedCodeCacheSize=16M -XX:MaxDirectMemorySize=10M'
     JBP_CONFIG_OPEN_JDK_JRE: '{ jre: { version: 9.+ } }'
     SPRING_PROFILES_ACTIVE: cloud
 ```
@@ -68,7 +69,7 @@ applications:
 - name: icke-ui
   path: dist
   instances: 1
-  buildpack: https://github.com/cloudfoundry/staticfile-buildpack.git
+  buildpack: https://github.com/cloudfoundry/staticfile-buildpack.git#v1.4.20
   memory: 12m
 
 ```
