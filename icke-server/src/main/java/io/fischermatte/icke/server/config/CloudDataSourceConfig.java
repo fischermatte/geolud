@@ -16,7 +16,7 @@ public class CloudDataSourceConfig extends AbstractCloudConfig {
     @Bean
     public DataSource dataSource() {
         // FAB put in for pooling (min=5,max=30,wait=3000)
-        PooledServiceConnectorConfig.PoolConfig poolConfig = new PooledServiceConnectorConfig.PoolConfig(1, 5, 3000);
+        var poolConfig = new PooledServiceConnectorConfig.PoolConfig(1, 5, 3000);
         DataSourceConfig dataSourceConfig = new DataSourceConfig(poolConfig, null);
         return connectionFactory().dataSource(dataSourceConfig);
     }

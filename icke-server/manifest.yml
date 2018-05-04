@@ -10,5 +10,5 @@ applications:
     - geolud-db
   env:
     JAVA_OPTS: '-XX:MaxMetaspaceSize=80000K -Xss512k -XX:ReservedCodeCacheSize=16M -XX:MaxDirectMemorySize=10M'
-    JBP_CONFIG_OPEN_JDK_JRE: '{ jre: { version: 9.+ } }'
+    JBP_CONFIG_OPEN_JDK_JRE: '{ jre: { version: 10.+ } }'
     SPRING_PROFILES_ACTIVE: cloud
