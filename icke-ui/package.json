@@ -5,9 +5,9 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "start-dev-with-dev-api": "ng serve --target development --environment dev",
-    "start-dev-with-local-api": "ng serve --target development --environment local",
-    "start-prod-with-local-api": "ng serve --target production --environment local",
+    "start-dev-with-dev-api": "ng serve",
+    "start-dev-with-local-api": "ng serve -c local",
+    "start-prod-with-local-api": "ng serve -c production",
     "build": "ng build",
     "build-dev": "ng build --target production --environment=dev",
     "postbuild-dev": "cpx \"dist/**\" dist_cloudfoundry/app",

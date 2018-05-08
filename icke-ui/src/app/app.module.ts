@@ -25,7 +25,7 @@ import {RestHttpInterceptor} from './core/rest.http.interceptor';
   imports: [
     NgbModule.forRoot(),
     BrowserModule,
-    BlockUIModule,
+    BlockUIModule.forRoot(),
     FormsModule,
     HttpClientModule,
     AppRoutingModule
