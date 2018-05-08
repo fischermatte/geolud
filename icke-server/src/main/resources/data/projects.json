@@ -1,5 +1,17 @@
 [
   {
+    "title": "Mobiliar Claim System (MCS)",
+    "customer": {
+      "name": "die Mobiliar",
+      "url": "https://www.mobiliar.ch"
+    },
+    "interval": {
+      "from": "2018-03-01",
+      "to": "2018-03-01"
+    },
+    "description": "Technologies: Angular, AngularJS, Java/JEE, Kubernetes, Docker"
+  },
+  {
     "title": "PostAuto - Integrated System Architecture (PA-ISA)",
     "customer": {
       "name": "PostAuto Schweiz AG",
@@ -7,7 +19,7 @@
     },
     "interval": {
       "from": "2016-01-01",
-      "to": "2017-01-01"
+      "to": "2018-02-28"
     },
     "description": "Technologies: OpenShift, Docker, Vert.x, AngularJS, Spring,Spring Security, HTML 5, JavaScript, Java"
   },
