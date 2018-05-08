@@ -60,7 +60,7 @@ public class ProjectController implements ProjectsApi {
     }
 
     private ProjectDto mapProject(Project source) {
-        var target = new ProjectDto();
+        ProjectDto target = new ProjectDto();
         target.setId(source.getId());
         target.setDescription(source.getDescription());
         target.setTitle(source.getTitle());
@@ -82,7 +82,7 @@ public class ProjectController implements ProjectsApi {
     }
 
     private LinkDto mapLink(Link source) {
-        var target = new LinkDto();
+        LinkDto target = new LinkDto();
         target.setTitle(source.getTitle());
         target.setUrl(source.getUrl());
         return target;
@@ -109,7 +109,7 @@ public class ProjectController implements ProjectsApi {
     }
 
     private CustomerDto mapCustomer(Customer source) {
-        var target = new CustomerDto();
+        CustomerDto target = new CustomerDto();
         target.setName(source.getName());
         target.setUrl(source.getUrl());
         return target;
