@@ -12,7 +12,7 @@ describe('ProjectsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientModule, NgbModule.forRoot(), BlockUIModule],
+      imports: [HttpClientModule, NgbModule.forRoot(), BlockUIModule.forRoot()],
       declarations: [ProjectsComponent],
       providers: [ProjectService]
     })
