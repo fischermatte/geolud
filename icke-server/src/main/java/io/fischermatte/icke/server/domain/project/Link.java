@@ -1,16 +1,12 @@
 package io.fischermatte.icke.server.domain.project;
 
-import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 
-@Embeddable
 public class Link implements Serializable {
 
-    @Column(length = 1024)
     private String title;
 
-    @Column(length = 1024)
     private String url;
 
     public String getTitle() {

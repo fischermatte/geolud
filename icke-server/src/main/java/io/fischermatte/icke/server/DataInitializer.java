@@ -7,14 +7,13 @@ import io.fischermatte.icke.server.domain.project.Project;
 import io.fischermatte.icke.server.repository.ProjectRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Example;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
-
-import static io.fischermatte.icke.server.repository.ProjectSpecifications.titleAndIntervalAreEqual;
 
 @Component
 public class DataInitializer {
@@ -33,7 +32,7 @@ public class DataInitializer {
         objectMapper.registerModule(new JavaTimeModule());
         Project[] projects = objectMapper.readValue(ApplicationConfig.class.getResourceAsStream("/data/projects.json"), Project[].class);
         Arrays.stream(projects).forEach(project -> {
-            if (!projectRepository.exists(titleAndIntervalAreEqual(project.getTitle(), project.getInterval()))) {
+            if (!projectRepository.exists(Example.of(project))) {
                 projectRepository.save(project);
             } else {
                 LOG.debug("project was already inserted: {}", project.getTitle());
