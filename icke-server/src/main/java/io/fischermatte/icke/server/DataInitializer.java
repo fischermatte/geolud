@@ -33,6 +33,7 @@ public class DataInitializer {
         Project[] projects = objectMapper.readValue(ApplicationConfig.class.getResourceAsStream("/data/projects.json"), Project[].class);
         Arrays.stream(projects).forEach(project -> {
             if (!projectRepository.exists(Example.of(project))) {
+                LOG.debug("inserting project {}", project.getTitle());
                 projectRepository.save(project);
             } else {
                 LOG.debug("project was already inserted: {}", project.getTitle());

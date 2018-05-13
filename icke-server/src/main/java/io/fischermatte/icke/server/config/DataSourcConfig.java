@@ -22,7 +22,6 @@ public class DataSourcConfig {
         EmbeddedMongoFactoryBean mongo = new EmbeddedMongoFactoryBean();
         mongo.setBindIp("localhost");
         MongoClient mongoClient = (MongoClient) mongo.getObject();
-        MongoTemplate mongoTemplate = new MongoTemplate(mongoClient, "icke-db");
-        return mongoTemplate;
+        return new MongoTemplate(mongoClient, "icke-db");
     }
 }
