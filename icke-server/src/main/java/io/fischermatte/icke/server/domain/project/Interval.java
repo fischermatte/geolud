@@ -1,16 +1,11 @@
 package io.fischermatte.icke.server.domain.project;
 
-import javax.persistence.Column;
-import javax.persistence.Embeddable;
 import java.time.LocalDate;
 
-@Embeddable
 public class Interval {
 
-    @Column(name = "INTERVAL_FROM")
     private LocalDate from;
 
-    @Column(name = "INTERVAL_TO")
     private LocalDate to;
 
     public LocalDate getFrom() {
