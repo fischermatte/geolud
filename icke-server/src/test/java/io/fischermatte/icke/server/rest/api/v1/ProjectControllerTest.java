@@ -19,7 +19,7 @@ import static org.springframework.boot.test.context.SpringBootTest.WebEnvironmen
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(webEnvironment = RANDOM_PORT)
-public class ProjectControllerTest {
+class ProjectControllerTest {
 
     @LocalServerPort
     private int port;
@@ -28,10 +28,10 @@ public class ProjectControllerTest {
     private TestRestTemplate restTemplate;
 
     @Test
-    public void getAll() {
+    void getAll() {
         List<ProjectDto> projects = asList(restTemplate.getForObject("http://localhost:" + port + API_V1_BASE_PATH + "/projects", ProjectDto[].class));
         assertNotNull(projects);
-        assertEquals(23, projects.size());
+        assertEquals(24, projects.size());
     }
 
 }

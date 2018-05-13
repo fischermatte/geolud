@@ -17,7 +17,7 @@ import static org.springframework.boot.test.context.SpringBootTest.WebEnvironmen
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(webEnvironment = RANDOM_PORT)
-public class ContactControllerTest {
+class ContactControllerTest {
 
     @LocalServerPort
     private int port;
@@ -26,7 +26,7 @@ public class ContactControllerTest {
     private TestRestTemplate restTemplate;
 
     @Test
-    public void submitContactRequest() {
+    void submitContactRequest() {
         ContactRequestDto contactRequest = new ContactRequestDto();
         contactRequest.setEmail("test@test.de");
         contactRequest.setName("John Do");
