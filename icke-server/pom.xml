@@ -28,6 +28,8 @@
         <commons-dbcp.version>1.4</commons-dbcp.version>
         <spring-cloud.version>2.0.1.RELEASE</spring-cloud.version>
         <jaxb-api.version>2.3.0</jaxb-api.version>
+        <de.flapdoodle.embed.mongo.version>2.0.3</de.flapdoodle.embed.mongo.version>
+        <embedmongo-spring.version>1.1</embedmongo-spring.version>
     </properties>
 
     <dependencies>
@@ -123,6 +125,19 @@
             <artifactId>jaxb-api</artifactId>
             <version>${jaxb-api.version}</version>
         </dependency>
+        <dependency>
+            <groupId>de.flapdoodle.embed</groupId>
+            <artifactId>de.flapdoodle.embed.mongo</artifactId>
+            <version>${de.flapdoodle.embed.mongo.version}</version>
+            <!--<scope>provided</scope>-->
+        </dependency>
+
+        <dependency>
+            <groupId>cz.jirutka.spring</groupId>
+            <artifactId>embedmongo-spring</artifactId>
+            <version>${embedmongo-spring.version}</version>
+            <!--<scope>provided</scope>-->
+        </dependency>
     </dependencies>
 
     <dependencyManagement>
@@ -204,23 +219,6 @@
                             <sources>
                                 <source>${basedir}/target/generated/src/main/java</source>
                             </sources>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>com.mysema.maven</groupId>
-                <artifactId>apt-maven-plugin</artifactId>
-                <version>${apt-maven-plugin.version}</version>
-                <executions>
-                    <execution>
-                        <phase>generate-sources</phase>
-                        <goals>
-                            <goal>process</goal>
-                        </goals>
-                        <configuration>
-                            <outputDirectory>target/generated-sources/java</outputDirectory>
-                            <processor>com.querydsl.apt.jpa.JPAAnnotationProcessor</processor>
                         </configuration>
                     </execution>
                 </executions>
