@@ -1,9 +1,0 @@
-<component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Karma Tests" type="JavaScriptTestRunnerKarma" factoryName="Karma">
-    <config-file value="$PROJECT_DIR$/icke-ui/karma.conf.js" />
-    <karma-package-dir value="$PROJECT_DIR$/icke-ui/node_modules/karma" />
-    <node-interpreter value="$PROJECT_DIR$/icke-ui/node/node" />
-    <envs />
-    <method />
-  </configuration>
-</component>

@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <artifactId>geolud-ui</artifactId>
+  <version>1.3.1</version>
+  <properties>
+    <frontend-maven-plugin.version>1.6</frontend-maven-plugin.version>
+    <maven-clean-plugin.version>2.6.1</maven-clean-plugin.version>
+    <frontend-maven-plugin.yarnVersion>v1.6.0</frontend-maven-plugin.yarnVersion>
+    <frontend-maven-plugin.nodeVersion>v10.0.0</frontend-maven-plugin.nodeVersion>
+    <maven-assembly-plugin.version>3.1.0</maven-assembly-plugin.version>
+  </properties>
+  <packaging>jar</packaging>
+
+  <parent>
+    <groupId>io.fischermatte</groupId>
+    <artifactId>geolud</artifactId>
+    <version>1.3.1</version>
+  </parent>
+
+  <dependencies>
+  </dependencies>
+
+  <build>
+
+    <resources>
+      <resource>
+        <directory>dist</directory>
+        <targetPath>static</targetPath>
+      </resource>
+    </resources>
+
+    <plugins>
+      <plugin>
+        <artifactId>maven-clean-plugin</artifactId>
+        <configuration>
+          <filesets>
+            <fileset>
+              <directory>dist</directory>
+              <includes>
+                <include>**</include>
+              </includes>
+            </fileset>
+            <fileset>
+              <directory>dist_cloudfoundry/app</directory>
+              <includes>
+                <include>**</include>
+              </includes>
+            </fileset>
+          </filesets>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>io.swagger</groupId>
+        <artifactId>swagger-codegen-maven-plugin</artifactId>
+        <version>${swagger-codegen-maven-plugin.version}</version>
+        <configuration>
+          <inputSpec>${project.parent.basedir}/api/openapi-2/geolud-api.yml</inputSpec>
+          <language>typescript-angular</language>
+          <output>src/generated-api</output>
+          <configOptions>
+            <ngVersion>5.1.0</ngVersion>
+          </configOptions>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>com.github.eirslett</groupId>
+        <artifactId>frontend-maven-plugin</artifactId>
+        <version>${frontend-maven-plugin.version}</version>
+        <executions>
+          <!-- NPM AND NODE -->
+          <execution>
+            <id>install node and yarn</id>
+            <goals>
+              <goal>install-node-and-yarn</goal>
+            </goals>
+          </execution>
+          <!-- NPM INSTALL -->
+          <execution>
+            <id>yarn install</id>
+            <goals>
+              <goal>yarn</goal>
+            </goals>
+            <configuration>
+              <arguments>install</arguments>
+            </configuration>
+          </execution>
+          <!-- NG BUILD PROD -->
+          <execution>
+            <id>ng build prod</id>
+            <goals>
+              <goal>yarn</goal>
+            </goals>
+            <configuration>
+              <arguments>run build-prod</arguments>
+            </configuration>
+            <phase>generate-resources</phase>
+          </execution>
+          <!-- NG LINT -->
+          <execution>
+            <id>ng lint</id>
+            <goals>
+              <goal>yarn</goal>
+            </goals>
+            <phase>process-resources</phase>
+            <configuration>
+              <arguments>run lint</arguments>
+            </configuration>
+          </execution>
+          <!-- NG TEST -->
+          <execution>
+            <id>ng test</id>
+            <goals>
+              <goal>yarn</goal>
+            </goals>
+            <phase>test</phase>
+            <configuration>
+              <arguments>run test-ci</arguments>
+            </configuration>
+          </execution>
+        </executions>
+        <configuration>
+          <nodeVersion>${frontend-maven-plugin.nodeVersion}</nodeVersion>
+          <yarnVersion>${frontend-maven-plugin.yarnVersion}</yarnVersion>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <version>${maven-assembly-plugin.version}</version>
+        <configuration>
+          <descriptors>
+            <descriptor>build-assembly.xml</descriptor>
+          </descriptors>
+          <finalName>${project.artifactId}-${project.version}</finalName>
+        </configuration>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>single</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>
