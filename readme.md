@@ -1,7 +1,7 @@
-# Icke Web App
+# Geolud Web App
 
 [![WTFPL](https://img.shields.io/badge/license-WTFPL-blue.svg)](http://www.wtfpl.net/txt/copying)
-[![Build Status](https://travis-ci.org/fischermatte/icke.svg?branch=develop)](https://travis-ci.org/fischermatte/icke) 
+[![Build Status](https://travis-ci.org/fischermatte/geolud.svg?branch=develop)](https://travis-ci.org/fischermatte/geolud) 
 
 ## Whats this?
 
@@ -16,14 +16,14 @@ My personal 'cloud-native' Homepage, totally over-engineered using the following
 
 ## How to run it locally?
 
-### Backend (icker-server)
+### Backend (geoludr-server)
 
     mvn clean install
-    mvn spring-boot:run -f icke-server/pom.xml
+    mvn spring-boot:run -f geolud-api/pom.xml
     
 This will start tomcat at http://localhost:8080
     
-### Frontend (icke-ui)
+### Frontend (geolud-ui)
 
     npm install
     npm run-script start-local
@@ -39,10 +39,10 @@ Pack. It's memory calculator defaults to 1GB ram per instance. This was at
 least the case when I tried on it Pivotal and IBM Bluemix Cloud Foundry. In order 
 to use less, it is not enough to define `memory:256m` in your manifest.  
 
-### Java Backend (icke-server)
+### Java Backend (geolud-api)
 
 This example below configures the app to be used with less than 1GB. It also shows how to configure 
-spring boot properties to configure the mail service within icke-server.
+spring boot properties to configure the mail service within geolud-api.
 
 Note: the example below does not use the memory calculator of the build pack but has hardcoded VM properties. This
 is not a good approach when you want to scale dynamically. 
@@ -50,8 +50,8 @@ is not a good approach when you want to scale dynamically.
 ```yml
 # Cloud Foundry Example Manifest with 400m memory
 applications:
-- name: icke-api
-  path: icke-server/target/icke-server-1.3.1.jar
+- name: geolud-api
+  path: geolud-api/target/geolud-api-1.3.1.jar
   instances: 1
   buildpack: https://github.com/cloudfoundry/java-buildpack.git#v4.12
   memory: 500m
@@ -61,12 +61,12 @@ applications:
     SPRING_PROFILES_ACTIVE: cloud
 ```
 
-### Angular Frontent (icke-ui)
+### Angular Frontent (geolud-ui)
 The ui app is a plain angular project with static files. For this one uses the Cloud Foudnry static file build pack:
 
 ```yml
 applications:
-- name: icke-ui
+- name: geolud-ui
   path: dist
   instances: 1
   buildpack: https://github.com/cloudfoundry/staticfile-buildpack.git#v1.4.20

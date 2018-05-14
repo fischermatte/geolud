@@ -2,28 +2,11 @@ cdtarget/
 node/
 /node/
 !.mvn/wrapper/maven-wrapper.jar
-
-### IntelliJ IDEA ###
 *.iws
 *.iml
 *.ipr
 */.
-/.idea/typescript-compiler.xml
-/.idea/libraries/
-/.idea/modules.xml
-/.idea/jsLibraryMappings.xml
-/.idea/mongoSettings.xml
-/.idea/compiler.xml
-/.idea/misc.xml
-/.idea/codeStyleSettings.xml
-/.idea/vcs.xml
-/.idea/artifacts/
-/.idea/inspectionProfiles/
-/.idea/workspace.xml
-/.idea/encodings.xml
+/.idea/
 /_local/
-/.idea/.name
-/.idea/uiDesigner.xml
-/icke-ui/dist_cloudfoundry/app/
+/geolud-ui/dist_cloudfoundry/app/
 
-/.idea/dataSources/
