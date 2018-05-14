@@ -1,4 +1,4 @@
-cdtarget/
+target/
 node/
 /node/
 !.mvn/wrapper/maven-wrapper.jar
@@ -9,4 +9,3 @@ node/
 /.idea/
 /_local/
 /geolud-ui/dist_cloudfoundry/app/
-
