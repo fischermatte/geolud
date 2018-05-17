@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Example;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
+import reactor.core.publisher.Mono;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -32,12 +33,13 @@ public class DataInitializer {
         objectMapper.registerModule(new JavaTimeModule());
         Project[] projects = objectMapper.readValue(ApplicationConfig.class.getResourceAsStream("/data/projects.json"), Project[].class);
         Arrays.stream(projects).forEach(project -> {
-            if (!projectRepository.exists(Example.of(project))) {
-                LOG.debug("inserting project {}", project.getTitle());
-                projectRepository.save(project);
-            } else {
-                LOG.debug("project was already inserted: {}", project.getTitle());
-            }
+            projectRepository.exists(Example.of(project)).map(exists -> {
+                if (exists) {
+                    LOG.debug("project was already inserted: {}", project.getTitle());
+                    return Mono.empty();
+                }
+                return projectRepository.save(project);
+            });
         });
 
 

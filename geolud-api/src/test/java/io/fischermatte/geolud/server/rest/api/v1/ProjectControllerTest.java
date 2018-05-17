@@ -1,6 +1,6 @@
 package io.fischermatte.geolud.server.rest.api.v1;
 
-import io.fischermatte.geolud.api.v1.model.ProjectDto;
+import io.fischermatte.geolud.server.rest.api.v1.project.ProjectDto;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;

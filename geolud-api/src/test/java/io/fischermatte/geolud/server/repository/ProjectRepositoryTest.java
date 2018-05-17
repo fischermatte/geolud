@@ -37,8 +37,8 @@ class ProjectRepositoryTest {
                         .withTo(LocalDate.of(2018, 1, 1)))
                 .withTitle("A");
 
-        assertFalse(repository.exists(Example.of(project)));
-        repository.save(project);
-        assertTrue(repository.exists(Example.of(project)));
+        assertFalse(repository.exists(Example.of(project)).block());
+        repository.save(project).block();
+        assertTrue(repository.exists(Example.of(project)).block());
     }
 }

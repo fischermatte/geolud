@@ -1,6 +1,6 @@
 package io.fischermatte.geolud.server.service.mail;
 
-import io.fischermatte.geolud.api.v1.model.ContactRequestDto;
+import io.fischermatte.geolud.server.rest.api.v1.contact.ContactRequestDto;
 import io.fischermatte.geolud.server.config.MailProperties;
 import org.apache.commons.lang.CharEncoding;
 import org.slf4j.Logger;

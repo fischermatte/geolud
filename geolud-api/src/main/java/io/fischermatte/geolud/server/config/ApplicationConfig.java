@@ -7,8 +7,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.task.SimpleAsyncTaskExecutor;
 import org.springframework.scheduling.annotation.EnableAsync;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.reactive.config.CorsRegistry;
+import org.springframework.web.reactive.config.WebFluxConfigurer;
+import org.springframework.web.reactive.config.WebFluxConfigurerComposite;
 
 import javax.annotation.PostConstruct;
 import java.io.IOException;
@@ -25,17 +26,9 @@ public class ApplicationConfig {
         this.dataInitializer = dataInitializer;
     }
 
-    /**
-     * TaskExecutor so we can use @Async annotation. E.g. when sending emails.
-     */
     @Bean
-    public Executor taskExecutor() {
-        return new SimpleAsyncTaskExecutor();
-    }
-
-    @Bean
-    public WebMvcConfigurer corsConfigurer() {
-        return new WebMvcConfigurer() {
+    public WebFluxConfigurer corsConfigurer() {
+        return new WebFluxConfigurerComposite() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/v1/**")
@@ -43,6 +36,14 @@ public class ApplicationConfig {
                         .allowedMethods("*");
             }
         };
+    }
+
+    /**
+     * TaskExecutor so we can use @Async annotation. E.g. when sending emails.
+     */
+    @Bean
+    public Executor taskExecutor() {
+        return new SimpleAsyncTaskExecutor();
     }
 
     @PostConstruct

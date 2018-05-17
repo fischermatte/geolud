@@ -1,53 +1,58 @@
-package io.fischermatte.geolud.server.rest.api.v1;
+package io.fischermatte.geolud.server.rest.api.v1.project;
 
 
-import io.fischermatte.geolud.api.v1.ProjectsApi;
-import io.fischermatte.geolud.api.v1.model.CustomerDto;
-import io.fischermatte.geolud.api.v1.model.LinkDto;
-import io.fischermatte.geolud.api.v1.model.ProjectDto;
 import io.fischermatte.geolud.server.domain.project.Customer;
 import io.fischermatte.geolud.server.domain.project.Interval;
 import io.fischermatte.geolud.server.domain.project.Link;
 import io.fischermatte.geolud.server.domain.project.Project;
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import io.fischermatte.geolud.server.repository.ProjectRepository;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
+import org.springframework.web.bind.annotation.*;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import static io.fischermatte.geolud.server.rest.api.v1.ApiContext.API_V1_BASE_PATH;
 import static java.util.Collections.emptyList;
 import static org.springframework.util.CollectionUtils.isEmpty;
 import static org.springframework.util.StringUtils.hasText;
 
+@Api(value = "projects", description = "the projects API")
 @RestController
 @RequestMapping(value = API_V1_BASE_PATH)
-public class ProjectController implements ProjectsApi {
+public class ProjectController {
 
-    private final CrudRepository<Project, String> projectRepository;
+    private final ProjectRepository projectRepository;
 
-    public ProjectController(CrudRepository<Project, String> projectRepository) {
+    public ProjectController(ProjectRepository projectRepository) {
         this.projectRepository = projectRepository;
     }
 
-    @Override
-    public ResponseEntity<ProjectDto> getProjectById(@PathVariable String projectId) {
-        Optional<Project> result = projectRepository.findById(projectId);
-        if (!result.isPresent()) {
-            throw new IllegalArgumentException("project not found for id ");
-        }
-        return new ResponseEntity<>(mapProject(result.get()), HttpStatus.OK);
+    @ApiOperation(value = "Info for a specific project", nickname = "getProjectById", notes = "", response = ProjectDto.class, tags = {"project",})
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Expected response to a valid request", response = ProjectDto.class),
+            @ApiResponse(code = 200, message = "unexpected error", response = ErrorResponseDto.class)})
+    @RequestMapping(value = "/projects/{projectId}",
+            produces = {"application/json"},
+            method = RequestMethod.GET)
+    public Mono<ProjectDto> getProjectById(@PathVariable String projectId) {
+        return projectRepository.findById(projectId).map(this::mapProject);
     }
 
-    @Override
-    public ResponseEntity<List<ProjectDto>> getProjects(@RequestParam(required = false) Integer limit) {
-        return new ResponseEntity<>(mapProjects(projectRepository.findAll()), HttpStatus.OK);
+    @ApiOperation(value = "List all projects", nickname = "getProjects", notes = "", response = ProjectDto.class, responseContainer = "List", tags = {"project",})
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "An paged array of projects", response = ProjectDto.class, responseContainer = "List"),
+            @ApiResponse(code = 200, message = "unexpected error", response = ErrorResponseDto.class)})
+    @RequestMapping(value = "/projects",
+            produces = {"application/json"},
+            method = RequestMethod.GET)
+    public Flux<ProjectDto> getProjects(@RequestParam(required = false) Integer limit) {
+        return projectRepository.findAll().map(this::mapProject);
     }
 
     private List<ProjectDto> mapProjects(Iterable<Project> source) {
