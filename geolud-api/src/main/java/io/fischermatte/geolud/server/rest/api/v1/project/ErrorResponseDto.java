@@ -1,7 +1,5 @@
 package io.fischermatte.geolud.server.rest.api.v1.project;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.annotations.ApiModelProperty;
 import org.springframework.validation.annotation.Validated;
 
 import javax.validation.constraints.NotNull;
@@ -11,10 +9,8 @@ import javax.validation.constraints.NotNull;
  */
 @Validated
 public class ErrorResponseDto {
-    @JsonProperty("code")
     private Integer code = null;
 
-    @JsonProperty("message")
     private String message = null;
 
     public ErrorResponseDto code(Integer code) {
@@ -27,7 +23,6 @@ public class ErrorResponseDto {
      *
      * @return code
      **/
-    @ApiModelProperty(required = true, value = "")
     @NotNull
     public Integer getCode() {
         return code;
@@ -47,7 +42,6 @@ public class ErrorResponseDto {
      *
      * @return message
      **/
-    @ApiModelProperty(required = true, value = "")
     @NotNull
     public String getMessage() {
         return message;

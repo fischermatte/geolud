@@ -1,7 +1,5 @@
 package io.fischermatte.geolud.server.rest.api.v1.project;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.annotations.ApiModelProperty;
 import org.springframework.validation.annotation.Validated;
 
 import javax.validation.Valid;
@@ -14,22 +12,16 @@ import java.util.List;
  */
 @Validated
 public class ProjectDto {
-    @JsonProperty("id")
     private String id = null;
 
-    @JsonProperty("title")
     private String title = null;
 
-    @JsonProperty("description")
     private String description = null;
 
-    @JsonProperty("period")
     private String period = null;
 
-    @JsonProperty("customer")
     private CustomerDto customer = null;
 
-    @JsonProperty("links")
     @Valid
     private List<LinkDto> links = null;
 
@@ -43,7 +35,6 @@ public class ProjectDto {
      *
      * @return id
      **/
-    @ApiModelProperty(required = true, value = "")
     @NotNull
     public String getId() {
         return id;
@@ -63,7 +54,6 @@ public class ProjectDto {
      *
      * @return title
      **/
-    @ApiModelProperty(value = "")
     public String getTitle() {
         return title;
     }
@@ -82,7 +72,6 @@ public class ProjectDto {
      *
      * @return description
      **/
-    @ApiModelProperty(value = "")
     public String getDescription() {
         return description;
     }
@@ -101,7 +90,6 @@ public class ProjectDto {
      *
      * @return period
      **/
-    @ApiModelProperty(value = "")
     public String getPeriod() {
         return period;
     }
@@ -120,7 +108,6 @@ public class ProjectDto {
      *
      * @return customer
      **/
-    @ApiModelProperty(value = "")
     @Valid
     public CustomerDto getCustomer() {
         return customer;
@@ -148,7 +135,6 @@ public class ProjectDto {
      *
      * @return links
      **/
-    @ApiModelProperty(value = "")
     @Valid
     public List<LinkDto> getLinks() {
         return links;

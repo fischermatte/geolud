@@ -1,7 +1,5 @@
 package io.fischermatte.geolud.server.rest.api.v1.contact;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.annotations.ApiModelProperty;
 import org.springframework.validation.annotation.Validated;
 
 import javax.validation.constraints.NotNull;
@@ -11,13 +9,10 @@ import javax.validation.constraints.NotNull;
  */
 @Validated
 public class ContactRequestDto {
-    @JsonProperty("name")
     private String name = null;
 
-    @JsonProperty("email")
     private String email = null;
 
-    @JsonProperty("message")
     private String message = null;
 
     public ContactRequestDto name(String name) {
@@ -30,7 +25,6 @@ public class ContactRequestDto {
      *
      * @return name
      **/
-    @ApiModelProperty(value = "")
     public String getName() {
         return name;
     }
@@ -49,7 +43,6 @@ public class ContactRequestDto {
      *
      * @return email
      **/
-    @ApiModelProperty(required = true, value = "")
     @NotNull
     public String getEmail() {
         return email;
@@ -69,7 +62,6 @@ public class ContactRequestDto {
      *
      * @return message
      **/
-    @ApiModelProperty(required = true, value = "")
     @NotNull
     public String getMessage() {
         return message;

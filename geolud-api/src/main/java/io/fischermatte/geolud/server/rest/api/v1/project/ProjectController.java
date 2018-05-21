@@ -20,6 +20,7 @@ import java.util.List;
 import static io.fischermatte.geolud.server.rest.api.v1.ApiContext.API_V1_BASE_PATH;
 import static java.util.Collections.emptyList;
 import static org.springframework.util.CollectionUtils.isEmpty;
+import static org.springframework.util.MimeTypeUtils.APPLICATION_JSON_VALUE;
 import static org.springframework.util.StringUtils.hasText;
 
 @Api(value = "projects", description = "the projects API")
@@ -37,9 +38,8 @@ public class ProjectController {
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Expected response to a valid request", response = ProjectDto.class),
             @ApiResponse(code = 200, message = "unexpected error", response = ErrorResponseDto.class)})
-    @RequestMapping(value = "/projects/{projectId}",
-            produces = {"application/json"},
-            method = RequestMethod.GET)
+    @GetMapping(value = "/projects/{projectId}",
+            produces = {APPLICATION_JSON_VALUE})
     public Mono<ProjectDto> getProjectById(@PathVariable String projectId) {
         return projectRepository.findById(projectId).map(this::mapProject);
     }
@@ -48,20 +48,10 @@ public class ProjectController {
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "An paged array of projects", response = ProjectDto.class, responseContainer = "List"),
             @ApiResponse(code = 200, message = "unexpected error", response = ErrorResponseDto.class)})
-    @RequestMapping(value = "/projects",
-            produces = {"application/json"},
-            method = RequestMethod.GET)
+    @GetMapping(value = "/projects",
+            produces = {APPLICATION_JSON_VALUE})
     public Flux<ProjectDto> getProjects(@RequestParam(required = false) Integer limit) {
         return projectRepository.findAll().map(this::mapProject);
-    }
-
-    private List<ProjectDto> mapProjects(Iterable<Project> source) {
-        if (source == null) {
-            return emptyList();
-        }
-        List<ProjectDto> target = new ArrayList<>();
-        source.forEach(project -> target.add(mapProject(project)));
-        return target;
     }
 
     private ProjectDto mapProject(Project source) {

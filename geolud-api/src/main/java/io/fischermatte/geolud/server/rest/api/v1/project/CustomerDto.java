@@ -1,20 +1,14 @@
 package io.fischermatte.geolud.server.rest.api.v1.project;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.annotations.ApiModelProperty;
 import org.springframework.validation.annotation.Validated;
-
-import javax.validation.constraints.NotNull;
 
 /**
  * CustomerDto
  */
 @Validated
 public class CustomerDto {
-    @JsonProperty("name")
     private String name = null;
 
-    @JsonProperty("url")
     private String url = null;
 
     public CustomerDto name(String name) {
@@ -27,8 +21,6 @@ public class CustomerDto {
      *
      * @return name
      **/
-    @ApiModelProperty(required = true, value = "")
-    @NotNull
     public String getName() {
         return name;
     }
@@ -47,7 +39,6 @@ public class CustomerDto {
      *
      * @return url
      **/
-    @ApiModelProperty(value = "")
     public String getUrl() {
         return url;
     }
