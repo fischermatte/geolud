@@ -13,7 +13,9 @@ import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
+
+import static java.util.Arrays.stream;
+import static reactor.core.publisher.Mono.just;
 
 @Component
 public class DataInitializer {
@@ -31,14 +33,18 @@ public class DataInitializer {
         objectMapper.setDateFormat(new SimpleDateFormat("YYYY-MM-dd"));
         objectMapper.registerModule(new JavaTimeModule());
         Project[] projects = objectMapper.readValue(ApplicationConfig.class.getResourceAsStream("/data/projects.json"), Project[].class);
-        Arrays.stream(projects).forEach(project -> {
-            if (!projectRepository.exists(Example.of(project))) {
-                LOG.debug("inserting project {}", project.getTitle());
-                projectRepository.save(project);
-            } else {
-                LOG.debug("project was already inserted: {}", project.getTitle());
-            }
-        });
+        stream(projects)
+                .forEach(project -> projectRepository
+                        .exists(Example.of(project))
+                        .flatMap(exists -> {
+                            if (exists) {
+                                LOG.debug("project was already inserted: {}", project.getTitle());
+                                return just(project);
+                            }
+                            return projectRepository.save(project);
+                        })
+                        .then()
+                        .block());
 
 
     }
