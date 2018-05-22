@@ -7,12 +7,17 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.task.SimpleAsyncTaskExecutor;
 import org.springframework.scheduling.annotation.EnableAsync;
+import org.springframework.web.reactive.HandlerMapping;
 import org.springframework.web.reactive.config.CorsRegistry;
 import org.springframework.web.reactive.config.WebFluxConfigurer;
 import org.springframework.web.reactive.config.WebFluxConfigurerComposite;
+import org.springframework.web.reactive.handler.SimpleUrlHandlerMapping;
+import org.springframework.web.reactive.socket.WebSocketHandler;
 
 import javax.annotation.PostConstruct;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.Executor;
 
 @EnableAsync
@@ -21,9 +26,11 @@ public class ApplicationConfig {
     private static final Logger LOG = LoggerFactory.getLogger(ApplicationConfig.class);
 
     private final DataInitializer dataInitializer;
+    private final WebSocketHandler webSocketHandler;
 
-    public ApplicationConfig(DataInitializer dataInitializer) {
+    public ApplicationConfig(DataInitializer dataInitializer, WebSocketHandler webSocketHandler) {
         this.dataInitializer = dataInitializer;
+        this.webSocketHandler = webSocketHandler;
     }
 
     @Bean
@@ -36,6 +43,17 @@ public class ApplicationConfig {
                         .allowedMethods("*");
             }
         };
+    }
+
+    @Bean
+    public HandlerMapping webSocketHandlerMapping() {
+        Map<String, WebSocketHandler> map = new HashMap<>();
+        map.put("/event-emitter", webSocketHandler);
+
+        SimpleUrlHandlerMapping handlerMapping = new SimpleUrlHandlerMapping();
+        handlerMapping.setOrder(1);
+        handlerMapping.setUrlMap(map);
+        return handlerMapping;
     }
 
     /**
