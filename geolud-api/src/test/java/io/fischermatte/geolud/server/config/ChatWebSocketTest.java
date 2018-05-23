@@ -42,7 +42,7 @@ class ChatWebSocketTest {
     void test() {
         WebSocketClient client = new ReactorNettyWebSocketClient();
         List<ChatMessage> messages = new ArrayList<>();
-        client.execute(websocketUri(), webSocketHandler(messages));
+        client.execute(websocketUri(), webSocketHandler(messages)).subscribe(h -> System.out.println("received something"));
         await().atMost(5, SECONDS).until(() -> messages.size() == 1);
     }
 
