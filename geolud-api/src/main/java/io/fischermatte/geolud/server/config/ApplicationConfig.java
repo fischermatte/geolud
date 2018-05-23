@@ -26,11 +26,9 @@ public class ApplicationConfig {
     private static final Logger LOG = LoggerFactory.getLogger(ApplicationConfig.class);
 
     private final DataInitializer dataInitializer;
-    private final WebSocketHandler webSocketHandler;
 
-    public ApplicationConfig(DataInitializer dataInitializer, WebSocketHandler webSocketHandler) {
+    public ApplicationConfig(DataInitializer dataInitializer) {
         this.dataInitializer = dataInitializer;
-        this.webSocketHandler = webSocketHandler;
     }
 
     @Bean
@@ -43,17 +41,6 @@ public class ApplicationConfig {
                         .allowedMethods("*");
             }
         };
-    }
-
-    @Bean
-    public HandlerMapping webSocketHandlerMapping() {
-        Map<String, WebSocketHandler> map = new HashMap<>();
-        map.put("/event-emitter", webSocketHandler);
-
-        SimpleUrlHandlerMapping handlerMapping = new SimpleUrlHandlerMapping();
-        handlerMapping.setOrder(1);
-        handlerMapping.setUrlMap(map);
-        return handlerMapping;
     }
 
     /**

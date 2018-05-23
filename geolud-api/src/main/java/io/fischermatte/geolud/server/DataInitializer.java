@@ -4,7 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import io.fischermatte.geolud.server.config.ApplicationConfig;
 import io.fischermatte.geolud.server.domain.project.Project;
-import io.fischermatte.geolud.server.repository.ProjectRepository;
+import io.fischermatte.geolud.server.domain.project.ProjectRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Example;

@@ -1,8 +1,5 @@
-package io.fischermatte.geolud.server.repository;
+package io.fischermatte.geolud.server.domain.project;
 
-import io.fischermatte.geolud.server.domain.project.Customer;
-import io.fischermatte.geolud.server.domain.project.Interval;
-import io.fischermatte.geolud.server.domain.project.Project;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,9 +9,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.time.LocalDate;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(SpringExtension.class)
 @DataMongoTest

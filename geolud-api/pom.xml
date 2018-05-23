@@ -30,6 +30,7 @@
         <jaxb-api.version>2.3.0</jaxb-api.version>
         <de.flapdoodle.embed.mongo.version>2.0.3</de.flapdoodle.embed.mongo.version>
         <embedmongo-spring.version>1.1</embedmongo-spring.version>
+        <awaitility.version>1.7.0</awaitility.version>
     </properties>
 
     <dependencies>
@@ -142,6 +143,13 @@
             <artifactId>spring-boot-devtools</artifactId>
             <optional>true</optional>
         </dependency>
+        <dependency>
+            <groupId>com.jayway.awaitility</groupId>
+            <artifactId>awaitility</artifactId>
+            <version>${awaitility.version}</version>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 
     <dependencyManagement>

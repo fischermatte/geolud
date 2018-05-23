@@ -1,4 +1,4 @@
-package io.fischermatte.geolud.server.repository;
+package io.fischermatte.geolud.server.domain.project;
 
 import io.fischermatte.geolud.server.domain.project.Project;
 import org.springframework.data.mongodb.repository.ReactiveMongoRepository;

@@ -1,23 +1,23 @@
 package io.fischermatte.geolud.server.rest.api.v1.project;
 
 
-import io.fischermatte.geolud.server.domain.project.Customer;
-import io.fischermatte.geolud.server.domain.project.Interval;
-import io.fischermatte.geolud.server.domain.project.Link;
-import io.fischermatte.geolud.server.domain.project.Project;
-import io.fischermatte.geolud.server.repository.ProjectRepository;
+import io.fischermatte.geolud.server.domain.project.*;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static io.fischermatte.geolud.server.rest.api.v1.ApiContext.API_V1_BASE_PATH;
+import static io.fischermatte.geolud.server.rest.api.v1.Paths.PROJECT;
+import static io.fischermatte.geolud.server.rest.api.v1.Paths.PROJECTS;
 import static java.util.Collections.emptyList;
 import static org.springframework.util.CollectionUtils.isEmpty;
 import static org.springframework.util.MimeTypeUtils.APPLICATION_JSON_VALUE;
@@ -25,7 +25,6 @@ import static org.springframework.util.StringUtils.hasText;
 
 @Api(value = "projects", description = "the projects API")
 @RestController
-@RequestMapping(value = API_V1_BASE_PATH)
 public class ProjectController {
 
     private final ProjectRepository projectRepository;
@@ -38,8 +37,7 @@ public class ProjectController {
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Expected response to a valid request", response = ProjectDto.class),
             @ApiResponse(code = 200, message = "unexpected error", response = ErrorResponseDto.class)})
-    @GetMapping(value = "/projects/{projectId}",
-            produces = {APPLICATION_JSON_VALUE})
+    @GetMapping(value = PROJECT, produces = {APPLICATION_JSON_VALUE})
     public Mono<ProjectDto> getProjectById(@PathVariable String projectId) {
         return projectRepository.findById(projectId).map(this::mapProject);
     }
@@ -48,8 +46,7 @@ public class ProjectController {
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "An paged array of projects", response = ProjectDto.class, responseContainer = "List"),
             @ApiResponse(code = 200, message = "unexpected error", response = ErrorResponseDto.class)})
-    @GetMapping(value = "/projects",
-            produces = {APPLICATION_JSON_VALUE})
+    @GetMapping(value = PROJECTS, produces = {APPLICATION_JSON_VALUE})
     public Flux<ProjectDto> getProjects(@RequestParam(required = false) Integer limit) {
         return projectRepository.findAll().map(this::mapProject);
     }
