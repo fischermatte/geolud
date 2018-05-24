@@ -7,8 +7,7 @@
 
 My personal 'cloud-native' Homepage, totally over-engineered using the following technology stack:
 
-- Spring Boot 2
-- Spring Cloud
+- Spring: Boot V2 / Cloud / WebFlux / Data Reactive Mongo
 - Angular 6
 - Bootstrap 4 
 - MongoDB
