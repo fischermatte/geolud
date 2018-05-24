@@ -15,7 +15,7 @@ My personal 'cloud-native' Homepage, totally over-engineered using the following
 
 ## How to run it locally?
 
-### Backend (geoludr-server)
+### Backend (geolud-server)
 
     mvn clean install
     mvn spring-boot:run -f geolud-api/pom.xml
