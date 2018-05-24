@@ -29,12 +29,12 @@ class ChatSocketHandler implements WebSocketHandler {
         ChatSocketMessageSubscriber subscriber = new ChatSocketMessageSubscriber(messagePublisher);
         session.receive()
                 .map(WebSocketMessage::getPayloadAsText)
-                .map(this::toChatMessage)
+                .map(this::fromJson)
                 .subscribe(subscriber::onNext, subscriber::onError, subscriber::onComplete);
         return session.send(outputMessages.map(session::textMessage));
     }
 
-    private ChatMessage toChatMessage(String json) {
+    private ChatMessage fromJson(String json) {
         try {
             return mapper.readValue(json, ChatMessage.class);
         } catch (IOException e) {

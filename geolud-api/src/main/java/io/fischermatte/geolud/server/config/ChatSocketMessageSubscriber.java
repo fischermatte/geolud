@@ -28,6 +28,8 @@ class ChatSocketMessageSubscriber {
     }
 
     void onComplete() {
-        lastReceivedMessage.ifPresent(messagePublisher::onNext);
+        lastReceivedMessage.ifPresent(chatMessage -> {
+            messagePublisher.onNext(new ChatMessage("user-left", "User Left"));
+        });
     }
 }

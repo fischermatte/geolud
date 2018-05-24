@@ -5,6 +5,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import io.fischermatte.geolud.server.domain.chat.ChatMessage;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.web.server.LocalServerPort;
@@ -18,6 +20,7 @@ import reactor.core.publisher.Flux;
 
 import java.io.IOException;
 import java.net.URI;
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,6 +34,7 @@ import static reactor.core.publisher.Mono.just;
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(webEnvironment = RANDOM_PORT)
 class ChatWebSocketTest {
+    private static final Logger LOG = LoggerFactory.getLogger(ChatWebSocketTest.class);
 
     @LocalServerPort
     private int port;
@@ -42,7 +46,7 @@ class ChatWebSocketTest {
     void test() {
         WebSocketClient client = new ReactorNettyWebSocketClient();
         List<ChatMessage> messages = new ArrayList<>();
-        client.execute(websocketUri(), webSocketHandler(messages)).subscribe(h -> System.out.println("received something"));
+        client.execute(websocketUri(), webSocketHandler(messages)).block(Duration.ofMillis(20000));
         await().atMost(5, SECONDS).until(() -> messages.size() == 1);
     }
 
@@ -50,10 +54,12 @@ class ChatWebSocketTest {
         return session -> {
             Flux<ChatMessage> publisher = session.send(just(this.chatMessage(session)))
                     .thenMany(session.receive()
+                            .take(1)
                             .map(WebSocketMessage::getPayloadAsText)
                             .log()
                             .map(ChatWebSocketTest.this::toChatMessage));
             publisher.subscribe(messages::add);
+            publisher.doOnNext(System.out::println);
             return publisher.then();
         };
     }
