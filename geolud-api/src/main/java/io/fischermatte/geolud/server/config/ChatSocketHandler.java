@@ -18,7 +18,7 @@ class ChatSocketHandler implements WebSocketHandler {
     private Flux<String> outputMessages;
     private ObjectMapper mapper;
 
-    public ChatSocketHandler(UnicastProcessor<ChatMessage> messagePublisher, Flux<ChatMessage> messages) {
+    ChatSocketHandler(UnicastProcessor<ChatMessage> messagePublisher, Flux<ChatMessage> messages) {
         this.messagePublisher = messagePublisher;
         this.mapper = new ObjectMapper();
         this.outputMessages = Flux.from(messages).map(this::toJSON);
@@ -35,6 +35,7 @@ class ChatSocketHandler implements WebSocketHandler {
     }
 
     private ChatMessage fromJson(String json) {
+        System.out.println("received json : json");
         try {
             return mapper.readValue(json, ChatMessage.class);
         } catch (IOException e) {
