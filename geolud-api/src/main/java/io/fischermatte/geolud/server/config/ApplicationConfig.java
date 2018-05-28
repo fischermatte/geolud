@@ -1,6 +1,5 @@
 package io.fischermatte.geolud.server.config;
 
-import io.fischermatte.geolud.server.DataInitializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;

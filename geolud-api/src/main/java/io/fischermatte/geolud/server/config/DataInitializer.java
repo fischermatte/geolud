@@ -1,8 +1,7 @@
-package io.fischermatte.geolud.server;
+package io.fischermatte.geolud.server.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import io.fischermatte.geolud.server.config.ApplicationConfig;
 import io.fischermatte.geolud.server.domain.project.Project;
 import io.fischermatte.geolud.server.domain.project.ProjectRepository;
 import org.slf4j.Logger;
