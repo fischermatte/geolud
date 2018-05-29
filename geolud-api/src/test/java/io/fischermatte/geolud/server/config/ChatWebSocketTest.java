@@ -78,7 +78,10 @@ class ChatWebSocketTest {
     private WebSocketMessage chatMessage(WebSocketSession session) {
         WebSocketMessage webSocketMessage = null;
         try {
-            ChatMessage chatMessage = new ChatMessage("text", "hello test", "test user");
+            ChatMessage chatMessage = new ChatMessage();
+            chatMessage.message = "Hello World";
+            chatMessage.type = "atype";
+            chatMessage.user = "User1";
             webSocketMessage = session.textMessage(objectMapper.writeValueAsString(chatMessage));
         } catch (JsonProcessingException e) {
             fail("could not write chat message");
