@@ -6,13 +6,16 @@
   <div class="row">
     <div class="col-md-4"></div>
     <div class="col-md-4">
-      <div class="chat-window">
-        <div class="chat-messages">
-          <div *ngFor="let m of messages" class="chat-message">
-            <div class="chat-message-text">{{m}}</div>
+      <div class="card chat-window">
+        <h5 class="card-header">12 Users online</h5>
+        <div class="card-body">
+          <div class="chat-messages">
+            <div *ngFor="let m of messages" class="chat-message">
+              <div class="chat-message-text">{{m}}</div>
+            </div>
           </div>
         </div>
-        <div class="chat-form">
+        <div class="card-footer">
           <form>
             <div class="form-row align-items-center">
               <div class="col-sm-3 my-1">
@@ -25,6 +28,7 @@
             </div>
           </form>
         </div>
+
       </div>
     </div>
     <div class="col-md-4"></div>

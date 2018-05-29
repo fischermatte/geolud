@@ -1,16 +1,16 @@
 @import '../../../node_modules/startbootstrap-freelancer/scss/variables';
 
 .chat-window {
-  margin: 0;
-  padding: 0;
-  width: 100%;
+  //margin: 0;
+  //padding: 0;
+  //width: 100%;
   height: 500px;
   .chat-messages {
-    background: $gray-100;
-    height: calc(100% - 140px);
-    overflow-x: hidden;
-    padding: 10px;
-    margin: 15px;
+    //background: $gray-100;
+    height: 100%;
+    overflow: auto;
+    //padding: 10px;
+    //margin: 15px;
     .chat-message {
       margin: 15px 0 15px 0;
       .chat-message-text {
@@ -22,11 +22,11 @@
       }
     }
   }
-  .chat-form {
-    overflow: hidden;
-    padding: 10px;
-    position: relative;
-    height: 70px;
-    max-height: 70px;
-  }
+  //.chat-form {
+  //  overflow: hidden;
+  //  padding: 10px;
+  //  position: relative;
+  //  height: 70px;
+  //  max-height: 70px;
+  //}
 }
