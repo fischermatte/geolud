@@ -3,7 +3,30 @@
     <h2 class="text-center">Chat</h2>
     <hr class="star-dark">
   </div>
-  <ul>
-    <li *ngFor="let m of messages">{{m}}</li>
-  </ul>
+  <div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+      <div class="chat-window">
+        <div class="chat-messages">
+          <div *ngFor="let m of messages" class="chat-message">
+            <div class="chat-message-text">{{m}}</div>
+          </div>
+        </div>
+        <div class="chat-form">
+          <form>
+            <div class="form-row align-items-center">
+              <div class="col-sm-3 my-1">
+                <label class="sr-only" for="message">Name</label>
+                <input type="text" class="form-control" id="message" placeholder="Message">
+              </div>
+              <div class="col-auto my-1">
+                <button type="submit" class="btn btn-primary">Send</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4"></div>
+  </div>
 </section>
