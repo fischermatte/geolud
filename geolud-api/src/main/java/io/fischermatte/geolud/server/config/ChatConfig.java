@@ -39,6 +39,7 @@ public class ChatConfig {
                     .subscribe(chatMessageJson -> messages.onNext(fromJson(chatMessageJson)));
             return session.send(messages
                     .map(chatMessage -> session.textMessage(toJSON(chatMessage))).toFlowable(LATEST));
+//            return session.send(session.receive().doOnNext(WebSocketMessage::retain));
         });
         SimpleUrlHandlerMapping simpleUrlHandlerMapping = new SimpleUrlHandlerMapping();
         simpleUrlHandlerMapping.setUrlMap(map);
