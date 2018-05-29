@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {AfterViewChecked, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {Subject} from 'rxjs/Subject';
 import {Observable} from 'rxjs/Observable';
 import {Observer} from 'rxjs/Observer';
@@ -8,17 +8,23 @@ import {Observer} from 'rxjs/Observer';
   templateUrl: './chat.component.html',
   styleUrls: ['./chat.component.scss']
 })
-export class ChatComponent implements OnInit {
+export class ChatComponent implements OnInit, AfterViewChecked {
+  @ViewChild('messagesContainer') private messagesContainer: ElementRef;
   private subject: Subject<MessageEvent>;
-  messages: string [] = [];
+
+  messages: string [] = ['dhaks kakdjh saldkfjhas ldfkjhasdlfkjas df', 'dhaks kakdjh saldkfjhas ldfkjhasdlfkjas d  asd asd asdasd 6 sf'];
 
   constructor() {
   }
 
   ngOnInit() {
-    this.connect('ws://localhost:8080/v1/chat').subscribe(m => this.messages.push(JSON.stringify(m.data)));
+    // this.connect('ws://localhost:8080/v1/chat').subscribe(m => this.messages.push(JSON.stringify(m.data)));
+    this.scrollToBottom();
   };
 
+  ngAfterViewChecked(): void {
+    this.scrollToBottom();
+  }
 
   public connect(url):
     Subject<MessageEvent> {
@@ -48,6 +54,13 @@ export class ChatComponent implements OnInit {
       }
     };
     return Subject.create(observer, observable);
+  }
+
+  private scrollToBottom(): void {
+    try {
+      this.messagesContainer.nativeElement.scrollTop = this.messagesContainer.nativeElement.scrollHeight;
+    } catch (err) {
+    }
   }
 
 

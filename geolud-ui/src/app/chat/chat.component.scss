@@ -1,32 +1,40 @@
 @import '../../../node_modules/startbootstrap-freelancer/scss/variables';
 
 .chat-window {
-  //margin: 0;
-  //padding: 0;
-  //width: 100%;
   height: 500px;
   .chat-messages {
-    //background: $gray-100;
-    height: 100%;
-    overflow: auto;
-    //padding: 10px;
-    //margin: 15px;
+    //background-color: $gray-100;
+    overflow-y: auto;
     .chat-message {
-      margin: 15px 0 15px 0;
-      .chat-message-text {
+      padding: 15px 0 15px 0;
+      .chat-body {
         padding: 10px;
         box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
         border-radius: 2px;
-        background: #fff;
+        background-color: $gray-100;
         display: inline-block;
+        max-width: 80%;
+        .chat-context  {
+          width: 100%;
+          .chat-user {
+            float: left;
+            font-weight: bold;
+          }
+          .chat-time {
+            float: right;
+          }
+        }
+        .chat-text {
+          float: left;
+        }
+      }
+      border-bottom: 1px dotted $gray-400;
+    }
+    .chat-message-right {
+      text-align: right;
+      .chat-body {
+        background-color: $gray-300;
       }
     }
   }
-  //.chat-form {
-  //  overflow: hidden;
-  //  padding: 10px;
-  //  position: relative;
-  //  height: 70px;
-  //  max-height: 70px;
-  //}
 }

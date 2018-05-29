@@ -8,25 +8,27 @@
     <div class="col-md-4">
       <div class="card chat-window">
         <h5 class="card-header">12 Users online</h5>
-        <div class="card-body">
-          <div class="chat-messages">
-            <div *ngFor="let m of messages" class="chat-message">
-              <div class="chat-message-text">{{m}}</div>
+        <div #messagesContainer class="card-body chat-messages">
+          <div *ngFor="let m of messages" class="chat-message" [ngClass]="{'chat-message-right': m.indexOf('6') >= 0 }">
+            <div class="chat-avatar"></div>
+            <div class="chat-body">
+              <div class="chat-context">
+                <div class="chat-user">Fischermatte</div>
+                <div class="chat-time">
+                  <small>12 mins ago</small>
+                </div>
+              </div>
+              <div class="chat-text">{{m}}</div>
             </div>
           </div>
         </div>
         <div class="card-footer">
-          <form>
-            <div class="form-row align-items-center">
-              <div class="col-sm-3 my-1">
-                <label class="sr-only" for="message">Name</label>
-                <input type="text" class="form-control" id="message" placeholder="Message">
-              </div>
-              <div class="col-auto my-1">
-                <button type="submit" class="btn btn-primary">Send</button>
-              </div>
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Message" aria-label="Message">
+            <div class="input-group-append">
+              <button class="btn btn-outline-primary" type="button">Send</button>
             </div>
-          </form>
+          </div>
         </div>
 
       </div>

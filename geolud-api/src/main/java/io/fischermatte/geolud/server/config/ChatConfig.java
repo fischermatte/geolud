@@ -37,7 +37,13 @@ public class ChatConfig {
     @Bean
     public Observable<String> messages() {
         Observable<String> messages = Observable.interval(1, SECONDS)
-                .map(tick -> "Done tick " + tick);
+                .map(tick -> {
+                    String msg = "Hi There " + tick + " !";
+                    if (tick % 2 == 0) {
+                        msg = msg + msg + msg + msg + msg + msg + msg + msg + msg + msg + msg + msg;
+                    }
+                    return msg;
+                });
         Subject<String> subject = PublishSubject.create();
         messages.subscribe(subject);
         subject.subscribe(s -> System.out.println("subject subscribe: " + s));
