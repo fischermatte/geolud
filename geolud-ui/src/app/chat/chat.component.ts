@@ -9,12 +9,10 @@ import {Observer} from 'rxjs/Observer';
   styleUrls: ['./chat.component.scss']
 })
 export class ChatComponent implements OnInit, AfterViewChecked {
-  @ViewChild('messagesContainer') private messagesContainer: ElementRef;
+  @ViewChild('messagesContainer')
+  private messagesContainer: ElementRef;
   private subject: Subject<MessageEvent>;
-  @ViewChild('message')
-  private message: HTMLInputElement;
-  private subject: Subject<MessageEvent>;
-
+  message: string;
   messages: string [] = ['dhaks kakdjh saldkfjhas ldfkjhasdlfkjas df', 'dhaks kakdjh saldkfjhas ldfkjhasdlfkjas d  asd asd asdasd 6 sf'];
 
   constructor() {
@@ -39,8 +37,10 @@ export class ChatComponent implements OnInit, AfterViewChecked {
   }
 
   public send(){
-    this.messages.push(this.message.value);
-    this.message.value = '';
+    if (this.message) {
+      this.messages.push(this.message);
+      this.message = '';
+    }
   }
 
   private createWebSocketConnection(url): Subject<MessageEvent> {

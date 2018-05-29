@@ -24,7 +24,7 @@
         </div>
         <div class="card-footer">
           <div class="input-group mb-3">
-            <input #message type="text" class="form-control" placeholder="Message" aria-label="Message" (keyup.enter)="send()">
+            <input type="text" [(ngModel)]="message" class="form-control" placeholder="Message" aria-label="Message" (keyup.enter)="send()">
             <div class="input-group-append">
               <button class="btn btn-outline-primary" type="button" (click)="send()" >Send</button>
             </div>
