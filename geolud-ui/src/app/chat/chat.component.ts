@@ -11,6 +11,9 @@ import {Observer} from 'rxjs/Observer';
 export class ChatComponent implements OnInit, AfterViewChecked {
   @ViewChild('messagesContainer') private messagesContainer: ElementRef;
   private subject: Subject<MessageEvent>;
+  @ViewChild('message')
+  private message: HTMLInputElement;
+  private subject: Subject<MessageEvent>;
 
   messages: string [] = ['dhaks kakdjh saldkfjhas ldfkjhasdlfkjas df', 'dhaks kakdjh saldkfjhas ldfkjhasdlfkjas d  asd asd asdasd 6 sf'];
 
@@ -29,13 +32,18 @@ export class ChatComponent implements OnInit, AfterViewChecked {
   public connect(url):
     Subject<MessageEvent> {
     if (!this.subject) {
-      this.subject = this.create(url);
+      this.subject = this.createWebSocketConnection(url);
       console.log('Successfully connected: ' + url);
     }
     return this.subject;
   }
 
-  private create(url): Subject<MessageEvent> {
+  public send(){
+    this.messages.push(this.message.value);
+    this.message.value = '';
+  }
+
+  private createWebSocketConnection(url): Subject<MessageEvent> {
     let ws = new WebSocket(url);
 
     let observable = Observable.create(

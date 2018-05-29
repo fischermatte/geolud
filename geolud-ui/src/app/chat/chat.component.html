@@ -13,7 +13,7 @@
             <div class="chat-avatar"></div>
             <div class="chat-body">
               <div class="chat-context">
-                <div class="chat-user">Fischermatte</div>
+                <div class="chat-user">Fischermatte&nbsp;</div>
                 <div class="chat-time">
                   <small>12 mins ago</small>
                 </div>
@@ -24,9 +24,9 @@
         </div>
         <div class="card-footer">
           <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Message" aria-label="Message">
+            <input #message type="text" class="form-control" placeholder="Message" aria-label="Message" (keyup.enter)="send()">
             <div class="input-group-append">
-              <button class="btn btn-outline-primary" type="button">Send</button>
+              <button class="btn btn-outline-primary" type="button" (click)="send()" >Send</button>
             </div>
           </div>
         </div>
