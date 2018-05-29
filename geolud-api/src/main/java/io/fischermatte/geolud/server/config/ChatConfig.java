@@ -1,8 +1,8 @@
 package io.fischermatte.geolud.server.config;
 
-import io.reactivex.BackpressureStrategy;
-import io.reactivex.Flowable;
-import io.reactivex.Observable;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import io.fischermatte.geolud.server.domain.chat.ChatMessage;
 import io.reactivex.subjects.PublishSubject;
 import io.reactivex.subjects.Subject;
 import org.springframework.context.annotation.Bean;
@@ -13,61 +13,32 @@ import org.springframework.web.reactive.socket.WebSocketHandler;
 import org.springframework.web.reactive.socket.WebSocketMessage;
 import org.springframework.web.reactive.socket.server.support.WebSocketHandlerAdapter;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
 import static io.fischermatte.geolud.server.rest.api.v1.Paths.CHAT;
-import static java.util.concurrent.TimeUnit.SECONDS;
+import static io.reactivex.BackpressureStrategy.LATEST;
 
 @Configuration
 public class ChatConfig {
 
-//    @Bean
-//    public UnicastProcessor<ChatMessage> messagePublisher(){
-//        return UnicastProcessor.create();
-//    }
-//
-//    @Bean
-//    public Flux<ChatMessage> messages(UnicastProcessor<ChatMessage> messagePublisher) {
-//        return messagePublisher
-//                .replay(25)
-//                .autoConnect();
-//    }
-
     @Bean
-    public Observable<String> messages() {
-        Observable<String> messages = Observable.interval(1, SECONDS)
-                .map(tick -> {
-                    String msg = "Hi There " + tick + " !";
-                    if (tick % 2 == 0) {
-                        msg = msg + msg + msg + msg + msg + msg + msg + msg + msg + msg + msg + msg;
-                    }
-                    return msg;
-                });
-        Subject<String> subject = PublishSubject.create();
-        messages.subscribe(subject);
-        subject.subscribe(s -> System.out.println("subject subscribe: " + s));
+    public Subject<ChatMessage> messages() {
+        Subject<ChatMessage> subject = PublishSubject.create();
+//        subject.subscribe(s -> System.out.println("subject subscribe: " + s));
         return subject;
     }
 
-//    @Bean
-//    public HandlerMapping webSocketMapping(UnicastProcessor<ChatMessage> messagePublisher, Flux<ChatMessage> messages) {
-//        Map<String, Object> map = new HashMap<>();
-//        map.put(CHAT, new ChatSocketHandler(messagePublisher, messages));
-//        SimpleUrlHandlerMapping simpleUrlHandlerMapping = new SimpleUrlHandlerMapping();
-//        simpleUrlHandlerMapping.setUrlMap(map);
-//        simpleUrlHandlerMapping.setOrder(10);
-//        return simpleUrlHandlerMapping;
-//    }
-
     @Bean
-    public HandlerMapping webSocketMapping(Observable<String> messages) {
+    public HandlerMapping webSocketMapping(Subject<ChatMessage> messages) {
         Map<String, Object> map = new HashMap<>();
         map.put(CHAT, (WebSocketHandler) session -> {
-            Flowable<WebSocketMessage> websocketMessages = messages
-                    .map(session::textMessage).toFlowable(BackpressureStrategy.LATEST);
-            session.receive().map(WebSocketMessage::getPayloadAsText).subscribe(a -> System.out.println("received " + a));
-            return session.send(websocketMessages);
+            session.receive() // TODO handle this without explicit subscription
+                    .map(WebSocketMessage::getPayloadAsText)
+                    .subscribe(chatMessageJson -> messages.onNext(fromJson(chatMessageJson)));
+            return session.send(messages
+                    .map(chatMessage -> session.textMessage(toJSON(chatMessage))).toFlowable(LATEST));
         });
         SimpleUrlHandlerMapping simpleUrlHandlerMapping = new SimpleUrlHandlerMapping();
         simpleUrlHandlerMapping.setUrlMap(map);
@@ -78,6 +49,23 @@ public class ChatConfig {
     @Bean
     public WebSocketHandlerAdapter handlerAdapter() {
         return new WebSocketHandlerAdapter();
+    }
+
+    private ChatMessage fromJson(String json) {
+        System.out.println("received json : " + json);
+        try {
+            return new ObjectMapper().readValue(json, ChatMessage.class);
+        } catch (IOException e) {
+            throw new RuntimeException("Invalid JSON:" + json, e);
+        }
+    }
+
+    private String toJSON(ChatMessage message) {
+        try {
+            return new ObjectMapper().writeValueAsString(message);
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
 

@@ -9,16 +9,19 @@
       <div class="card chat-window">
         <h5 class="card-header">12 Users online</h5>
         <div #messagesContainer class="card-body chat-messages">
-          <div *ngFor="let m of messages" class="chat-message" [ngClass]="{'chat-message-right': m.indexOf('6') >= 0 }">
+          <div *ngFor="let m of messages" class="chat-message" [ngClass]="{'chat-message-left': m.user == user }">
             <div class="chat-avatar"></div>
             <div class="chat-body">
               <div class="chat-context">
-                <div class="chat-user">Fischermatte&nbsp;</div>
+                <div class="chat-user">
+                  <span *ngIf="m.user == user">You&nbsp;</span>
+                  <span *ngIf="m.user != user">{{m.user}}&nbsp;</span>
+                </div>
                 <div class="chat-time">
                   <small>12 mins ago</small>
                 </div>
               </div>
-              <div class="chat-text">{{m}}</div>
+              <div class="chat-text">{{m.message}}</div>
             </div>
           </div>
         </div>
@@ -26,7 +29,7 @@
           <div class="input-group mb-3">
             <input type="text" [(ngModel)]="message" class="form-control" placeholder="Message" aria-label="Message" (keyup.enter)="send()">
             <div class="input-group-append">
-              <button class="btn btn-outline-primary" type="button" (click)="send()" >Send</button>
+              <button class="btn btn-outline-primary" type="button" (click)="send()">Send</button>
             </div>
           </div>
         </div>

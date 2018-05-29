@@ -1,7 +1,12 @@
 import {AfterViewChecked, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {Subject} from 'rxjs/Subject';
-import {Observable} from 'rxjs/Observable';
-import {Observer} from 'rxjs/Observer';
+import {webSocket} from 'rxjs/webSocket';
+
+interface ChatMessage {
+  type: string;
+  user: string;
+  message: string;
+}
 
 @Component({
   selector: 'app-chat',
@@ -11,57 +16,39 @@ import {Observer} from 'rxjs/Observer';
 export class ChatComponent implements OnInit, AfterViewChecked {
   @ViewChild('messagesContainer')
   private messagesContainer: ElementRef;
-  private subject: Subject<MessageEvent>;
+  private subject: Subject<ChatMessage>;
+  private user: string;
   message: string;
-  messages: string [] = ['dhaks kakdjh saldkfjhas ldfkjhasdlfkjas df', 'dhaks kakdjh saldkfjhas ldfkjhasdlfkjas d  asd asd asdasd 6 sf'];
+  messages: ChatMessage [] = [];
 
   constructor() {
   }
 
   ngOnInit() {
-    // this.connect('ws://localhost:8080/v1/chat').subscribe(m => this.messages.push(JSON.stringify(m.data)));
+    this.subject = this.connect('ws://localhost:8080/v1/chat');
+    this.subject.subscribe(message => {
+      this.messages.push(message);
+    });
     this.scrollToBottom();
+    this.user = 'User' + Math.floor(Math.random() * 5);
   };
 
   ngAfterViewChecked(): void {
     this.scrollToBottom();
   }
 
-  public connect(url):
-    Subject<MessageEvent> {
+  public connect(url): Subject<ChatMessage> {
     if (!this.subject) {
-      this.subject = this.createWebSocketConnection(url);
-      console.log('Successfully connected: ' + url);
+      this.subject = webSocket(url);
     }
     return this.subject;
   }
 
-  public send(){
+  public send() {
     if (this.message) {
-      this.messages.push(this.message);
+      this.subject.next({type: "asda", message: this.message, user: this.user});
       this.message = '';
     }
-  }
-
-  private createWebSocketConnection(url): Subject<MessageEvent> {
-    let ws = new WebSocket(url);
-
-    let observable = Observable.create(
-      (obs: Observer<MessageEvent>) => {
-        ws.onmessage = obs.next.bind(obs);
-        ws.onerror = obs.error.bind(obs);
-        ws.onclose = obs.complete.bind(obs);
-        return ws.close.bind(ws);
-      });
-
-    let observer = {
-      next: (data: Object) => {
-        if (ws.readyState === WebSocket.OPEN) {
-          ws.send(JSON.stringify(data));
-        }
-      }
-    };
-    return Subject.create(observer, observable);
   }
 
   private scrollToBottom(): void {

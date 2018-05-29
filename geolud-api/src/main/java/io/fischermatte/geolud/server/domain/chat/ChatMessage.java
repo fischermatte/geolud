@@ -9,11 +9,13 @@ public class ChatMessage {
 
     public String type;
     public String message;
+    public String user;
 
     @JsonCreator
-    public ChatMessage(@JsonProperty("type") String type, @JsonProperty("message") String message) {
+    public ChatMessage(@JsonProperty("type") String type, @JsonProperty("message") String message, @JsonProperty("user") String user) {
         this.type = type;
         this.message = message;
+        this.user = user;
     }
 
     @JsonIgnore
@@ -26,6 +28,7 @@ public class ChatMessage {
         return new ToStringBuilder(this)
                 .append("type", type)
                 .append("message", message)
+                .append("user", user)
                 .toString();
     }
 }

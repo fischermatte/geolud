@@ -29,7 +29,7 @@ class ChatSocketMessageSubscriber {
 
     void onComplete() {
         lastReceivedMessage.ifPresent(chatMessage -> {
-            messagePublisher.onNext(new ChatMessage("user-left", "User Left"));
+            messagePublisher.onNext(new ChatMessage("user-left", "User Left", "testuser"));
         });
     }
 }

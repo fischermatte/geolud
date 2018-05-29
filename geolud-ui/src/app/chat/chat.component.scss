@@ -6,6 +6,7 @@
     //background-color: $gray-100;
     overflow-y: auto;
     .chat-message {
+      text-align: right;
       padding: 15px 0 15px 0;
       .chat-body {
         padding: 10px;
@@ -30,10 +31,10 @@
       }
       border-bottom: 1px dotted $gray-400;
     }
-    .chat-message-right {
-      text-align: right;
+    .chat-message-left {
+      text-align: left;
       .chat-body {
-        background-color: $gray-300;
+        background-color: #87feae;
       }
     }
   }
