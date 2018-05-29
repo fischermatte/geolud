@@ -23,28 +23,35 @@ import static io.reactivex.BackpressureStrategy.LATEST;
 @Configuration
 public class ChatConfig {
 
-    @Bean
-    public Subject<ChatMessage> messages() {
-        Subject<ChatMessage> subject = PublishSubject.create();
-//        subject.subscribe(s -> System.out.println("subject subscribe: " + s));
-        return subject;
+    private final ObjectMapper jsonMapper;
+
+    public ChatConfig(ObjectMapper jsonMapper) {
+        this.jsonMapper = jsonMapper;
     }
 
     @Bean
-    public HandlerMapping webSocketMapping(Subject<ChatMessage> messages) {
+    public HandlerMapping webSocketMapping() {
         Map<String, Object> map = new HashMap<>();
-        map.put(CHAT, (WebSocketHandler) session -> {
-            session.receive() // TODO handle this without explicit subscription
-                    .map(WebSocketMessage::getPayloadAsText)
-                    .subscribe(chatMessageJson -> messages.onNext(fromJson(chatMessageJson)));
-            return session.send(messages
-                    .map(chatMessage -> session.textMessage(toJSON(chatMessage))).toFlowable(LATEST));
-//            return session.send(session.receive().doOnNext(WebSocketMessage::retain));
-        });
+        map.put(CHAT, chatWebSocketHandler());
         SimpleUrlHandlerMapping simpleUrlHandlerMapping = new SimpleUrlHandlerMapping();
         simpleUrlHandlerMapping.setUrlMap(map);
         simpleUrlHandlerMapping.setOrder(10);
         return simpleUrlHandlerMapping;
+    }
+
+    @Bean
+    public WebSocketHandler chatWebSocketHandler() {
+        Subject<ChatMessage> messages = PublishSubject.create();
+        return session -> {
+            session.receive() // TODO handle this without explicit subscription ?
+                    .map(WebSocketMessage::getPayloadAsText)
+                    .map(this::fromJson)
+                    .log()
+                    .subscribe(messages::onNext);
+            return session.send(messages
+                    .map(this::toJSON)
+                    .map(session::textMessage).toFlowable(LATEST));
+        };
     }
 
     @Bean
@@ -53,9 +60,8 @@ public class ChatConfig {
     }
 
     private ChatMessage fromJson(String json) {
-        System.out.println("received json : " + json);
         try {
-            return new ObjectMapper().readValue(json, ChatMessage.class);
+            return jsonMapper.readValue(json, ChatMessage.class);
         } catch (IOException e) {
             throw new RuntimeException("Invalid JSON:" + json, e);
         }
@@ -63,7 +69,7 @@ public class ChatConfig {
 
     private String toJSON(ChatMessage message) {
         try {
-            return new ObjectMapper().writeValueAsString(message);
+            return jsonMapper.writeValueAsString(message);
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         }
