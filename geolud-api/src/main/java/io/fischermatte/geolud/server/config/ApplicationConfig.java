@@ -1,9 +1,7 @@
 package io.fischermatte.geolud.server.config;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.fischermatte.geolud.server.domain.chat.ChatMessage;
-import io.reactivex.subjects.PublishSubject;
+import io.reactivex.subjects.ReplaySubject;
 import io.reactivex.subjects.Subject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -80,16 +78,12 @@ public class ApplicationConfig {
 
     @Bean
     public WebSocketHandler chatWebSocketHandler() {
-        Subject<ChatMessage> messages = PublishSubject.create();
+        Subject<String> subject = ReplaySubject.create();
         return session -> {
-            session.receive() // TODO handle this without explicit subscription ?
+            session.receive()
                     .map(WebSocketMessage::getPayloadAsText)
-                    .map(this::fromJson)
-                    .log()
-                    .subscribe(messages::onNext);
-            return session.send(messages
-                    .map(this::toJSON)
-                    .map(session::textMessage).toFlowable(LATEST));
+                    .subscribe(subject::onNext);
+            return session.send(subject.map(session::textMessage).toFlowable(LATEST));
         };
     }
 
@@ -98,21 +92,6 @@ public class ApplicationConfig {
         return new WebSocketHandlerAdapter();
     }
 
-    private ChatMessage fromJson(String json) {
-        try {
-            return jsonMapper.readValue(json, ChatMessage.class);
-        } catch (IOException e) {
-            throw new RuntimeException("Invalid JSON:" + json, e);
-        }
-    }
-
-    private String toJSON(ChatMessage message) {
-        try {
-            return jsonMapper.writeValueAsString(message);
-        } catch (JsonProcessingException e) {
-            throw new RuntimeException(e);
-        }
-    }
 
 
 }
