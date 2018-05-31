@@ -36,14 +36,12 @@ public class ApplicationConfig {
     private static final Logger LOG = LoggerFactory.getLogger(ApplicationConfig.class);
 
     private final DataInitializer dataInitializer;
-    private final ObjectMapper jsonMapper;
     private final MailService mailService;
     private LocalDateTime lastChatNotificationEmail;
 
 
-    public ApplicationConfig(DataInitializer dataInitializer, ObjectMapper jsonMapper, MailService mailService) {
+    public ApplicationConfig(DataInitializer dataInitializer, MailService mailService) {
         this.dataInitializer = dataInitializer;
-        this.jsonMapper = jsonMapper;
         this.mailService = mailService;
     }
 
