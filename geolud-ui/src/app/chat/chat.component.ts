@@ -5,12 +5,12 @@ import {webSocket} from 'rxjs/webSocket';
 interface ChatMessage {
   user: User;
   message: string;
-  timestamp: Date
+  timestamp: Date;
 }
 
 interface User {
-  id: string,
-  name: string
+  id: string;
+  name: string;
 }
 
 @Component({
@@ -35,7 +35,7 @@ export class ChatComponent implements OnInit, AfterViewChecked {
       this.messages.push(message);
     });
     this.scrollToBottom();
-  };
+  }
 
   ngAfterViewChecked(): void {
     this.scrollToBottom();
@@ -59,7 +59,7 @@ export class ChatComponent implements OnInit, AfterViewChecked {
     return {
       name: 'User' + Math.floor((Math.random() * 1000) + 1),
       id: this.uuid()
-    }
+    };
   }
 
   private scrollToBottom(): void {
@@ -71,7 +71,7 @@ export class ChatComponent implements OnInit, AfterViewChecked {
 
   private uuid(): string {
     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, c => {
-      const r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+      const r = Math.random() * 16 | 0, v = c === 'x' ? r : (r & 0x3 | 0x8);
       return v.toString(16);
     });
   }
