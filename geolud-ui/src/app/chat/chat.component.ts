@@ -1,6 +1,7 @@
 import {AfterViewChecked, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {Subject} from 'rxjs/Subject';
 import {webSocket} from 'rxjs/webSocket';
+import {environment} from '../../environments/environment';
 
 interface ChatMessage {
   user: User;
@@ -30,7 +31,7 @@ export class ChatComponent implements OnInit, AfterViewChecked {
   }
 
   ngOnInit() {
-    this.subject = this.connect('ws://localhost:8080/v1/chat');
+    this.subject = this.connect(environment.wsBase + '/chat');
     this.subject.subscribe(message => {
       this.messages.push(message);
     });
