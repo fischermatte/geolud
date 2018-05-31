@@ -3,9 +3,14 @@ import {Subject} from 'rxjs/Subject';
 import {webSocket} from 'rxjs/webSocket';
 
 interface ChatMessage {
-  type: string;
-  user: string;
+  user: User;
   message: string;
+  timestamp: Date
+}
+
+interface User {
+  id: string,
+  name: string
 }
 
 @Component({
@@ -17,7 +22,7 @@ export class ChatComponent implements OnInit, AfterViewChecked {
   @ViewChild('messagesContainer')
   private messagesContainer: ElementRef;
   private subject: Subject<ChatMessage>;
-  private user: string;
+  private user: User = this.createUser();
   message: string;
   messages: ChatMessage [] = [];
 
@@ -30,7 +35,6 @@ export class ChatComponent implements OnInit, AfterViewChecked {
       this.messages.push(message);
     });
     this.scrollToBottom();
-    this.user = 'User' + Math.floor(Math.random() * 5);
   };
 
   ngAfterViewChecked(): void {
@@ -46,8 +50,15 @@ export class ChatComponent implements OnInit, AfterViewChecked {
 
   public send() {
     if (this.message) {
-      this.subject.next({type: "asda", message: this.message, user: this.user});
+      this.subject.next({message: this.message, user: this.user, timestamp: new Date()});
       this.message = '';
+    }
+  }
+
+  private createUser() {
+    return {
+      name: 'User' + Math.floor((Math.random() * 1000) + 1),
+      id: this.uuid()
     }
   }
 
@@ -56,6 +67,13 @@ export class ChatComponent implements OnInit, AfterViewChecked {
       this.messagesContainer.nativeElement.scrollTop = this.messagesContainer.nativeElement.scrollHeight;
     } catch (err) {
     }
+  }
+
+  private uuid(): string {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, c => {
+      const r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+      return v.toString(16);
+    });
   }
 
 

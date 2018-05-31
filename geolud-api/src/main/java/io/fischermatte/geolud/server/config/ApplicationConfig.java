@@ -1,6 +1,8 @@
 package io.fischermatte.geolud.server.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import io.fischermatte.geolud.server.service.mail.MailService;
+import io.reactivex.subjects.PublishSubject;
 import io.reactivex.subjects.ReplaySubject;
 import io.reactivex.subjects.Subject;
 import org.slf4j.Logger;
@@ -20,6 +22,7 @@ import org.springframework.web.reactive.socket.server.support.WebSocketHandlerAd
 
 import javax.annotation.PostConstruct;
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.Executor;
@@ -34,10 +37,14 @@ public class ApplicationConfig {
 
     private final DataInitializer dataInitializer;
     private final ObjectMapper jsonMapper;
+    private final MailService mailService;
+    private LocalDateTime lastChatNotificationEmail;
 
-    public ApplicationConfig(DataInitializer dataInitializer, ObjectMapper jsonMapper) {
+
+    public ApplicationConfig(DataInitializer dataInitializer, ObjectMapper jsonMapper, MailService mailService) {
         this.dataInitializer = dataInitializer;
         this.jsonMapper = jsonMapper;
+        this.mailService = mailService;
     }
 
     @PostConstruct
@@ -78,20 +85,28 @@ public class ApplicationConfig {
 
     @Bean
     public WebSocketHandler chatWebSocketHandler() {
-        Subject<String> subject = ReplaySubject.create();
+        Subject<String> subject = PublishSubject.create();
         return session -> {
             session.receive()
                     .map(WebSocketMessage::getPayloadAsText)
+                    .doOnNext(this::notifyChatActionByEmail)
                     .subscribe(subject::onNext);
             return session.send(subject.map(session::textMessage).toFlowable(LATEST));
         };
+    }
+
+    private void notifyChatActionByEmail(String message) {
+        LocalDateTime now = LocalDateTime.now();
+        if (lastChatNotificationEmail == null || this.lastChatNotificationEmail.isBefore(now.minusHours(1))){
+            mailService.sendEmail("GEOLUD-SITE: Chat actions going on ...", message);
+        }
+        lastChatNotificationEmail = LocalDateTime.now();
     }
 
     @Bean
     public WebSocketHandlerAdapter handlerAdapter() {
         return new WebSocketHandlerAdapter();
     }
-
 
 
 }

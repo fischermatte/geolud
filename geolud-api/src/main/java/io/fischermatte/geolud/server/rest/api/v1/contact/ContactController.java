@@ -35,7 +35,7 @@ public class ContactController {
     @PostMapping(value = CONTACT, consumes = {APPLICATION_JSON_VALUE})
     @ResponseStatus(CREATED)
     public Mono<Void> submitContactRequest(@Valid @RequestBody ContactRequestDto contactRequest) {
-        mailService.sendEmail(contactRequest);
+        mailService.sendEmail("GEOLUD-SITE: Contact Request", contactRequest.getMessage(), contactRequest.getEmail());
         return Mono.empty();
     }
 }
