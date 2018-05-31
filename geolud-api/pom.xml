@@ -3,13 +3,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>geolud-api</artifactId>
-    <version>1.3.1</version>
+    <version>1.4.0</version>
     <packaging>jar</packaging>
 
     <parent>
         <groupId>io.fischermatte</groupId>
         <artifactId>geolud</artifactId>
-        <version>1.3.1</version>
+        <version>1.4.0</version>
     </parent>
 
     <properties>
