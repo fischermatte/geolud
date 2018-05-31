@@ -1,7 +1,13 @@
 package io.fischermatte.geolud.server.domain.chat;
 
 public class ChatMessage {
-    public String type;
     public String message;
-    public String user;
+
+    public ChatMessage() {
+
+    }
+
+    public ChatMessage(String message) {
+        this.message = message;
+    }
 }

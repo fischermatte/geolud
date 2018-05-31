@@ -3,6 +3,9 @@ package io.fischermatte.geolud.server.config;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.fischermatte.geolud.server.domain.chat.ChatMessage;
+import io.reactivex.subjects.ReplaySubject;
+import io.reactivex.subjects.Subject;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.slf4j.Logger;
@@ -13,23 +16,20 @@ import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.web.reactive.socket.WebSocketHandler;
 import org.springframework.web.reactive.socket.WebSocketMessage;
-import org.springframework.web.reactive.socket.WebSocketSession;
 import org.springframework.web.reactive.socket.client.ReactorNettyWebSocketClient;
 import org.springframework.web.reactive.socket.client.WebSocketClient;
-import reactor.core.publisher.Flux;
 
 import java.io.IOException;
 import java.net.URI;
-import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
 import static com.jayway.awaitility.Awaitility.await;
 import static io.fischermatte.geolud.server.rest.api.v1.Paths.CHAT;
+import static io.reactivex.BackpressureStrategy.LATEST;
 import static java.util.concurrent.TimeUnit.SECONDS;
 import static org.junit.jupiter.api.Assertions.fail;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
-import static reactor.core.publisher.Mono.just;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(webEnvironment = RANDOM_PORT)
@@ -42,29 +42,33 @@ class ChatWebSocketTest {
     @Autowired
     private ObjectMapper objectMapper;
 
+    @Disabled
     @Test
-    void test() {
-        WebSocketClient client = new ReactorNettyWebSocketClient();
+    void test() throws InterruptedException {
+        // create a list and wait
         List<ChatMessage> messages = new ArrayList<>();
-        client.execute(websocketUri(), webSocketHandler(messages)).block(Duration.ofMillis(20000));
+        ReplaySubject<ChatMessage> publisher = ReplaySubject.create();
+
+        new Thread(() -> {
+            WebSocketClient client = new ReactorNettyWebSocketClient();
+            client.execute(websocketUri(), webSocketHandler(publisher, messages));
+        }).start();
+        Thread.sleep(100);
+        publisher.onNext(new ChatMessage("Hello Test"));
         await().atMost(5, SECONDS).until(() -> messages.size() == 1);
     }
 
-    private WebSocketHandler webSocketHandler(List<ChatMessage> messages) {
+    private WebSocketHandler webSocketHandler(Subject<ChatMessage> publisher, List<ChatMessage> receivingMessages) {
         return session -> {
-            Flux<ChatMessage> publisher = session.send(just(this.chatMessage(session)))
-                    .thenMany(session.receive()
-                            .take(1)
-                            .map(WebSocketMessage::getPayloadAsText)
-                            .log()
-                            .map(ChatWebSocketTest.this::toChatMessage));
-            publisher.subscribe(messages::add);
-            publisher.doOnNext(System.out::println);
-            return publisher.then();
+            session.receive()
+                    .map(WebSocketMessage::getPayloadAsText)
+                    .map(this::fromJson)
+                    .subscribe(receivingMessages::add);
+            return session.send(publisher.map(this::toJson).map(session::textMessage).toFlowable(LATEST));
         };
     }
 
-    private ChatMessage toChatMessage(String json) {
+    private ChatMessage fromJson(String json) {
         ChatMessage chatMessage = null;
         try {
             chatMessage = objectMapper.readValue(json, ChatMessage.class);
@@ -74,19 +78,14 @@ class ChatWebSocketTest {
         return chatMessage;
     }
 
-
-    private WebSocketMessage chatMessage(WebSocketSession session) {
-        WebSocketMessage webSocketMessage = null;
+    private String toJson(ChatMessage chatMessage) {
+        String json = null;
         try {
-            ChatMessage chatMessage = new ChatMessage();
-            chatMessage.message = "Hello World";
-            chatMessage.type = "atype";
-            chatMessage.user = "User1";
-            webSocketMessage = session.textMessage(objectMapper.writeValueAsString(chatMessage));
+            json = objectMapper.writeValueAsString(chatMessage);
         } catch (JsonProcessingException e) {
             fail("could not write chat message");
         }
-        return webSocketMessage;
+        return json;
     }
 
     private URI websocketUri() {
