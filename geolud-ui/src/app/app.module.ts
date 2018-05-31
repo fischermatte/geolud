@@ -13,6 +13,7 @@ import {HomeComponent} from './home/home.component';
 import {BlockUIModule} from 'ng-block-ui';
 import {ProjectService} from './projects/project.service';
 import {RestHttpInterceptor} from './core/rest.http.interceptor';
+import { ChatComponent } from './chat/chat.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import {RestHttpInterceptor} from './core/rest.http.interceptor';
     ProjectsComponent,
     ContactComponent,
     ResumeComponent,
-    HomeComponent
+    HomeComponent,
+    ChatComponent
   ],
   imports: [
     NgbModule.forRoot(),

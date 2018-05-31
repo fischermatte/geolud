@@ -5,5 +5,6 @@
 
 export const environment = {
   production: false,
-  apiBase: 'https://dev-geolud-api.mybluemix.net/v1'
+  apiBase: 'https://dev-geolud-api.mybluemix.net/v1',
+  wsBase: 'ws://dev-geolud-api.mybluemix.net/v1'
 };

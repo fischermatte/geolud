@@ -4,6 +4,7 @@ import {HomeComponent} from './home/home.component';
 import {ResumeComponent} from './resume/resume.component';
 import {ProjectsComponent} from './projects/projects.component';
 import {ContactComponent} from './contact/contact.component';
+import {ChatComponent} from './chat/chat.component';
 
 
 @NgModule({
@@ -12,6 +13,7 @@ import {ContactComponent} from './contact/contact.component';
     {path: 'home', component: HomeComponent},
     {path: 'resume', component: ResumeComponent},
     {path: 'projects', component: ProjectsComponent},
+    {path: 'chat', component: ChatComponent},
     {path: 'contact', component: ContactComponent}
   ])],
   exports: [RouterModule]

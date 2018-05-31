@@ -1,0 +1,41 @@
+@import '../../../node_modules/startbootstrap-freelancer/scss/variables';
+
+.chat-window {
+  height: 500px;
+  .chat-messages {
+    //background-color: $gray-100;
+    overflow-y: auto;
+    .chat-message {
+      text-align: right;
+      padding: 15px 0 15px 0;
+      .chat-body {
+        padding: 10px;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        border-radius: 2px;
+        background-color: $gray-100;
+        display: inline-block;
+        max-width: 80%;
+        .chat-context  {
+          width: 100%;
+          .chat-user {
+            float: left;
+            font-weight: bold;
+          }
+          .chat-time {
+            float: right;
+          }
+        }
+        .chat-text {
+          float: left;
+        }
+      }
+      border-bottom: 1px dotted $gray-400;
+    }
+    .chat-message-left {
+      text-align: left;
+      .chat-body {
+        background-color: #87feae;
+      }
+    }
+  }
+}

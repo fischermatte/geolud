@@ -50,7 +50,7 @@ is not a good approach when you want to scale dynamically.
 # Cloud Foundry Example Manifest with 400m memory
 applications:
 - name: geolud-api
-  path: geolud-api/target/geolud-api-1.3.1.jar
+  path: geolud-api/target/geolud-api-1.4.0.jar
   instances: 1
   buildpack: https://github.com/cloudfoundry/java-buildpack.git#v4.12
   memory: 500m
