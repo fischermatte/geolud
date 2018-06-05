@@ -3,13 +3,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <artifactId>geolud-ui</artifactId>
+  <artifactId>geolud-client</artifactId>
   <version>1.4.0</version>
   <properties>
     <frontend-maven-plugin.version>1.6</frontend-maven-plugin.version>
     <maven-clean-plugin.version>2.6.1</maven-clean-plugin.version>
     <frontend-maven-plugin.yarnVersion>v1.6.0</frontend-maven-plugin.yarnVersion>
-    <frontend-maven-plugin.npmVersion>v6.0.0</frontend-maven-plugin.npmVersion>
+    <frontend-maven-plugin.npmVersion>6.0.0</frontend-maven-plugin.npmVersion>
     <frontend-maven-plugin.nodeVersion>v10.0.0</frontend-maven-plugin.nodeVersion>
     <maven-assembly-plugin.version>3.1.0</maven-assembly-plugin.version>
   </properties>
@@ -58,7 +58,7 @@
         <artifactId>swagger-codegen-maven-plugin</artifactId>
         <version>${swagger-codegen-maven-plugin.version}</version>
         <configuration>
-          <inputSpec>${project.parent.basedir}/api/openapi-2/geolud-api.yml</inputSpec>
+          <inputSpec>${project.parent.basedir}/api/openapi-2/geolud-server.yml</inputSpec>
           <language>typescript-angular</language>
           <output>src/generated-api</output>
           <configOptions>

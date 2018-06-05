@@ -1,7 +1,7 @@
 # Cloud Foundry Example Manifest
 applications:
-- name: geolud-api
-  path: target/geolud-api-1.4.0.jar
+- name: dev-geolud-server
+  path: target/geolud-server-1.4.0.jar
   instances: 1
   buildpack: https://github.com/cloudfoundry/java-buildpack.git#v4.12
   memory: 500M

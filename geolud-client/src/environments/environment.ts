@@ -4,7 +4,7 @@
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 
 export const environment = {
-  production: true,
-  apiBase: 'https://dev-geolud-api.mybluemix.net/v1',
-  wsBase: 'ws://dev-geolud-api.mybluemix.net/v1'
+  production: false,
+  apiBase: 'https://dev-geolud-server.mybluemix.net/v1',
+  wsBase: 'ws://dev-geolud-server.mybluemix.net/v1'
 };
