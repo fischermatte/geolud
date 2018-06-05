@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "geolud-ui": {
+    "geolud-client": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -77,21 +77,21 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "geolud-ui:build"
+            "browserTarget": "geolud-client:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "geolud-ui:build:production"
+              "browserTarget": "geolud-client:build:production"
             },
             "local": {
-              "browserTarget": "geolud-ui:build:local"
+              "browserTarget": "geolud-client:build:local"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "geolud-ui:build"
+            "browserTarget": "geolud-client:build"
           }
         },
         "test": {
@@ -130,7 +130,7 @@
         }
       }
     },
-    "geolud-ui-e2e": {
+    "geolud-client-e2e": {
       "root": "",
       "sourceRoot": "",
       "projectType": "application",
@@ -139,7 +139,7 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "./protractor.conf.js",
-            "devServerTarget": "geolud-ui:serve"
+            "devServerTarget": "geolud-client:serve"
           }
         },
         "lint": {
@@ -157,7 +157,7 @@
       }
     }
   },
-  "defaultProject": "geolud-ui",
+  "defaultProject": "geolud-client",
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "app",

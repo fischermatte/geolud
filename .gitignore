@@ -8,4 +8,4 @@ node/
 */.
 /.idea/
 /_local/
-/geolud-ui/dist_cloudfoundry/app/
+/geolud-client/dist_cloudfoundry/app/

@@ -16,8 +16,8 @@
     </properties>
 
     <modules>
-        <module>geolud-api</module>
-        <module>geolud-ui</module>
+        <module>geolud-server</module>
+        <module>geolud-client</module>
     </modules>
 
     <build>

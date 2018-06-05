@@ -1,0 +1,49 @@
+<section class="section-flow section-flow-first">
+  <div class="container">
+    <h2 class="text-center">Chat</h2>
+    <hr class="star-dark">
+  </div>
+  <div class="row">
+    <div class="col-sm"></div>
+    <div class="col-sm">
+      <div class="card chat-window">
+        <h5 class="card-header">
+          <i class="fa fa-fw fa-comments"></i>
+        </h5>
+        <div #messagesContainer class="card-body chat-messages">
+          <div *ngFor="let m of messages" class="chat-message" [ngClass]="{'chat-message-left': !m.user || (m.user.id == user.id)}">
+            <div class="chat-avatar"></div>
+            <div class="chat-body">
+              <div class="chat-context">
+                <div class="chat-user" *ngIf="m.user">
+                  <span *ngIf="m.user.id == user.id">You ({{m.user.name}})&nbsp;</span>
+                  <span *ngIf="m.user.id != user.id">{{m.user.name}}&nbsp;</span>
+                </div>
+                <div class="chat-time">
+                  <small>{{m.timestamp | date:'HH:mm:ss'}}</small>
+                </div>
+              </div>
+              <div class="chat-text" [innerHTML]="m.message"></div>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="input-group mb-3" *ngIf="user">
+            <input #messageInput type="text" [(ngModel)]="message" class="form-control" placeholder="Message" aria-label="Message" (keyup.enter)="send()">
+            <div class="input-group-append">
+              <button class="btn btn-outline-primary" type="button" (click)="send()">Send</button>
+            </div>
+          </div>
+          <div class="input-group mb-3" *ngIf="!user">
+            <input #username type="text" class="form-control" placeholder="Username" aria-label="Message" (keyup.enter)="setUsername(username.value)">
+            <div class="input-group-append">
+              <button class="btn btn-outline-primary" type="button" (click)="setUsername(username.value)">Set Username</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="col-sm"></div>
+  </div>
+</section>

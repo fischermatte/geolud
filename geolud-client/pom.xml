@@ -3,13 +3,14 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <artifactId>geolud-ui</artifactId>
+  <artifactId>geolud-client</artifactId>
   <version>1.4.0</version>
   <properties>
     <frontend-maven-plugin.version>1.6</frontend-maven-plugin.version>
     <maven-clean-plugin.version>2.6.1</maven-clean-plugin.version>
     <frontend-maven-plugin.yarnVersion>v1.6.0</frontend-maven-plugin.yarnVersion>
-    <frontend-maven-plugin.nodeVersion>v10.0.0</frontend-maven-plugin.nodeVersion>
+    <frontend-maven-plugin.npmVersion>5.6.0</frontend-maven-plugin.npmVersion>
+    <frontend-maven-plugin.nodeVersion>v10.1.0</frontend-maven-plugin.nodeVersion>
     <maven-assembly-plugin.version>3.1.0</maven-assembly-plugin.version>
   </properties>
   <packaging>jar</packaging>
@@ -57,7 +58,7 @@
         <artifactId>swagger-codegen-maven-plugin</artifactId>
         <version>${swagger-codegen-maven-plugin.version}</version>
         <configuration>
-          <inputSpec>${project.parent.basedir}/api/openapi-2/geolud-api.yml</inputSpec>
+          <inputSpec>${project.parent.basedir}/api/openapi-2/geolud-server.yml</inputSpec>
           <language>typescript-angular</language>
           <output>src/generated-api</output>
           <configOptions>
@@ -72,16 +73,19 @@
         <executions>
           <!-- NPM AND NODE -->
           <execution>
-            <id>install node and yarn</id>
+            <!--<id>install node and yarn</id>-->
+            <id>install node and npm</id>
             <goals>
-              <goal>install-node-and-yarn</goal>
+              <!--<goal>install-node-and-yarn</goal>-->
+              <goal>install-node-and-npm</goal>
             </goals>
           </execution>
           <!-- NPM INSTALL -->
           <execution>
-            <id>yarn install</id>
+            <!--<id>yarn install</id>-->
+            <id>npm install</id>
             <goals>
-              <goal>yarn</goal>
+              <goal>npm</goal>
             </goals>
             <configuration>
               <arguments>install</arguments>
@@ -91,7 +95,8 @@
           <execution>
             <id>ng build prod</id>
             <goals>
-              <goal>yarn</goal>
+              <!--<goal>yarn</goal>-->
+              <goal>npm</goal>
             </goals>
             <configuration>
               <arguments>run build-prod</arguments>
@@ -102,7 +107,8 @@
           <execution>
             <id>ng lint</id>
             <goals>
-              <goal>yarn</goal>
+              <!--<goal>yarn</goal>-->
+              <goal>npm</goal>
             </goals>
             <phase>process-resources</phase>
             <configuration>
@@ -113,7 +119,8 @@
           <execution>
             <id>ng test</id>
             <goals>
-              <goal>yarn</goal>
+              <!--<goal>yarn</goal>-->
+              <goal>npm</goal>
             </goals>
             <phase>test</phase>
             <configuration>
@@ -124,6 +131,7 @@
         <configuration>
           <nodeVersion>${frontend-maven-plugin.nodeVersion}</nodeVersion>
           <yarnVersion>${frontend-maven-plugin.yarnVersion}</yarnVersion>
+          <npmVersion>${frontend-maven-plugin.npmVersion}</npmVersion>
         </configuration>
       </plugin>
       <plugin>

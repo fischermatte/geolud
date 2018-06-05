@@ -1,6 +1,6 @@
 import {AppPage} from './app.po';
 
-describe('geolud-ui App', () => {
+describe('geolud-client App', () => {
   let page: AppPage;
 
   beforeEach(() => {
