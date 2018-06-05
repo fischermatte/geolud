@@ -8,3 +8,4 @@ applications:
   memory: 12m
   routes:
   - route: geolud.mybluemix.net
+  - route: geolud-ui.mybluemix.net
