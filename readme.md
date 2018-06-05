@@ -15,14 +15,14 @@ My personal 'cloud-native' Homepage, totally over-engineered using the following
 
 ## How to run it locally?
 
-### Backend (geolud-server)
+### geolud-server
 
     mvn clean install
     mvn spring-boot:run -f geolud-server/pom.xml
     
 This will start tomcat at http://localhost:8080
     
-### Frontend (geolud-client)
+### geolud-client
 
     npm install
     npm run-script start-local
@@ -38,7 +38,7 @@ Pack. It's memory calculator defaults to 1GB ram per instance. This was at
 least the case when I tried on it Pivotal and IBM Bluemix Cloud Foundry. In order 
 to use less, it is not enough to define `memory:256m` in your manifest.  
 
-### geolud-server (java backend)
+### geolud-server
 
 This example below configures the app to be used with less than 1GB. It also shows how to configure 
 spring boot properties to configure the mail service within geolud-server.
@@ -60,7 +60,7 @@ applications:
     SPRING_PROFILES_ACTIVE: cloud
 ```
 
-### geolud-client (angular backend)
+### geolud-client
 The ui app is a plain angular project with static files. For this one uses the Cloud Foudnry static file build pack:
 
 ```yml
