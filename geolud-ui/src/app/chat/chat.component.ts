@@ -22,8 +22,10 @@ interface User {
 export class ChatComponent implements OnInit, AfterViewChecked {
   @ViewChild('messagesContainer')
   private messagesContainer: ElementRef;
+  @ViewChild('messageInput')
+  private messageInput: ElementRef;
   private subject: Subject<ChatMessage>;
-  private user: User = this.createUser();
+  private user: User;
   message: string;
   messages: ChatMessage [] = [];
 
@@ -40,6 +42,9 @@ export class ChatComponent implements OnInit, AfterViewChecked {
 
   ngAfterViewChecked(): void {
     this.scrollToBottom();
+    if (this.messageInput) {
+      this.messageInput.nativeElement.focus();
+    }
   }
 
   public connect(url): Subject<ChatMessage> {
@@ -51,14 +56,26 @@ export class ChatComponent implements OnInit, AfterViewChecked {
 
   public send() {
     if (this.message) {
-      this.subject.next({message: this.message, user: this.user, timestamp: new Date()});
-      this.message = '';
+      this.sendMessage({message: this.message, user: this.user, timestamp: new Date()});
     }
   }
 
-  private createUser() {
+  public setUsername(username: string) {
+    if (!username || !username.trim()) {
+      return;
+    }
+    this.user = this.createUser(username);
+    this.messages.push({message: 'You joined the chat as <strong>' + username + '<strong>', user: null, timestamp: new Date()});
+  }
+
+  private sendMessage(message: ChatMessage) {
+    this.subject.next(message);
+    this.message = '';
+  }
+
+  private createUser(username: string) {
     return {
-      name: 'User' + Math.floor((Math.random() * 1000) + 1),
+      name: username,
       id: this.uuid()
     };
   }

@@ -9,6 +9,7 @@
     <frontend-maven-plugin.version>1.6</frontend-maven-plugin.version>
     <maven-clean-plugin.version>2.6.1</maven-clean-plugin.version>
     <frontend-maven-plugin.yarnVersion>v1.6.0</frontend-maven-plugin.yarnVersion>
+    <frontend-maven-plugin.npmVersion>v6.0.0</frontend-maven-plugin.npmVersion>
     <frontend-maven-plugin.nodeVersion>v10.0.0</frontend-maven-plugin.nodeVersion>
     <maven-assembly-plugin.version>3.1.0</maven-assembly-plugin.version>
   </properties>
@@ -72,16 +73,19 @@
         <executions>
           <!-- NPM AND NODE -->
           <execution>
-            <id>install node and yarn</id>
+            <!--<id>install node and yarn</id>-->
+            <id>install node and npm</id>
             <goals>
-              <goal>install-node-and-yarn</goal>
+              <!--<goal>install-node-and-yarn</goal>-->
+              <goal>install-node-and-npm</goal>
             </goals>
           </execution>
           <!-- NPM INSTALL -->
           <execution>
-            <id>yarn install</id>
+            <!--<id>yarn install</id>-->
+            <id>npm install</id>
             <goals>
-              <goal>yarn</goal>
+              <goal>npm</goal>
             </goals>
             <configuration>
               <arguments>install</arguments>
@@ -91,7 +95,8 @@
           <execution>
             <id>ng build prod</id>
             <goals>
-              <goal>yarn</goal>
+              <!--<goal>yarn</goal>-->
+              <goal>npm</goal>
             </goals>
             <configuration>
               <arguments>run build-prod</arguments>
@@ -102,7 +107,8 @@
           <execution>
             <id>ng lint</id>
             <goals>
-              <goal>yarn</goal>
+              <!--<goal>yarn</goal>-->
+              <goal>npm</goal>
             </goals>
             <phase>process-resources</phase>
             <configuration>
@@ -113,7 +119,8 @@
           <execution>
             <id>ng test</id>
             <goals>
-              <goal>yarn</goal>
+              <!--<goal>yarn</goal>-->
+              <goal>npm</goal>
             </goals>
             <phase>test</phase>
             <configuration>
@@ -124,6 +131,7 @@
         <configuration>
           <nodeVersion>${frontend-maven-plugin.nodeVersion}</nodeVersion>
           <yarnVersion>${frontend-maven-plugin.yarnVersion}</yarnVersion>
+          <npmVersion>${frontend-maven-plugin.npmVersion}</npmVersion>
         </configuration>
       </plugin>
       <plugin>
