@@ -1,8 +1,6 @@
 package io.fischermatte.geolud.server.config;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import io.fischermatte.geolud.server.service.mail.MailService;
-import io.reactivex.subjects.PublishSubject;
 import io.reactivex.subjects.ReplaySubject;
 import io.reactivex.subjects.Subject;
 import org.slf4j.Logger;
@@ -26,9 +24,11 @@ import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.Executor;
+import java.util.concurrent.TimeUnit;
 
 import static io.fischermatte.geolud.server.rest.api.v1.Paths.CHAT;
 import static io.reactivex.BackpressureStrategy.LATEST;
+import static io.reactivex.schedulers.Schedulers.single;
 
 @EnableAsync
 @Configuration
@@ -83,17 +83,18 @@ public class ApplicationConfig {
 
     @Bean
     public WebSocketHandler chatWebSocketHandler() {
-        Subject<String> subject = PublishSubject.create();
+        Subject<String> subject = ReplaySubject.createWithTimeAndSize(2, TimeUnit.MINUTES, single(), 10);
         return session -> {
             session.receive()
                     .map(WebSocketMessage::getPayloadAsText)
-                    .doOnNext(this::notifyChatActionByEmail)
+                    .doOnNext(this::notifyChatAction)
                     .subscribe(subject::onNext);
             return session.send(subject.map(session::textMessage).toFlowable(LATEST));
         };
     }
 
-    private void notifyChatActionByEmail(String message) {
+    private void notifyChatAction(String message) {
+        LOG.info("chat action going on: " + message);
         LocalDateTime now = LocalDateTime.now();
         if (lastChatNotificationEmail == null || this.lastChatNotificationEmail.isBefore(now.minusHours(1))){
             mailService.sendEmail("GEOLUD-SITE: Chat actions going on ...", message);

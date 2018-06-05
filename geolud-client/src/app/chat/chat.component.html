@@ -11,13 +11,13 @@
           <i class="fa fa-fw fa-comments"></i>
         </h5>
         <div #messagesContainer class="card-body chat-messages">
-          <div *ngFor="let m of messages" class="chat-message" [ngClass]="{'chat-message-left': !m.user || (m.user.id == user.id)}">
+          <div *ngFor="let m of messages" class="chat-message" [ngClass]="{'chat-message-left': isMessageOfCurrentUser(m)}">
             <div class="chat-avatar"></div>
             <div class="chat-body">
               <div class="chat-context">
                 <div class="chat-user" *ngIf="m.user">
-                  <span *ngIf="m.user.id == user.id">You ({{m.user.name}})&nbsp;</span>
-                  <span *ngIf="m.user.id != user.id">{{m.user.name}}&nbsp;</span>
+                  <span *ngIf="isMessageOfCurrentUser(m)">You ({{m.user.name}})&nbsp;</span>
+                  <span *ngIf="!isMessageOfCurrentUser(m)">{{m.user.name}}&nbsp;</span>
                 </div>
                 <div class="chat-time">
                   <small>{{m.timestamp | date:'HH:mm:ss'}}</small>
