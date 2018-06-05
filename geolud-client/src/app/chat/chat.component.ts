@@ -25,7 +25,7 @@ export class ChatComponent implements OnInit, AfterViewChecked {
   @ViewChild('messageInput')
   private messageInput: ElementRef;
   private subject: Subject<ChatMessage>;
-  private user: User;
+  user: User;
   message: string;
   messages: ChatMessage [] = [];
 

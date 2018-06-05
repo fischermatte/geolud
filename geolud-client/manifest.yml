@@ -6,3 +6,6 @@ applications:
   instances: 1
   buildpack: https://github.com/cloudfoundry/staticfile-buildpack.git#v1.4.20
   memory: 12m
+  routes:
+  - route: dev-geolud.mybluemix.net
+
