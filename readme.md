@@ -7,11 +7,11 @@
 
 My personal 'cloud-native' Homepage, totally over-engineered using the following technology stack:
 
-- Spring: Boot V2 / Cloud / WebFlux / Data Reactive Mongo
+- Spring: Boot 2 / Cloud / Data / Reactive (Mongo, Websockets, WebFlux)
 - Angular 6
 - Bootstrap 4 
 - MongoDB
-- Swagger-Codegen for API First integration with Typescript and Java. Client and Server interfaces are generated from OpenApi 2 yml.
+- Websocket (for Chat)
 
 ## How to run it locally?
 
