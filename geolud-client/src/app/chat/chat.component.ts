@@ -8,30 +8,23 @@ import {Subscription} from 'rxjs/Subscription';
   templateUrl: './chat.component.html',
   styleUrls: ['./chat.component.scss']
 })
-export class ChatComponent implements OnInit, /*OnDestroy,*/ AfterViewChecked {
+export class ChatComponent implements OnInit, AfterViewChecked {
   @ViewChild('messagesContainer')
   private messagesContainer: ElementRef;
   @ViewChild('messageInput')
   private messageInput: ElementRef;
   user: ChatUser;
   message: string;
-  messages: ChatEntry[] = [];
-  private messagesSubscription: Subscription;
+  messages: ChatEntry[];
 
   constructor(private chatService: ChatService) {
   }
 
   ngOnInit() {
     this.chatService.getUser().subscribe(user => this.user = user);
-    this.messagesSubscription = this.chatService.getMessages().subscribe(entry => this.messages.push(entry));
+    this.messages = this.chatService.getMessages();
     this.scrollToBottom();
   }
-
-  // ngOnDestroy() {
-  //   if (this.messagesSubscription) {
-  //     this.messagesSubscription.unsubscribe();
-  //   }
-  // }
 
   ngAfterViewChecked(): void {
     this.scrollToBottom();

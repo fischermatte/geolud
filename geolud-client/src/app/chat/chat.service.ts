@@ -12,20 +12,26 @@ import {ChatEntry, ChatMessage, ChatMessageType, ChatUser} from './chat.model';
 export class ChatService {
 
   private userSubject: BehaviorSubject<ChatUser> = new BehaviorSubject(null);
-  private messagesSubject: WebSocketSubject<ChatMessage>; // lazy init since it connects to websocket
+  private webSocketSubject: WebSocketSubject<ChatMessage>; // lazy init since it connects to websocket
   private currentUser: ChatUser;
+  private messages: ChatEntry[] = [];
 
   constructor() {
     this.userSubject.subscribe(user => {
-      this.currentUser = user;
-      if (user) {
-        this.send(new ChatMessage('<strong>' + user.name + '</strong> joined the chat', user, ChatMessageType.LOGIN));
-      }
+      this.handleUserLogin(user);
     });
   }
 
-  getMessages(): Observable<ChatEntry> {
-    return this.getMessagesSubject().map(message => {
+  private handleUserLogin(user: ChatUser): void {
+    this.currentUser = user;
+    if (user) {
+      this.startListenForWebSocketMessages();
+      this.send(new ChatMessage('<strong>' + user.name + '</strong> joined the chat', user, ChatMessageType.LOGIN));
+    }
+  }
+
+  private startListenForWebSocketMessages() {
+    this.getWebSocketSubject().map(message => {
       return {
         message: message.text,
         timestamp: message.timestamp,
@@ -33,7 +39,11 @@ export class ChatService {
         isFromCurrentUser: this.isMessageOfCurrentUser(message),
         isLogin: message.type === ChatMessageType.LOGIN
       };
-    });
+    }).subscribe(entry => this.messages.push(entry));
+  }
+
+  public getMessages(): ChatEntry [] {
+    return this.messages;
   }
 
   getUser(): Observable<ChatUser> {
@@ -41,18 +51,18 @@ export class ChatService {
   }
 
   public send(message: ChatMessage) {
-    this.getMessagesSubject().next(message);
+    this.getWebSocketSubject().next(message);
   }
 
   login(user: ChatUser) {
     this.userSubject.next(user);
   }
 
-  private getMessagesSubject(): WebSocketSubject<ChatMessage> {
-    if (!this.messagesSubject) {
-      this.messagesSubject = webSocket(environment.wsBase + '/chat');
+  private getWebSocketSubject(): WebSocketSubject<ChatMessage> {
+    if (!this.webSocketSubject) {
+      this.webSocketSubject = webSocket(environment.wsBase + '/chat');
     }
-    return this.messagesSubject;
+    return this.webSocketSubject;
   }
 
   private isMessageOfCurrentUser(message: ChatMessage) {
