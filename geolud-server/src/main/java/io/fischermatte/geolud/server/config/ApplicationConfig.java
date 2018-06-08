@@ -1,8 +1,6 @@
 package io.fischermatte.geolud.server.config;
 
-import io.fischermatte.geolud.server.service.mail.MailService;
-import io.reactivex.subjects.ReplaySubject;
-import io.reactivex.subjects.Subject;
+import io.fischermatte.geolud.server.config.chat.ChatWebSocketHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
@@ -14,21 +12,15 @@ import org.springframework.web.reactive.config.CorsRegistry;
 import org.springframework.web.reactive.config.WebFluxConfigurer;
 import org.springframework.web.reactive.config.WebFluxConfigurerComposite;
 import org.springframework.web.reactive.handler.SimpleUrlHandlerMapping;
-import org.springframework.web.reactive.socket.WebSocketHandler;
-import org.springframework.web.reactive.socket.WebSocketMessage;
 import org.springframework.web.reactive.socket.server.support.WebSocketHandlerAdapter;
 
 import javax.annotation.PostConstruct;
 import java.io.IOException;
-import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.Executor;
-import java.util.concurrent.TimeUnit;
 
 import static io.fischermatte.geolud.server.rest.api.v1.Paths.CHAT;
-import static io.reactivex.BackpressureStrategy.LATEST;
-import static io.reactivex.schedulers.Schedulers.single;
 
 @EnableAsync
 @Configuration
@@ -36,13 +28,10 @@ public class ApplicationConfig {
     private static final Logger LOG = LoggerFactory.getLogger(ApplicationConfig.class);
 
     private final DataInitializer dataInitializer;
-    private final MailService mailService;
-    private LocalDateTime lastChatNotificationEmail;
 
 
-    public ApplicationConfig(DataInitializer dataInitializer, MailService mailService) {
+    public ApplicationConfig(DataInitializer dataInitializer) {
         this.dataInitializer = dataInitializer;
-        this.mailService = mailService;
     }
 
     @PostConstruct
@@ -72,34 +61,13 @@ public class ApplicationConfig {
     }
 
     @Bean
-    public HandlerMapping webSocketMapping() {
+    public HandlerMapping webSocketMapping(ChatWebSocketHandler chatWebSocketHandler) {
         Map<String, Object> map = new HashMap<>();
-        map.put(CHAT, chatWebSocketHandler());
+        map.put(CHAT, chatWebSocketHandler);
         SimpleUrlHandlerMapping simpleUrlHandlerMapping = new SimpleUrlHandlerMapping();
         simpleUrlHandlerMapping.setUrlMap(map);
         simpleUrlHandlerMapping.setOrder(10);
         return simpleUrlHandlerMapping;
-    }
-
-    @Bean
-    public WebSocketHandler chatWebSocketHandler() {
-        Subject<String> subject = ReplaySubject.createWithTimeAndSize(2, TimeUnit.MINUTES, single(), 10);
-        return session -> {
-            session.receive()
-                    .map(WebSocketMessage::getPayloadAsText)
-                    .doOnNext(this::notifyChatAction)
-                    .subscribe(subject::onNext);
-            return session.send(subject.map(session::textMessage).toFlowable(LATEST));
-        };
-    }
-
-    private void notifyChatAction(String message) {
-        LOG.info("chat action going on: " + message);
-        LocalDateTime now = LocalDateTime.now();
-        if (lastChatNotificationEmail == null || this.lastChatNotificationEmail.isBefore(now.minusHours(1))){
-            mailService.sendEmail("GEOLUD-SITE: Chat actions going on ...", message);
-        }
-        lastChatNotificationEmail = LocalDateTime.now();
     }
 
     @Bean

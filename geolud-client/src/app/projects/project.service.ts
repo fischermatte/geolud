@@ -5,7 +5,9 @@ import {publishReplay, refCount} from 'rxjs/operators';
 import {Project} from '../../generated-api';
 import {environment} from '../../environments/environment';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class ProjectService {
   private publisher: Observable<Project[]>;
 

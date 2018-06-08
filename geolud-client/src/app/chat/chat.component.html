@@ -11,13 +11,13 @@
           <i class="fa fa-fw fa-comments"></i>
         </h5>
         <div #messagesContainer class="card-body chat-messages">
-          <div *ngFor="let m of messages" class="chat-message" [ngClass]="{'chat-message-left': isMessageOfCurrentUser(m)}">
+          <div *ngFor="let m of messages" class="chat-message" [ngClass]="{'chat-message-left': m.isFromCurrentUser}">
             <div class="chat-avatar"></div>
             <div class="chat-body">
               <div class="chat-context">
-                <div class="chat-user" *ngIf="m.user">
-                  <span *ngIf="isMessageOfCurrentUser(m)">You ({{m.user.name}})&nbsp;</span>
-                  <span *ngIf="!isMessageOfCurrentUser(m)">{{m.user.name}}&nbsp;</span>
+                <div class="chat-user" *ngIf="!m.isLogin">
+                  <span *ngIf="m.isFromCurrentUser">You ({{m.username}})&nbsp;</span>
+                  <span *ngIf="!m.isFromCurrentUser">{{m.username}}&nbsp;</span>
                 </div>
                 <div class="chat-time">
                   <small>{{m.timestamp | date:'HH:mm:ss'}}</small>
@@ -35,9 +35,9 @@
             </div>
           </div>
           <div class="input-group mb-3" *ngIf="!user">
-            <input #username type="text" class="form-control" placeholder="Username" aria-label="Message" (keyup.enter)="setUsername(username.value)">
+            <input #username type="text" class="form-control" placeholder="Username" aria-label="Message" (keyup.enter)="loginWithUsername(username.value)">
             <div class="input-group-append">
-              <button class="btn btn-outline-primary" type="button" (click)="setUsername(username.value)">Set Username</button>
+              <button class="btn btn-outline-primary" type="button" (click)="loginWithUsername(username.value)">Set Username</button>
             </div>
           </div>
         </div>
