@@ -13,7 +13,9 @@ import {HomeComponent} from './home/home.component';
 import {BlockUIModule} from 'ng-block-ui';
 import {ProjectService} from './projects/project.service';
 import {RestHttpInterceptor} from './core/rest.http.interceptor';
-import { ChatComponent } from './chat/chat.component';
+import {ChatComponent} from './chat/chat.component';
+import {ToastrModule} from 'ngx-toastr';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -28,9 +30,14 @@ import { ChatComponent } from './chat/chat.component';
     NgbModule.forRoot(),
     BrowserModule,
     BlockUIModule.forRoot(),
+    ToastrModule.forRoot({
+      preventDuplicates: true,
+      tapToDismiss: true
+    }),
     FormsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule
   ],
   providers: [ProjectService, {
     provide: HTTP_INTERCEPTORS,

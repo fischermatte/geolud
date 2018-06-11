@@ -4,6 +4,7 @@ import {environment} from '../../environments/environment';
 import {Observable} from 'rxjs/Observable';
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 import {ChatEntry, ChatMessage, ChatMessageType, ChatUser} from './chat.model';
+import {AlertService} from '../core/alert/alert.service';
 
 
 @Injectable({
@@ -16,7 +17,7 @@ export class ChatService {
   private currentUser: ChatUser;
   private messages: ChatEntry[] = [];
 
-  constructor() {
+  constructor(private alertService: AlertService) {
     this.userSubject.subscribe(user => {
       this.handleUserLogin(user);
     });
@@ -39,7 +40,9 @@ export class ChatService {
         isFromCurrentUser: this.isMessageOfCurrentUser(message),
         isLogin: message.type === ChatMessageType.LOGIN
       };
-    }).subscribe(entry => this.messages.push(entry));
+    }).subscribe(
+      entry => this.messages.push(entry),
+      error => this.alertService.addError('Websocket Issue', error));
   }
 
   public getMessages(): ChatEntry [] {

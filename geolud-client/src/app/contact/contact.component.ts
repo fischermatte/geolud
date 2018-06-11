@@ -3,7 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {Title} from '@angular/platform-browser';
 import {ContactRequest} from '../../generated-api/model/contactRequest';
 import {environment} from '../../environments/environment';
-import {Alert} from '../core/alert';
+import {AlertService} from '../core/alert/alert.service';
 
 @Component({
   selector: 'app-contact',
@@ -13,10 +13,9 @@ import {Alert} from '../core/alert';
 export class ContactComponent implements OnInit {
 
   contactRequest: ContactRequest;
-  feedback: Alert;
   @ViewChild('contactForm') contactForm: any;
 
-  constructor(private http: HttpClient, title: Title) {
+  constructor(private http: HttpClient, private alertService: AlertService, title: Title) {
     title.setTitle('Georg Ludewig - Software Engineer - Contact');
   }
 
@@ -28,28 +27,18 @@ export class ContactComponent implements OnInit {
     if (this.contactForm.valid) {
       // note we set the response type to text due to this issue:  https://github.com/angular/angular/issues/18680
       this.http.post(environment.apiBase + '/contact', this.contactRequest, {responseType: 'text'}).subscribe(
-        response => {
-          this.feedback = <Alert>{
-            type: 'success',
-            message: 'Contact request was submitted!'
-          };
+        () => {
+          this.alertService.addSuccess('Contact request was submitted!');
           this.contactForm.reset();
         },
         error => {
-          this.feedback = <Alert>{
-            type: 'danger',
-            message: 'Failed to submit contact request due to some very mysterious reasons !'
-          };
+          this.alertService.addError('Failed to submit contact request due to some very mysterious reasons !', error);
         },
         () => {
           window.scrollTo(0, 0);
         }
       );
     }
-  }
-
-  public closeAlert() {
-    this.feedback = null;
   }
 
 
