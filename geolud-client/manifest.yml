@@ -4,9 +4,11 @@ applications:
 - name: dev-geolud-client
   path: dist_cloudfoundry
   instances: 1
-  buildpack: https://github.com/cloudfoundry/staticfile-buildpack.git#v1.4.20
+  buildpack: https://github.com/cloudfoundry/staticfile-buildpack.git#v1.4.30
   memory: 12m
   routes:
   - route: dev-geolud.mybluemix.net
   - route: dev-geolud-ui.mybluemix.net
+  env:
+    APP_CONFIG : '{"apiBase: https://dev-geolud-server.mybluemix.net/v1", wsBase: "wss://dev-geolud-server.mybluemix.net/v1""}'
 
