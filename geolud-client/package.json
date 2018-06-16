@@ -12,7 +12,7 @@
     "build-staging": "ng build -c staging",
     "postbuild-staging": "cpx \"dist/**\" dist_cloudfoundry/staging/app",
     "build-prod": "ng build -c production",
-    "postbuild-prod": "cpx \"dist/**\" dist_cloudfoundry/production/app",
+    "postbuild-prod": "cpx \"dist/**\" dist_cloudfoundry/prod/app",
     "test": "ng test --browsers PhantomJS --watch=false",
     "test-ci": "ng test --browsers PhantomJS --watch=false",
     "lint": "ng lint",
