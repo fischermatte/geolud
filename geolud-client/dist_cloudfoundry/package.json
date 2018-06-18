@@ -1,0 +1,10 @@
+{
+  "name": "geolud-client-express",
+  "version": "1.4.3",
+  "dependencies": {
+    "express": "^4.16.3"
+  },
+  "scripts": {
+    "start": "node server.js"
+  }
+}

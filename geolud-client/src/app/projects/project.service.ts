@@ -18,7 +18,7 @@ export class ProjectService {
   getAll(): Observable<Project[]> {
     if (!this.publisher) {
 
-      this.publisher = this.http.get<Project[]>(environment.apiBase + `/projects`)
+      this.publisher = this.http.get<Project[]>(environment.apiBase + `/v1/projects`)
         .pipe(publishReplay(1), refCount());
     }
     return this.publisher;

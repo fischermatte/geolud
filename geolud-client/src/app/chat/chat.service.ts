@@ -60,7 +60,7 @@ export class ChatService {
 
   private getWebSocketSubject(): WebSocketSubject<ChatMessage> {
     if (!this.webSocketSubject) {
-      this.webSocketSubject = webSocket(environment.wsBase + '/chat');
+      this.webSocketSubject = webSocket(environment.wsBase + '/v1/chat');
     }
     return this.webSocketSubject;
   }
