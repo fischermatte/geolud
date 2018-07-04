@@ -8,6 +8,7 @@
     "start:prod": "ng serve -c production",
     "start:prod:express": "node dist/server.js",
     "build": "ng build -c production",
+    "postbuild": "node zip-build.js",
     "test": "ng test --browsers PhantomJS --watch=false",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -44,7 +45,9 @@
     "@types/jasmine": "2.8.2",
     "@types/jasminewd2": "2.0.3",
     "@types/node": "8.0.56",
+    "archiver": "^2.1.1",
     "codelyzer": "4.3.0",
+    "fs": "0.0.1-security",
     "jasmine-core": "2.8.0",
     "jasmine-spec-reporter": "4.2.1",
     "karma": "1.7.1",
