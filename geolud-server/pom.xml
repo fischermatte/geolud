@@ -295,7 +295,7 @@
         <profile>
             <id>include-embedded-mongo</id>
             <activation>
-                <activeByDefault>true</activeByDefault>
+                <activeByDefault>false</activeByDefault>
             </activation>
             <dependencies>
                 <dependency>
