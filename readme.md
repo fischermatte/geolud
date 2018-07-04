@@ -25,9 +25,9 @@ This will start tomcat at http://localhost:8000
 ### geolud-client
 
     npm install
-    npm run-script start-local
+    npm run start
     
-This will run the ui locally at port 4200, connecting to the backend above at port 8080. 
+This will run the ui locally at port 4200, connecting to the backend above at port 8000. 
 
 Open http://localhost:4200 in browser - et voila!
 
