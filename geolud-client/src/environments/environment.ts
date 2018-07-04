@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  appConfig:  null // will be loaded at startup
+  appConfig:  {} // will be loaded at startup
 };
 
 /*
