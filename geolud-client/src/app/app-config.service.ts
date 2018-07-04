@@ -1,11 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../environments/environment';
-
-export class AppConfig {
-  apiBase: string;
-  wsBase: string;
-}
+import {AppConfig} from './app-config';
 
 @Injectable()
 export class AppConfigService {
