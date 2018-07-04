@@ -4,21 +4,20 @@
   <modelVersion>4.0.0</modelVersion>
 
   <artifactId>geolud-client</artifactId>
-  <version>1.4.2</version>
+  <version>1.4.3</version>
   <properties>
     <frontend-maven-plugin.version>1.6</frontend-maven-plugin.version>
     <maven-clean-plugin.version>2.6.1</maven-clean-plugin.version>
     <frontend-maven-plugin.yarnVersion>v1.6.0</frontend-maven-plugin.yarnVersion>
-    <frontend-maven-plugin.npmVersion>5.6.0</frontend-maven-plugin.npmVersion>
-    <frontend-maven-plugin.nodeVersion>v10.1.0</frontend-maven-plugin.nodeVersion>
-    <maven-assembly-plugin.version>3.1.0</maven-assembly-plugin.version>
+    <frontend-maven-plugin.npmVersion>6.1.0</frontend-maven-plugin.npmVersion>
+    <frontend-maven-plugin.nodeVersion>v8.10.0</frontend-maven-plugin.nodeVersion>
   </properties>
   <packaging>jar</packaging>
 
   <parent>
     <groupId>io.fischermatte</groupId>
     <artifactId>geolud</artifactId>
-    <version>1.4.2</version>
+    <version>1.4.3</version>
   </parent>
 
   <dependencies>
@@ -39,13 +38,7 @@
         <configuration>
           <filesets>
             <fileset>
-              <directory>dist</directory>
-              <includes>
-                <include>**</include>
-              </includes>
-            </fileset>
-            <fileset>
-              <directory>dist_cloudfoundry/app</directory>
+              <directory>dist/app</directory>
               <includes>
                 <include>**</include>
               </includes>
@@ -91,15 +84,15 @@
               <arguments>install</arguments>
             </configuration>
           </execution>
-          <!-- NG BUILD PROD -->
+          <!-- NG BUILD -->
           <execution>
-            <id>ng build prod</id>
+            <id>ng build</id>
             <goals>
               <!--<goal>yarn</goal>-->
               <goal>npm</goal>
             </goals>
             <configuration>
-              <arguments>run build-prod</arguments>
+              <arguments>run build</arguments>
             </configuration>
             <phase>generate-resources</phase>
           </execution>
@@ -124,7 +117,7 @@
             </goals>
             <phase>test</phase>
             <configuration>
-              <arguments>run test-ci</arguments>
+              <arguments>run test</arguments>
             </configuration>
           </execution>
         </executions>
@@ -133,24 +126,6 @@
           <yarnVersion>${frontend-maven-plugin.yarnVersion}</yarnVersion>
           <npmVersion>${frontend-maven-plugin.npmVersion}</npmVersion>
         </configuration>
-      </plugin>
-      <plugin>
-        <artifactId>maven-assembly-plugin</artifactId>
-        <version>${maven-assembly-plugin.version}</version>
-        <configuration>
-          <descriptors>
-            <descriptor>build-assembly.xml</descriptor>
-          </descriptors>
-          <finalName>${project.artifactId}-${project.version}</finalName>
-        </configuration>
-        <executions>
-          <execution>
-            <phase>package</phase>
-            <goals>
-              <goal>single</goal>
-            </goals>
-          </execution>
-        </executions>
       </plugin>
     </plugins>
   </build>

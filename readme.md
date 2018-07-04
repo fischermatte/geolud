@@ -20,7 +20,7 @@ My personal 'cloud-native' Homepage, totally over-engineered using the following
     mvn clean install
     mvn spring-boot:run -f geolud-server/pom.xml
     
-This will start tomcat at http://localhost:8080
+This will start tomcat at http://localhost:8000
     
 ### geolud-client
 
@@ -50,7 +50,7 @@ is not a good approach when you want to scale dynamically.
 # Cloud Foundry Example Manifest with 400m memory
 applications:
 - name: geolud-server
-  path: geolud-server/target/geolud-server-1.4.2.jar
+  path: geolud-server/target/geolud-server-1.4.3.jar
   instances: 1
   buildpack: https://github.com/cloudfoundry/java-buildpack.git#v4.12
   memory: 500m
@@ -68,7 +68,7 @@ applications:
 - name: geolud-client
   path: dist
   instances: 1
-  buildpack: https://github.com/cloudfoundry/staticfile-buildpack.git#v1.4.20
+  buildpack: https://github.com/cloudfoundry/staticfile-buildpack.git#v1.4.30
   memory: 12m
 
 ```

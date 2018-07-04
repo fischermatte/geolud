@@ -5,6 +5,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {BlockUIModule} from 'ng-block-ui';
 import {ProjectService} from './project.service';
+import {environment} from '../../environments/environment';
 
 describe('ProjectsComponent', () => {
   let component: ProjectsComponent;
