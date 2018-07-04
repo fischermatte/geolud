@@ -1,6 +1,6 @@
 openapi: "3.0.0"
 info:
-  version: 1.4.3
+  version: 1.4.4
   title: Swagger Petstore
   license:
     name: WTFPL
