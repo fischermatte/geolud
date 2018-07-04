@@ -39,13 +39,7 @@
         <configuration>
           <filesets>
             <fileset>
-              <directory>dist</directory>
-              <includes>
-                <include>**</include>
-              </includes>
-            </fileset>
-            <fileset>
-              <directory>dist_cloudfoundry/app</directory>
+              <directory>dist/app</directory>
               <includes>
                 <include>**</include>
               </includes>
@@ -124,7 +118,7 @@
             </goals>
             <phase>test</phase>
             <configuration>
-              <arguments>run test-ci</arguments>
+              <arguments>run test</arguments>
             </configuration>
           </execution>
         </executions>

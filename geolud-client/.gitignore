@@ -1,6 +1,5 @@
-/dist
-/dist/node_modules
-/dist_cloudfoundry/
+/dist/app/
+/dist/node_modules/
 /node/
 /node_modules/
 */.
