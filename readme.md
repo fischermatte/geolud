@@ -61,15 +61,23 @@ applications:
 ```
 
 ### geolud-client
-The ui app is a plain angular project with static files. For this one uses the Cloud Foudnry static file build pack:
+The ui app is a plain angular project with static files and a configuration rest endpoint. For this one uses the Cloud 
+Foundry nodejs build pack:
 
 ```yml
 applications:
 - name: geolud-client
   path: dist
   instances: 1
-  buildpack: https://github.com/cloudfoundry/staticfile-buildpack.git#v1.4.30
-  memory: 12m
+  buildpack: https://github.com/cloudfoundry/nodejs-buildpack.git#v1.6.28
+  memory: 24m
+  routes:
+  - route: dev-geolud.mybluemix.net
+  - route: dev-geolud-ui.mybluemix.net
+  env:
+    BACKEND_HOST: 'dev-geolud-server.mybluemix.net'
+    BACKEND_IS_SSL: true
+    OPTIMIZE_MEMORY: true
 
 ```
 
