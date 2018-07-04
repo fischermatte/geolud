@@ -1,5 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
+import {APP_INITIALIZER, NgModule} from '@angular/core';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
@@ -11,9 +11,13 @@ import {ContactComponent} from './contact/contact.component';
 import {ResumeComponent} from './resume/resume.component';
 import {HomeComponent} from './home/home.component';
 import {BlockUIModule} from 'ng-block-ui';
-import {ProjectService} from './projects/project.service';
 import {RestHttpInterceptor} from './core/rest.http.interceptor';
-import { ChatComponent } from './chat/chat.component';
+import {ChatComponent} from './chat/chat.component';
+import {AppConfigService} from './app-config.service';
+
+export function loadConfig(appConfigService: AppConfigService) {
+  return () => appConfigService.loadConfig();
+}
 
 @NgModule({
   declarations: [
@@ -32,11 +36,19 @@ import { ChatComponent } from './chat/chat.component';
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [ProjectService, {
-    provide: HTTP_INTERCEPTORS,
-    useClass: RestHttpInterceptor,
-    multi: true
-  }],
+  providers: [
+    AppConfigService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: RestHttpInterceptor,
+      multi: true
+    }, {
+      provide: APP_INITIALIZER,
+      useFactory: loadConfig,
+      deps: [AppConfigService],
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

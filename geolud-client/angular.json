@@ -77,7 +77,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "geolud-client:build"
+            "browserTarget": "geolud-client:build",
+            "proxyConfig": "proxy.conf.js"
           },
           "configurations": {
             "production": {

@@ -20,7 +20,7 @@ My personal 'cloud-native' Homepage, totally over-engineered using the following
     mvn clean install
     mvn spring-boot:run -f geolud-server/pom.xml
     
-This will start tomcat at http://localhost:8080
+This will start tomcat at http://localhost:8000
     
 ### geolud-client
 

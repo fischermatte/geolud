@@ -1,4 +1,6 @@
 /dist
+/dist/node_modules
+/dist_cloudfoundry/
 /node/
 /node_modules/
 */.

@@ -27,7 +27,7 @@ export class ContactComponent implements OnInit {
   onSubmit() {
     if (this.contactForm.valid) {
       // note we set the response type to text due to this issue:  https://github.com/angular/angular/issues/18680
-      this.http.post(environment.apiBase + '/v1/contact', this.contactRequest, {responseType: 'text'}).subscribe(
+      this.http.post(environment.appConfig.apiBase + '/v1/contact', this.contactRequest, {responseType: 'text'}).subscribe(
         response => {
           this.feedback = <Alert>{
             type: 'success',
