@@ -12,7 +12,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <dockerfile-maven-plugin.version>1.3.6</dockerfile-maven-plugin.version>
         <swagger-codegen-maven-plugin.version>2.3.1</swagger-codegen-maven-plugin.version>
-        <java.version>9</java.version>
+        <java.version>8</java.version>
     </properties>
 
     <modules>
