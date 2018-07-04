@@ -9,8 +9,8 @@
     <frontend-maven-plugin.version>1.6</frontend-maven-plugin.version>
     <maven-clean-plugin.version>2.6.1</maven-clean-plugin.version>
     <frontend-maven-plugin.yarnVersion>v1.6.0</frontend-maven-plugin.yarnVersion>
-    <frontend-maven-plugin.npmVersion>5.6.0</frontend-maven-plugin.npmVersion>
-    <frontend-maven-plugin.nodeVersion>v10.1.0</frontend-maven-plugin.nodeVersion>
+    <frontend-maven-plugin.npmVersion>6.1.0</frontend-maven-plugin.npmVersion>
+    <frontend-maven-plugin.nodeVersion>v8.10.0</frontend-maven-plugin.nodeVersion>
     <maven-assembly-plugin.version>3.1.0</maven-assembly-plugin.version>
   </properties>
   <packaging>jar</packaging>
@@ -85,15 +85,15 @@
               <arguments>install</arguments>
             </configuration>
           </execution>
-          <!-- NG BUILD PROD -->
+          <!-- NG BUILD -->
           <execution>
-            <id>ng build prod</id>
+            <id>ng build</id>
             <goals>
               <!--<goal>yarn</goal>-->
               <goal>npm</goal>
             </goals>
             <configuration>
-              <arguments>run build-prod</arguments>
+              <arguments>run build</arguments>
             </configuration>
             <phase>generate-resources</phase>
           </execution>
