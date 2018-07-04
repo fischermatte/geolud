@@ -1,3 +1,6 @@
+/**
+ * Zips the dist folder without node_modules. To be used when uploading a release.
+ */
 const version = require('./package.json').version;
 const fs = require('fs');
 const archiver = require('archiver');
