@@ -30,7 +30,7 @@ export function loadConfig(appConfigService: AppConfigService) {
   ],
   imports: [
     NgbModule.forRoot(),
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'geolud-client' }),
     BlockUIModule.forRoot(),
     FormsModule,
     HttpClientModule,

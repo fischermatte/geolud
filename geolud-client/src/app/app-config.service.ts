@@ -11,7 +11,7 @@ export class AppConfigService {
 
 
   loadConfig(): any {
-    return this.httpClient.get('/app-config')
+    return this.httpClient.get('/api/app-config')
       .toPromise()
       .then((appConfig: AppConfig) => {
         environment.appConfig = appConfig;

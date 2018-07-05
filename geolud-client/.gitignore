@@ -3,3 +3,5 @@
 /node/
 /node_modules/
 */.
+/dist/browser/
+/.gitignore

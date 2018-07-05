@@ -1,5 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Inject, OnInit, PLATFORM_ID} from '@angular/core';
 import {NavigationEnd, Router} from '@angular/router';
+import {isPlatformBrowser} from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -9,14 +10,17 @@ import {NavigationEnd, Router} from '@angular/router';
 export class AppComponent implements OnInit {
   public navbarCollapsed = true;
 
-  constructor(private router: Router) {
+  constructor(private router: Router,
+              @Inject(PLATFORM_ID) private platformId: string) {
   }
 
   ngOnInit(): void {
-    this.router.events.subscribe((evt) => {
-      if (evt instanceof NavigationEnd) {
-        window.scrollTo(0, 0);
-      }
-    });
+    if (isPlatformBrowser(this.platformId)) {
+      this.router.events.subscribe((evt) => {
+        if (evt instanceof NavigationEnd) {
+          window.scrollTo(0, 0);
+        }
+      });
+    }
   }
 }

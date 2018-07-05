@@ -1,9 +1,10 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, Inject, OnInit, PLATFORM_ID, ViewChild} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Title} from '@angular/platform-browser';
 import {ContactRequest} from '../../generated-api/model/contactRequest';
 import {environment} from '../../environments/environment';
 import {Alert} from '../core/alert';
+import {isPlatformBrowser} from '@angular/common';
 
 @Component({
   selector: 'app-contact',
@@ -16,7 +17,9 @@ export class ContactComponent implements OnInit {
   feedback: Alert;
   @ViewChild('contactForm') contactForm: any;
 
-  constructor(private http: HttpClient, title: Title) {
+  constructor(private http: HttpClient,
+              title: Title,
+              @Inject(PLATFORM_ID) private platformId: string) {
     title.setTitle('Georg Ludewig - Software Engineer - Contact');
   }
 
@@ -42,7 +45,9 @@ export class ContactComponent implements OnInit {
           };
         },
         () => {
-          window.scrollTo(0, 0);
+          if (isPlatformBrowser(this.platformId)) {
+            window.scrollTo(0, 0);
+          }
         }
       );
     }
