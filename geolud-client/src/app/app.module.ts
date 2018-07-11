@@ -14,6 +14,8 @@ import {BlockUIModule} from 'ng-block-ui';
 import {RestHttpInterceptor} from './core/rest.http.interceptor';
 import {ChatComponent} from './chat/chat.component';
 import {AppConfigService} from './app-config.service';
+import {ServiceWorkerModule} from '@angular/service-worker';
+import {environment} from '../environments/environment';
 
 export function loadConfig(appConfigService: AppConfigService) {
   return () => appConfigService.loadConfig();
@@ -34,7 +36,8 @@ export function loadConfig(appConfigService: AppConfigService) {
     BlockUIModule.forRoot(),
     FormsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ServiceWorkerModule.register('/ngsw-worker.js', {enabled: environment.production})
   ],
   providers: [
     AppConfigService,

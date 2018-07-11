@@ -4,7 +4,7 @@ applications:
 - name: geolud-client
   instances: 1
   buildpack: https://github.com/cloudfoundry/nodejs-buildpack.git#v1.6.28
-  memory: 24m
+  memory: 30m
   routes:
   - route: geolud.mybluemix.net
   - route: geolud-ui.mybluemix.net
