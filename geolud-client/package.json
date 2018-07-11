@@ -11,7 +11,8 @@
     "postbuild": "node zip-dist.js",
     "test": "ng test --browsers PhantomJS --watch=false",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "update-webdriver": "node node_modules/protractor/bin/webdriver-manager update"
   },
   "private": true,
   "dependencies": {
@@ -61,6 +62,7 @@
     "protractor": "5.3.2",
     "ts-node": "3.3.0",
     "tslint": "5.8.0",
-    "typescript": "2.7.2"
+    "typescript": "2.7.2",
+    "webdriver-manager": "^12.1.0"
   }
 }
