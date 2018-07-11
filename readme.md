@@ -50,7 +50,7 @@ is not a good approach when you want to scale dynamically.
 # Cloud Foundry Example Manifest with 400m memory
 applications:
 - name: geolud-server
-  path: geolud-server-1.4.4.jar
+  path: geolud-server-1.4.5.jar
   instances: 1
   buildpack: https://github.com/cloudfoundry/java-buildpack.git#v4.12
   memory: 500m
@@ -74,7 +74,7 @@ applications:
   - route: dev-geolud.mybluemix.net
   - route: dev-geolud-ui.mybluemix.net
   env:
-    BACKEND_HOST: 'dev-geolud-server.mybluemix.net'
+    BACKEND_HOST: 'geolud-server.mybluemix.net'
     BACKEND_IS_SSL: true
     OPTIMIZE_MEMORY: true
 

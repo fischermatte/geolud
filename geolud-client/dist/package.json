@@ -1,6 +1,6 @@
 {
   "name": "geolud-client-express",
-  "version": "1.4.4",
+  "version": "1.4.5",
   "dependencies": {
     "body-parser": "^1.18.3",
     "express": "^4.16.3"
