@@ -4,7 +4,7 @@
 
     <groupId>io.fischermatte</groupId>
     <artifactId>geolud</artifactId>
-    <version>1.4.5</version>
+    <version>1.4.6</version>
     <packaging>pom</packaging>
 
     <properties>
@@ -79,7 +79,7 @@
         <url>https://github.com/fischermatte/geolud</url>
         <connection>scm:git:git://github.com/fischermatte/geolud.git</connection>
         <developerConnection>scm:git:git@github.com:fischermatte/geolud.git</developerConnection>
-        <tag>1.4.5</tag>
+        <tag>1.4.6</tag>
     </scm>
 
     <distributionManagement>

@@ -1,6 +1,6 @@
 {
   "name": "geolud-client",
-  "version": "1.4.5",
+  "version": "1.4.6",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
@@ -34,6 +34,7 @@
     "lato-font": "^3.0.0",
     "montserrat-font": "github:fischermatte/montserrat-font#v1.0.1",
     "ng-block-ui": "1.0.4",
+    "ngx-toastr": "^8.8.0",
     "rxjs": "^6.1.0",
     "rxjs-compat": "^6.1.0",
     "startbootstrap-freelancer": "github:fischermatte/startbootstrap-freelancer#4.1.1",

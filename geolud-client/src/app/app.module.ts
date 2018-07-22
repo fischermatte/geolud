@@ -13,9 +13,12 @@ import {HomeComponent} from './home/home.component';
 import {BlockUIModule} from 'ng-block-ui';
 import {RestHttpInterceptor} from './core/rest.http.interceptor';
 import {ChatComponent} from './chat/chat.component';
+import {ToastrModule} from 'ngx-toastr';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AppConfigService} from './app-config.service';
 import {ServiceWorkerModule} from '@angular/service-worker';
 import {environment} from '../environments/environment';
+import {ToastrService} from 'ngx-toastr/toastr/toastr.service';
 
 export function loadConfig(appConfigService: AppConfigService) {
   return () => appConfigService.loadConfig();
@@ -34,9 +37,14 @@ export function loadConfig(appConfigService: AppConfigService) {
     NgbModule.forRoot(),
     BrowserModule,
     BlockUIModule.forRoot(),
+    ToastrModule.forRoot({
+      preventDuplicates: true,
+      tapToDismiss: true
+    }),
     FormsModule,
     HttpClientModule,
     AppRoutingModule,
+    BrowserAnimationsModule,
     ServiceWorkerModule.register('/ngsw-worker.js', {enabled: environment.production})
   ],
   providers: [

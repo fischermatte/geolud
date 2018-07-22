@@ -1,7 +1,6 @@
 import {AfterViewChecked, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {ChatEntry, ChatMessage, ChatMessageType, ChatUser} from './chat.model';
 import {ChatService} from './chat.service';
-import {Subscription} from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-chat',

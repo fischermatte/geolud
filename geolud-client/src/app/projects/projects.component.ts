@@ -2,8 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {ProjectService} from './project.service';
 import {Project} from '../../generated-api/model/project';
 import {BlockUI, NgBlockUI} from 'ng-block-ui';
-import {Alert} from '../core/alert';
 import {Title} from '@angular/platform-browser';
+import {AlertService} from '../core/alert/alert.service';
 
 @Component({
   selector: 'app-projects',
@@ -11,12 +11,11 @@ import {Title} from '@angular/platform-browser';
   styleUrls: ['./projects.component.scss']
 })
 export class ProjectsComponent implements OnInit {
-  feedback: Alert;
   projects: Project[];
 
   @BlockUI('project-list') blockUI: NgBlockUI;
 
-  constructor(private projectService: ProjectService, title: Title) {
+  constructor(private projectService: ProjectService, private alertSerice: AlertService, title: Title) {
     title.setTitle('Georg Ludewig - Software Engineer - Projects');
   }
 
@@ -25,17 +24,10 @@ export class ProjectsComponent implements OnInit {
     this.projectService.getAll().subscribe((projects: Project[]) => {
       this.projects = projects;
     }, error => {
-      this.feedback = <Alert>{
-        type: 'danger',
-        message: 'Failed to load project list !'
-      };
+      this.alertSerice.addError('Failed to load project list !', error);
       this.blockUI.stop();
     }, () => {
       this.blockUI.stop();
     });
-  }
-
-  public closeAlert() {
-    this.feedback = null;
   }
 }
