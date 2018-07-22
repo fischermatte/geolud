@@ -1,4 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
+import {APP_INITIALIZER, NgModule} from '@angular/core';
 import {NgModule} from '@angular/core';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
@@ -16,6 +17,13 @@ import {RestHttpInterceptor} from './core/rest.http.interceptor';
 import {ChatComponent} from './chat/chat.component';
 import {ToastrModule} from 'ngx-toastr';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {AppConfigService} from './app-config.service';
+import {ServiceWorkerModule} from '@angular/service-worker';
+import {environment} from '../environments/environment';
+
+export function loadConfig(appConfigService: AppConfigService) {
+  return () => appConfigService.loadConfig();
+}
 
 @NgModule({
   declarations: [
@@ -37,13 +45,22 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     FormsModule,
     HttpClientModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ServiceWorkerModule.register('/ngsw-worker.js', {enabled: environment.production})
   ],
-  providers: [ProjectService, {
-    provide: HTTP_INTERCEPTORS,
-    useClass: RestHttpInterceptor,
-    multi: true
-  }],
+  providers: [
+    AppConfigService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: RestHttpInterceptor,
+      multi: true
+    }, {
+      provide: APP_INITIALIZER,
+      useFactory: loadConfig,
+      deps: [AppConfigService],
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

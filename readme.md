@@ -7,11 +7,11 @@
 
 My personal 'cloud-native' Homepage, totally over-engineered using the following technology stack:
 
-- Spring: Boot V2 / Cloud / WebFlux / Data Reactive Mongo
+- Spring: Boot 2 / Cloud / Data / Reactive (Mongo, Websockets, WebFlux)
 - Angular 6
 - Bootstrap 4 
 - MongoDB
-- Swagger-Codegen for API First integration with Typescript and Java. Client and Server interfaces are generated from OpenApi 2 yml.
+- Websocket (for Chat)
 
 ## How to run it locally?
 
@@ -20,14 +20,14 @@ My personal 'cloud-native' Homepage, totally over-engineered using the following
     mvn clean install
     mvn spring-boot:run -f geolud-server/pom.xml
     
-This will start tomcat at http://localhost:8080
+This will start tomcat at http://localhost:8000
     
 ### geolud-client
 
     npm install
-    npm run-script start-local
+    npm run start
     
-This will run the ui locally at port 4200, connecting to the backend above at port 8080. 
+This will run the ui locally at port 4200, connecting to the backend above at port 8000. 
 
 Open http://localhost:4200 in browser - et voila!
 
@@ -50,7 +50,7 @@ is not a good approach when you want to scale dynamically.
 # Cloud Foundry Example Manifest with 400m memory
 applications:
 - name: geolud-server
-  path: geolud-server/target/geolud-server-1.4.2.jar
+  path: geolud-server-1.4.5.jar
   instances: 1
   buildpack: https://github.com/cloudfoundry/java-buildpack.git#v4.12
   memory: 500m
@@ -61,15 +61,22 @@ applications:
 ```
 
 ### geolud-client
-The ui app is a plain angular project with static files. For this one uses the Cloud Foudnry static file build pack:
+The ui app is a plain angular project with static files and a configuration rest endpoint. For this one uses the Cloud 
+Foundry nodejs build pack:
 
 ```yml
 applications:
 - name: geolud-client
-  path: dist
   instances: 1
-  buildpack: https://github.com/cloudfoundry/staticfile-buildpack.git#v1.4.20
-  memory: 12m
+  buildpack: https://github.com/cloudfoundry/nodejs-buildpack.git#v1.6.28
+  memory: 24m
+  routes:
+  - route: dev-geolud.mybluemix.net
+  - route: dev-geolud-ui.mybluemix.net
+  env:
+    BACKEND_HOST: 'geolud-server.mybluemix.net'
+    BACKEND_IS_SSL: true
+    OPTIMIZE_MEMORY: true
 
 ```
 

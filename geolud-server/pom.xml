@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>geolud-server</artifactId>
-    <version>1.4.2</version>
+    <version>1.4.5</version>
     <packaging>jar</packaging>
 
     <parent>
         <groupId>io.fischermatte</groupId>
         <artifactId>geolud</artifactId>
-        <version>1.4.2</version>
+        <version>1.4.5</version>
     </parent>
 
     <properties>
@@ -32,6 +33,7 @@
         <embedmongo-spring.version>1.1</embedmongo-spring.version>
         <awaitility.version>1.7.0</awaitility.version>
         <rxjava.version>2.0.1</rxjava.version>
+        <maven-resources-plugin.version>3.1.0</maven-resources-plugin.version>
     </properties>
 
     <dependencies>
@@ -198,30 +200,30 @@
                 </configuration>
             </plugin>
             <!--<plugin>-->
-                <!--<groupId>io.swagger</groupId>-->
-                <!--<artifactId>swagger-codegen-maven-plugin</artifactId>-->
-                <!--<version>${swagger-codegen-maven-plugin.version}</version>-->
-                <!--<configuration>-->
-                    <!--<inputSpec>${project.parent.basedir}/api/openapi-2/geolud-server.yml</inputSpec>-->
-                    <!--<language>spring</language>-->
-                    <!--<apiPackage>io.fischermatte.geolud.api.v1</apiPackage>-->
-                    <!--<modelPackage>io.fischermatte.geolud.api.v1.model</modelPackage>-->
-                    <!--<output>${project.build.directory}/generated</output>-->
-                    <!--<modelNameSuffix>Dto</modelNameSuffix>-->
-                    <!--<configOptions>-->
-                        <!--<interfaceOnly>true</interfaceOnly>-->
-                        <!--<sourceFolder>/src/main/java</sourceFolder>-->
-                        <!--<library>spring-mvc</library>-->
-                        <!--<dateLibrary>java8</dateLibrary>-->
-                    <!--</configOptions>-->
-                <!--</configuration>-->
-                <!--<executions>-->
-                    <!--<execution>-->
-                        <!--<goals>-->
-                            <!--<goal>generate</goal>-->
-                        <!--</goals>-->
-                    <!--</execution>-->
-                <!--</executions>-->
+            <!--<groupId>io.swagger</groupId>-->
+            <!--<artifactId>swagger-codegen-maven-plugin</artifactId>-->
+            <!--<version>${swagger-codegen-maven-plugin.version}</version>-->
+            <!--<configuration>-->
+            <!--<inputSpec>${project.parent.basedir}/api/openapi-2/geolud-server.yml</inputSpec>-->
+            <!--<language>spring</language>-->
+            <!--<apiPackage>io.fischermatte.geolud.api.v1</apiPackage>-->
+            <!--<modelPackage>io.fischermatte.geolud.api.v1.model</modelPackage>-->
+            <!--<output>${project.build.directory}/generated</output>-->
+            <!--<modelNameSuffix>Dto</modelNameSuffix>-->
+            <!--<configOptions>-->
+            <!--<interfaceOnly>true</interfaceOnly>-->
+            <!--<sourceFolder>/src/main/java</sourceFolder>-->
+            <!--<library>spring-mvc</library>-->
+            <!--<dateLibrary>java8</dateLibrary>-->
+            <!--</configOptions>-->
+            <!--</configuration>-->
+            <!--<executions>-->
+            <!--<execution>-->
+            <!--<goals>-->
+            <!--<goal>generate</goal>-->
+            <!--</goals>-->
+            <!--</execution>-->
+            <!--</executions>-->
             <!--</plugin>-->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
@@ -263,6 +265,28 @@
                     </dependency>
                 </dependencies>
             </plugin>
+            <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>${maven-resources-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>copy-resources</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.directory}</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>${project.basedir}/cloudfoundry</directory>
+                                    <filtering>true</filtering>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
 
         </plugins>
     </build>
@@ -271,7 +295,7 @@
         <profile>
             <id>include-embedded-mongo</id>
             <activation>
-                <activeByDefault>true</activeByDefault>
+                <activeByDefault>false</activeByDefault>
             </activation>
             <dependencies>
                 <dependency>

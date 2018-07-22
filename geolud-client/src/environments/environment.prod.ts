@@ -1,5 +1,8 @@
 export const environment = {
   production: true,
-  apiBase: 'https://geolud-server.mybluemix.net/v1',
-  wsBase: 'wss://geolud-server.mybluemix.net/v1'
+  appConfig: {
+    apiBase: null,
+    wsBase: null
+  } // will be loaded at startup
 };
+

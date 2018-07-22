@@ -1,4 +1,5 @@
-/dist
+/dist/app/
+/dist/node_modules/
 /node/
 /node_modules/
 */.
