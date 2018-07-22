@@ -1,6 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {APP_INITIALIZER, NgModule} from '@angular/core';
-import {NgModule} from '@angular/core';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
@@ -12,7 +11,6 @@ import {ContactComponent} from './contact/contact.component';
 import {ResumeComponent} from './resume/resume.component';
 import {HomeComponent} from './home/home.component';
 import {BlockUIModule} from 'ng-block-ui';
-import {ProjectService} from './projects/project.service';
 import {RestHttpInterceptor} from './core/rest.http.interceptor';
 import {ChatComponent} from './chat/chat.component';
 import {ToastrModule} from 'ngx-toastr';
