@@ -1,4 +1,4 @@
-# geolud-client (Angular 4+ Frontend)
+# geolud-client (Angular 6+ Frontend)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.0.
 

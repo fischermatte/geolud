@@ -5,11 +5,12 @@
 
 ## Whats this?
 
-My personal 'cloud-native' Homepage, totally over-engineered using the following technology stack:
+My personal 'cloud-native' homepage as a progressive web app. Totally over-engineered using the following technology stack:
 
 - Spring: Boot 2 / Cloud / Data / Reactive (Mongo, Websockets, WebFlux)
 - Angular 6
 - Bootstrap 4 
+- Service Worker (@angular/pwa)
 - MongoDB
 - Websocket (for Chat)
 
