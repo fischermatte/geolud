@@ -4,6 +4,7 @@ import {ContactComponent} from './contact.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
+import {ToastrModule} from 'ngx-toastr';
 
 describe('ContactComponent', () => {
   let component: ContactComponent;
@@ -12,7 +13,7 @@ describe('ContactComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        NgbModule.forRoot(), FormsModule, HttpClientModule
+        NgbModule.forRoot(), FormsModule, HttpClientModule, ToastrModule.forRoot()
       ],
       declarations: [ContactComponent]
     })

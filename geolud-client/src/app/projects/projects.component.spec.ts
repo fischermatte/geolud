@@ -5,7 +5,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {BlockUIModule} from 'ng-block-ui';
 import {ProjectService} from './project.service';
-import {environment} from '../../environments/environment';
+import {ToastrModule, ToastrService} from 'ngx-toastr';
 
 describe('ProjectsComponent', () => {
   let component: ProjectsComponent;
@@ -13,9 +13,9 @@ describe('ProjectsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientModule, NgbModule.forRoot(), BlockUIModule.forRoot()],
+      imports: [HttpClientModule, NgbModule.forRoot(), BlockUIModule.forRoot(), ToastrModule.forRoot()],
       declarations: [ProjectsComponent],
-      providers: [ProjectService]
+      providers: [ProjectService, ToastrService]
     })
       .compileComponents();
   }));

@@ -1,11 +1,14 @@
-import { TestBed, inject } from '@angular/core/testing';
+import {TestBed, inject} from '@angular/core/testing';
 
-import { ChatService } from './chat.service';
+import {ChatService} from './chat.service';
+import {ToastrModule} from 'ngx-toastr';
+import {FormsModule} from '@angular/forms';
 
 describe('ChatService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [ChatService]
+      providers: [ChatService],
+      imports: [ToastrModule.forRoot()]
     });
   });
 
