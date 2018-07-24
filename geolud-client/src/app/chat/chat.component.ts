@@ -16,6 +16,7 @@ export class ChatComponent implements OnInit, AfterViewChecked {
   user: ChatUser;
   message: string;
   messages: ChatEntry[];
+  pushEnabled = true;
 
   constructor(private chatService: ChatService, private pushService: PushService) {
   }
@@ -24,7 +25,7 @@ export class ChatComponent implements OnInit, AfterViewChecked {
     this.chatService.getUser().subscribe(user => this.user = user);
     this.messages = this.chatService.getMessages();
     this.scrollToBottom();
-    this.pushService.register();
+    // this.pushService.register();
   }
 
   ngAfterViewChecked(): void {

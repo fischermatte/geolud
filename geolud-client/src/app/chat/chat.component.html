@@ -11,7 +11,7 @@
           <i class="fa fa-fw fa-comments"></i>
           <div class="btn-group btn-group-toggle float-right">
             <label class="btn-primary" ngbButtonLabel>
-              <input type="checkbox" ngbButton> Enable Push Notifications
+              <input type="checkbox" ngbButton [(ngModel)]="pushEnabled"> {{ pushEnabled ? 'Enable Push' : 'Push Enabled'  }}
             </label>
           </div>
         </h5>
