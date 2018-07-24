@@ -1,6 +1,7 @@
 import {AfterViewChecked, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {ChatEntry, ChatMessage, ChatMessageType, ChatUser} from './chat.model';
 import {ChatService} from './chat.service';
+import {PushService} from '../core/push/push.service';
 
 @Component({
   selector: 'app-chat',
@@ -16,13 +17,14 @@ export class ChatComponent implements OnInit, AfterViewChecked {
   message: string;
   messages: ChatEntry[];
 
-  constructor(private chatService: ChatService) {
+  constructor(private chatService: ChatService, private pushService: PushService) {
   }
 
   ngOnInit() {
     this.chatService.getUser().subscribe(user => this.user = user);
     this.messages = this.chatService.getMessages();
     this.scrollToBottom();
+    this.pushService.register();
   }
 
   ngAfterViewChecked(): void {

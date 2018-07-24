@@ -18,7 +18,6 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AppConfigService} from './app-config.service';
 import {ServiceWorkerModule} from '@angular/service-worker';
 import {environment} from '../environments/environment';
-import {ToastrService} from 'ngx-toastr/toastr/toastr.service';
 
 export function loadConfig(appConfigService: AppConfigService) {
   return () => appConfigService.loadConfig();

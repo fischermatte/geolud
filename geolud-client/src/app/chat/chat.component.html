@@ -9,6 +9,11 @@
       <div class="card chat-window">
         <h5 class="card-header">
           <i class="fa fa-fw fa-comments"></i>
+          <div class="btn-group btn-group-toggle float-right">
+            <label class="btn-primary" ngbButtonLabel>
+              <input type="checkbox" ngbButton> Enable Push Notifications
+            </label>
+          </div>
         </h5>
         <div #messagesContainer class="card-body chat-messages">
           <div *ngFor="let m of messages" class="chat-message" [ngClass]="{'chat-message-left': m.isFromCurrentUser}">
@@ -29,15 +34,19 @@
         </div>
         <div class="card-footer">
           <div class="input-group mb-3" *ngIf="user">
-            <input #messageInput type="text" [(ngModel)]="message" class="form-control" placeholder="Message" aria-label="Message" (keyup.enter)="send()">
+            <input #messageInput type="text" [(ngModel)]="message" class="form-control" placeholder="Message"
+                   aria-label="Message" (keyup.enter)="send()">
             <div class="input-group-append">
               <button class="btn btn-outline-primary" type="button" (click)="send()">Send</button>
             </div>
           </div>
           <div class="input-group mb-3" *ngIf="!user">
-            <input #username type="text" class="form-control" placeholder="Username" aria-label="Message" (keyup.enter)="loginWithUsername(username.value)">
+            <input #username type="text" class="form-control" placeholder="Username" aria-label="Message"
+                   (keyup.enter)="loginWithUsername(username.value)">
             <div class="input-group-append">
-              <button class="btn btn-outline-primary" type="button" (click)="loginWithUsername(username.value)">Set Username</button>
+              <button class="btn btn-outline-primary" type="button" (click)="loginWithUsername(username.value)">Set
+                Username
+              </button>
             </div>
           </div>
         </div>
