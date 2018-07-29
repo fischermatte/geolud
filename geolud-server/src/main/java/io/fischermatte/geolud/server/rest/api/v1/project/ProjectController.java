@@ -33,19 +33,13 @@ public class ProjectController {
         this.projectRepository = projectRepository;
     }
 
-    @ApiOperation(value = "Info for a specific project", nickname = "getProjectById", notes = "", response = ProjectDto.class, tags = {"project",})
-    @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "Expected response to a valid request", response = ProjectDto.class),
-            @ApiResponse(code = 200, message = "unexpected error", response = ErrorResponseDto.class)})
+    @ApiOperation(value = "Info for a specific project", nickname = "getProjectById", response = ProjectDto.class)
     @GetMapping(value = PROJECT, produces = {APPLICATION_JSON_VALUE})
     public Mono<ProjectDto> getProjectById(@PathVariable String projectId) {
         return projectRepository.findById(projectId).map(this::mapProject);
     }
 
-    @ApiOperation(value = "List all projects", nickname = "getProjects", notes = "", response = ProjectDto.class, responseContainer = "List", tags = {"project",})
-    @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "An paged array of projects", response = ProjectDto.class, responseContainer = "List"),
-            @ApiResponse(code = 200, message = "unexpected error", response = ErrorResponseDto.class)})
+    @ApiOperation(value = "List all projects", nickname = "getProjects", response = ProjectDto.class, responseContainer = "List")
     @GetMapping(value = PROJECTS, produces = {APPLICATION_JSON_VALUE})
     public Flux<ProjectDto> getProjects(@RequestParam(required = false) Integer limit) {
         return projectRepository.findAll().map(this::mapProject);

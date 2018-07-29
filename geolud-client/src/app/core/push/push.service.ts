@@ -14,11 +14,18 @@ export class PushService {
   }
 
   register() {
+
+    // SUBSCRIBE for notifications
+    this.swPush.messages.subscribe(message => {
+      console.log('received message' + JSON.stringify(message));
+    });
+
+    // REGISTER BACKEND
     this.swPush.requestSubscription({
       serverPublicKey: this.VAPID_PUBLIC_KEY
     }).then((subscription: PushSubscription) => {
-      // this.http.post(environment.appConfig.apiBase + '/v1/push', subscription);
-      console.log('registered for push');
+      return this.http.post(environment.appConfig.apiBase + '/v1/push', {}).subscribe(() =>
+        console.log('registered for push'));
     }).catch(err => console.error('Could not subscribe to notifications', err));
   }
 }

@@ -34,6 +34,7 @@
         <awaitility.version>1.7.0</awaitility.version>
         <rxjava.version>2.0.1</rxjava.version>
         <maven-resources-plugin.version>3.1.0</maven-resources-plugin.version>
+        <web-push.version>3.1.1</web-push.version>
     </properties>
 
     <dependencies>
@@ -133,6 +134,11 @@
             <groupId>javax.xml.bind</groupId>
             <artifactId>jaxb-api</artifactId>
             <version>${jaxb-api.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>nl.martijndwars</groupId>
+            <artifactId>web-push</artifactId>
+            <version>${web-push.version}</version>
         </dependency>
 
         <dependency>

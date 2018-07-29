@@ -28,10 +28,7 @@ public class ContactController {
         this.mailService = mailService;
     }
 
-    @ApiOperation(value = "Submit a new contact Request", nickname = "submitContactRequest", notes = "", tags = {"contact",})
-    @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "OK"),
-            @ApiResponse(code = 200, message = "unexpected error", response = ErrorResponseDto.class)})
+    @ApiOperation(value = "Submit a new contact Request", nickname = "submitContactRequest")
     @PostMapping(value = CONTACT, consumes = {APPLICATION_JSON_VALUE})
     @ResponseStatus(CREATED)
     public Mono<Void> submitContactRequest(@Valid @RequestBody ContactRequestDto contactRequest) {
