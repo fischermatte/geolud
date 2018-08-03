@@ -3,7 +3,7 @@ const path = require('path');
 const app = express();
 const BACKEND_HOST = process.env.BACKEND_HOST || 'localhost:8000';
 const BACKEND_IS_SSL = process.env.BACKEND_IS_SSL || false;
-const VAPID_PUPLIC_KEY = process.env.VAPID_PUPLIC_KEY;
+const VAPID_PUPLIC_KEY = process.env.VAPID_PUPLIC_KEY || 'BNIQ6kTA0xRv7p4Hi9jfatnhB40Meo0M_KFfv54rp_GA7ip1uy2KiAT0bfz0CSwY5JjJj6lzcv306wVTf9A3NDU';
 
 app.use(express.static(__dirname + '/app'));
 

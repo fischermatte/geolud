@@ -29,15 +29,8 @@ public class PushSubscriptionController {
     @ApiOperation(value = "Registers a PushSubscription", nickname = "registerPushSubscription")
     @PostMapping(value = PUSH, consumes = {APPLICATION_JSON_VALUE})
     @ResponseStatus(CREATED)
-    public Mono<Void> registerPushSubscription(@Valid @RequestBody PushSubscriptionDto pushSubscription) {
-        return this.repository.save(fromDto(pushSubscription)).then();
+    public Mono<Void> registerPushSubscription(@Valid @RequestBody Subscription subscription) {
+        return this.repository.save(subscription).then();
     }
 
-    private Subscription fromDto(PushSubscriptionDto dto) {
-        Subscription subscription = new Subscription();
-        subscription.keys = subscription.new Keys(dto.p256h, dto.auth);
-        subscription.endpoint = dto.endpoint;
-        return subscription;
-
-    }
 }
