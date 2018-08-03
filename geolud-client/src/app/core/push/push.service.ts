@@ -8,7 +8,6 @@ import {environment} from '../../../environments/environment';
 })
 export class PushService {
 
-  readonly VAPID_PUBLIC_KEY = 'BJRHDqvIYPUP_lqxIyrBgnsz4Shs-jnxVVYJCNKXmtuADgF9MfzpKx3cGnb6vf1wTR6yAm3vwuZyFndqmI0fmp8';
 
   constructor(private swPush: SwPush, private http: HttpClient) {
   }
@@ -22,7 +21,7 @@ export class PushService {
 
     // REGISTER BACKEND
     this.swPush.requestSubscription({
-      serverPublicKey: this.VAPID_PUBLIC_KEY
+      serverPublicKey: environment.appConfig.vapidPulicKey
     }).then((subscription: PushSubscription) => {
       return this.http.post(environment.appConfig.apiBase + '/v1/push', subscription).subscribe(() =>
         console.log('registered for push'));

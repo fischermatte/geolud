@@ -9,11 +9,18 @@ import static com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
 @JsonAutoDetect(
         fieldVisibility = Visibility.ANY
 )
-class ChatMessage {
+public class ChatMessage {
     private String text;
     private ChatUser user;
     private ChatMessageType type;
     private LocalDateTime timestamp;
+
+    public ChatMessage() {
+    }
+
+    public ChatMessage(String text) {
+        this.text = text;
+    }
 
     public void setTimeStamp(LocalDateTime timestamp) {
         this.timestamp = timestamp;

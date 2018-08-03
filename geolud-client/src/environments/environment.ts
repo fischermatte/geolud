@@ -5,8 +5,10 @@
 export const environment = {
   production: false,
   appConfig: {
-    apiBase: null,
-    wsBase: null
+    apiBase: 'http://localhost:8000',
+    wsBase: 'ws://localhost:8000',
+    vapidPulicKey: 'BNIQ6kTA0xRv7p4Hi9jfatnhB40Meo0M_KFfv54rp_GA7ip1uy2KiAT0bfz0CSwY5JjJj6lzcv306wVTf9A3NDU'
+    // vapidPrivateKey: 'rLStymhFTOafB51lbrNRV-BJCpKYrwVNkEsHq_aKy-k'
   } // will be loaded at startup
 };
 

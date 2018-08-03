@@ -3,13 +3,15 @@ const path = require('path');
 const app = express();
 const BACKEND_HOST = process.env.BACKEND_HOST || 'localhost:8000';
 const BACKEND_IS_SSL = process.env.BACKEND_IS_SSL || false;
+const VAPID_PUPLIC_KEY = process.env.VAPID_PUPLIC_KEY;
 
 app.use(express.static(__dirname + '/app'));
 
 app.get('/app-config', function (req, res) {
   res.status(200).json({
     'apiBase': (BACKEND_IS_SSL ? 'https://' : 'http://') + BACKEND_HOST,
-    'wsBase': (BACKEND_IS_SSL ? 'wss://' : 'ws://') + BACKEND_HOST
+    'wsBase': (BACKEND_IS_SSL ? 'wss://' : 'ws://') + BACKEND_HOST,
+    'vapidPulicKey': VAPID_PUPLIC_KEY
   });
 });
 
