@@ -37,6 +37,17 @@ export class ChatComponent implements OnInit, AfterViewChecked {
 
   public togglePush(enablePush): void {
     this.pushEnabled = enablePush;
+    if (enablePush) {
+      this.pushService.register().then(
+        () => this.pushEnabled = true,
+        () => this.pushEnabled = false
+      );
+    } else {
+      this.pushService.unregister().then(
+        () => this.pushEnabled = true,
+        () => this.pushEnabled = false
+      );
+    }
   }
 
   public send() {
