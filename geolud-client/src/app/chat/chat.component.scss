@@ -1,10 +1,16 @@
 @import '../../../node_modules/startbootstrap-freelancer/scss/variables';
+@import '../../../node_modules/bootstrap/scss/_functions.scss';
+@import '../../../node_modules/bootstrap/scss/_variables.scss';
 
 .chat-window {
   height: 500px;
   .card-header {
     line-height: 30px;
     height: 55px;
+    span {
+      font-weight: $font-weight-normal;
+      font-size: $font-size-base;
+    }
   }
   .chat-messages {
     //background-color: $gray-100;

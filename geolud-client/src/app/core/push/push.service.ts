@@ -26,7 +26,7 @@ export class PushService {
     }).then((subscription: PushSubscription) => {
       return this.http.post(environment.appConfig.apiBase + '/v1/push', subscription).subscribe(() =>
         console.log('registered for push'));
-    }).catch(err => console.error('Could not subscribe to notifications', err));
+    });
   }
 
   unregister(): Promise<void> {
