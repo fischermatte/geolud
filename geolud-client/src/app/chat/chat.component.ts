@@ -16,7 +16,7 @@ export class ChatComponent implements OnInit, AfterViewChecked {
   user: ChatUser;
   message: string;
   messages: ChatEntry[];
-  pushEnabled = true;
+  pushEnabled = false;
 
   constructor(private chatService: ChatService, private pushService: PushService) {
   }
@@ -33,6 +33,10 @@ export class ChatComponent implements OnInit, AfterViewChecked {
     if (this.messageInput) {
       this.messageInput.nativeElement.focus();
     }
+  }
+
+  public togglePush(enablePush): void {
+    this.pushEnabled = enablePush;
   }
 
   public send() {

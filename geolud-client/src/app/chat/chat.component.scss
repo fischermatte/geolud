@@ -2,6 +2,10 @@
 
 .chat-window {
   height: 500px;
+  .card-header {
+    line-height: 30px;
+    height: 55px;
+  }
   .chat-messages {
     //background-color: $gray-100;
     overflow-y: auto;

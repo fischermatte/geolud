@@ -9,9 +9,8 @@
       <div class="card chat-window">
         <h5 class="card-header">
           <i class="fa fa-fw fa-comments"></i>
-          <div class="btn-group btn-group-toggle float-right">
-            <ui-switch></ui-switch>
-          </div>
+          <ui-switch class="float-right" (change)="togglePush($event)" [checked]="pushEnabled"></ui-switch>
+          <span class="float-right"> Enable Push:&#160;</span>
         </h5>
         <div #messagesContainer class="card-body chat-messages">
           <div *ngFor="let m of messages" class="chat-message" [ngClass]="{'chat-message-left': m.isFromCurrentUser}">
