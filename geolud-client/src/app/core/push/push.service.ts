@@ -24,7 +24,7 @@ export class PushService {
     this.swPush.requestSubscription({
       serverPublicKey: this.VAPID_PUBLIC_KEY
     }).then((subscription: PushSubscription) => {
-      return this.http.post(environment.appConfig.apiBase + '/v1/push', {}).subscribe(() =>
+      return this.http.post(environment.appConfig.apiBase + '/v1/push', subscription).subscribe(() =>
         console.log('registered for push'));
     }).catch(err => console.error('Could not subscribe to notifications', err));
   }

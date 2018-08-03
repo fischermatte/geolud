@@ -7,7 +7,7 @@ import org.springframework.web.reactive.socket.client.WebSocketClient;
 import java.net.URI;
 import java.time.Duration;
 
-import static io.fischermatte.geolud.server.rest.api.v1.Paths.CHAT;
+import static io.fischermatte.geolud.server.config.ApiPaths.CHAT;
 
 public class WebSocketClientApp {
 

@@ -2,7 +2,7 @@ package io.fischermatte.geolud.server.config;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.fischermatte.geolud.server.domain.chat.ChatMessage;
+import io.fischermatte.geolud.server.chat.ChatMessage;
 import io.reactivex.subjects.ReplaySubject;
 import io.reactivex.subjects.Subject;
 import org.junit.jupiter.api.Disabled;
@@ -25,7 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.jayway.awaitility.Awaitility.await;
-import static io.fischermatte.geolud.server.rest.api.v1.Paths.CHAT;
+import static io.fischermatte.geolud.server.config.ApiPaths.CHAT;
 import static io.reactivex.BackpressureStrategy.LATEST;
 import static java.util.concurrent.TimeUnit.SECONDS;
 import static org.junit.jupiter.api.Assertions.fail;

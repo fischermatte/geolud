@@ -1,6 +1,7 @@
 package io.fischermatte.geolud.server.config;
 
-import io.fischermatte.geolud.server.config.chat.ChatWebSocketHandler;
+import io.fischermatte.geolud.server.chat.ChatWebSocketHandler;
+import io.fischermatte.geolud.server.infrastructure.DataInitializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
@@ -20,7 +21,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.Executor;
 
-import static io.fischermatte.geolud.server.rest.api.v1.Paths.CHAT;
+import static io.fischermatte.geolud.server.config.ApiPaths.CHAT;
 
 @EnableAsync
 @Configuration
