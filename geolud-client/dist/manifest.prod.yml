@@ -5,6 +5,8 @@ applications:
   instances: 1
   buildpack: https://github.com/cloudfoundry/nodejs-buildpack.git#v1.6.28
   memory: 30m
+  services:
+  - geolud-push
   routes:
   - route: geolud.mybluemix.net
   - route: geolud-ui.mybluemix.net
