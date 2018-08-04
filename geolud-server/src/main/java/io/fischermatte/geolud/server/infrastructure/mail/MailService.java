@@ -1,5 +1,7 @@
 package io.fischermatte.geolud.server.infrastructure.mail;
 
+import io.fischermatte.geolud.server.config.ApplicationConfig;
+import io.fischermatte.geolud.server.config.ApplicationConfig.MailProperties;
 import org.apache.commons.lang.CharEncoding;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,7 +19,7 @@ public class MailService {
     private static final Logger LOG = LoggerFactory.getLogger(MailService.class);
 
     private final JavaMailSender javaMailSender;
-    private final MailProperties mailProperties;
+    private final ApplicationConfig.MailProperties mailProperties;
     private final ApplicationContext ctx;
 
     public MailService(JavaMailSender javaMailSender, MailProperties mailProperties, ApplicationContext ctx) {
