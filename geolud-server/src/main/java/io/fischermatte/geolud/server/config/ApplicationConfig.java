@@ -2,6 +2,8 @@ package io.fischermatte.geolud.server.config;
 
 import io.fischermatte.geolud.server.chat.ChatWebSocketHandler;
 import io.fischermatte.geolud.server.infrastructure.DataInitializer;
+import nl.martijndwars.webpush.PushService;
+import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -21,6 +23,8 @@ import org.springframework.web.reactive.socket.server.support.WebSocketHandlerAd
 import javax.annotation.PostConstruct;
 import javax.validation.constraints.NotNull;
 import java.io.IOException;
+import java.security.GeneralSecurityException;
+import java.security.Security;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.Executor;
@@ -32,8 +36,11 @@ import static io.fischermatte.geolud.server.config.ApiPaths.CHAT;
 public class ApplicationConfig {
     private static final Logger LOG = LoggerFactory.getLogger(ApplicationConfig.class);
 
+    static {
+        // needed for PushService
+        Security.addProvider(new BouncyCastleProvider());
+    }
     private final DataInitializer dataInitializer;
-
 
     public ApplicationConfig(DataInitializer dataInitializer) {
         this.dataInitializer = dataInitializer;
@@ -78,6 +85,11 @@ public class ApplicationConfig {
     @Bean
     public WebSocketHandlerAdapter handlerAdapter() {
         return new WebSocketHandlerAdapter();
+    }
+
+    @Bean
+    public PushService pushService(PushProperties pushProperties) throws GeneralSecurityException {
+        return new PushService(pushProperties.getVapidPublicKey(), pushProperties.getVapidPrivateKey(), "a-subject");
     }
 
     @Validated

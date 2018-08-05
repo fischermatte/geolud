@@ -1,4 +1,4 @@
-package io.fischermatte.geolud.server.push.repository;
+package io.fischermatte.geolud.server.notification.repository;
 
 import nl.martijndwars.webpush.Subscription;
 import org.springframework.data.mongodb.repository.ReactiveMongoRepository;

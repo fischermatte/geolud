@@ -4,7 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.fischermatte.geolud.server.config.ApplicationConfig;
 import io.fischermatte.geolud.server.infrastructure.mail.MailService;
-import io.fischermatte.geolud.server.push.PushNotificationService;
+import io.fischermatte.geolud.server.notification.NotificationService;
 import io.reactivex.subjects.ReplaySubject;
 import io.reactivex.subjects.Subject;
 import org.slf4j.Logger;
@@ -28,11 +28,11 @@ public class ChatWebSocketHandler implements WebSocketHandler {
 
     private final ObjectMapper objectMapper;
     private final MailService mailService;
-    private final PushNotificationService notificationService;
+    private final NotificationService notificationService;
     private LocalDateTime lastChatNotificationEmail;
     private Subject<String> subject;
 
-    public ChatWebSocketHandler(ObjectMapper objectMapper, MailService mailService, PushNotificationService notificationService) {
+    public ChatWebSocketHandler(ObjectMapper objectMapper, MailService mailService, NotificationService notificationService) {
         this.objectMapper = objectMapper;
         this.mailService = mailService;
         this.notificationService = notificationService;
@@ -75,7 +75,7 @@ public class ChatWebSocketHandler implements WebSocketHandler {
         LocalDateTime now = LocalDateTime.now();
         if (lastChatNotificationEmail == null || this.lastChatNotificationEmail.isBefore(now.minusHours(1))) {
             mailService.sendEmail("GEOLUD-SITE: Chat actions from user " + message.getUser().getName(), message.toString());
-            notificationService.pushNotification(message);
+            notificationService.sendNotification(message);
         }
         lastChatNotificationEmail = LocalDateTime.now();
     }

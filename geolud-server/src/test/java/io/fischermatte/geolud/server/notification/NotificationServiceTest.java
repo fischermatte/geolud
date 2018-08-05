@@ -1,4 +1,4 @@
-package io.fischermatte.geolud.server.push;
+package io.fischermatte.geolud.server.notification;
 
 import io.fischermatte.geolud.server.chat.ChatMessage;
 import org.junit.jupiter.api.Test;
@@ -9,14 +9,14 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 @SpringBootTest
 @ExtendWith(SpringExtension.class)
-class PushNotificationServiceTest {
+class NotificationServiceTest {
 
     @Autowired
-    private PushNotificationService notificationService;
+    private NotificationService notificationService;
 
     @Test
     void pushNotification() {
         ChatMessage chatMessage = new ChatMessage("huhu");
-        notificationService.pushNotification(chatMessage);
+        notificationService.sendNotification(chatMessage);
     }
 }

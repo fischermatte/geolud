@@ -1,6 +1,6 @@
-package io.fischermatte.geolud.server.push;
+package io.fischermatte.geolud.server.notification;
 
-import io.fischermatte.geolud.server.push.repository.PushSubscriptionRepository;
+import io.fischermatte.geolud.server.notification.repository.PushSubscriptionRepository;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import nl.martijndwars.webpush.Subscription;
