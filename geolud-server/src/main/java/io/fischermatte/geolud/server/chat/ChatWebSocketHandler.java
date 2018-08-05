@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.fischermatte.geolud.server.config.ApplicationConfig;
 import io.fischermatte.geolud.server.infrastructure.mail.MailService;
+import io.fischermatte.geolud.server.push.PushNotificationService;
 import io.reactivex.subjects.ReplaySubject;
 import io.reactivex.subjects.Subject;
 import org.slf4j.Logger;
@@ -27,12 +28,14 @@ public class ChatWebSocketHandler implements WebSocketHandler {
 
     private final ObjectMapper objectMapper;
     private final MailService mailService;
+    private final PushNotificationService notificationService;
     private LocalDateTime lastChatNotificationEmail;
     private Subject<String> subject;
 
-    public ChatWebSocketHandler(ObjectMapper objectMapper, MailService mailService) {
+    public ChatWebSocketHandler(ObjectMapper objectMapper, MailService mailService, PushNotificationService notificationService) {
         this.objectMapper = objectMapper;
         this.mailService = mailService;
+        this.notificationService = notificationService;
         this.subject = ReplaySubject.createWithTimeAndSize(2, TimeUnit.MINUTES, single(), 10);
     }
 
@@ -41,8 +44,8 @@ public class ChatWebSocketHandler implements WebSocketHandler {
         // 1/2: broadcast incoming messages by sending it to the observer (subject)
         session.receive()
                 .map(WebSocketMessage::getPayloadAsText)
-                .doOnNext(this::notifyChatAction)
                 .map(this::fromJson)
+                .doOnNext(this::notifyChatAction)
                 .subscribe(chatMessage -> {
                     chatMessage.setTimeStamp(LocalDateTime.now());
                     subject.onNext(toJson(chatMessage));
@@ -67,11 +70,12 @@ public class ChatWebSocketHandler implements WebSocketHandler {
         }
     }
 
-    private void notifyChatAction(String message) {
+    private void notifyChatAction(ChatMessage message) {
         LOG.info("chat action going on: " + message);
         LocalDateTime now = LocalDateTime.now();
         if (lastChatNotificationEmail == null || this.lastChatNotificationEmail.isBefore(now.minusHours(1))) {
-            mailService.sendEmail("GEOLUD-SITE: Chat actions going on ...", message);
+            mailService.sendEmail("GEOLUD-SITE: Chat actions from user " + message.getUser().getName(), message.toString());
+            notificationService.pushNotification(message);
         }
         lastChatNotificationEmail = LocalDateTime.now();
     }

@@ -1,9 +1,5 @@
 package io.fischermatte.geolud.server.project.repository;
 
-import io.fischermatte.geolud.server.project.repository.Customer;
-import io.fischermatte.geolud.server.project.repository.Interval;
-import io.fischermatte.geolud.server.project.repository.Project;
-import io.fischermatte.geolud.server.project.repository.ProjectRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
