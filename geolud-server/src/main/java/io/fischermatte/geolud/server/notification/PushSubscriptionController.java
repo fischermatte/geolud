@@ -1,5 +1,6 @@
 package io.fischermatte.geolud.server.notification;
 
+import io.fischermatte.geolud.server.notification.repository.PushSubscription;
 import io.fischermatte.geolud.server.notification.repository.PushSubscriptionRepository;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -30,7 +31,7 @@ public class PushSubscriptionController {
     @PostMapping(value = PUSH, consumes = {APPLICATION_JSON_VALUE})
     @ResponseStatus(CREATED)
     public Mono<Void> registerPushSubscription(@Valid @RequestBody Subscription subscription) {
-        return this.repository.save(subscription).then();
+        return this.repository.save(PushSubscription.create(subscription)).then();
     }
 
 }
