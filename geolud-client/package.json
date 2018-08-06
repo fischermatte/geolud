@@ -11,6 +11,8 @@
     "build:source-map": "ng build -c production --source-map",
     "postbuild": "node zip-dist.js",
     "test": "ng test --browsers PhantomJS --watch=false",
+    "test:chrome": "ng test --browsers Chrome --watch=false",
+    "test:karma": "ng test --karma-config karma.conf.js",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "update-webdriver": "node node_modules/protractor/bin/webdriver-manager update"
