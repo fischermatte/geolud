@@ -45,7 +45,7 @@ class ChatWebSocketTest {
     @Disabled
     @Test
     void test() throws InterruptedException {
-        // create a list and wait
+        // fromSuscription a list and wait
         List<ChatMessage> messages = new ArrayList<>();
         ReplaySubject<ChatMessage> publisher = ReplaySubject.create();
 

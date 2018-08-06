@@ -4,6 +4,19 @@ import {HttpClient} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
 import {Subscription} from 'rxjs';
 
+class PushRegistration {
+  endpoint: string;
+  p256dh: string;
+  auth: string;
+
+  constructor(pushSubscription: PushSubscription) {
+    this.endpoint = pushSubscription.endpoint;
+    const json: any = pushSubscription.toJSON();
+    this.p256dh = json.keys.p256dh;
+    this.auth = json.keys.auth;
+  }
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -24,7 +37,7 @@ export class PushService {
     return this.swPush.requestSubscription({
       serverPublicKey: environment.appConfig.vapidPulicKey
     }).then((subscription: PushSubscription) => {
-      return this.http.post(environment.appConfig.apiBase + '/v1/push', subscription).subscribe(() =>
+      return this.http.post(environment.appConfig.apiBase + '/v1/push', new PushRegistration(subscription)).subscribe(() =>
         console.log('registered for push'));
     });
   }

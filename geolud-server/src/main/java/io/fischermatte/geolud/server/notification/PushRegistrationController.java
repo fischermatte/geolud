@@ -1,10 +1,9 @@
 package io.fischermatte.geolud.server.notification;
 
-import io.fischermatte.geolud.server.notification.repository.PushSubscription;
-import io.fischermatte.geolud.server.notification.repository.PushSubscriptionRepository;
+import io.fischermatte.geolud.server.notification.repository.PushRegistration;
+import io.fischermatte.geolud.server.notification.repository.PushRegistrationRepository;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import nl.martijndwars.webpush.Subscription;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -19,19 +18,19 @@ import static org.springframework.util.MimeTypeUtils.APPLICATION_JSON_VALUE;
 
 @Api(value = "push", description = "registers a client for push notifications")
 @RestController
-public class PushSubscriptionController {
+public class PushRegistrationController {
 
-    private final PushSubscriptionRepository repository;
+    private final PushRegistrationRepository repository;
 
-    public PushSubscriptionController(PushSubscriptionRepository repository) {
+    public PushRegistrationController(PushRegistrationRepository repository) {
         this.repository = repository;
     }
 
-    @ApiOperation(value = "Registers a PushSubscription", nickname = "registerPushSubscription")
+    @ApiOperation(value = "Registers a client for push notification", nickname = "registerPush")
     @PostMapping(value = PUSH, consumes = {APPLICATION_JSON_VALUE})
     @ResponseStatus(CREATED)
-    public Mono<Void> registerPushSubscription(@Valid @RequestBody Subscription subscription) {
-        return this.repository.save(PushSubscription.create(subscription)).then();
+    public Mono<Void> registerPush(@Valid @RequestBody PushRegistration registration) {
+        return this.repository.save(registration).then();
     }
 
 }

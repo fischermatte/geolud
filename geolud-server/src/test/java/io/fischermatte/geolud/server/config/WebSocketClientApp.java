@@ -25,7 +25,7 @@ public class WebSocketClientApp {
 //    public static void main(String[] args) {
 //        ReactorNettyWebSocketClient client = new ReactorNettyWebSocketClient();
 //        client.execute(
-//                URI.create("ws://localhost:8080" + CHAT),
+//                URI.fromSuscription("ws://localhost:8080" + CHAT),
 //                session -> session.receive()
 //                        .take(1)
 //                        .map(WebSocketMessage::getPayloadAsText)

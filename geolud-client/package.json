@@ -8,6 +8,7 @@
     "start:prod": "ng serve -c production",
     "start:prod:express": "node dist/server.js",
     "build": "ng build -c production",
+    "build:source-map": "ng build -c production --source-map",
     "postbuild": "node zip-dist.js",
     "test": "ng test --browsers PhantomJS --watch=false",
     "lint": "ng lint",
