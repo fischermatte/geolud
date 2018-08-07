@@ -14,7 +14,12 @@ describe('ChatComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ChatComponent],
-      imports: [FormsModule, HttpClientModule, ToastrModule.forRoot(), UiSwitchModule, ServiceWorkerModule.register('/ngsw-worker.js', {enabled: false})]
+      imports: [FormsModule, 
+                HttpClientModule, 
+                ToastrModule.forRoot(), 
+                UiSwitchModule, 
+                ServiceWorkerModule.register('/ngsw-worker.js', 
+                                             {enabled: false})]
     })
       .compileComponents();
   }));
