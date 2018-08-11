@@ -44,13 +44,13 @@ export class ChatComponent implements OnInit, AfterViewChecked {
   }
 
   public togglePush(checked: boolean): void {
-    setTimeout(() => {
+    // setTimeout(() => {
       if (checked) {
         this.enablePush();
       } else {
         this.disablePush();
       }
-    });
+    // });
   }
 
   private enablePush(): Promise<void> {
