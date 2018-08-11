@@ -22,7 +22,6 @@ class PushRegistration {
 })
 export class PushService {
 
-
   constructor(private swPush: SwPush, private http: HttpClient) {
   }
 

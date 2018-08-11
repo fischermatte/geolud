@@ -17,7 +17,6 @@ describe('ChatComponent', () => {
       imports: [FormsModule,
         HttpClientModule,
         ToastrModule.forRoot(),
-        UiSwitchModule,
         ServiceWorkerModule.register('/ngsw-worker.js',
           {enabled: false})]
     })
