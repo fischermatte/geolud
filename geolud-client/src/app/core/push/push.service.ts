@@ -44,7 +44,7 @@ export class PushService {
 
   unregister(): Promise<void> {
     // TODO
-    return null;
+    return Promise.resolve();
 
   }
 }

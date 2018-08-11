@@ -18,7 +18,6 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AppConfigService} from './app-config.service';
 import {ServiceWorkerModule} from '@angular/service-worker';
 import {environment} from '../environments/environment';
-import {UiSwitchModule} from 'ngx-ui-switch';
 
 export function loadConfig(appConfigService: AppConfigService) {
   return () => appConfigService.loadConfig();
@@ -45,7 +44,6 @@ export function loadConfig(appConfigService: AppConfigService) {
     HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    UiSwitchModule,
     ServiceWorkerModule.register('/ngsw-worker.js', {enabled: environment.production})
   ],
   providers: [

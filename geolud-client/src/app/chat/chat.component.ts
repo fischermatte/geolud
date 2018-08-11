@@ -16,7 +16,7 @@ export class ChatComponent implements OnInit, AfterViewChecked {
   user: ChatUser;
   message: string;
   messages: ChatEntry[];
-  pushEnabled = false;
+  private _pushEnabled = false;
 
   constructor(private chatService: ChatService, private pushService: PushService) {
   }
@@ -25,7 +25,15 @@ export class ChatComponent implements OnInit, AfterViewChecked {
     this.chatService.getUser().subscribe(user => this.user = user);
     this.messages = this.chatService.getMessages();
     this.scrollToBottom();
-    // this.pushService.register();
+  }
+
+  get pushEnabled(): boolean {
+    return this._pushEnabled;
+  }
+
+  set pushEnabled(value: boolean) {
+    console.log(`push state uppdated to: ${value}`);
+    this._pushEnabled = value;
   }
 
   ngAfterViewChecked(): void {
@@ -35,12 +43,14 @@ export class ChatComponent implements OnInit, AfterViewChecked {
     }
   }
 
-  public togglePush(enablePush): void {
-    if (enablePush) {
-      this.enablePush();
-    } else {
-      this.disablePush();
-    }
+  public togglePush(checked: boolean): void {
+    setTimeout(() => {
+      if (checked) {
+        this.enablePush();
+      } else {
+        this.disablePush();
+      }
+    });
   }
 
   private enablePush(): Promise<void> {
@@ -64,6 +74,7 @@ export class ChatComponent implements OnInit, AfterViewChecked {
       }
     );
   }
+
 
   public send() {
     if (this.message) {

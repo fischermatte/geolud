@@ -9,9 +9,9 @@
       <div class="card chat-window">
         <h5 class="card-header">
           <i class="fa fa-fw fa-comments"></i>
-          <span class="float-right">
-          Enable Push Notifications:&#160;
-          <ui-switch (change)="togglePush($event)" [(ngModel)]="pushEnabled"></ui-switch>
+          <span class="float-right switch">
+              <input id="enable-push" type="checkbox" class="switch" (change)="togglePush($event.target.value)" [(ngModel)]="pushEnabled">
+              <label for="enable-push">Enable Push Notifications:&#160; {{pushEnabled}}</label>
           </span>
         </h5>
         <div #messagesContainer class="card-body chat-messages">
