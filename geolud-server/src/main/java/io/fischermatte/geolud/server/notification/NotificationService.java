@@ -51,6 +51,10 @@ public class NotificationService {
         }
     }
 
+    private NotificationPayload toNotificationPayload(ChatMessage chatMessage) {
+
+    }
+
     private String toJson(ChatMessage message) {
         try {
             return objectMapper.writeValueAsString(message);
