@@ -54,18 +54,3 @@ public class ChatMessage {
     }
 }
 
-enum ChatMessageType {
-    LOGIN, CHAT
-}
-
-@JsonAutoDetect(
-        fieldVisibility = Visibility.ANY
-)
-class ChatUser {
-    private String name;
-    private String id;
-
-    public String getName() {
-        return name;
-    }
-}

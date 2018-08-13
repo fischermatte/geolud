@@ -28,7 +28,7 @@ public class ContactController {
     @ApiOperation(value = "Submit a new contact Request", nickname = "submitContactRequest")
     @PostMapping(value = CONTACT, consumes = {APPLICATION_JSON_VALUE})
     @ResponseStatus(CREATED)
-    public Mono<Void> submitContactRequest(@Valid @RequestBody ContactRequestDto contactRequest) {
+    public Mono<Void> submitContactRequest(@Valid @RequestBody ContactRequest contactRequest) {
         mailService.sendEmail("GEOLUD-SITE: Contact Request", contactRequest.getMessage(), contactRequest.getEmail());
         return Mono.empty();
     }

@@ -146,7 +146,6 @@
             <artifactId>web-push</artifactId>
             <version>${web-push.version}</version>
         </dependency>
-
         <dependency>
             <groupId>de.flapdoodle.embed</groupId>
             <artifactId>de.flapdoodle.embed.mongo</artifactId>

@@ -42,30 +42,33 @@ public class NotificationService {
 
     private Mono<Void> sendNotification(PushRegistration subscription, ChatMessage message) {
         try {
-            Notification notification = new Notification(toWebPushSubscription(subscription), toJson(message));
+            Notification notification = new Notification(toSubscription(subscription), toPayload(message));
             Future<HttpResponse> future = pushService.sendAsync(notification);
             return completableToMono(Completable.fromFuture(future));
         } catch (GeneralSecurityException | IOException | JoseException e) {
-            LOG.error("failed to send notification",  e);
+            LOG.error("failed to send notification", e);
             return Mono.empty();
         }
     }
 
-    private NotificationPayload toNotificationPayload(ChatMessage chatMessage) {
-
+    private String toPayload(ChatMessage chatMessage) {
+        return toJson(new NgSwNotificationPayload().withNotification((NgSwNotification) new NgSwNotification()
+                .withTitle(chatMessage.getUser().getName())
+                .withBody(chatMessage.getText())
+        ));
     }
 
-    private String toJson(ChatMessage message) {
+    private String toJson(Object value) {
         try {
-            return objectMapper.writeValueAsString(message);
+            return objectMapper.writeValueAsString(value);
         } catch (JsonProcessingException e) {
             throw new IllegalStateException("failed to write json");
         }
     }
 
-    private static Subscription toWebPushSubscription(PushRegistration pushRegistration) {
+    private static Subscription toSubscription(PushRegistration pushRegistration) {
         Subscription s = new Subscription();
-        s.endpoint  = pushRegistration.getEndpoint();
+        s.endpoint = pushRegistration.getEndpoint();
         s.keys = s.new Keys(pushRegistration.getP256dh(), pushRegistration.getAuth());
         return s;
     }

@@ -1,6 +1,6 @@
 package io.fischermatte.geolud.server.project;
 
-import io.fischermatte.geolud.server.project.ProjectDto;
+import io.fischermatte.geolud.server.project.repository.Project;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +26,7 @@ class ProjectControllerTest {
                 .exchange()
                 .expectStatus().isOk()
                 .expectHeader().contentType(APPLICATION_JSON_UTF8)
-                .expectBodyList(ProjectDto.class)
+                .expectBodyList(Project.class)
                 .hasSize(24);
     }
 

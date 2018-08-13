@@ -8,14 +8,14 @@ import javax.validation.constraints.NotNull;
  * ContactRequestDto
  */
 @Validated
-public class ContactRequestDto {
+public class ContactRequest {
     private String name = null;
 
     private String email = null;
 
     private String message = null;
 
-    public ContactRequestDto name(String name) {
+    public ContactRequest name(String name) {
         this.name = name;
         return this;
     }
@@ -33,7 +33,7 @@ public class ContactRequestDto {
         this.name = name;
     }
 
-    public ContactRequestDto email(String email) {
+    public ContactRequest email(String email) {
         this.email = email;
         return this;
     }
@@ -52,7 +52,7 @@ public class ContactRequestDto {
         this.email = email;
     }
 
-    public ContactRequestDto message(String message) {
+    public ContactRequest message(String message) {
         this.message = message;
         return this;
     }

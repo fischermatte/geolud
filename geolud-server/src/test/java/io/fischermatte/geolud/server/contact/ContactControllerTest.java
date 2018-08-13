@@ -21,7 +21,7 @@ class ContactControllerTest {
 
     @Test
     void submitContactRequest() {
-        ContactRequestDto contactRequest = new ContactRequestDto();
+        ContactRequest contactRequest = new ContactRequest();
         contactRequest.setEmail("test@test.de");
         contactRequest.setName("John Do");
         contactRequest.setMessage("get in touch with me");
@@ -30,7 +30,7 @@ class ContactControllerTest {
                 .uri(CONTACT)
                 .contentType(APPLICATION_JSON_UTF8)
                 .accept(APPLICATION_JSON_UTF8)
-                .body(Mono.just(contactRequest), ContactRequestDto.class)
+                .body(Mono.just(contactRequest), ContactRequest.class)
                 .exchange()
                 .expectStatus().isCreated();
     }
