@@ -49,7 +49,7 @@ export class ChatComponent implements OnInit, AfterViewChecked {
     return this.pushService.register().then( () => {
         this.pushEnabled = true;
       },
-      (error) => {
+      error => {
         this.pushEnabled = false;
         console.log(error);
         this.alertService.addError('Failed to enable push notifications');
@@ -62,7 +62,8 @@ export class ChatComponent implements OnInit, AfterViewChecked {
       () => {
         this.pushEnabled = false;
       },
-      () => {
+      error => {
+        console.log(error);
         this.pushEnabled = true;
       }
     );

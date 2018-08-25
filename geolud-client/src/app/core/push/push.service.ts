@@ -42,8 +42,8 @@ export class PushService {
   }
 
   unregister(): Promise<void> {
-    // TODO
-    return Promise.resolve();
-
+    return this.swPush.unsubscribe().then(() => {
+      console.log('unregistered from push');
+    });
   }
 }
