@@ -37,7 +37,7 @@ public class NotificationService {
     }
 
     public void sendNotification(ChatMessage message) {
-        LOG.debug("active subscriptions: {}", subscriptionRepository.count().block());
+        subscriptionRepository.count().subscribe(count -> LOG.debug("active subscriptions: {}", count));
         LOG.debug("sending notification for chat message \"{}\" to all subscribers", message.getText());
         subscriptionRepository.findAll().subscribe(subscription -> sendNotification(subscription, message));
     }

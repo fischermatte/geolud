@@ -9,7 +9,7 @@
           <div class="card-header">
               <i class="fa fa-fw fa-comments"></i>
                 <div class="float-right custom-control custom-checkbox">
-                  <input class="custom-control-input" id="enable-push" type="checkbox" (change)="togglePush($event.target.value)" [(ngModel)]="pushEnabled">
+                  <input class="custom-control-input" id="enable-push" type="checkbox" (change)="togglePush($event.target.checked)" [(ngModel)]="pushEnabled">
                   <label class="custom-control-label" for="enable-push">Enable Push</label>
                 </div>
           </div>
