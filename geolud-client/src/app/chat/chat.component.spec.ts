@@ -3,7 +3,6 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {ChatComponent} from './chat.component';
 import {FormsModule} from '@angular/forms';
 import {ToastrModule} from 'ngx-toastr';
-import {UiSwitchModule} from 'ngx-ui-switch';
 import {ServiceWorkerModule} from '@angular/service-worker';
 import {HttpClientModule} from '@angular/common/http';
 

@@ -3,7 +3,7 @@
   "short_name": "Georg Ludewig",
   "description" : "Georg Ludewig - Software Engineer in Bern, Switzerland",
   "orientation" : "any",
-  "start_url" : "https://geolud.mybluemix.net/home",
+  "start_url" : "https://dev-geolud.mybluemix.net/home",
   "theme_color" : "transparent",
   "background_color" : "transparent",
   "display" : "standalone",
