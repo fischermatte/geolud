@@ -37,10 +37,13 @@ public class NotificationService {
     }
 
     public void sendNotification(ChatMessage message) {
+        LOG.debug("active subscriptions: {}", subscriptionRepository.count().block());
+        LOG.debug("sending notification for chat message \"{}\" to all subscribers", message.getText());
         subscriptionRepository.findAll().subscribe(subscription -> sendNotification(subscription, message));
     }
 
     private Mono<Void> sendNotification(PushRegistration subscription, ChatMessage message) {
+        LOG.debug("sending notification \"{}\" to subscriber {}", message.getText(), subscription.getId());
         try {
             Notification notification = new Notification(toSubscription(subscription), toPayload(message));
             Future<HttpResponse> future = pushService.sendAsync(notification);
