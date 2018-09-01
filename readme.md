@@ -10,7 +10,7 @@ My personal 'cloud-native' homepage as a progressive web app. Totally over-engin
 - Spring: Boot 2 / Cloud / Data / Reactive (Mongo, Websockets, WebFlux)
 - Angular 6
 - Bootstrap 4 
-- Service Worker (@angular/pwa)
+- Service Worker (@angular/pwa) with Push Notifications
 - MongoDB
 - Websocket (for Chat)
 
