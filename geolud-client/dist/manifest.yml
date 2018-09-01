@@ -4,7 +4,7 @@ applications:
 - name: dev-geolud-client
   instances: 1
   buildpacks:
-    - https://github.com/cloudfoundry/nodejs-buildpack.git#v1.6.28
+    - https://github.com/cloudfoundry/nodejs-buildpack.git#v1.6.31
   memory: 30m
   services:
   - geolud-push
