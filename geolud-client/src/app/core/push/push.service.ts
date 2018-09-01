@@ -22,7 +22,7 @@ class PushRegistration {
 })
 export class PushService {
 
-  private endpoint:string;
+  private endpoint: string;
 
   constructor(private swPush: SwPush, private http: HttpClient) {
     this.endpoint = environment.appConfig.apiBase + '/v1/push';
