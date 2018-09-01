@@ -7,11 +7,15 @@
 
 My personal 'cloud-native' homepage as a progressive web app. Totally over-engineered using the following technology stack:
 
-- Spring: Boot 2 / Cloud / Data / Reactive (Mongo, Websockets, WebFlux)
+### geolud-server (backend)
+- Java
+- Spring: Boot / Cloud / Data / Reactive (Mongo, Websockets, WebFlux)
+- MongoDB
+
+### geolud-client (frontend)
 - Angular 6
 - Bootstrap 4 
-- Service Worker (@angular/pwa) with Push Notifications
-- MongoDB
+- Service Worker with Push Notifications (@angular/pwa)
 - Websocket (for Chat)
 
 ## How to run it locally?
