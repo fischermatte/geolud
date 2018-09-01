@@ -15,4 +15,8 @@ public class NgSwNotification extends NotificationOptions {
         this.title = title;
         return this;
     }
+
+    public String getTitle() {
+        return title;
+    }
 }

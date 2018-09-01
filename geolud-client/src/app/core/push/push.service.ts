@@ -22,7 +22,10 @@ class PushRegistration {
 })
 export class PushService {
 
+  private endpoint:string;
+
   constructor(private swPush: SwPush, private http: HttpClient) {
+    this.endpoint = environment.appConfig.apiBase + '/v1/push';
   }
 
   register(): Promise<void | Subscription> {
@@ -36,7 +39,8 @@ export class PushService {
     return this.swPush.requestSubscription({
       serverPublicKey: environment.appConfig.vapidPulicKey
     }).then((subscription: PushSubscription) => {
-      return this.http.post(environment.appConfig.apiBase + '/v1/push', new PushRegistration(subscription)).subscribe(() =>
+      console.log('register for push at ' + this.endpoint);
+      return this.http.post(this.endpoint, new PushRegistration(subscription)).subscribe(() =>
         console.log('registered for push'));
     });
   }

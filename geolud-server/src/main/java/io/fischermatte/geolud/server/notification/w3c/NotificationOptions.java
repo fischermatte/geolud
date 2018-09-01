@@ -89,4 +89,60 @@ public class NotificationOptions {
         this.vibrate = vibrate;
         return this;
     }
+
+    public NotificationAction[] getActions() {
+        return actions;
+    }
+
+    public String getBadge() {
+        return badge;
+    }
+
+    public String getBody() {
+        return body;
+    }
+
+    public Object getData() {
+        return data;
+    }
+
+    public NotificationDirection getNotificationDirection() {
+        return notificationDirection;
+    }
+
+    public String getIcon() {
+        return icon;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public String getLang() {
+        return lang;
+    }
+
+    public Boolean getRenotify() {
+        return renotify;
+    }
+
+    public Boolean getRequireInteraction() {
+        return requireInteraction;
+    }
+
+    public Boolean getSilent() {
+        return silent;
+    }
+
+    public String getTag() {
+        return tag;
+    }
+
+    public Integer getTimestamp() {
+        return timestamp;
+    }
+
+    public Integer[] getVibrate() {
+        return vibrate;
+    }
 }

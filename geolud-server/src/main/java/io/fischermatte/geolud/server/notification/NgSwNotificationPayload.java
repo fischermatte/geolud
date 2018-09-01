@@ -8,4 +8,8 @@ public class NgSwNotificationPayload {
         this.notification = notification;
         return this;
     }
+
+    public NgSwNotification getNotification() {
+        return notification;
+    }
 }
