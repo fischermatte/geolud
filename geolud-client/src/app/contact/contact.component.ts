@@ -1,9 +1,9 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Title} from '@angular/platform-browser';
-import {ContactRequest} from '../../generated-api/model/contactRequest';
 import {environment} from '../../environments/environment';
 import {AlertService} from '../core/alert/alert.service';
+import {ContactRequest} from '../api/contact';
 
 @Component({
   selector: 'app-contact',

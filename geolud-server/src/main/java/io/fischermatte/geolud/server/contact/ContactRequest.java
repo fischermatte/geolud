@@ -4,9 +4,6 @@ import org.springframework.validation.annotation.Validated;
 
 import javax.validation.constraints.NotNull;
 
-/**
- * ContactRequestDto
- */
 @Validated
 public class ContactRequest {
     private String name = null;
@@ -20,11 +17,6 @@ public class ContactRequest {
         return this;
     }
 
-    /**
-     * Get name
-     *
-     * @return name
-     **/
     public String getName() {
         return name;
     }
@@ -38,11 +30,6 @@ public class ContactRequest {
         return this;
     }
 
-    /**
-     * Get email
-     *
-     * @return email
-     **/
     @NotNull
     public String getEmail() {
         return email;
@@ -57,11 +44,6 @@ public class ContactRequest {
         return this;
     }
 
-    /**
-     * Get message
-     *
-     * @return message
-     **/
     @NotNull
     public String getMessage() {
         return message;

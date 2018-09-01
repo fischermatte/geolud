@@ -3,8 +3,9 @@ import {webSocket, WebSocketSubject} from 'rxjs/webSocket';
 import {environment} from '../../environments/environment';
 import {Observable} from 'rxjs/Observable';
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
-import {ChatEntry, ChatMessage, ChatMessageType, ChatUser} from './chat.model';
 import {AlertService} from '../core/alert/alert.service';
+import {ChatMessage, ChatMessageType, ChatUser} from '../api/chat';
+import {ChatMessageItem} from './chat.model';
 
 
 @Injectable({
@@ -15,12 +16,28 @@ export class ChatService {
   private userSubject: BehaviorSubject<ChatUser> = new BehaviorSubject(null);
   private webSocketSubject: WebSocketSubject<ChatMessage>; // lazy init since it connects to websocket
   private currentUser: ChatUser;
-  private messages: ChatEntry[] = [];
+  private messageCallback: (message: ChatMessageItem) => void;
 
   constructor(private alertService: AlertService) {
     this.userSubject.subscribe(user => {
       this.handleUserLogin(user);
     });
+  }
+
+  getUser(): Observable<ChatUser> {
+    return this.userSubject;
+  }
+
+  send(message: ChatMessage) {
+    this.getWebSocketSubject().next(message);
+  }
+
+  login(user: ChatUser) {
+    this.userSubject.next(user);
+  }
+
+  onMessage(messageCallback: (message: ChatMessageItem) => void) {
+    this.messageCallback = messageCallback;
   }
 
   private handleUserLogin(user: ChatUser): void {
@@ -41,24 +58,10 @@ export class ChatService {
         isLogin: message.type === ChatMessageType.LOGIN
       };
     }).subscribe(
-      entry => this.messages.push(entry),
+      entry => {
+        this.messageCallback(entry);
+      },
       error => this.alertService.addError('Websocket Issue', error));
-  }
-
-  public getMessages(): ChatEntry [] {
-    return this.messages;
-  }
-
-  getUser(): Observable<ChatUser> {
-    return this.userSubject;
-  }
-
-  public send(message: ChatMessage) {
-    this.getWebSocketSubject().next(message);
-  }
-
-  login(user: ChatUser) {
-    this.userSubject.next(user);
   }
 
   private getWebSocketSubject(): WebSocketSubject<ChatMessage> {
@@ -71,5 +74,4 @@ export class ChatService {
   private isMessageOfCurrentUser(message: ChatMessage) {
     return this.currentUser && message && message.user && message.user.id && this.currentUser.id === message.user.id;
   }
-
 }

@@ -1,22 +1,23 @@
-import {AfterViewChecked, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import {ChatEntry, ChatMessage, ChatMessageType, ChatUser} from './chat.model';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {ChatService} from './chat.service';
 import {PushService} from '../core/push/push.service';
 import {AlertService} from '../core/alert/alert.service';
+import {ChatMessage, ChatMessageType, ChatUser} from '../api/chat';
+import {ChatMessageItem} from './chat.model';
 
 @Component({
   selector: 'app-chat',
   templateUrl: './chat.component.html',
   styleUrls: ['./chat.component.scss']
 })
-export class ChatComponent implements OnInit, AfterViewChecked {
+export class ChatComponent implements OnInit {
   @ViewChild('messagesContainer')
   private messagesContainer: ElementRef;
   @ViewChild('messageInput')
   private messageInput: ElementRef;
   user: ChatUser;
   message: string;
-  messages: ChatEntry[];
+  messages: ChatMessageItem[] = [];
   pushEnabled = false;
 
   constructor(private chatService: ChatService, private pushService: PushService, private alertService: AlertService) {
@@ -24,15 +25,12 @@ export class ChatComponent implements OnInit, AfterViewChecked {
 
   ngOnInit() {
     this.chatService.getUser().subscribe(user => this.user = user);
-    this.messages = this.chatService.getMessages();
     this.scrollToBottom();
-  }
-
-  ngAfterViewChecked(): void {
-    this.scrollToBottom();
-    if (this.messageInput) {
-      this.messageInput.nativeElement.focus();
-    }
+    this.chatService.onMessage((message: ChatMessageItem) => {
+      this.messages.push(message);
+      this.scrollToBottom();
+      this.focusInput();
+    });
   }
 
   public togglePush(checked: boolean): void {
@@ -45,8 +43,14 @@ export class ChatComponent implements OnInit, AfterViewChecked {
     });
   }
 
+  private focusInput() {
+    if (this.messageInput) {
+      this.messageInput.nativeElement.focus();
+    }
+  }
+
   private enablePush(): Promise<void> {
-    return this.pushService.register().then( () => {
+    return this.pushService.register().then(() => {
         this.pushEnabled = true;
       },
       error => {
@@ -68,7 +72,6 @@ export class ChatComponent implements OnInit, AfterViewChecked {
       }
     );
   }
-
 
   public send() {
     if (this.message) {
@@ -92,10 +95,12 @@ export class ChatComponent implements OnInit, AfterViewChecked {
   }
 
   private scrollToBottom(): void {
-    try {
-      this.messagesContainer.nativeElement.scrollTop = this.messagesContainer.nativeElement.scrollHeight;
-    } catch (err) {
-    }
+    setTimeout(() => {
+      try {
+        this.messagesContainer.nativeElement.scrollTop = this.messagesContainer.nativeElement.scrollHeight;
+      } catch (err) {
+      }
+    });
   }
 
   private uuid(): string {
