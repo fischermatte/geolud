@@ -3,7 +3,8 @@ applications:
 - name: dev-geolud-server
   path: ${project.artifactId}-${project.version}.jar
   instances: 1
-  buildpack: https://github.com/cloudfoundry/java-buildpack.git#v4.12
+  buildpacks:
+    - https://github.com/cloudfoundry/java-buildpack.git#v4.12
   memory: 500M
   services:
     - geolud-mailservice
