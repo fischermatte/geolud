@@ -3,6 +3,7 @@ package io.fischermatte.geolud.server.infrastructure;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import io.fischermatte.geolud.server.config.ApplicationConfig;
+import io.fischermatte.geolud.server.notification.repository.PushRegistrationRepository;
 import io.fischermatte.geolud.server.project.repository.Project;
 import io.fischermatte.geolud.server.project.repository.ProjectRepository;
 import org.slf4j.Logger;
@@ -22,13 +23,16 @@ public class DataInitializer {
     private static final Logger LOG = LoggerFactory.getLogger(DataInitializer.class);
 
     private final ProjectRepository projectRepository;
+    private final PushRegistrationRepository pushRegistrationRepository;
 
-    public DataInitializer(ProjectRepository projectRepository) {
+    public DataInitializer(ProjectRepository projectRepository, PushRegistrationRepository pushRegistrationRepository) {
         this.projectRepository = projectRepository;
+        this.pushRegistrationRepository = pushRegistrationRepository;
     }
 
     @Async
     public void insertProjectData() throws IOException {
+        pushRegistrationRepository.deleteAll().subscribe(); // todo handle outdated
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.setDateFormat(new SimpleDateFormat("YYYY-MM-dd"));
         objectMapper.registerModule(new JavaTimeModule());
