@@ -144,6 +144,12 @@
             <groupId>nl.martijndwars</groupId>
             <artifactId>web-push</artifactId>
             <version>${web-push.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.google.guava</groupId>
+                    <artifactId>guava</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>de.flapdoodle.embed</groupId>
