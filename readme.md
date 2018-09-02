@@ -1,4 +1,4 @@
-# Geolud Web App
+# geolud
 
 [![WTFPL](https://img.shields.io/badge/license-WTFPL-blue.svg)](http://www.wtfpl.net/txt/copying)
 [![Build Status](https://travis-ci.org/fischermatte/geolud.svg?branch=develop)](https://travis-ci.org/fischermatte/geolud) 
@@ -8,8 +8,7 @@
 My personal 'cloud-native' homepage as a progressive web app. Totally over-engineered using the following technology stack:
 
 ### geolud-server (backend)
-- Java
-- Spring: Boot / Cloud / Data / Reactive (Mongo, Websockets, WebFlux)
+- Java, Spring: Boot / Cloud / Data / Reactive (Mongo, Websockets, WebFlux)
 - MongoDB
 
 ### geolud-client (frontend)
