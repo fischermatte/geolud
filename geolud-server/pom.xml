@@ -16,7 +16,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <spring-boot-dependencies.version>2.0.2.RELEASE</spring-boot-dependencies.version>
+        <spring-boot-dependencies.version>2.1.0.M4</spring-boot-dependencies.version>
         <build-helper-maven-plugin.version>3.0.0</build-helper-maven-plugin.version>
         <springfox-swagger.version>2.7.0</springfox-swagger.version>
         <commons-lang.version>2.6</commons-lang.version>
@@ -199,32 +199,6 @@
                     <tag>${project.version}</tag>
                 </configuration>
             </plugin>
-            <!--<plugin>-->
-            <!--<groupId>io.swagger</groupId>-->
-            <!--<artifactId>swagger-codegen-maven-plugin</artifactId>-->
-            <!--<version>${swagger-codegen-maven-plugin.version}</version>-->
-            <!--<configuration>-->
-            <!--<inputSpec>${project.parent.basedir}/api/openapi-2/geolud-server.yml</inputSpec>-->
-            <!--<language>spring</language>-->
-            <!--<apiPackage>io.fischermatte.geolud.api.v1</apiPackage>-->
-            <!--<modelPackage>io.fischermatte.geolud.api.v1.model</modelPackage>-->
-            <!--<output>${project.build.directory}/generated</output>-->
-            <!--<modelNameSuffix>Dto</modelNameSuffix>-->
-            <!--<configOptions>-->
-            <!--<interfaceOnly>true</interfaceOnly>-->
-            <!--<sourceFolder>/src/main/java</sourceFolder>-->
-            <!--<library>spring-mvc</library>-->
-            <!--<dateLibrary>java8</dateLibrary>-->
-            <!--</configOptions>-->
-            <!--</configuration>-->
-            <!--<executions>-->
-            <!--<execution>-->
-            <!--<goals>-->
-            <!--<goal>generate</goal>-->
-            <!--</goals>-->
-            <!--</execution>-->
-            <!--</executions>-->
-            <!--</plugin>-->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>build-helper-maven-plugin</artifactId>
@@ -290,6 +264,28 @@
 
         </plugins>
     </build>
+
+    <repositories>
+        <repository>
+            <id>spring-snapshots</id>
+            <url>https://repo.spring.io/snapshot</url>
+            <snapshots><enabled>true</enabled></snapshots>
+        </repository>
+        <repository>
+            <id>spring-milestones</id>
+            <url>https://repo.spring.io/milestone</url>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>spring-snapshots</id>
+            <url>https://repo.spring.io/snapshot</url>
+        </pluginRepository>
+        <pluginRepository>
+            <id>spring-milestones</id>
+            <url>https://repo.spring.io/milestone</url>
+        </pluginRepository>
+    </pluginRepositories>
 
     <profiles>
         <profile>

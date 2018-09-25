@@ -1,3 +1,5 @@
 language: java
-jdk: oraclejdk9
+jdk:
+  - oraclejdk11
+  - openjdk11
 script: mvn verify

@@ -69,7 +69,7 @@ public class ChatWebSocketHandler implements WebSocketHandler {
 
     private void notifyChatAction(String message) {
         LOG.info("chat action going on: " + message);
-        LocalDateTime now = LocalDateTime.now();
+        var now = LocalDateTime.now();
         if (lastChatNotificationEmail == null || this.lastChatNotificationEmail.isBefore(now.minusHours(1))) {
             mailService.sendEmail("GEOLUD-SITE: Chat actions going on ...", message);
         }

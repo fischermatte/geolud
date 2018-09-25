@@ -52,7 +52,7 @@ public class ProjectController {
     }
 
     private ProjectDto mapProject(Project source) {
-        ProjectDto target = new ProjectDto();
+        var target = new ProjectDto();
         target.setId(source.getId());
         target.setDescription(source.getDescription());
         target.setTitle(source.getTitle());
