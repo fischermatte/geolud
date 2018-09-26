@@ -32,9 +32,9 @@ public class PushRegistrationController {
     @ApiOperation(value = "Registers a client for push notification", nickname = "registerPush")
     @PostMapping(value = PUSH, consumes = {APPLICATION_JSON_VALUE})
     @ResponseStatus(CREATED)
-    public Mono<Void> registerPush(@Valid @RequestBody PushRegistration registration) {
+    public Mono<PushRegistration> registerPush(@Valid @RequestBody PushRegistration registration) {
         LOG.debug("receiving push registratioin for endpoint " + registration.getEndpoint());
-        return this.repository.save(registration).then();
+        return this.repository.save(registration);
     }
 
 }

@@ -48,7 +48,7 @@ public class MailService {
             javaMailSender.send(mimeMessage);
             LOG.debug("Sent email from User '{}'", from);
         } catch (Exception e) {
-            LOG.error("Email could not be sent ", e);
+            LOG.error("Email could not be sent: {} ", e.getMessage());
         }
     }
 }

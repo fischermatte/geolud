@@ -5,22 +5,18 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import io.fischermatte.geolud.server.chat.ChatMessage;
 import io.fischermatte.geolud.server.notification.repository.PushRegistration;
 import io.fischermatte.geolud.server.notification.repository.PushRegistrationRepository;
-import io.reactivex.Completable;
+import io.fischermatte.geolud.server.notification.w3c.NotificationAction;
 import nl.martijndwars.webpush.Notification;
 import nl.martijndwars.webpush.PushService;
 import nl.martijndwars.webpush.Subscription;
-import org.apache.http.HttpResponse;
 import org.jose4j.lang.JoseException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
-import reactor.core.publisher.Mono;
 
 import java.io.IOException;
 import java.security.GeneralSecurityException;
-import java.util.concurrent.Future;
-
-import static reactor.adapter.rxjava.RxJava2Adapter.completableToMono;
+import java.util.concurrent.ExecutionException;
 
 @Service
 public class NotificationService {
@@ -39,24 +35,27 @@ public class NotificationService {
     public void sendNotification(ChatMessage message) {
         subscriptionRepository.count().subscribe(count -> LOG.debug("active subscriptions: {}", count));
         LOG.debug("sending notification for chat message \"{}\" to all subscribers", message.getText());
-        subscriptionRepository.findAll().map(subscription -> sendNotification(subscription, message)).subscribe();
+        // FIXME why only the first is handled?
+        subscriptionRepository.findAll() //
+                .doOnNext(pushRegistration -> sendNotification(pushRegistration, message)) //
+                .subscribe();
     }
 
-    private Mono<Void> sendNotification(PushRegistration subscription, ChatMessage message) {
+    private void sendNotification(PushRegistration subscription, ChatMessage message) {
         LOG.debug("sending notification \"{}\" to subscriber {} and endppoint {}", message.getText(), subscription.getId(), subscription.getEndpoint());
         try {
             Notification notification = new Notification(toSubscription(subscription), toPayload(message));
-            Future<HttpResponse> future = pushService.sendAsync(notification);
-            return completableToMono(Completable.fromFuture(future));
-        } catch (GeneralSecurityException | IOException | JoseException e) {
+            pushService.send(notification);
+        } catch (GeneralSecurityException | IOException | JoseException | ExecutionException | InterruptedException e) {
             LOG.error("failed to send notification", e);
-            return Mono.empty();
         }
     }
 
     private String toPayload(ChatMessage chatMessage) {
         return toJson(new NgSwNotificationPayload().withNotification((NgSwNotification) new NgSwNotification()
                 .withTitle(chatMessage.getUser().getName())
+                .withIcon("asserts/icons/icon-72x72.png")
+                .withActions(new NotificationAction[]{new NotificationAction().withTitle("Open Chat")})
                 .withBody(chatMessage.getText())
         ));
     }
