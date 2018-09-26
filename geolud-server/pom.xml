@@ -16,7 +16,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <spring-boot-dependencies.version>2.0.4.RELEASE</spring-boot-dependencies.version>
+        <spring-boot-dependencies.version>2.1.0.M4</spring-boot-dependencies.version>
         <build-helper-maven-plugin.version>3.0.0</build-helper-maven-plugin.version>
         <commons-lang.version>2.6</commons-lang.version>
         <swagger-annotations.version>1.5.13</swagger-annotations.version>
@@ -274,6 +274,28 @@
 
         </plugins>
     </build>
+
+    <repositories>
+        <repository>
+            <id>spring-snapshots</id>
+            <url>https://repo.spring.io/snapshot</url>
+            <snapshots><enabled>true</enabled></snapshots>
+        </repository>
+        <repository>
+            <id>spring-milestones</id>
+            <url>https://repo.spring.io/milestone</url>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>spring-snapshots</id>
+            <url>https://repo.spring.io/snapshot</url>
+        </pluginRepository>
+        <pluginRepository>
+            <id>spring-milestones</id>
+            <url>https://repo.spring.io/milestone</url>
+        </pluginRepository>
+    </pluginRepositories>
 
     <profiles>
         <profile>
