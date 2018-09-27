@@ -42,16 +42,17 @@ public class ChatWebSocketHandler implements WebSocketHandler {
     @Override
     public Mono<Void> handle(WebSocketSession session) {
         // 1/2: broadcast incoming messages by sending it to the observer (subject)
-        session.receive()
+        var input = session.receive()
                 .map(WebSocketMessage::getPayloadAsText)
                 .map(this::fromJson)
                 .doOnNext(this::notifyChatAction)
-                .subscribe(chatMessage -> {
+                .doOnNext(chatMessage -> {
                     chatMessage.setTimeStamp(LocalDateTime.now());
                     subject.onNext(toJson(chatMessage));
-                });
+                }).then();
         // 2/2: tell the websocket session that the subject is the publishing source
-        return session.send(subject.map(session::textMessage).toFlowable(LATEST));
+        var output = session.send(subject.map(session::textMessage).toFlowable(LATEST));
+        return Mono.zip(input, output).then();
     }
 
     private String toJson(ChatMessage chatMessage) {
@@ -72,7 +73,7 @@ public class ChatWebSocketHandler implements WebSocketHandler {
 
     private void notifyChatAction(ChatMessage message) {
         LOG.info("chat action going on: " + message);
-        notificationService.sendNotification(message);
+        notificationService.sendNotification(message).subscribe();
         LocalDateTime now = LocalDateTime.now();
         if (lastChatNotificationEmail == null || this.lastChatNotificationEmail.isBefore(now.minusHours(1))) {
             mailService.sendEmail("GEOLUD-SITE: Chat actions from user " + message.getUser().getName(), message.toString());

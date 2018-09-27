@@ -1,5 +1,11 @@
 package io.fischermatte.geolud.server.notification.w3c;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
 
+import static com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility.ANY;
+
+@JsonAutoDetect(
+        fieldVisibility = ANY
+)
 public class NotificationAction {
     private String action;
     private String icon;

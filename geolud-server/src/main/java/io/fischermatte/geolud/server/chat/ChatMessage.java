@@ -5,10 +5,10 @@ import org.apache.commons.lang.builder.ToStringBuilder;
 
 import java.time.LocalDateTime;
 
-import static com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
+import static com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility.ANY;
 
 @JsonAutoDetect(
-        fieldVisibility = Visibility.ANY
+        fieldVisibility = ANY
 )
 public class ChatMessage {
     private String text;
@@ -41,6 +41,10 @@ public class ChatMessage {
 
     public LocalDateTime getTimestamp() {
         return timestamp;
+    }
+
+    public String getUserName() {
+        return user != null ? user.getName() : null;
     }
 
     @Override

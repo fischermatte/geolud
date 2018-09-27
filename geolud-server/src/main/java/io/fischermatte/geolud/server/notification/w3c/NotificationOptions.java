@@ -3,6 +3,14 @@ package io.fischermatte.geolud.server.notification.w3c;
 /**
  * See https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration/showNotification.
  */
+
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+
+import static com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility.ANY;
+
+@JsonAutoDetect(
+        fieldVisibility = ANY
+)
 public class NotificationOptions {
 
     private NotificationAction[] actions;

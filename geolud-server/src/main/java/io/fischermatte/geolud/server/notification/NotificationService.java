@@ -13,6 +13,7 @@ import org.jose4j.lang.JoseException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import reactor.core.publisher.Flux;
 
 import java.io.IOException;
 import java.security.GeneralSecurityException;
@@ -23,22 +24,19 @@ public class NotificationService {
     private static final Logger LOG = LoggerFactory.getLogger(NotificationService.class);
 
     private final PushService pushService;
-    private final PushRegistrationRepository subscriptionRepository;
+    private final PushRegistrationRepository registrationRepository;
     private final ObjectMapper objectMapper;
 
-    public NotificationService(PushService pushService, PushRegistrationRepository subscriptionRepository, ObjectMapper objectMapper) {
+    public NotificationService(PushService pushService, PushRegistrationRepository registrationRepository, ObjectMapper objectMapper) {
         this.pushService = pushService;
-        this.subscriptionRepository = subscriptionRepository;
+        this.registrationRepository = registrationRepository;
         this.objectMapper = objectMapper;
     }
 
-    public void sendNotification(ChatMessage message) {
-        subscriptionRepository.count().subscribe(count -> LOG.debug("active subscriptions: {}", count));
+    public Flux<PushRegistration> sendNotification(ChatMessage message) {
         LOG.debug("sending notification for chat message \"{}\" to all subscribers", message.getText());
-        // FIXME why only the first is handled?
-        subscriptionRepository.findAll() //
-                .doOnNext(pushRegistration -> sendNotification(pushRegistration, message)) //
-                .subscribe();
+        return registrationRepository.findAll()
+                .doOnNext(pushRegistration -> sendNotification(pushRegistration, message));
     }
 
     private void sendNotification(PushRegistration subscription, ChatMessage message) {
@@ -53,9 +51,9 @@ public class NotificationService {
 
     private String toPayload(ChatMessage chatMessage) {
         return toJson(new NgSwNotificationPayload().withNotification((NgSwNotification) new NgSwNotification()
-                .withTitle(chatMessage.getUser().getName())
-                .withIcon("asserts/icons/icon-72x72.png")
-                .withActions(new NotificationAction[]{new NotificationAction().withTitle("Open Chat")})
+                .withTitle("New Chat Message from " + chatMessage.getUserName())
+                .withIcon("assets/icons/icon-72x72.png")
+                .withActions(new NotificationAction[]{new NotificationAction().withTitle("Open Chat").withAction("open-chat")})
                 .withBody(chatMessage.getText())
         ));
     }
@@ -64,7 +62,7 @@ public class NotificationService {
         try {
             return objectMapper.writeValueAsString(value);
         } catch (JsonProcessingException e) {
-            throw new IllegalStateException("failed to write json");
+            throw new IllegalStateException("failed to write json", e);
         }
     }
 
