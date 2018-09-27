@@ -11,6 +11,8 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
+import javax.mail.internet.MimeMessage;
+
 @Service
 public class MailService {
 
@@ -38,9 +40,9 @@ public class MailService {
     public void sendEmail(String subject, String text, String from, String to) {
         LOG.debug("sending email from {} to {} ", from, to);
         // Prepare message using a Spring helper
-        var mimeMessage = javaMailSender.createMimeMessage();
+        MimeMessage mimeMessage = javaMailSender.createMimeMessage();
         try {
-            var message = new MimeMessageHelper(mimeMessage, false, CharEncoding.UTF_8);
+            MimeMessageHelper message = new MimeMessageHelper(mimeMessage, false, CharEncoding.UTF_8);
             message.setTo(to);
             message.setFrom(from);
             message.setSubject(subject);

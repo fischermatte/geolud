@@ -42,7 +42,7 @@ public class ChatWebSocketHandler implements WebSocketHandler {
     @Override
     public Mono<Void> handle(WebSocketSession session) {
         // 1/2: broadcast incoming messages by sending it to the observer (subject)
-        var input = session.receive()
+        Mono<Void> input = session.receive()
                 .map(WebSocketMessage::getPayloadAsText)
                 .map(this::fromJson)
                 .doOnNext(this::notifyChatAction)
@@ -51,7 +51,7 @@ public class ChatWebSocketHandler implements WebSocketHandler {
                     subject.onNext(toJson(chatMessage));
                 }).then();
         // 2/2: tell the websocket session that the subject is the publishing source
-        var output = session.send(subject.map(session::textMessage).toFlowable(LATEST));
+        Mono<Void> output = session.send(subject.map(session::textMessage).toFlowable(LATEST));
         return Mono.zip(input, output).then();
     }
 

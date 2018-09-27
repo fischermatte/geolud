@@ -76,7 +76,7 @@ public class ApplicationConfig {
     public HandlerMapping webSocketMapping(ChatWebSocketHandler chatWebSocketHandler) {
         Map<String, Object> map = new HashMap<>();
         map.put(CHAT, chatWebSocketHandler);
-        var simpleUrlHandlerMapping = new SimpleUrlHandlerMapping();
+        SimpleUrlHandlerMapping simpleUrlHandlerMapping = new SimpleUrlHandlerMapping();
         simpleUrlHandlerMapping.setUrlMap(map);
         simpleUrlHandlerMapping.setOrder(10);
         return simpleUrlHandlerMapping;

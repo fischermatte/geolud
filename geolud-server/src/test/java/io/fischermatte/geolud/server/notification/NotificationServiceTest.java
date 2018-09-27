@@ -13,6 +13,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.util.Arrays.asList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
@@ -27,13 +28,13 @@ class NotificationServiceTest {
 
     @BeforeEach
     void setUp() {
-        List<PushRegistration> registrations = List.of(pushRegistration(), pushRegistration(), pushRegistration());
+        List<PushRegistration> registrations = asList(pushRegistration(), pushRegistration(), pushRegistration());
         pushRegistrationRepository.saveAll(registrations).then().block();
     }
 
     @Test
     void pushNotification() {
-        var sendRegistrations = new ArrayList<PushRegistration>();
+        List<PushRegistration> sendRegistrations = new ArrayList<>();
         ChatMessage chatMessage = new ChatMessage("huhu");
         notificationService.sendNotification(chatMessage).map(sendRegistrations::add).then().block();
         assertEquals(3, sendRegistrations.size());
