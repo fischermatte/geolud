@@ -4,7 +4,7 @@ applications:
   path: ${project.artifactId}-${project.version}.jar
   instances: 1
   buildpacks:
-    - https://github.com/cloudfoundry/java-buildpack.git#v4.12
+    - https://github.com/cloudfoundry/java-buildpack.git#v4.15
   memory: 500M
   services:
     - geolud-mailservice
