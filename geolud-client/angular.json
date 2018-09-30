@@ -22,10 +22,11 @@
               "src/manifest.json"
             ],
             "styles": [
-              "node_modules/lato-font/scss/lato-font.scss",
-              "node_modules/montserrat-font/scss/montserrat-font.scss",
-              "node_modules/bootstrap/scss/bootstrap.scss",
-              "node_modules/startbootstrap-freelancer/scss/freelancer.scss",
+              {
+                "input": "node_modules/@angular/material/prebuilt-themes/indigo-pink.css"
+              },
+              "src/assets/fonts/material-icons/material-icons.css",
+              "src/assets/fonts/roboto/index.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -106,10 +107,11 @@
             "tsConfig": "src/tsconfig.spec.json",
             "scripts": [],
             "styles": [
-              "node_modules/lato-font/scss/lato-font.scss",
-              "node_modules/montserrat-font/scss/montserrat-font.scss",
-              "node_modules/bootstrap/scss/bootstrap.scss",
-              "node_modules/startbootstrap-freelancer/scss/freelancer.scss",
+              {
+                "input": "node_modules/@angular/material/prebuilt-themes/indigo-pink.css"
+              },
+              "src/assets/fonts/material-icons/material-icons.css",
+              "src/assets/fonts/roboto/index.css",
               "src/styles.scss"
             ],
             "assets": [
@@ -170,5 +172,8 @@
     "@schematics/angular:directive": {
       "prefix": "app"
     }
+  },
+  "cli": {
+    "packageManager": "npm"
   }
 }

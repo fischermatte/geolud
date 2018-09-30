@@ -1,13 +1,2 @@
-$fa-font-path: "~font-awesome/fonts";
-$lato-font-path: "~lato-font/fonts";
-$montserrat-font-path: "~montserrat-font/fonts";
-
-@import 'variables';
-@import '~bootstrap/scss/bootstrap';
-@import '~font-awesome/scss/font-awesome';
-@import '~lato-font/scss/lato-font';
-@import '~montserrat-font/scss/montserrat-font';
-@import '~startbootstrap-freelancer/scss/freelancer';
-@import '~ngx-toastr/toastr.css';
-@import 'theme_overrides';
-@import 'blockui_overrides';
+html, body { height: 100%; }
+body { margin: 0; font-family: 'Roboto', sans-serif; }

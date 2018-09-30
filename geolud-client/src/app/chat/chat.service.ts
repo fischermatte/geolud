@@ -5,6 +5,7 @@ import {Observable} from 'rxjs/Observable';
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 import {ChatEntry, ChatMessage, ChatMessageType, ChatUser} from './chat.model';
 import {AlertService} from '../core/alert/alert.service';
+import 'rxjs/add/operator/map';
 
 
 @Injectable({
