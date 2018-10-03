@@ -4,10 +4,12 @@ applications:
 - name: dev-geolud-client
   instances: 1
   buildpack: https://github.com/cloudfoundry/nodejs-buildpack.git#v1.6.28
-  memory: 30m
+  memory: 50m
   routes:
   - route: dev-geolud.mybluemix.net
   - route: dev-geolud-ui.mybluemix.net
+  services:
+  - geolud-mailservice
   env:
     BACKEND_HOST: 'dev-geolud-server.mybluemix.net'
     BACKEND_IS_SSL: true

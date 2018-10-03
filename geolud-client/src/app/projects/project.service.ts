@@ -9,6 +9,9 @@ import {environment} from '../../environments/environment';
   providedIn: 'root'
 })
 export class ProjectService {
+
+  // private url: string = environment.appConfig.apiBase + `/v1/projects`;
+  private url = '/assets/data/projects.json';
   private publisher: Observable<Project[]>;
 
   constructor(private http: HttpClient) {
@@ -16,7 +19,7 @@ export class ProjectService {
 
   getAll(): Observable<Project[]> {
     if (!this.publisher) {
-      this.publisher = this.http.get<Project[]>(environment.appConfig.apiBase + `/v1/projects`)
+      this.publisher = this.http.get<Project[]>(this.url)
         .pipe(publishReplay(1), refCount());
     }
     return this.publisher;

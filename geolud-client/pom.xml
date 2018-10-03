@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <artifactId>geolud-client</artifactId>
-  <version>1.4.7</version>
+  <version>1.4.8</version>
   <properties>
     <frontend-maven-plugin.version>1.6</frontend-maven-plugin.version>
     <maven-clean-plugin.version>2.6.1</maven-clean-plugin.version>
@@ -17,7 +17,7 @@
   <parent>
     <groupId>io.fischermatte</groupId>
     <artifactId>geolud</artifactId>
-    <version>1.4.7</version>
+    <version>1.4.8</version>
   </parent>
 
   <dependencies>

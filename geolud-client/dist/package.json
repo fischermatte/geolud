@@ -1,8 +1,11 @@
 {
   "name": "geolud-client-express",
-  "version": "1.4.7",
+  "version": "1.4.8",
   "dependencies": {
-    "express": "^4.16.3"
+    "body-parser": "^1.18.3",
+    "cfenv": "^1.1.0",
+    "express": "^4.16.3",
+    "nodemailer": "^4.6.8"
   },
   "scripts": {
     "start": "node server.js"

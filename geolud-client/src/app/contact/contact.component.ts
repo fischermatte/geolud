@@ -12,6 +12,9 @@ import {AlertService} from '../core/alert/alert.service';
 })
 export class ContactComponent implements OnInit {
 
+  // private url = environment.appConfig.apiBase + '/v1/contact';
+  private url = '/contact';
+
   contactRequest: ContactRequest;
   @ViewChild('contactForm') contactForm: any;
 
@@ -26,7 +29,7 @@ export class ContactComponent implements OnInit {
   onSubmit() {
     if (this.contactForm.valid) {
       // note we set the response type to text due to this issue:  https://github.com/angular/angular/issues/18680
-      this.http.post(environment.appConfig.apiBase + '/v1/contact', this.contactRequest, {responseType: 'text'}).subscribe(
+      this.http.post(this.url, this.contactRequest, {responseType: 'text'}).subscribe(
         () => {
           this.alertService.addSuccess('Contact request was submitted!');
           this.contactForm.reset();
