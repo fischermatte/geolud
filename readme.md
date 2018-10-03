@@ -34,18 +34,9 @@ Open http://localhost:4200 in browser - et voila!
 
 ## Push To Cloud Foundry
 
-Spring Boot apps pushed to Cloud Foundry are using the Java Build
-Pack. It's memory calculator defaults to 1GB ram per instance. This was at 
-least the case when I tried on it Pivotal and IBM Bluemix Cloud Foundry. In order 
-to use less, it is not enough to define `memory:256m` in your manifest.  
+    cf push -f manifest.yaml
 
 ### geolud-server
-
-This example below configures the app to be used with less than 1GB. It also shows how to configure 
-spring boot properties to configure the mail service within geolud-server.
-
-Note: the example below does not use the memory calculator of the build pack but has hardcoded VM properties. This
-is not a good approach when you want to scale dynamically. 
 
 ```yml
 # Cloud Foundry Example Manifest with 400m memory
@@ -62,8 +53,6 @@ applications:
 ```
 
 ### geolud-client
-The ui app is a plain angular project with static files and a configuration rest endpoint. For this one uses the Cloud 
-Foundry nodejs build pack:
 
 ```yml
 applications:
@@ -80,10 +69,5 @@ applications:
     OPTIMIZE_MEMORY: true
 
 ```
-
-Save the file as manifest.yml in root folder of this project. Build the project and then push it
-to cloud foundry:
-
-    cf push
     
     
