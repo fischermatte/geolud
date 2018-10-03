@@ -12,7 +12,7 @@ const MAIL_CREDENTIALS = appEnv.getServiceCreds('geolud-mailservice');
 const app = express();
 app.use(express.static(__dirname + '/app'));
 app.use(bodyParser.json()); // support json encoded bodies
-app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
+app.use(bodyParser.urlencoded({extended: true})); // support encoded bodies
 
 app.get('/app-config', function (req, res) {
   res.status(200).json({
@@ -26,7 +26,9 @@ app.post('/contact', function (req, res) {
   var email = req.body.email;
   var message = req.body.message;
   sendEmail(name, email, message);
-  res.status(201);
+  res.status(200).json({
+    success: true
+  });
 });
 
 app.get('*', function (req, res) {
@@ -41,7 +43,7 @@ app.listen(8080, function () {
   console.log('app listening on http://localhost:8080!');
 });
 
-function sendEmail(from, email, message){
+function sendEmail(from, email, message) {
   let transporter = nodemailer.createTransport({
     host: MAIL_CREDENTIALS.host,
     port: MAIL_CREDENTIALS.port,
