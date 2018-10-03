@@ -36,10 +36,9 @@ Open http://localhost:4200 in browser - et voila!
 
     cf push -f manifest.yaml
 
-### geolud-server
+### geolud-server 
 
 ```yml
-# Cloud Foundry Example Manifest with 400m memory
 applications:
 - name: geolud-server
   path: geolud-server-1.4.8.jar
