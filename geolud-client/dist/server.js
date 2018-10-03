@@ -2,11 +2,12 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 const nodemailer = require('nodemailer');
-const vcapServices = require('vcap_services');
+const cfenv = require('cfenv');
+const appEnv = cfenv.getAppEnv()
 
 const BACKEND_HOST = process.env.BACKEND_HOST || 'localhost:8000';
 const BACKEND_IS_SSL = process.env.BACKEND_IS_SSL || false;
-const MAIL_CREDENTIALS = vcapServices.getCredentials('geolud-mailservice');
+const MAIL_CREDENTIALS = appEnv.getServiceCreds('geolud-mailservice');
 
 const app = express();
 app.use(express.static(__dirname + '/app'));
