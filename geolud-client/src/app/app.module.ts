@@ -11,7 +11,6 @@ import {ResumeComponent} from './resume/resume.component';
 import {HomeComponent} from './home/home.component';
 import {RestHttpInterceptor} from './core/rest.http.interceptor';
 import {ChatComponent} from './chat/chat.component';
-import {ToastrModule} from 'ngx-toastr';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AppConfigService} from './app-config.service';
 import {ServiceWorkerModule} from '@angular/service-worker';
@@ -33,10 +32,6 @@ export function loadConfig(appConfigService: AppConfigService) {
   ],
   imports: [
     BrowserModule,
-    ToastrModule.forRoot({
-      preventDuplicates: true,
-      tapToDismiss: true
-    }),
     FormsModule,
     HttpClientModule,
     AppRoutingModule,

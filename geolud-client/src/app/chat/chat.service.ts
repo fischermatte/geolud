@@ -1,11 +1,10 @@
 import {Injectable} from '@angular/core';
 import {webSocket, WebSocketSubject} from 'rxjs/webSocket';
+import {map} from 'rxjs/operators';
 import {environment} from '../../environments/environment';
-import {Observable} from 'rxjs/Observable';
-import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 import {ChatEntry, ChatMessage, ChatMessageType, ChatUser} from './chat.model';
 import {AlertService} from '../core/alert/alert.service';
-import 'rxjs/add/operator/map';
+import {BehaviorSubject, Observable} from 'rxjs';
 
 
 @Injectable({
@@ -33,7 +32,7 @@ export class ChatService {
   }
 
   private startListenForWebSocketMessages() {
-    this.getWebSocketSubject().map(message => {
+    this.getWebSocketSubject().pipe(map(message => {
       return {
         message: message.text,
         timestamp: message.timestamp,
@@ -41,7 +40,7 @@ export class ChatService {
         isFromCurrentUser: this.isMessageOfCurrentUser(message),
         isLogin: message.type === ChatMessageType.LOGIN
       };
-    }).subscribe(
+    })).subscribe(
       entry => this.messages.push(entry),
       error => this.alertService.addError('Websocket Issue', error));
   }

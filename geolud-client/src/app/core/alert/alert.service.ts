@@ -1,5 +1,4 @@
 import {Injectable} from '@angular/core';
-import {ToastrService} from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
@@ -7,15 +6,14 @@ import {ToastrService} from 'ngx-toastr';
 export class AlertService {
 
 
-  constructor(private toastr: ToastrService) {
+  constructor() {
   }
 
   addError(text, error?: any) {
-    this.toastr.error(text);
     console.error(JSON.stringify(error));
   }
 
   addSuccess(text: string, title?: string) {
-    this.toastr.success(text, title);
+    console.info(JSON.stringify(text));
   }
 }
