@@ -4,6 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>geolud-server-java</artifactId>
+    <groupId>io.fischermatte.geolud</groupId>
     <version>1.4.8</version>
     <packaging>jar</packaging>
 
@@ -28,6 +29,8 @@
         <awaitility.version>1.7.0</awaitility.version>
         <rxjava.version>2.0.1</rxjava.version>
         <maven-resources-plugin.version>3.1.0</maven-resources-plugin.version>
+        <dockerfile-maven-plugin.version>1.3.6</dockerfile-maven-plugin.version>
+        <java.version>1.8</java.version>
     </properties>
 
     <dependencies>
