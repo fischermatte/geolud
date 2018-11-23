@@ -3,15 +3,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>geolud-server</artifactId>
+    <artifactId>geolud-server-java</artifactId>
     <version>1.4.8</version>
     <packaging>jar</packaging>
-
-    <parent>
-        <groupId>io.fischermatte</groupId>
-        <artifactId>geolud</artifactId>
-        <version>1.4.8</version>
-    </parent>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -199,32 +193,31 @@
                     <tag>${project.version}</tag>
                 </configuration>
             </plugin>
-            <!--<plugin>-->
-            <!--<groupId>io.swagger</groupId>-->
-            <!--<artifactId>swagger-codegen-maven-plugin</artifactId>-->
-            <!--<version>${swagger-codegen-maven-plugin.version}</version>-->
-            <!--<configuration>-->
-            <!--<inputSpec>${project.parent.basedir}/api/openapi-2/geolud-server.yml</inputSpec>-->
-            <!--<language>spring</language>-->
-            <!--<apiPackage>io.fischermatte.geolud.api.v1</apiPackage>-->
-            <!--<modelPackage>io.fischermatte.geolud.api.v1.model</modelPackage>-->
-            <!--<output>${project.build.directory}/generated</output>-->
-            <!--<modelNameSuffix>Dto</modelNameSuffix>-->
-            <!--<configOptions>-->
-            <!--<interfaceOnly>true</interfaceOnly>-->
-            <!--<sourceFolder>/src/main/java</sourceFolder>-->
-            <!--<library>spring-mvc</library>-->
-            <!--<dateLibrary>java8</dateLibrary>-->
-            <!--</configOptions>-->
-            <!--</configuration>-->
-            <!--<executions>-->
-            <!--<execution>-->
-            <!--<goals>-->
-            <!--<goal>generate</goal>-->
-            <!--</goals>-->
-            <!--</execution>-->
-            <!--</executions>-->
-            <!--</plugin>-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.7.0</version>
+                <configuration>
+                    <!--<compilerVersion>${java.version}</compilerVersion>-->
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.5.3</version>
+                <configuration>
+                    <useReleaseProfile>false</useReleaseProfile>
+                    <releaseProfiles>release</releaseProfiles>
+                    <autoVersionSubmodules>true</autoVersionSubmodules>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.1.0</version>
+            </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>build-helper-maven-plugin</artifactId>
@@ -289,6 +282,15 @@
             </plugin>
 
         </plugins>
+
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <artifactId>maven-clean-plugin</artifactId>
+                    <version>3.1.0</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
     </build>
 
     <profiles>
@@ -313,4 +315,28 @@
             </dependencies>
         </profile>
     </profiles>
+
+    <developers>
+        <developer>
+            <id>fischermatte</id>
+            <email>fischermatte@posteo.net</email>
+            <name>Fischer Matte</name>
+        </developer>
+    </developers>
+
+    <licenses>
+        <license>
+            <name>WTFPL License</name>
+            <url>http://www.wtfpl.net</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <scm>
+        <url>https://github.com/fischermatte/geolud</url>
+        <connection>scm:git:git://github.com/fischermatte/geolud.git</connection>
+        <developerConnection>scm:git:git@github.com:fischermatte/geolud.git</developerConnection>
+    </scm>
+
+
 </project>
