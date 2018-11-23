@@ -10,7 +10,7 @@
       "prefix": "app",
       "schematics": {
         "@schematics/angular:component": {
-          "styleext": "scss"
+          "styleext": "less"
         }
       },
       "architect": {
@@ -28,12 +28,9 @@
               "src/manifest.json"
             ],
             "styles": [
-              {
-                "input": "node_modules/@angular/material/prebuilt-themes/indigo-pink.css"
-              },
               "src/fonts/material-icons/material-icons.css",
               "src/fonts/roboto/index.css",
-              "src/styles.scss"
+              "src/styles.less"
             ],
             "scripts": []
           },
@@ -95,7 +92,7 @@
               },
               "src/fonts/material-icons/material-icons.css",
               "src/fonts/roboto/index.css",
-              "src/styles.scss"
+              "src/styles.less"
             ],
             "scripts": [],
             "assets": [
