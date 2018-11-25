@@ -3,7 +3,7 @@ import { MailService } from './mail.service';
 
 describe('MailService', () => {
   let service: MailService;
-  
+
   beforeAll(async () => {
     const module: TestingModule = await Test.createTestingModule({
       providers: [MailService],
