@@ -24,7 +24,7 @@ export class Interval {
 @Entity()
 export class Project {
   @ObjectIdColumn()
-  id: ObjectID;
+  id?: ObjectID;
 
   @Column()
   title: string;
