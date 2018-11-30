@@ -39,5 +39,5 @@ export class Project {
   customer: Customer;
 
   @Column(type => AssetLink)
-  assetLinks: AssetLink[];
+  assetLinks?: AssetLink[];
 }

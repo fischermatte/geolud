@@ -5,8 +5,7 @@ import { getRepositoryToken } from '@nestjs/typeorm';
 
 describe('Project Controller', () => {
   let module: TestingModule;
-  const projectRepository = {
-  };
+  const projectRepository = {};
 
   beforeAll(async () => {
     module = await Test.createTestingModule({
