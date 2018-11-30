@@ -1,6 +1,6 @@
 import { Project } from './project.entity';
 
-const ALL_PROJECTS: Project[] = [
+export const ALL_PROJECTS: Project[] = [
   {
     title: 'Mobiliar Claim System (MCS)',
     customer: {

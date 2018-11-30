@@ -2,6 +2,7 @@ import { Controller, Get, OnModuleInit, Param } from '@nestjs/common';
 import { Project } from './project.entity';
 import { MongoRepository, ObjectID } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
+import { ALL_PROJECTS } from './projects';
 
 @Controller('projects')
 export class ProjectController implements OnModuleInit {
@@ -21,21 +22,9 @@ export class ProjectController implements OnModuleInit {
   }
 
   onModuleInit(): any {
-    const project: Project = {
-      id: null,
-      title: 'Mobiliar Claim System (MCS)',
-      customer: {
-        name: 'die Mobiliar',
-        url: 'https://www.mobiliar.ch',
-      },
-      period: {
-        from: new Date('2018-03-01'),
-        to: new Date('2018-03-01'),
-      },
-      description:
-        'Technologies: Angular, AngularJS, Java/JEE, Kubernetes, Docker',
-    };
-    this.projectRepository.save(project);
-    // console.info('inserted test data');
+    ALL_PROJECTS.forEach(project => {
+      // this.projectRepository.find
+      this.projectRepository.save(project);
+    });
   }
 }
