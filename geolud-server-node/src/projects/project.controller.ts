@@ -1,11 +1,10 @@
 import { Controller, Get, Param } from '@nestjs/common';
 import { Project } from './project.entity';
-import {MongoRepository, ObjectID} from 'typeorm';
+import { MongoRepository, ObjectID } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 
 @Controller('projects')
 export class ProjectController {
-
   constructor(
     @InjectRepository(Project)
     private readonly projectRepository: MongoRepository<Project>,
