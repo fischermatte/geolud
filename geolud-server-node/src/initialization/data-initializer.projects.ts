@@ -1,4 +1,4 @@
-import { Project } from '../projects/project.entity';
+import {Project} from '../api/api';
 
 export const ALL_PROJECTS: Project[] = [
   {
@@ -73,7 +73,7 @@ export const ALL_PROJECTS: Project[] = [
     },
     description:
       'Technologies: AngularJS, Bootstrap, HTML 5, Javascript, CSS, Java, Spring, Spring Security, JPA/Hibernate, JSF/Primefaces, Maven, ' +
-        'Jenkins, Sonar, Nexus',
+      'Jenkins, Sonar, Nexus',
   },
   {
     title: 'Applikationsplattform Verbraucherschutz',
@@ -160,7 +160,7 @@ export const ALL_PROJECTS: Project[] = [
     },
     description:
       'Development of a distributed multi-tiered platform for automatic acquisition, conversion and monitoring of environmental data of ' +
-        'Switzerland. The platform is based on Java/Spring/JPA/Hibernate running on WebLogic Application Server and Oracle Database. ',
+      'Switzerland. The platform is based on Java/Spring/JPA/Hibernate running on WebLogic Application Server and Oracle Database. ',
   },
   {
     title: 'Drive and Walk Navigation Solutions',
@@ -174,7 +174,7 @@ export const ALL_PROJECTS: Project[] = [
     },
     description:
       'Development of mobile and web applications for Nokia Maps with a strong focus on drive and walk navigation. Implementation of Rich Internet ' +
-        'Applications (RIA) using Web 2.0 technologies (AJAX/JavaScript/XHTML).',
+      'Applications (RIA) using Web 2.0 technologies (AJAX/JavaScript/XHTML).',
   },
   {
     title: 'Platform for Mobile Location-based Advertising',
@@ -188,9 +188,9 @@ export const ALL_PROJECTS: Project[] = [
     },
     description:
       'Design and implementation of a platform for mobile location-based advertisement services, which enables the delivery of location-relevant ' +
-        'advertisements in real time. The platform is a SOA-based enterprise application using Java EE 5 (JPA, JTA, EJB 3, JSF, JMS) and various ' +
-        'Open Source Software (CentOS Linux, PosgreSQL/Postgis, GlassFish, Hibernate, Geoserver, OpenLayers). The project was also part of my ' +
-        'Master Thesis (final grade: A).',
+      'advertisements in real time. The platform is a SOA-based enterprise application using Java EE 5 (JPA, JTA, EJB 3, JSF, JMS) and various ' +
+      'Open Source Software (CentOS Linux, PosgreSQL/Postgis, GlassFish, Hibernate, Geoserver, OpenLayers). The project was also part of my ' +
+      'Master Thesis (final grade: A).',
   },
   {
     title: 'Atomica Game',
@@ -204,7 +204,7 @@ export const ALL_PROJECTS: Project[] = [
     },
     description:
       'A multi-level board game based on Java Swing. Result of a programming course during summer semester of 2008 (Kurs 01580 ' +
-        'Programmierpraktikum).',
+      'Programmierpraktikum).',
     assetLinks: [
       {
         title: 'run',
@@ -236,7 +236,7 @@ export const ALL_PROJECTS: Project[] = [
     },
     description:
       'Integration of a cadastral surveying and mapping application into the ALKIS compliant (German Authoritative Real Estate Information System) ' +
-        'land management platform of AED-SICAD. Used technologies were C++, COM, .NET and various DBMS (Oracle, MS SQL Server, MS Access).',
+      'land management platform of AED-SICAD. Used technologies were C++, COM, .NET and various DBMS (Oracle, MS SQL Server, MS Access).',
   },
   {
     title: 'Application for Spatial Data Acquisition and Management',
@@ -250,7 +250,7 @@ export const ALL_PROJECTS: Project[] = [
     },
     description:
       'Development of an application that allows users to define their own domain specific geographical data model including management and ' +
-        'editing functionality. It is closely integrated into ArcGIS via COM technology. Used technologies were C++, MFC and ATL.',
+      'editing functionality. It is closely integrated into ArcGIS via COM technology. Used technologies were C++, MFC and ATL.',
   },
   {
     title: 'True Type Font Converter',
@@ -264,7 +264,7 @@ export const ALL_PROJECTS: Project[] = [
     },
     description:
       'Development of a dynamic link library (dll) that provides functionality for true type font conversion into vector geometries. Used ' +
-        'technologies were C++, COM and Win32 API. ',
+      'technologies were C++, COM and Win32 API. ',
   },
   {
     title: 'Application for Geological Map Generation and Data Export',
@@ -278,7 +278,7 @@ export const ALL_PROJECTS: Project[] = [
     },
     description:
       'An application for automatic generation of geological maps based on ESRI s ArcGIS platform. Every step of the software development process ' +
-        'was entirely completed by me in direct contact with the TLUG. The application was developed in C++/COM. ',
+      'was entirely completed by me in direct contact with the TLUG. The application was developed in C++/COM. ',
   },
   {
     title: 'CAD Export Tool (DWG, DXF, DGN)',
@@ -292,8 +292,8 @@ export const ALL_PROJECTS: Project[] = [
     },
     description:
       'The CAD Export Tool is an extension for ESRI s ArcGIS Desktop product family. The tool allows a user to export a map into the most common ' +
-        'CAD file formats (DWG, DXF and DGN). The Export Tool relies on libraries of the Open Design Alliance and is written in C and C++. I was ' +
-        'responsible for the whole development process of the product. ',
+      'CAD file formats (DWG, DXF and DGN). The Export Tool relies on libraries of the Open Design Alliance and is written in C and C++. I was ' +
+      'responsible for the whole development process of the product. ',
   },
   {
     title: 'Efficient Data Acquisition and Mapping Strategies',
@@ -307,7 +307,7 @@ export const ALL_PROJECTS: Project[] = [
     },
     description:
       'Diploma thesis in cooperation with the ARC-GREENLAB GmbH. Various improvements on GIS applications for spatial data acquisition and ' +
-        'mapping. Used technologies were C++/COM.',
+      'mapping. Used technologies were C++/COM.',
   },
   {
     title: 'Online XML/Flash-based map for www.russlandpartner.de',

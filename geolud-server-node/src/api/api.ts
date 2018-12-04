@@ -1,5 +1,16 @@
 import { Column, Entity, ObjectID, ObjectIdColumn } from 'typeorm';
 
+export const API = {
+  PROJECTS: 'api/projects',
+  CONTACT: 'api/contact',
+};
+
+export interface ContactRequest {
+  name?: string;
+  email: string;
+  message: string;
+}
+
 export class Customer {
   @Column()
   name: string;

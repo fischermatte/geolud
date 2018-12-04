@@ -1,8 +1,8 @@
 import { Injectable, OnModuleInit } from '@nestjs/common';
-import { Project } from '../projects/project.entity';
 import { MongoRepository } from 'typeorm';
-import { ALL_PROJECTS } from './projects';
+import { ALL_PROJECTS } from './data-initializer.projects';
 import { InjectRepository } from '@nestjs/typeorm';
+import {Project} from '../api/api';
 
 @Injectable()
 export class DataInitializerService implements OnModuleInit {

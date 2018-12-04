@@ -19,9 +19,7 @@ describe('Project Controller', () => {
     }).compile();
   });
   it('should be defined', () => {
-    const controller: ProjectController = module.get<ProjectController>(
-      ProjectController,
-    );
+    const controller: ProjectController = module.get<ProjectController>(ProjectController);
     expect(controller).toBeDefined();
   });
 });

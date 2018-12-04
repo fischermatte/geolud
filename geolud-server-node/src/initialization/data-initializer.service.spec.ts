@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { DataInitializerService } from './data-initializer.service';
-import { Project } from '../projects/project.entity';
+import { Project } from '../api/projects/project.entity';
 import { getRepositoryToken } from '@nestjs/typeorm';
 
 describe('DataInitializerService', () => {

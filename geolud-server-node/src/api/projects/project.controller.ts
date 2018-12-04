@@ -1,9 +1,9 @@
 import { Controller, Get, Param } from '@nestjs/common';
-import { Project } from './project.entity';
 import { MongoRepository, ObjectID } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
+import { API, Project } from '../api';
 
-@Controller('projects')
+@Controller(API.PROJECTS)
 export class ProjectController {
   constructor(
     @InjectRepository(Project)

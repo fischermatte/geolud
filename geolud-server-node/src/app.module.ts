@@ -1,20 +1,15 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { ProjectController } from './projects/project.controller';
-import { ContactController } from './contact/contact.controller';
+import { ProjectController } from './api/projects/project.controller';
+import { ContactController } from './api/contact/contact.controller';
 import { MailService } from './mail/mail.service';
-import { Project } from './projects/project.entity';
-import { DataInitializerService } from './core/data-initializer.service';
-import { ConfigurationService } from './core/configuration.service';
-
-const AppConfig = new ConfigurationService().createAppConfig();
+import { AppConfig, MailConfigProvider } from './app.config';
+import { DataInitializerService } from './initialization/data-initializer.service';
+import { Project } from './api/api';
 
 @Module({
   imports: [TypeOrmModule.forRoot(AppConfig.mongoConnectionOptions), TypeOrmModule.forFeature([Project])],
   controllers: [ProjectController, ContactController],
-  providers: [MailService, DataInitializerService, {
-      provide: 'MailConfig',
-      useValue: AppConfig.mailConfig,
-  }],
+  providers: [MailService, DataInitializerService, MailConfigProvider],
 })
 export class AppModule {}
