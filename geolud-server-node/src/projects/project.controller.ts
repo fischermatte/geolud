@@ -1,11 +1,10 @@
-import { Controller, Get, OnModuleInit, Param } from '@nestjs/common';
+import { Controller, Get, Param } from '@nestjs/common';
 import { Project } from './project.entity';
 import { MongoRepository, ObjectID } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
-import { ALL_PROJECTS } from './projects';
 
 @Controller('projects')
-export class ProjectController implements OnModuleInit {
+export class ProjectController {
   constructor(
     @InjectRepository(Project)
     private readonly projectRepository: MongoRepository<Project>,
@@ -19,12 +18,5 @@ export class ProjectController implements OnModuleInit {
   @Get()
   findAll(): Promise<Project[]> {
     return this.projectRepository.find();
-  }
-
-  onModuleInit(): any {
-    ALL_PROJECTS.forEach(project => {
-      // this.projectRepository.find
-      this.projectRepository.save(project);
-    });
   }
 }

@@ -1,4 +1,4 @@
-import { Project } from './project.entity';
+import { Project } from '../../projects/project.entity';
 
 export const ALL_PROJECTS: Project[] = [
   {
