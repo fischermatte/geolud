@@ -12,3 +12,4 @@ applications:
     - geolud-db
   env:
     OPTIMIZE_MEMORY: true
+  command: npm run-script start:cf
