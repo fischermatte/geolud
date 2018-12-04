@@ -10,7 +10,7 @@ import { ConfigurationService } from './core/configuration.service';
 const appConfig = new ConfigurationService().init();
 
 @Module({
-  imports: [TypeOrmModule.forRoot(appConfig.dbConfig), TypeOrmModule.forFeature([Project])],
+  imports: [TypeOrmModule.forRoot(appConfig.mongoConnectionOptions), TypeOrmModule.forFeature([Project])],
   controllers: [ProjectController, ContactController],
   providers: [MailService, DataInitializerService],
 })
