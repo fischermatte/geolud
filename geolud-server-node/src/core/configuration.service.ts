@@ -9,22 +9,22 @@ const LOCAL_DEV_MONGO_URL = 'mongodb+srv://geolud:geolud@localhost:27017/geolud-
 export class ConfigurationService {
 
     public init(): AppConfig {
-      return { dbConfig: this.getDbConfig(), mailProperties: this.getMailConfig() };
+      return { dbConfig: this.getDbConfig(), mailConfig: this.getMailConfig() };
     }
 
     private  getDbConfig(): MongoConnectionOptions {
         const url = this.getMongoConnectionUrl();
-        let options;
+        let config;
         parseMongoUrl(url, {}, (error, result) => {
-            options = result;
+            config = result;
         });
         return {
             type: 'mongodb',
-            host: options.servers[0].host,
-            port: options.servers[0].port,
-            username: options.auth.user,
-            password: options.auth.password,
-            database: options.dbName,
+            host: config.servers[0].host,
+            port: config.servers[0].port,
+            username: config.auth.user,
+            password: config.auth.password,
+            database: config.dbName,
             authSource: 'admin',
             entities: [Project],
             synchronize: true,
@@ -32,16 +32,10 @@ export class ConfigurationService {
         };
     }
 
-    private getMongoConnectionUrl(): string {
-        const dbConfig = cfenv.getAppEnv().getServiceCreds('geolud-dbConfig');
-        const url = dbConfig && dbConfig.uri ? dbConfig.uri : LOCAL_DEV_MONGO_URL;
-        return url.replace('+srv', '');
-    }
-
     private getMailConfig(): MailConfig {
-        let mailOptions = cfenv.getAppEnv().getServiceCreds('geolud-mailservice');
-        if (!mailOptions) {
-            mailOptions = {
+        let config = cfenv.getAppEnv().getServiceCreds('geolud-mailservice');
+        if (!config) {
+            config = {
                 host: 'localhost',
                 port: '587',
                 username: '',
@@ -49,7 +43,13 @@ export class ConfigurationService {
                 to: 'icke@localhost',
             };
         }
-        return mailOptions;
+        return config;
+    }
+
+    private getMongoConnectionUrl(): string {
+        const dbConfig = cfenv.getAppEnv().getServiceCreds('geolud-dbConfig');
+        const url = dbConfig && dbConfig.uri ? dbConfig.uri : LOCAL_DEV_MONGO_URL;
+        return url.replace('+srv', '');
     }
 }
 
@@ -63,5 +63,5 @@ interface MailConfig {
 
 interface AppConfig {
     dbConfig: MongoConnectionOptions;
-    mailProperties: MailConfig;
+    mailConfig: MailConfig;
 }
