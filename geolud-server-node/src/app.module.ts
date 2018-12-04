@@ -7,11 +7,14 @@ import { Project } from './projects/project.entity';
 import { DataInitializerService } from './core/data-initializer.service';
 import { ConfigurationService } from './core/configuration.service';
 
-const appConfig = new ConfigurationService().createAppConfig();
+const AppConfig = new ConfigurationService().createAppConfig();
 
 @Module({
-  imports: [TypeOrmModule.forRoot(appConfig.mongoConnectionOptions), TypeOrmModule.forFeature([Project])],
+  imports: [TypeOrmModule.forRoot(AppConfig.mongoConnectionOptions), TypeOrmModule.forFeature([Project])],
   controllers: [ProjectController, ContactController],
-  providers: [MailService, DataInitializerService],
+  providers: [MailService, DataInitializerService, {
+      provide: 'MailConfig',
+      useValue: AppConfig.mailConfig,
+  }],
 })
 export class AppModule {}

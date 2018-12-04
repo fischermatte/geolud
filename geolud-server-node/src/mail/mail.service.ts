@@ -1,10 +1,10 @@
-import { Inject, Injectable } from '@nestjs/common';
+import { Inject, Injectable, Logger } from '@nestjs/common';
 import { MailConfig } from '../core/configuration.service';
 import * as nodemailer from 'nodemailer';
 
 @Injectable()
 export class MailService {
-  constructor(@Inject private mailConfig: MailConfig) {}
+  constructor(@Inject('MailConfig') private mailConfig: MailConfig) {}
 
   public sendEmail(from: string, email: string, message: string) {
     const transporter = nodemailer.createTransport({
@@ -28,11 +28,12 @@ export class MailService {
     // send mail with defined transport object
     transporter.sendMail(mailOptions, (error, info) => {
       if (error) {
-        return console.log(error);
+        Logger.error(`error sending email: ${error}`);
+        return;
       }
-      console.log('Message sent: %s', info.messageId);
-      // Preview only available when sending through an Ethereal account
-      console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
+      Logger.log(`Message sent: ${info.messageId}`);
+      const testMessageUrl = nodemailer.getTestMessageUrl(info);
+      Logger.log(`Preview URL: ${testMessageUrl}`);
     });
   }
 }
