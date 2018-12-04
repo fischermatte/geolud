@@ -7,7 +7,7 @@ import { Project } from './projects/project.entity';
 import { DataInitializerService } from './core/data-initializer.service';
 import { ConfigurationService } from './core/configuration.service';
 
-const appConfig = new ConfigurationService().init();
+const appConfig = new ConfigurationService().createAppConfig();
 
 @Module({
   imports: [TypeOrmModule.forRoot(appConfig.mongoConnectionOptions), TypeOrmModule.forFeature([Project])],

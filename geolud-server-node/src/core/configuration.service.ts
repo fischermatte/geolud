@@ -8,7 +8,7 @@ const LOCAL_DEV_MONGO_URL = 'mongodb+srv://geolud:geolud@localhost:27017/geolud-
 
 export class ConfigurationService {
 
-    public init(): AppConfig {
+    public createAppConfig(): AppConfig {
       return { mongoConnectionOptions: this.getMongoConnectionOptions(), mailConfig: this.getMailConfig() };
     }
 
@@ -37,7 +37,7 @@ export class ConfigurationService {
         if (!config) {
             config = {
                 host: 'localhost',
-                port: '587',
+                port: 587,
                 username: '',
                 password: '',
                 to: 'icke@localhost',
@@ -53,9 +53,9 @@ export class ConfigurationService {
     }
 }
 
-interface MailConfig {
+export interface MailConfig {
     host: string;
-    port: string;
+    port: number;
     username: string;
     password: string;
     to: string;
