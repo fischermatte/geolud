@@ -1,7 +1,5 @@
 import * as cfenv from 'cfenv';
-import * as parseMongoUrl from '../node_modules/mongodb/lib/url_parser';
 import { MongoConnectionOptions } from 'typeorm/driver/mongodb/MongoConnectionOptions';
-import { Logger } from '@nestjs/common';
 import { Project } from './api/api';
 
 const mailServiceCreds = cfenv.getAppEnv().getServiceCreds('geolud-mailservice');
@@ -17,13 +15,46 @@ class AppConfigService {
     }
   }
 
-  private prod() {
-    return { mongoConnectionOptions: this.parseMongoConnectionOptions(dbServiceCreds.uri), mailConfig: mailServiceCreds };
+  private prod(): AppConfig {
+    return {
+      mongoConnectionOptions: {
+        type: 'mongodb',
+        host: dbServiceCreds.host,
+        port: dbServiceCreds.port,
+        username: dbServiceCreds.username,
+        password: dbServiceCreds.password,
+        database: dbServiceCreds.database,
+        ssl: dbServiceCreds.ssl,
+        replicaSet: dbServiceCreds.replicaSet,
+        authSource: dbServiceCreds.authSource,
+        entities: [Project],
+        synchronize: true,
+        useNewUrlParser: true,
+      },
+      mailConfig: {
+          host: mailServiceCreds.host,
+          port: mailServiceCreds.port,
+          username: mailServiceCreds.username,
+          password: mailServiceCreds.password,
+          to: mailServiceCreds.to,
+      },
+    };
   }
 
-  private dev() {
-    const devMongoConnectionUrl = 'mongodb+srv://geolud:geolud@localhost:27017/geolud-mongoConnectionOptions?retryWrites=true';
+  private dev(): AppConfig {
     return {
+      mongoConnectionOptions: {
+        type: 'mongodb',
+        host: 'localhost',
+        port: 27017,
+        username: 'geolud',
+        password: 'geolud',
+        database: 'geolud-db',
+        authSource: 'admin',
+        entities: [Project],
+        synchronize: true,
+        useNewUrlParser: true,
+      },
       mailConfig: {
         host: 'localhost',
         port: 587,
@@ -31,32 +62,7 @@ class AppConfigService {
         password: '',
         to: 'icke@localhost',
       },
-      mongoConnectionOptions: this.parseMongoConnectionOptions(devMongoConnectionUrl),
     };
-  }
-
-  private parseMongoConnectionOptions(url: string): MongoConnectionOptions {
-    url = url.replace('+srv', '');
-
-    let config;
-    parseMongoUrl(url, {}, (error, result) => {
-      config = result;
-    });
-    const options: MongoConnectionOptions = {
-      type: 'mongodb',
-      host: config.servers[0].host,
-      port: config.servers[0].port,
-      username: config.auth.user,
-      password: config.auth.password,
-      database: config.dbName,
-      authSource: 'admin',
-      entities: [Project],
-      synchronize: true,
-      useNewUrlParser: true,
-    };
-
-    Logger.log(`mongodb location is at host: ${options.host}`);
-    return options;
   }
 }
 
