@@ -5,7 +5,7 @@ import { Logger } from '@nestjs/common';
 import { Project } from './api/api';
 
 const mailServiceCreds = cfenv.getAppEnv().getServiceCreds('geolud-mailservice');
-const dbServiceCreds = cfenv.getAppEnv().getServiceCreds('geolud-mailservice');
+const dbServiceCreds = cfenv.getAppEnv().getServiceCreds('geolud-db');
 
 class AppConfigService {
   public createAppConfig(): AppConfig {
