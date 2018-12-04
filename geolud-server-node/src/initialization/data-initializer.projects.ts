@@ -332,7 +332,7 @@ export const ALL_PROJECTS: Project[] = [
     ],
   },
   {
-    title: 'Live Tgeoludr Tour de France 2001',
+    title: 'Live Ticker Tour de France 2001',
     customer: {
       name: 'SPIEGEL ONLINE',
       url: 'http://www.spiegel.de/',
@@ -341,7 +341,7 @@ export const ALL_PROJECTS: Project[] = [
       from: new Date('2001-01-01'),
       to: new Date('2001-01-01'),
     },
-    description: 'Flash-based Live Tgeoludr for the Tour de France 2001. Real time stage tracking with maps and profiles.',
+    description: 'Flash-based Live Ticker for the Tour de France 2001. Real time stage tracking with maps and profiles.',
     assetLinks: [
       {
         title: 'screenshot 1',

@@ -1,17 +1,16 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {publishReplay, refCount} from 'rxjs/operators';
-import {Project} from '../../generated-api';
+import {map, publishReplay, refCount} from 'rxjs/operators';
 import {environment} from '../../environments/environment';
+import {Project} from '../api/api';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProjectService {
 
-  // private url: string = environment.appConfig.apiBase + `/v1/projects`;
-  private url = '/assets/data/projects.json';
+  private url: string = environment.appConfig.apiBase + `/api/projects`;
   private publisher: Observable<Project[]>;
 
   constructor(private http: HttpClient) {
@@ -20,7 +19,9 @@ export class ProjectService {
   getAll(): Observable<Project[]> {
     if (!this.publisher) {
       this.publisher = this.http.get<Project[]>(this.url)
-        .pipe(publishReplay(1), refCount());
+        .pipe(
+          publishReplay(1), refCount()
+        );
     }
     return this.publisher;
   }

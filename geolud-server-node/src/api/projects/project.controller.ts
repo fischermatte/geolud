@@ -17,6 +17,9 @@ export class ProjectController {
 
   @Get()
   findAll(): Promise<Project[]> {
-    return this.projectRepository.find();
+    return this.projectRepository.find().then(projects => {
+      projects.sort((a, b) => b.period.from.getTime() - a.period.from.getTime());
+      return projects;
+    });
   }
 }
