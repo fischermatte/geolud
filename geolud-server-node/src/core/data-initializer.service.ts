@@ -1,5 +1,5 @@
 import { Injectable, OnModuleInit } from '@nestjs/common';
-import { Project } from '../../projects/project.entity';
+import { Project } from '../projects/project.entity';
 import { MongoRepository } from 'typeorm';
 import { ALL_PROJECTS } from './projects';
 import { InjectRepository } from '@nestjs/typeorm';
