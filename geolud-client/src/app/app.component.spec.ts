@@ -1,17 +1,13 @@
-import {async, TestBed} from '@angular/core/testing';
-import {RouterTestingModule} from '@angular/router/testing';
-import {AppComponent} from './app.component';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { async, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { AppComponent } from './app.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule, NgbModule.forRoot()
-      ],
-      declarations: [
-        AppComponent
-      ],
+      imports: [RouterTestingModule, NgbModule.forRoot()],
+      declarations: [AppComponent],
     }).compileComponents();
   }));
   it('should create the app', async(() => {

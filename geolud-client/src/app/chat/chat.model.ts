@@ -7,7 +7,8 @@ export interface ChatEntry {
 }
 
 export enum ChatMessageType {
-  LOGIN = 'LOGIN', CHAT = 'CHAT'
+  LOGIN = 'LOGIN',
+  CHAT = 'CHAT',
 }
 
 export class ChatMessage {

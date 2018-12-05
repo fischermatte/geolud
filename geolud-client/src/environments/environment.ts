@@ -6,8 +6,8 @@ export const environment = {
   production: false,
   appConfig: {
     apiBase: null,
-    wsBase: null
-  } // will be loaded at startup
+    wsBase: null,
+  }, // will be loaded at startup
 };
 
 /*

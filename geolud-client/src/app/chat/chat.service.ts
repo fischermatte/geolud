@@ -1,17 +1,15 @@
-import {Injectable} from '@angular/core';
-import {webSocket, WebSocketSubject} from 'rxjs/webSocket';
-import {environment} from '../../environments/environment';
-import {Observable} from 'rxjs/Observable';
-import {BehaviorSubject} from 'rxjs/BehaviorSubject';
-import {ChatEntry, ChatMessage, ChatMessageType, ChatUser} from './chat.model';
-import {AlertService} from '../core/alert/alert.service';
-
+import { Injectable } from '@angular/core';
+import { webSocket, WebSocketSubject } from 'rxjs/webSocket';
+import { environment } from '../../environments/environment';
+import { Observable } from 'rxjs/Observable';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { ChatEntry, ChatMessage, ChatMessageType, ChatUser } from './chat.model';
+import { AlertService } from '../core/alert/alert.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ChatService {
-
   private userSubject: BehaviorSubject<ChatUser> = new BehaviorSubject(null);
   private webSocketSubject: WebSocketSubject<ChatMessage>; // lazy init since it connects to websocket
   private currentUser: ChatUser;
@@ -32,20 +30,20 @@ export class ChatService {
   }
 
   private startListenForWebSocketMessages() {
-    this.getWebSocketSubject().map(message => {
-      return {
-        message: message.text,
-        timestamp: message.timestamp,
-        username: message.user ? message.user.name : null,
-        isFromCurrentUser: this.isMessageOfCurrentUser(message),
-        isLogin: message.type === ChatMessageType.LOGIN
-      };
-    }).subscribe(
-      entry => this.messages.push(entry),
-      error => this.alertService.addError('Websocket Issue', error));
+    this.getWebSocketSubject()
+      .map(message => {
+        return {
+          message: message.text,
+          timestamp: message.timestamp,
+          username: message.user ? message.user.name : null,
+          isFromCurrentUser: this.isMessageOfCurrentUser(message),
+          isLogin: message.type === ChatMessageType.LOGIN,
+        };
+      })
+      .subscribe(entry => this.messages.push(entry), error => this.alertService.addError('Websocket Issue', error));
   }
 
-  public getMessages(): ChatEntry [] {
+  public getMessages(): ChatEntry[] {
     return this.messages;
   }
 
@@ -71,5 +69,4 @@ export class ChatService {
   private isMessageOfCurrentUser(message: ChatMessage) {
     return this.currentUser && message && message.user && message.user.id && this.currentUser.id === message.user.id;
   }
-
 }
