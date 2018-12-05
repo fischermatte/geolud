@@ -21,6 +21,7 @@ import java.util.Map;
 import java.util.concurrent.Executor;
 
 import static io.fischermatte.geolud.server.rest.api.v1.Paths.CHAT;
+import static io.fischermatte.geolud.server.rest.api.v1.Paths.CORS_PATTERN;
 
 @EnableAsync
 @Configuration
@@ -45,7 +46,7 @@ public class ApplicationConfig {
         return new WebFluxConfigurerComposite() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/v1/**")
+                registry.addMapping(CORS_PATTERN)
                         .allowedOrigins("*")
                         .allowedMethods("*");
             }
