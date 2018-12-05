@@ -14,7 +14,6 @@ export class ProjectsComponent implements OnInit {
   projects: Project[];
 
   @BlockUI('project-list') blockUI: NgBlockUI;
-
   constructor(private projectService: ProjectService, private alertSerice: AlertService, title: Title) {
     title.setTitle('Georg Ludewig - Software Engineer - Projects');
   }
