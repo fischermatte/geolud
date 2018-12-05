@@ -1,8 +1,8 @@
-package io.fischermatte.geolud.server.rest.api.v1.project;
-
-import org.springframework.validation.annotation.Validated;
+package io.fischermatte.geolud.server.rest.api.v1;
 
 import javax.validation.constraints.NotNull;
+
+import org.springframework.validation.annotation.Validated;
 
 /**
  * ErrorResponseDto

@@ -1,6 +1,7 @@
 package io.fischermatte.geolud.server.rest.api.v1;
 
-import io.fischermatte.geolud.server.rest.api.v1.contact.ContactRequestDto;
+import io.fischermatte.geolud.server.rest.api.v1.contact.ContactRequest;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +23,7 @@ class ContactControllerTest {
 
     @Test
     void submitContactRequest() {
-        ContactRequestDto contactRequest = new ContactRequestDto();
+        ContactRequest contactRequest = new ContactRequest();
         contactRequest.setEmail("test@test.de");
         contactRequest.setName("John Do");
         contactRequest.setMessage("get in touch with me");
@@ -31,7 +32,7 @@ class ContactControllerTest {
                 .uri(CONTACT)
                 .contentType(APPLICATION_JSON_UTF8)
                 .accept(APPLICATION_JSON_UTF8)
-                .body(Mono.just(contactRequest), ContactRequestDto.class)
+                .body(Mono.just(contactRequest), ContactRequest.class)
                 .exchange()
                 .expectStatus().isCreated();
     }

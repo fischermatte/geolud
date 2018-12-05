@@ -5,7 +5,7 @@
       "name": "die Mobiliar",
       "url": "https://www.mobiliar.ch"
     },
-    "interval": {
+    "period": {
       "from": "2018-03-01",
       "to": "2018-03-01"
     },
@@ -17,7 +17,7 @@
       "name": "PostAuto Schweiz AG",
       "url": "https://www.postauto.ch"
     },
-    "interval": {
+    "period": {
       "from": "2016-01-01",
       "to": "2018-02-28"
     },
@@ -29,7 +29,7 @@
       "name": "Post CH AG",
       "url": "https://www.post.ch"
     },
-    "interval": {
+    "period": {
       "from": "2017-01-01",
       "to": "2017-01-01"
     },
@@ -41,7 +41,7 @@
       "name": "Unisys Switzerland",
       "url": "http://www.unisys.ch/index.htm"
     },
-    "interval": {
+    "period": {
       "from": "2014-01-01",
       "to": "2015-01-01"
     },
@@ -53,7 +53,7 @@
       "name": "Unisys Switzerland",
       "url": "http://www.unisys.ch/index.htm"
     },
-    "interval": {
+    "period": {
       "from": "2014-01-01",
       "to": "2014-01-01"
     },
@@ -65,7 +65,7 @@
       "name": "Swiss Federal Tax Administration FTA",
       "url": "http://www.estv.admin.ch/index.html?lang=en"
     },
-    "interval": {
+    "period": {
       "from": "2014-01-01",
       "to": "2014-01-01"
     },
@@ -77,7 +77,7 @@
       "name": "Swiss Federal Office of Public Health FOPH",
       "url": "http://www.bag.admin.ch/index.html?lang=en"
     },
-    "interval": {
+    "period": {
       "from": "2013-01-01",
       "to": "2014-01-01"
     },
@@ -89,7 +89,7 @@
       "name": "Swiss Federal Office of Migration FOM",
       "url": "https://www.bfm.admin.ch/bfm/en/home.html"
     },
-    "interval": {
+    "period": {
       "from": "2012-01-01",
       "to": "2013-01-01"
     },
@@ -101,7 +101,7 @@
       "name": "Swiss Federal Office of Migration FOM",
       "url": "https://www.bfm.admin.ch/bfm/en/home.html"
     },
-    "interval": {
+    "period": {
       "from": "2013-01-01",
       "to": "2013-01-01"
     },
@@ -113,7 +113,7 @@
       "name": "Swiss National Library",
       "url": "https://www.nb.admin.ch/?lang=en"
     },
-    "interval": {
+    "period": {
       "from": "2011-01-01",
       "to": "2012-01-01"
     },
@@ -125,7 +125,7 @@
       "name": "Federal Office for the Environment FOEN",
       "url": "http://www.bafu.admin.ch/?lang=en"
     },
-    "interval": {
+    "period": {
       "from": "2011-01-01",
       "to": "2017-01-01"
     },
@@ -137,7 +137,7 @@
       "name": "Stiftung HAM",
       "url": "http://www.stiftung-ham.ch/"
     },
-    "interval": {
+    "period": {
       "from": "2011-01-01",
       "to": "2011-01-01"
     },
@@ -149,7 +149,7 @@
       "name": "Unisys Switzerland",
       "url": "http://www.unisys.ch/index.htm"
     },
-    "interval": {
+    "period": {
       "from": "2009-01-01",
       "to": "2010-01-01"
     },
@@ -161,7 +161,7 @@
       "name": "Nokia Gate 5 GmbH (now HERE)",
       "url": "https://here.com"
     },
-    "interval": {
+    "period": {
       "from": "2008-01-01",
       "to": "2009-01-01"
     },
@@ -173,7 +173,7 @@
       "name": "Tieto International",
       "url": "http://www.tieto.com/"
     },
-    "interval": {
+    "period": {
       "from": "2008-01-01",
       "to": "2009-01-01"
     },
@@ -185,7 +185,7 @@
       "name": "Hagen University",
       "url": "http://www.fernuni-hagen.de/english"
     },
-    "interval": {
+    "period": {
       "from": "2008-01-01",
       "to": "2008-01-01"
     },
@@ -215,7 +215,7 @@
       "name": "ARC-GREENLAB GmbH ",
       "url": "http://www.arc-greenlab.de/"
     },
-    "interval": {
+    "period": {
       "from": "2006-01-01",
       "to": "2008-01-01"
     },
@@ -227,7 +227,7 @@
       "name": "ARC-GREENLAB GmbH ",
       "url": "http://www.arc-greenlab.de/"
     },
-    "interval": {
+    "period": {
       "from": "2005-01-01",
       "to": "2008-01-01"
     },
@@ -239,7 +239,7 @@
       "name": "DHI-WASY GmbH ",
       "url": "http://www.wasy.de/"
     },
-    "interval": {
+    "period": {
       "from": "2006-01-01",
       "to": "2006-01-01"
     },
@@ -251,7 +251,7 @@
       "name": "Thuringia State Authority for Environment and Geology (TLUG)",
       "url": "http://www.tlug-jena.de/"
     },
-    "interval": {
+    "period": {
       "from": "2006-01-01",
       "to": "2006-01-01"
     },
@@ -263,7 +263,7 @@
       "name": "ARC-GREENLAB GmbH ",
       "url": "http://www.arc-greenlab.de/"
     },
-    "interval": {
+    "period": {
       "from": "2006-01-01",
       "to": "2006-01-01"
     },
@@ -275,7 +275,7 @@
       "name": "ARC-GREENLAB GmbH ",
       "url": "http://www.arc-greenlab.de/"
     },
-    "interval": {
+    "period": {
       "from": "2005-01-01",
       "to": "2005-01-01"
     },
@@ -287,7 +287,7 @@
       "name": "Deutsch-Russische Forum e.V.",
       "url": "http://www.deutsch-russisches-forum.de/"
     },
-    "interval": {
+    "period": {
       "from": "2004-01-01",
       "to": "2004-01-01"
     },
@@ -309,7 +309,7 @@
       "name": "SPIEGEL ONLINE",
       "url": "http://www.spiegel.de/"
     },
-    "interval": {
+    "period": {
       "from": "2001-01-01",
       "to": "2001-01-01"
     },

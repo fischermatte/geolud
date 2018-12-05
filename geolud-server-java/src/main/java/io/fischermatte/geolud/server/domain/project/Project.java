@@ -1,10 +1,10 @@
 package io.fischermatte.geolud.server.domain.project;
 
 
-import org.springframework.data.annotation.Id;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import org.springframework.data.annotation.Id;
 
 
 public class Project {
@@ -14,7 +14,7 @@ public class Project {
 
     private String title;
 
-    private Interval interval;
+    private Interval period;
 
     private String description;
 
@@ -30,8 +30,8 @@ public class Project {
         return title;
     }
 
-    public Interval getInterval() {
-        return interval;
+    public Interval getPeriod() {
+        return period;
     }
 
     public String getDescription() {
@@ -57,7 +57,7 @@ public class Project {
     }
 
     public Project withInterval(Interval interval) {
-        this.interval = interval;
+        this.period = interval;
         return this;
     }
 
