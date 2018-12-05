@@ -7,7 +7,7 @@
       <div class="col-md-8">
         <div *blockUI="'project-list'" class="project-list">
           <div *ngFor="let project of projects" class="project-item">
-            <div class="project-period">{{project.period}}</div>
+            <div class="project-period">{{project.period | projectPeriod}}</div>
             <div class="project-title">{{project.title}}</div>
             <div class="project-customer"><a href="{{project.customer.url}}">{{project.customer.name}}</a></div>
             <div class="project-description">{{project.description}}</div>

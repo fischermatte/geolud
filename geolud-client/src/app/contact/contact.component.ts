@@ -1,19 +1,17 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {Title} from '@angular/platform-browser';
-import {ContactRequest} from '../../generated-api/model/contactRequest';
-import {environment} from '../../environments/environment';
-import {AlertService} from '../core/alert/alert.service';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Title } from '@angular/platform-browser';
+import { environment } from '../../environments/environment';
+import { AlertService } from '../core/alert/alert.service';
+import { ContactRequest } from '../api/api';
 
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.component.html',
-  styleUrls: ['./contact.component.scss']
+  styleUrls: ['./contact.component.scss'],
 })
 export class ContactComponent implements OnInit {
-
-  // private url = environment.appConfig.apiBase + '/v1/contact';
-  private url = '/contact';
+  private url = environment.appConfig.apiBase + '/api/contact';
 
   contactRequest: ContactRequest;
   @ViewChild('contactForm') contactForm: any;
@@ -29,7 +27,7 @@ export class ContactComponent implements OnInit {
   onSubmit() {
     if (this.contactForm.valid) {
       // note we set the response type to text due to this issue:  https://github.com/angular/angular/issues/18680
-      this.http.post(this.url, this.contactRequest, {responseType: 'text'}).subscribe(
+      this.http.post(this.url, this.contactRequest, { responseType: 'text' }).subscribe(
         () => {
           this.alertService.addSuccess('Contact request was submitted!');
           this.contactForm.reset();
@@ -39,10 +37,8 @@ export class ContactComponent implements OnInit {
         },
         () => {
           window.scrollTo(0, 0);
-        }
+        },
       );
     }
   }
-
-
 }

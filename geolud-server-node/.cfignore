@@ -1,0 +1,7 @@
+.idea
+*.iml
+.prettierrc
+.gitignore
+*.yml
+README.md
+node_modules

@@ -8,8 +8,6 @@ applications:
   routes:
   - route: dev-geolud.mybluemix.net
   - route: dev-geolud-ui.mybluemix.net
-  services:
-  - geolud-mailservice
   env:
     BACKEND_HOST: 'dev-geolud-server.mybluemix.net'
     BACKEND_IS_SSL: true

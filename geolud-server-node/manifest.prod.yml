@@ -1,0 +1,15 @@
+---
+# Cloud Foundry Manifest
+applications:
+- name: geolud-server-node
+  instances: 1
+  buildpack: https://github.com/cloudfoundry/nodejs-buildpack.git#v1.6.36
+  memory: 100m
+  routes:
+  - route: geolud-server.mybluemix.net
+  services:
+    - geolud-mailservice
+    - geolud-db
+  env:
+    OPTIMIZE_MEMORY: true
+  command: npm run-script start:cf

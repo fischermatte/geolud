@@ -1,11 +1,11 @@
-import {AfterViewChecked, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import {ChatEntry, ChatMessage, ChatMessageType, ChatUser} from './chat.model';
-import {ChatService} from './chat.service';
+import { AfterViewChecked, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { ChatEntry, ChatMessage, ChatMessageType, ChatUser } from './chat.model';
+import { ChatService } from './chat.service';
 
 @Component({
   selector: 'app-chat',
   templateUrl: './chat.component.html',
-  styleUrls: ['./chat.component.scss']
+  styleUrls: ['./chat.component.scss'],
 })
 export class ChatComponent implements OnInit, AfterViewChecked {
   @ViewChild('messagesContainer')
@@ -16,11 +16,10 @@ export class ChatComponent implements OnInit, AfterViewChecked {
   message: string;
   messages: ChatEntry[];
 
-  constructor(private chatService: ChatService) {
-  }
+  constructor(private chatService: ChatService) {}
 
   ngOnInit() {
-    this.chatService.getUser().subscribe(user => this.user = user);
+    this.chatService.getUser().subscribe(user => (this.user = user));
     this.messages = this.chatService.getMessages();
     this.scrollToBottom();
   }
@@ -49,20 +48,20 @@ export class ChatComponent implements OnInit, AfterViewChecked {
   private createUser(username: string) {
     return {
       name: username,
-      id: this.uuid()
+      id: this.uuid(),
     };
   }
 
   private scrollToBottom(): void {
     try {
       this.messagesContainer.nativeElement.scrollTop = this.messagesContainer.nativeElement.scrollHeight;
-    } catch (err) {
-    }
+    } catch (err) {}
   }
 
   private uuid(): string {
     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, c => {
-      const r = Math.random() * 16 | 0, v = c === 'x' ? r : (r & 0x3 | 0x8);
+      const r = (Math.random() * 16) | 0,
+        v = c === 'x' ? r : (r & 0x3) | 0x8;
       return v.toString(16);
     });
   }
