@@ -13,7 +13,9 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "format": "prettier --write \"src/**/*.ts\"",
-    "update-webdriver": "node node_modules/protractor/bin/webdriver-manager update"
+    "update-webdriver": "node node_modules/protractor/bin/webdriver-manager update",
+    "cf:push:dev": "cd dist && cf push",
+    "cf:push:prod": "cd dist && cf push -f manifest.prod.yml"
   },
   "private": true,
   "dependencies": {
