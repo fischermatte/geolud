@@ -6,6 +6,7 @@ matrix:
         - cd geolud-server-java/
       script: mvn verify
     - language: node_js
+      nodejs: "6.4.1"
       before_install:
         - cd geolud-client
       install:
@@ -15,6 +16,7 @@ matrix:
         - npm run test
         - npm run build
     - language: node_js
+      nodejs: "6.4.1"
       before_install:
         - cd geolud-server-node
       install:
