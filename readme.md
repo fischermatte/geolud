@@ -3,7 +3,7 @@
 [![WTFPL](https://img.shields.io/badge/license-WTFPL-blue.svg)](http://www.wtfpl.net/txt/copying)
 [![Build Status](https://travis-ci.org/fischermatte/geolud.svg?branch=master)](https://travis-ci.org/fischermatte/geolud) 
 
-## 1. Whats this?
+## 1. What's this?
 
 My personal 'cloud-native' homepage as a progressive web app. Totally over-engineered using the following technology stack:
 
