@@ -1,22 +1,17 @@
-import {
-    SubscribeMessage,
-    WebSocketGateway,
-    WebSocketServer,
-    WsResponse,
-} from '@nestjs/websockets';
-import {from, Observable, ReplaySubject} from 'rxjs';
-import { map } from 'rxjs/operators';
-import {PATHS} from '../api';
-import {ChatMessage} from './chat.model';
+import { SubscribeMessage, WebSocketGateway, WebSocketServer, WsResponse } from '@nestjs/websockets';
+import { Observable, of, ReplaySubject } from 'rxjs';
+import { ChatMessage } from './chat.model';
 
 @WebSocketGateway()
-export class EventsGateway {
-    @WebSocketServer() server;
+export class ChatGateway {
+  @WebSocketServer() server;
 
-    private subject: ReplaySubject<ChatMessage>;
+  private subject: ReplaySubject<ChatMessage> = new ReplaySubject(10, 1000 * 60 * 2);
 
-    @SubscribeMessage(PATHS.CHAT)
-    findAll(client, data): Observable<WsResponse<ChatMessage>> {
-        return from([1, 2, 3]).pipe(map(item => ({ event: 'events', data: item })));
-    }
+  @SubscribeMessage('chat')
+  onMessage(client, message: ChatMessage): Observable<WsResponse<ChatMessage>> {
+    message.timestamp = new Date();
+    this.subject.next(message);
+    return of({ event: 'confirmation', data: message });
+  }
 }

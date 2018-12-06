@@ -1,4 +1,4 @@
-import {Project} from '../api/PATHS';
+import {Project} from '../api/projects/project.model';
 
 export const ALL_PROJECTS: Project[] = [
   {
