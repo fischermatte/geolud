@@ -1,7 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { ProjectController } from './project.controller';
 import { getRepositoryToken } from '@nestjs/typeorm';
-import {Project} from '../api';
+import {Project} from '../PATHS';
 
 describe('Project Controller', () => {
   let module: TestingModule;

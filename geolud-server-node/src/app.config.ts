@@ -1,6 +1,6 @@
 import * as cfenv from 'cfenv';
 import { MongoConnectionOptions } from 'typeorm/driver/mongodb/MongoConnectionOptions';
-import { Project } from './api/api';
+import { Project } from './api/PATHS';
 
 const mailServiceCreds = cfenv.getAppEnv().getServiceCreds('geolud-mailservice');
 const dbServiceCreds = cfenv.getAppEnv().getServiceCreds('geolud-db');

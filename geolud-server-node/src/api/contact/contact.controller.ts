@@ -1,8 +1,9 @@
 import { Controller, Inject, Post, Body } from '@nestjs/common';
 import { MailService } from '../../mail/mail.service';
-import { API, ContactRequest } from '../api';
+import {ContactRequest} from './contact.model';
+import {PATHS} from '../api';
 
-@Controller(API.CONTACT)
+@Controller(PATHS.CONTACT)
 export class ContactController {
   constructor(@Inject('MailService') private mailService: MailService) {}
 
