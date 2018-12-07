@@ -43,6 +43,7 @@
     "@types/node": "^10.7.1",
     "@types/nodemailer": "^4.6.5",
     "@types/supertest": "^2.0.5",
+    "@types/ws": "^6.0.1",
     "archiver": "^2.1.1",
     "jest": "^23.5.0",
     "nodemon": "^1.18.3",
