@@ -2,7 +2,7 @@ import { Controller, Get, Param } from '@nestjs/common';
 import { MongoRepository, ObjectID } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { PATHS } from '../api';
-import {Project} from './project.model';
+import { Project } from './project.model';
 
 @Controller(PATHS.PROJECTS)
 export class ProjectController {

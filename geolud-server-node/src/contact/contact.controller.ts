@@ -1,7 +1,7 @@
 import { Controller, Inject, Post, Body } from '@nestjs/common';
 import { MailService } from '../mail/mail.service';
-import {ContactRequest} from './contact.model';
-import {PATHS} from '../api';
+import { ContactRequest } from './contact.model';
+import { PATHS } from '../api';
 
 @Controller(PATHS.CONTACT)
 export class ContactController {
