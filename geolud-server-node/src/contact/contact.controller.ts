@@ -9,6 +9,6 @@ export class ContactController {
 
   @Post()
   submitContactRequest(@Body() contactRequest: ContactRequest): void {
-    this.mailService.sendEmail(contactRequest.name, contactRequest.email, contactRequest.message);
+    this.mailService.sendEmail(contactRequest.name, contactRequest.email, 'GEOLUD-SITE: Contact Request', contactRequest.message);
   }
 }

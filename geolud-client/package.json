@@ -1,6 +1,6 @@
 {
   "name": "geolud-client",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "license": "WTFPL",
   "scripts": {
     "ng": "ng",

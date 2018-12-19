@@ -1,7 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { ProjectController } from './project.controller';
 import { getRepositoryToken } from '@nestjs/typeorm';
-import { Project } from '../api/PATHS';
+import {Project} from './project.model';
 
 describe('Project Controller', () => {
   let module: TestingModule;
@@ -18,7 +18,7 @@ describe('Project Controller', () => {
       ],
     }).compile();
   });
-  
+
   it('should be defined', () => {
     const controller: ProjectController = module.get<ProjectController>(ProjectController);
     expect(controller).toBeDefined();

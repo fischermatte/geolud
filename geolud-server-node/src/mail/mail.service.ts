@@ -6,7 +6,7 @@ import { MailConfig } from '../app.config';
 export class MailService {
   constructor(@Inject('MailConfig') private mailConfig: MailConfig) {}
 
-  public sendEmail(from: string, email: string, message: string) {
+  public sendEmail(fromName: string, fromEmail: string, subject: string, message: string) {
     const transporter = nodemailer.createTransport({
       host: this.mailConfig.host,
       port: this.mailConfig.port,
@@ -17,11 +17,13 @@ export class MailService {
       },
     });
 
+    const from = !!fromName && !!fromEmail ? fromName + '<' + fromEmail + '>' : this.mailConfig.to;
+
     // setup email data with unicode symbols
     const mailOptions = {
-      from: from + '<' + email + '>', // sender address
+      from, // sender address
       to: this.mailConfig.to, // list of receivers
-      subject: 'GEOLUD-SITE: Contact Request', // Subject line
+      subject, // Subject line
       text: message, // plain text body
     };
 

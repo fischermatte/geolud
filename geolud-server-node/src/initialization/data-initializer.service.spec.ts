@@ -1,7 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { DataInitializerService } from './data-initializer.service';
 import { getRepositoryToken } from '@nestjs/typeorm';
-import { Project } from '../api/PATHS';
+import { Project } from '../projects/project.model';
 
 describe('DataInitializerService', () => {
   let service: DataInitializerService;
@@ -19,7 +19,7 @@ describe('DataInitializerService', () => {
     }).compile();
     service = module.get<DataInitializerService>(DataInitializerService);
   });
-  
+
   it('should be defined', () => {
     expect(service).toBeDefined();
   });
