@@ -19,6 +19,7 @@ describe('DataInitializerService', () => {
     }).compile();
     service = module.get<DataInitializerService>(DataInitializerService);
   });
+  
   it('should be defined', () => {
     expect(service).toBeDefined();
   });
