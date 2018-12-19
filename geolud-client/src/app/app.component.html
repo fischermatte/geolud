@@ -23,11 +23,10 @@
           <a class="nav-link rounded" [routerLink]="['/projects']" [routerLinkActive]="['active']"
              (click)="navbarCollapsed = true">Projects</a>
         </li>
-        <!-- disabled for now since ibm java became to expensive as backend -->
-        <!--<li class="nav-item">-->
-          <!--<a class="nav-link rounded" [routerLink]="['/chat']" [routerLinkActive]="['active']"-->
-             <!--(click)="navbarCollapsed = true">Chat</a>-->
-        <!--</li>-->
+        <li class="nav-item">
+          <a class="nav-link rounded" [routerLink]="['/chat']" [routerLinkActive]="['active']"
+             (click)="navbarCollapsed = true">Chat</a>
+        </li>
         <li class="nav-item">
           <a class="nav-link rounded" [routerLink]="['/contact']" [routerLinkActive]="['active']"
              (click)="navbarCollapsed = true">Contact</a>
@@ -83,7 +82,7 @@
       <div class="row">
         <div class="col-lg-12 text-center">
           Copyright © Georg Ludewig 2018<br>
-          Version 1.5.0
+          Version 1.5.1
         </div>
       </div>
     </div>

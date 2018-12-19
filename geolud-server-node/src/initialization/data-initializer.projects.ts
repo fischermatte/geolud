@@ -1,4 +1,4 @@
-import {Project} from '../api/api';
+import { Project } from '../projects/project.model';
 
 export const ALL_PROJECTS: Project[] = [
   {
@@ -264,7 +264,7 @@ export const ALL_PROJECTS: Project[] = [
     },
     description:
       'Development of a dynamic link library (dll) that provides functionality for true type font conversion into vector geometries. Used ' +
-      'technologies were C++, COM and Win32 API. ',
+      'technologies were C++, COM and Win32 PATHS. ',
   },
   {
     title: 'Application for Geological Map Generation and Data Export',

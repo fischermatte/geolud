@@ -2,7 +2,7 @@ import { INestApplication } from '@nestjs/common';
 import { Test } from '@nestjs/testing';
 import * as request from 'supertest';
 import { AppModule } from '../src/app.module';
-import {API, ContactRequest, Project} from '../src/api/api';
+import {PATHS, ContactRequest, Project} from '../src/api/PATHS';
 
 describe('AppController (e2e)', () => {
   let app: INestApplication;
@@ -18,7 +18,7 @@ describe('AppController (e2e)', () => {
 
     it('/api/projects (GET)', () => {
         return request(app.getHttpServer())
-            .get(`/${API.PROJECTS}`)
+            .get(`/${PATHS.PROJECTS}`)
             .then(response => {
                 const projects: Project[] = response.body;
                 expect(projects.length).toBe(24);
@@ -32,7 +32,7 @@ describe('AppController (e2e)', () => {
             name: 'somebody',
         };
         return request(app.getHttpServer())
-            .post(`/${API.CONTACT}`)
+            .post(`/${PATHS.CONTACT}`)
             .send(contactRequest)
             .expect(201);
     });
