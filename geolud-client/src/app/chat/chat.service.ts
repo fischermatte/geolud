@@ -1,8 +1,8 @@
+import { map } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { webSocket, WebSocketSubject } from 'rxjs/webSocket';
 import { environment } from '../../environments/environment';
-import { Observable } from 'rxjs/Observable';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { ChatEntry, ChatMessage, ChatMessageType, ChatUser } from './chat.model';
 import { AlertService } from '../core/alert/alert.service';
 
@@ -36,15 +36,17 @@ export class ChatService {
 
   private startListenForWebSocketMessages() {
     this.getWebSocketSubject()
-      .map(message => {
-        return {
-          message: message.data.text,
-          timestamp: message.data.timestamp,
-          username: message.data.user ? message.data.user.name : null,
-          isFromCurrentUser: this.isMessageOfCurrentUser(message.data),
-          isLogin: message.data.type === ChatMessageType.LOGIN,
-        };
-      })
+      .pipe(
+        map(message => {
+          return {
+            message: message.data.text,
+            timestamp: message.data.timestamp,
+            username: message.data.user ? message.data.user.name : null,
+            isFromCurrentUser: this.isMessageOfCurrentUser(message.data),
+            isLogin: message.data.type === ChatMessageType.LOGIN,
+          };
+        }),
+      )
       .subscribe(entry => this.messages.push(entry), error => this.alertService.addError('Websocket Issue', error));
   }
 
