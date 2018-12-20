@@ -13,7 +13,7 @@
     "test:phantomjs": "ng test --browsers PhantomJS --watch=false",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "format": "prettier --write \"src/**/*.ts\"",
+    "format": "prettier --write \"**/*.ts\"",
     "update-webdriver": "node node_modules/protractor/bin/webdriver-manager update",
     "cf:push:dev": "cd dist && cf push",
     "cf:push:prod": "cd dist && cf push -f manifest.prod.yml"
