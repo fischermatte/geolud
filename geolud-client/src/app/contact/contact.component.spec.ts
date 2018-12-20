@@ -12,7 +12,7 @@ describe('ContactComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [NgbModule.forRoot(), FormsModule, HttpClientModule, ToastrModule.forRoot()],
+      imports: [NgbModule, FormsModule, HttpClientModule, ToastrModule.forRoot()],
       declarations: [ContactComponent],
     }).compileComponents();
   }));

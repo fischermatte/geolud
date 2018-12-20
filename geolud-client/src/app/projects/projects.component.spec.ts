@@ -14,7 +14,7 @@ describe('ProjectsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientModule, NgbModule.forRoot(), BlockUIModule.forRoot(), ToastrModule.forRoot()],
+      imports: [HttpClientModule, NgbModule, BlockUIModule.forRoot(), ToastrModule.forRoot()],
       declarations: [ProjectsComponent, ProjectPeriodPipe],
       providers: [ProjectService, ToastrService],
     }).compileComponents();
