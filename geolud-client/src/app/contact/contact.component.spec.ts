@@ -5,6 +5,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('ContactComponent', () => {
   let component: ContactComponent;
@@ -12,7 +13,7 @@ describe('ContactComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [NgbModule, FormsModule, HttpClientModule, ToastrModule.forRoot()],
+      imports: [NgbModule, FormsModule, HttpClientModule, ToastrModule.forRoot(), BrowserAnimationsModule],
       declarations: [ContactComponent],
     }).compileComponents();
   }));

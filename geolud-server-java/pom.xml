@@ -5,7 +5,7 @@
 
     <artifactId>geolud-server-java</artifactId>
     <groupId>io.fischermatte.geolud</groupId>
-    <version>1.5.1</version>
+    <version>1.5.2</version>
     <packaging>jar</packaging>
 
     <properties>
