@@ -11,7 +11,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <spring-boot-dependencies.version>2.0.2.RELEASE</spring-boot-dependencies.version>
+        <spring-boot-dependencies.version>2.1.1.RELEASE</spring-boot-dependencies.version>
         <build-helper-maven-plugin.version>3.0.0</build-helper-maven-plugin.version>
         <springfox-swagger.version>2.7.0</springfox-swagger.version>
         <commons-lang.version>2.6</commons-lang.version>
@@ -199,11 +199,9 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.7.0</version>
+                <version>3.8.0</version>
                 <configuration>
-                    <!--<compilerVersion>${java.version}</compilerVersion>-->
-                    <source>${java.version}</source>
-                    <target>${java.version}</target>
+                    <release>11</release>
                 </configuration>
             </plugin>
 

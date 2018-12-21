@@ -28,7 +28,7 @@ public class DataInitializer {
 
     @Async
     public void insertProjectData() throws IOException {
-        ObjectMapper objectMapper = new ObjectMapper();
+        var objectMapper = new ObjectMapper();
         objectMapper.setDateFormat(new SimpleDateFormat("YYYY-MM-dd"));
         objectMapper.registerModule(new JavaTimeModule());
         Project[] projects = objectMapper.readValue(ApplicationConfig.class.getResourceAsStream("/data/projects.json"), Project[].class);
