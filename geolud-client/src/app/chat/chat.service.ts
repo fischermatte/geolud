@@ -47,7 +47,7 @@ export class ChatService {
           };
         }),
       )
-      .subscribe(entry => this.messages.push(entry), error => this.alertService.addError('Websocket Issue', error));
+      .subscribe(entry => this.messages.push(entry), error => this.alertService.addError('Websocket Error', error));
   }
 
   public getMessages(): ChatEntry[] {
