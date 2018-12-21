@@ -6,7 +6,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [RouterTestingModule, NgbModule.forRoot()],
+      imports: [RouterTestingModule, NgbModule],
       declarations: [AppComponent],
     }).compileComponents();
   }));

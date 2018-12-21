@@ -1,6 +1,7 @@
 import { AfterViewChecked, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ChatEntry, ChatMessage, ChatMessageType, ChatUser } from './chat.model';
 import { ChatService } from './chat.service';
+import { v4 as uuid } from 'uuid';
 
 @Component({
   selector: 'app-chat',
@@ -48,7 +49,7 @@ export class ChatComponent implements OnInit, AfterViewChecked {
   private createUser(username: string) {
     return {
       name: username,
-      id: this.uuid(),
+      id: uuid(),
     };
   }
 
@@ -56,13 +57,5 @@ export class ChatComponent implements OnInit, AfterViewChecked {
     try {
       this.messagesContainer.nativeElement.scrollTop = this.messagesContainer.nativeElement.scrollHeight;
     } catch (err) {}
-  }
-
-  private uuid(): string {
-    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, c => {
-      const r = (Math.random() * 16) | 0,
-        v = c === 'x' ? r : (r & 0x3) | 0x8;
-      return v.toString(16);
-    });
   }
 }

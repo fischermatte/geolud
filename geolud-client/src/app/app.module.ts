@@ -27,7 +27,7 @@ export function loadConfig(appConfigService: AppConfigService) {
 @NgModule({
   declarations: [AppComponent, ProjectsComponent, ContactComponent, ResumeComponent, HomeComponent, ChatComponent, ProjectPeriodPipe],
   imports: [
-    NgbModule.forRoot(),
+    NgbModule,
     BrowserModule,
     BlockUIModule.forRoot(),
     ToastrModule.forRoot({

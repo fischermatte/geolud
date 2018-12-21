@@ -7,6 +7,7 @@ import { BlockUIModule } from 'ng-block-ui';
 import { ProjectService } from './project.service';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { ProjectPeriodPipe } from './project-period.pipe';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('ProjectsComponent', () => {
   let component: ProjectsComponent;
@@ -14,7 +15,7 @@ describe('ProjectsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientModule, NgbModule.forRoot(), BlockUIModule.forRoot(), ToastrModule.forRoot()],
+      imports: [HttpClientModule, NgbModule, BlockUIModule.forRoot(), ToastrModule.forRoot(), BrowserAnimationsModule],
       declarations: [ProjectsComponent, ProjectPeriodPipe],
       providers: [ProjectService, ToastrService],
     }).compileComponents();
