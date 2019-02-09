@@ -31,7 +31,7 @@ export function loadConfig(appConfigService: AppConfigService) {
     HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [
     AppConfigService,
