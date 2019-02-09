@@ -7,6 +7,7 @@ export const environment = {
   appConfig: {
     apiBase: null,
     wsBase: null,
+    vapidPulicKey: 'BNIQ6kTA0xRv7p4Hi9jfatnhB40Meo0M_KFfv54rp_GA7ip1uy2KiAT0bfz0CSwY5JjJj6lzcv306wVTf9A3NDU',
   }, // will be loaded at startup
 };
 

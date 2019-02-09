@@ -2,6 +2,8 @@ import { AfterViewChecked, Component, ElementRef, OnInit, ViewChild } from '@ang
 import { ChatEntry, ChatMessage, ChatMessageType, ChatUser } from './chat.model';
 import { ChatService } from './chat.service';
 import { v4 as uuid } from 'uuid';
+import { PushService } from '../core/push/push.service';
+import { AlertService } from '../core/alert/alert.service';
 
 @Component({
   selector: 'app-chat',
@@ -16,8 +18,9 @@ export class ChatComponent implements OnInit, AfterViewChecked {
   user: ChatUser;
   message: string;
   messages: ChatEntry[];
+  pushEnabled = false;
 
-  constructor(private chatService: ChatService) {}
+  constructor(private chatService: ChatService, private pushService: PushService, private alertService: AlertService) {}
 
   ngOnInit() {
     this.chatService.getUser().subscribe(user => (this.user = user));
@@ -44,6 +47,41 @@ export class ChatComponent implements OnInit, AfterViewChecked {
       return;
     }
     this.chatService.login(this.createUser(username));
+  }
+
+  public togglePush(checked: boolean): void {
+    setTimeout(() => {
+      if (checked) {
+        this.enablePush();
+      } else {
+        this.disablePush();
+      }
+    });
+  }
+
+  private enablePush(): Promise<void> {
+    return this.pushService.register().then(
+      () => {
+        this.pushEnabled = true;
+      },
+      error => {
+        this.pushEnabled = false;
+        console.log(error);
+        this.alertService.addError('Failed to enable push notifications');
+      },
+    );
+  }
+
+  private disablePush(): Promise<void> {
+    return this.pushService.unregister().then(
+      () => {
+        this.pushEnabled = false;
+      },
+      error => {
+        console.log(error);
+        this.pushEnabled = true;
+      },
+    );
   }
 
   private createUser(username: string) {
