@@ -5,11 +5,11 @@ const version = require('./package.json').version;
 const fs = require('fs');
 const archiver = require('archiver');
 
-if (!fs.existsSync('target')) {
-  fs.mkdirSync('target');
+if (!fs.existsSync('release')) {
+  fs.mkdirSync('release');
 }
 
-const output = fs.createWriteStream('target/geolud-client-' + version + '.zip');
+const output = fs.createWriteStream('release/geolud-client-' + version + '.zip');
 const archive = archiver('zip');
 
 archive.on('error', function (err) {
