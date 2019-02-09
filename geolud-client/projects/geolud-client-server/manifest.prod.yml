@@ -8,6 +8,7 @@ applications:
   routes:
   - route: geolud.mybluemix.net
   - route: geolud-ui.mybluemix.net
+  command: node server.js
   env:
     BACKEND_HOST: 'geolud-server.mybluemix.net'
     BACKEND_IS_SSL: true
