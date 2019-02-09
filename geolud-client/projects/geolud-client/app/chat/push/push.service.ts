@@ -17,9 +17,7 @@ class PushRegistration {
   }
 }
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class PushService {
 
   private endpoint: string;

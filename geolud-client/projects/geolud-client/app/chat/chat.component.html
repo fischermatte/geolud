@@ -9,10 +9,10 @@
       <div class="card chat-window">
         <div class="card-header">
           <i class="fa fa-fw fa-comments"></i>
-          <div class="float-right custom-control custom-checkbox">
-            <input class="custom-control-input" id="enable-push" type="checkbox" (change)="togglePush($event.target.checked)" [(ngModel)]="pushEnabled">
-            <label class="custom-control-label" for="enable-push">Enable Push</label>
-          </div>
+          <!--<div class="float-right custom-control custom-checkbox">-->
+            <!--<input class="custom-control-input" id="enable-push" type="checkbox" (change)="togglePush($event.target.checked)" [(ngModel)]="pushEnabled">-->
+            <!--<label class="custom-control-label" for="enable-push">Enable Push</label>-->
+          <!--</div>-->
         </div>
         <div #messagesContainer class="card-body chat-messages">
           <div *ngFor="let m of messages" class="chat-message" [ngClass]="{'chat-message-left': m.isFromCurrentUser}">

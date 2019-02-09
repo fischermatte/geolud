@@ -1,22 +1,18 @@
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
-import { ResumeComponent } from './resume/resume.component';
-import { ProjectsComponent } from './projects/projects.component';
-import { ContactComponent } from './contact/contact.component';
-import { ChatComponent } from './chat/chat.component';
+
+const routes: Routes = [
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent },
+  { path: 'resume', loadChildren: './resume/resume.module#ResumeModule' },
+  { path: 'projects', loadChildren: './projects/projects.module#ProjectsModule' },
+  { path: 'chat', loadChildren: './chat/chat.module#ChatModule' },
+  { path: 'contact', loadChildren: './contact/contact.module#ContactModule' },
+];
 
 @NgModule({
-  imports: [
-    RouterModule.forRoot([
-      { path: '', redirectTo: '/home', pathMatch: 'full' },
-      { path: 'home', component: HomeComponent },
-      { path: 'resume', component: ResumeComponent },
-      { path: 'projects', component: ProjectsComponent },
-      { path: 'chat', component: ChatComponent },
-      { path: 'contact', component: ContactComponent },
-    ]),
-  ],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

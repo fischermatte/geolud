@@ -2,7 +2,7 @@ import { AfterViewChecked, Component, ElementRef, OnInit, ViewChild } from '@ang
 import { ChatEntry, ChatMessage, ChatMessageType, ChatUser } from './chat.model';
 import { ChatService } from './chat.service';
 import { v4 as uuid } from 'uuid';
-import { PushService } from '../core/push/push.service';
+import { PushService } from './push/push.service';
 import { AlertService } from '../core/alert/alert.service';
 
 @Component({
