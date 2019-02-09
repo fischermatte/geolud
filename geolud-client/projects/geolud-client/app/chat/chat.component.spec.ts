@@ -4,6 +4,7 @@ import { ChatComponent } from './chat.component';
 import { FormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {PushService} from './push/push.service';
 
 describe('ChatComponent', () => {
   let component: ChatComponent;
@@ -12,6 +13,7 @@ describe('ChatComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ChatComponent],
+      providers: [PushService],
       imports: [FormsModule, ToastrModule.forRoot(), BrowserAnimationsModule],
     }).compileComponents();
   }));
