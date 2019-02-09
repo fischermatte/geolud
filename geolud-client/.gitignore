@@ -1,7 +1,7 @@
-/dist/app/
-/dist/node_modules/
+/dist
 /node/
 /node_modules/
 */.
 .idea
 /target/
+/projects/geolud-client-server/node_modules
