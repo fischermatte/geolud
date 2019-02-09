@@ -1,0 +1,22 @@
+{
+  "name": "geolud-client-express",
+  "version": "1.4.8",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3"
+  },
+  "scripts": {
+    "prebuild": "npm install",
+    "build": "copyfiles -a -e \"**/node_modules/**\" ** ../../dist",
+    "prestart": "npm run build",
+    "start": "npm run serve",
+    "serve": "node server.js"
+  },
+  "engines": {
+    "node": "8.11.3",
+    "npm": "6.1.0"
+  },
+  "devDependencies": {
+    "copyfiles": "^2.1.0"
+  }
+}
