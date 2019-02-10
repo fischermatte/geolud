@@ -4,6 +4,9 @@ import { ChatComponent } from './chat.component';
 import { FormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { PushService } from './push/push.service';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('ChatComponent', () => {
   let component: ChatComponent;
@@ -12,7 +15,14 @@ describe('ChatComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ChatComponent],
-      imports: [FormsModule, ToastrModule.forRoot(), BrowserAnimationsModule],
+      providers: [PushService],
+      imports: [
+        FormsModule,
+        HttpClientModule,
+        ToastrModule.forRoot(),
+        BrowserAnimationsModule,
+        ServiceWorkerModule.register('/ngsw-worker.js', { enabled: false }),
+      ],
     }).compileComponents();
   }));
 

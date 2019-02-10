@@ -10,7 +10,6 @@
     "serve:client": "ng serve",
     "serve:client:prod": "ng serve -c production",
     "serve:server": "cd projects/geolud-client-server && npm run serve",
-    "serve:server:prod": "cd projects/geolud-client-server && npm run serve:prod",
     "build": "npm-run-all -p build:client build:server",
     "build:client": "ng build -c production --progress",
     "build:server": "cd projects/geolud-client-server && npm run build",

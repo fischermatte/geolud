@@ -1,8 +1,7 @@
-import { TestBed, inject } from '@angular/core/testing';
+import { inject, TestBed } from '@angular/core/testing';
 
 import { ChatService } from './chat.service';
 import { ToastrModule } from 'ngx-toastr';
-import { FormsModule } from '@angular/forms';
 
 describe('ChatService', () => {
   beforeEach(() => {
