@@ -35,6 +35,7 @@
     "rxjs": "^6.2.2",
     "typeorm": "^0.2.9",
     "typescript": "^3.0.1",
+    "web-push": "^3.3.3",
     "ws": "^6.1.2"
   },
   "devDependencies": {

@@ -4,6 +4,7 @@ import { ChatMessage } from './chat.model';
 import { Server } from 'ws';
 import { MailService } from '../mail/mail.service';
 import { Inject, Logger } from '@nestjs/common';
+import { PushService } from './push.service';
 
 @WebSocketGateway()
 export class ChatGateway implements OnGatewayInit {
@@ -12,7 +13,7 @@ export class ChatGateway implements OnGatewayInit {
   private subject: ReplaySubject<ChatMessage> = new ReplaySubject(10, 1000 * 60 * 2);
   private lastChatNotificationEmail: Date;
 
-  constructor(@Inject('MailService') private mailService: MailService) {}
+  constructor(@Inject('MailService') private mailService: MailService, @Inject('PushService') private pushService: PushService) {}
 
   afterInit(server: Server): void {
     this.server = server;
@@ -33,6 +34,7 @@ export class ChatGateway implements OnGatewayInit {
   private notifyChatAction(message: ChatMessage): void {
     const msg: string = JSON.stringify(message);
     Logger.log('chat action going on: ' + msg);
+    this.pushService.sendNotification(message);
     const oneHourEarlier: Date = new Date();
     oneHourEarlier.setTime(oneHourEarlier.getTime() - 60 * 60 * 1000);
     if (this.lastChatNotificationEmail == null || this.lastChatNotificationEmail < oneHourEarlier) {

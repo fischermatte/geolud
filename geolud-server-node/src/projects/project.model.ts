@@ -41,3 +41,8 @@ export class Project {
   @Column(type => AssetLink)
   assetLinks?: AssetLink[];
 }
+
+@Entity()
+export class PushRegistration {
+
+}
