@@ -1,7 +1,6 @@
-@import '../../variables';
 
 .timeline {
-  border-left: 3px solid $primary;
+  border-left: 3px solid #0074D9;
   border-bottom-right-radius: 2px;
   border-top-right-radius: 2px;
   position: relative;
@@ -27,7 +26,7 @@
     border-radius: 50%;
     background-clip: padding-box;
     background: #fff;
-    border: 3px solid $primary;
+    border: 3px solid #0074D9;
   }
   .item:after {
     content: "";
@@ -39,7 +38,7 @@
     height: 10px;
     border-radius: 50%;
     background-clip: padding-box;
-    background: $primary;
+    background: #0074D9;
     z-index: 10;
   }
 
@@ -67,7 +66,7 @@
     top: 0;
     .title {
       font-size: 1.2em;
-      color: $primary;
+      color: #0074D9;
     }
     .time {
       color: #8a8a8a;
@@ -84,7 +83,7 @@
   li {
     list-style: none;
     font-size: 1.2em;
-    color: $primary;
+    color: #0074D9;
   }
 }
 
@@ -94,9 +93,9 @@
   li {
     list-style: none;
     font-size: 1.2em;
-    color: $primary;
+    color: #0074D9;
     .period {
-      font-size: $font-size-base;
+      font-size: 1em;
       color: #000;
       .time {
         color: #8a8a8a;

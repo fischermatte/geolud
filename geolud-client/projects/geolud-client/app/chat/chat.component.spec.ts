@@ -2,7 +2,6 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ChatComponent } from './chat.component';
 import { FormsModule } from '@angular/forms';
-import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PushService } from './push/push.service';
 import { ServiceWorkerModule } from '@angular/service-worker';
@@ -19,7 +18,6 @@ describe('ChatComponent', () => {
       imports: [
         FormsModule,
         HttpClientModule,
-        ToastrModule.forRoot(),
         BrowserAnimationsModule,
         ServiceWorkerModule.register('/ngsw-worker.js', { enabled: false }),
       ],

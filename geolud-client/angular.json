@@ -28,10 +28,12 @@
               "projects/geolud-client/manifest.webmanifest"
             ],
             "styles": [
-              "node_modules/lato-font/scss/lato-font.scss",
-              "node_modules/montserrat-font/scss/montserrat-font.scss",
-              "node_modules/bootstrap/scss/bootstrap.scss",
-              "node_modules/startbootstrap-freelancer/scss/freelancer.scss",
+              "node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss",
+              "node_modules/@fortawesome/fontawesome-free/scss/solid.scss",
+              "node_modules/@fortawesome/fontawesome-free/scss/regular.scss",
+              "node_modules/@fortawesome/fontawesome-free/scss/brands.scss",
+              "node_modules/angular-bootstrap-md/scss/bootstrap/bootstrap.scss",
+              "node_modules/angular-bootstrap-md/scss/mdb-free.scss",
               "projects/geolud-client/styles.scss"
             ],
             "scripts": []
@@ -91,10 +93,12 @@
             "tsConfig": "projects/geolud-client/tsconfig.spec.json",
             "karmaConfig": "projects/geolud-client/karma.conf.js",
             "styles": [
-              "node_modules/lato-font/scss/lato-font.scss",
-              "node_modules/montserrat-font/scss/montserrat-font.scss",
-              "node_modules/bootstrap/scss/bootstrap.scss",
-              "node_modules/startbootstrap-freelancer/scss/freelancer.scss",
+              "node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss",
+              "node_modules/@fortawesome/fontawesome-free/scss/solid.scss",
+              "node_modules/@fortawesome/fontawesome-free/scss/regular.scss",
+              "node_modules/@fortawesome/fontawesome-free/scss/brands.scss",
+              "node_modules/angular-bootstrap-md/scss/bootstrap/bootstrap.scss",
+              "node_modules/angular-bootstrap-md/scss/mdb-free.scss",
               "projects/geolud-client/styles.scss"
             ],
             "scripts": [],

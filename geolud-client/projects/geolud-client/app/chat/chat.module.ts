@@ -5,6 +5,7 @@ import { PushService } from './push/push.service';
 import { ChatComponent } from './chat.component';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
+import { ChatService } from './chat.service';
 
 const routes: Routes = [{ path: '', component: ChatComponent }];
 
@@ -17,6 +18,6 @@ export class ChatRoutingModule {}
 @NgModule({
   declarations: [ChatComponent],
   imports: [FormsModule, CommonModule, ChatRoutingModule],
-  providers: [PushService],
+  providers: [PushService, ChatService],
 })
 export class ChatModule {}

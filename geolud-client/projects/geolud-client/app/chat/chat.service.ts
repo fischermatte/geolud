@@ -11,9 +11,7 @@ export interface WsChatMessage {
   data: ChatMessage;
 }
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class ChatService {
   private userSubject: BehaviorSubject<ChatUser> = new BehaviorSubject(null);
   private webSocketSubject: WebSocketSubject<WsChatMessage>; // lazy init since it connects to websocket

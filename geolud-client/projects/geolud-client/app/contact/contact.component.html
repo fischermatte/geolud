@@ -1,41 +1,66 @@
-<section class="section-flow section-flow-first">
+<section>
   <div class="container">
     <h2 class="text-center">Contact Me</h2>
-    <hr class="star-dark">
+    <hr>
     <div class="row">
       <div class="col-lg-8 mx-auto">
-        <form (ngSubmit)="onSubmit()" name="sentMessage" id="contactForm" #contactForm="ngForm" class="was-validated" novalidate>
-          <!--NAME-->
-          <div class="control-group">
-            <div class="form-group floating-label-form-group controls">
-              <label>Name</label>
-              <input class="form-control" id="name" type="text" name="name" #name="ngModel" placeholder="Name" [(ngModel)]="contactRequest.name">
+          <!--<form (ngSubmit)="onSubmit()" name="sentMessage" id="contactForm" #contactForm="ngForm" class="was-validated" novalidate>-->
+          <!--&lt;!&ndash;NAME&ndash;&gt;-->
+          <!--<div class="control-group">-->
+          <!--<div class="form-group floating-label-form-group controls">-->
+          <!--<label>Name</label>-->
+          <!--<input class="form-control" id="name" type="text" name="name" #name="ngModel" placeholder="Name" [(ngModel)]="contactRequest.name">-->
+          <!--</div>-->
+          <!--</div>-->
+          <!--&lt;!&ndash;EMAIL&ndash;&gt;-->
+          <!--<div class="control-group">-->
+          <!--<div class="form-group floating-label-form-group controls">-->
+          <!--<label>Email Address</label>-->
+          <!--<input class="form-control" id="email" type="email" name="email" #email="ngModel" placeholder="Email Address *" required-->
+          <!--[(ngModel)]="contactRequest.email" pattern="[^ @]*@[^ @]*">-->
+          <!--<small [hidden]="email.valid || email.pristine" class="was-validated invalid-feedback">A valid email is required</small>-->
+          <!--</div>-->
+          <!--</div>-->
+          <!--&lt;!&ndash;MESSAGE&ndash;&gt;-->
+          <!--<div class="control-group">-->
+          <!--<div class="form-group floating-label-form-group controls">-->
+          <!--<label>Message</label>-->
+          <!--<textarea class="form-control" id="message" name="message" #message="ngModel" rows="5" placeholder="Message *" required-->
+          <!--[(ngModel)]="contactRequest.message"></textarea>-->
+          <!--<small [hidden]="message.valid || message.pristine" class="was-validated invalid-feedback">Message is required</small>-->
+          <!--</div>-->
+          <!--</div>-->
+          <!--<br>-->
+          <!--<div id="success"></div>-->
+          <!--<div class="form-group">-->
+          <!--<button type="submit" class="btn btn-success btn-lg" id="sendMessageButton" [disabled]="contactForm.invalid">Send</button>-->
+          <!--</div>-->
+          <!--</form>-->
+
+          <form id="contactForm" (ngSubmit)="onSubmit()" #contactForm="ngForm" class="needs-validation text-center" novalidate>
+
+            <div class="md-form">
+              <label for="name">Name</label>
+              <input id="name" type="text" class="form-control" name="name" #name="ngModel" [(ngModel)]="contactRequest.name" mdbInputDirective>
             </div>
-          </div>
-          <!--EMAIL-->
-          <div class="control-group">
-            <div class="form-group floating-label-form-group controls">
-              <label>Email Address</label>
-              <input class="form-control" id="email" type="email" name="email" #email="ngModel" placeholder="Email Address *" required
-                     [(ngModel)]="contactRequest.email" pattern="[^ @]*@[^ @]*">
-              <small [hidden]="email.valid || email.pristine" class="was-validated invalid-feedback">A valid email is required</small>
+
+            <div class="md-form">
+              <label for="email">Email</label>
+              <input id="email" type="email" class="form-control" name="email" #email="ngModel" [(ngModel)]="contactRequest.email" required mdbInputDirective>
+              <div class="invalid-feedback">A valid email is required</div>
             </div>
-          </div>
-          <!--MESSAGE-->
-          <div class="control-group">
-            <div class="form-group floating-label-form-group controls">
-              <label>Message</label>
-              <textarea class="form-control" id="message" name="message" #message="ngModel" rows="5" placeholder="Message *" required
-                        [(ngModel)]="contactRequest.message"></textarea>
-              <small [hidden]="message.valid || message.pristine" class="was-validated invalid-feedback">Message is required</small>
+
+            <div class="md-form">
+              <label for="message">Message</label>
+              <textarea id="message" type="text" class="md-textarea form-control" name="message" #message="ngModel" [(ngModel)]="contactRequest.message" required mdbInputDirective></textarea>
+              <div class="invalid-feedback">A message is required</div>
             </div>
-          </div>
-          <br>
-          <div id="success"></div>
-          <div class="form-group">
-            <button type="submit" class="btn btn-success btn-lg" id="sendMessageButton" [disabled]="contactForm.invalid">Send</button>
-          </div>
-        </form>
+
+            <button mdbBtn color="info" outline="true" rounded="true" block="true" class="waves-effect" mdbWavesEffect
+                    type="submit" [disabled]="contactForm.invalid"> Send
+            </button>
+
+          </form>
       </div>
     </div>
   </div>
