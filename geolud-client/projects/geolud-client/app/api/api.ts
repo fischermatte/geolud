@@ -4,15 +4,6 @@ export interface ContactRequest {
   message: string;
 }
 
-export interface Project {
-  id: string;
-  title?: string;
-  description?: string;
-  period?: Interval;
-  customer: Customer;
-  links?: Array<AssetLink>;
-}
-
 export interface Interval {
   from: string;
   to: string;
