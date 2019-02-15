@@ -13,6 +13,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppConfigService } from './app-config.service';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { StoreModule } from '@ngrx/store';
+import { reducers } from './core/store/store';
 
 export function loadConfig(appConfigService: AppConfigService) {
   return () => appConfigService.loadConfig();
@@ -32,6 +34,7 @@ export function loadConfig(appConfigService: AppConfigService) {
     AppRoutingModule,
     BrowserAnimationsModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    StoreModule.forRoot(reducers),
   ],
   providers: [
     AppConfigService,
