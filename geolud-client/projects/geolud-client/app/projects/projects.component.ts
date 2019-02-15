@@ -3,7 +3,7 @@ import { ProjectService } from './project.service';
 import { BlockUI, NgBlockUI } from 'ng-block-ui';
 import { Title } from '@angular/platform-browser';
 import { AlertService } from '../core/alert/alert.service';
-import { Project } from '../api/api';
+import { Project } from './project.model';
 
 @Component({
   selector: 'app-projects',

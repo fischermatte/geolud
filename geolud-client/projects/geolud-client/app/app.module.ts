@@ -14,7 +14,7 @@ import { AppConfigService } from './app-config.service';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { StoreModule } from '@ngrx/store';
-import { reducers } from './core/store/store';
+import { reducers } from './core/store/state';
 
 export function loadConfig(appConfigService: AppConfigService) {
   return () => appConfigService.loadConfig();

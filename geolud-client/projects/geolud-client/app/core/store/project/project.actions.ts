@@ -1,19 +1,22 @@
 import { Action } from '@ngrx/store';
 import { Project } from '../../../projects/project.model';
 
-export const PROJECT_ADD_ONE_ACTION = '[PROJECT] ADD ONE';
-export const PROJECT_ADD_MANY_ACTION = '[PROJECT] ADD MANY';
+
+export enum ProjectActionType {
+  ADD_PROJECT = '[PROJECT] ADD PROJECT',
+  ADD_PROJECTS = '[PROJECT] ADD PROJECTS',
+}
 
 export class AddProjectAction implements Action {
-  readonly type = PROJECT_ADD_ONE_ACTION;
+  readonly type = ProjectActionType.ADD_PROJECT;
 
   constructor(public project: Project) {}
 }
 
 export class AddProjectsAction implements Action {
-  readonly type = PROJECT_ADD_MANY_ACTION;
+  readonly type = ProjectActionType.ADD_PROJECTS;
 
   constructor(public projects: Project[]) {}
 }
 
-export type ProjectActionType = AddProjectAction | AddProjectsAction;
+export type ProjectAction = AddProjectAction | AddProjectsAction;

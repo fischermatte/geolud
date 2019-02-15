@@ -3,9 +3,9 @@ import { projectsReducer } from './project/project.reducers';
 import { ProjectState } from './project/project.state';
 
 export interface State {
-  projectState: ProjectState;
+  projects: ProjectState;
 }
 
 export const reducers: ActionReducerMap<State> = {
-  projectState: projectsReducer,
+  projects: projectsReducer,
 };

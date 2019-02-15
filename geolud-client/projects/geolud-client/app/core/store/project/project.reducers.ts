@@ -1,14 +1,14 @@
-import { PROJECT_ADD_ONE_ACTION, PROJECT_ADD_MANY_ACTION, ProjectActionType } from './project.actions';
-import { initialProjectState, ProjectState } from './project.state';
+import { initialProjectState, projectAdapter, ProjectState } from './project.state';
+import { ProjectAction, ProjectActionType } from './project.actions';
 
-export function projectsReducer(state: ProjectState = initialProjectState, action: ProjectActionType): ProjectState {
+export function projectsReducer(state: ProjectState = initialProjectState, action: ProjectAction): ProjectState {
   switch (action.type) {
-    case PROJECT_ADD_ONE_ACTION: {
-      state.projects.push(action.project);
+    case ProjectActionType.ADD_PROJECT: {
+      projectAdapter.addOne(action.project, state);
       return state;
     }
-    case PROJECT_ADD_MANY_ACTION: {
-      state.projects.concat(action.projects);
+    case ProjectActionType.ADD_PROJECTS: {
+      projectAdapter.addMany(action.projects, state);
       return state;
     }
     default: {

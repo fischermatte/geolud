@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { map, publishReplay, refCount } from 'rxjs/operators';
+import { publishReplay, refCount } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
-import { Project } from '../api/api';
+import { Project } from './project.model';
 
 @Injectable({
   providedIn: 'root',
