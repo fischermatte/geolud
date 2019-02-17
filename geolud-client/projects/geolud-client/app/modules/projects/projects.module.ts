@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ProjectsComponent } from './projects.component';
 import { ProjectPeriodPipe } from './project-period.pipe';
 import { BlockUIModule } from 'ng-block-ui';
+import { ProjectService } from './project.service';
 
 const routes: Routes = [{ path: '', component: ProjectsComponent }];
 
@@ -16,6 +17,6 @@ export class ProjectsRoutingModule {}
 @NgModule({
   declarations: [ProjectsComponent, ProjectPeriodPipe],
   imports: [CommonModule, ProjectsRoutingModule, BlockUIModule.forRoot()],
-  providers: [],
+  providers: [ProjectService],
 })
 export class ProjectsModule {}

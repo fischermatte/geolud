@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { Project } from '../../../projects/project.model';
+import { Project } from '../../../modules/projects/project.types';
 
 export enum ProjectActionType {
   ADD_PROJECT = '[PROJECT] ADD PROJECT',

@@ -1,10 +1,10 @@
 import { map } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { webSocket, WebSocketSubject } from 'rxjs/webSocket';
-import { environment } from '../../environments/environment';
 import { Observable, BehaviorSubject } from 'rxjs';
-import { ChatEntry, ChatMessage, ChatMessageType, ChatUser } from './chat.model';
-import { AlertService } from '../core/alert/alert.service';
+import { ChatEntry, ChatMessage, ChatMessageType, ChatUser } from './chat.types';
+import { AlertService } from '../../core/alert/alert.service';
+import { environment } from '../../../environments/environment';
 
 export interface WsChatMessage {
   event: string;

@@ -1,9 +1,9 @@
 import { AfterViewChecked, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { ChatEntry, ChatMessage, ChatMessageType, ChatUser } from './chat.model';
 import { ChatService } from './chat.service';
 import { v4 as uuid } from 'uuid';
 import { PushService } from './push/push.service';
-import { AlertService } from '../core/alert/alert.service';
+import { AlertService } from '../../core/alert/alert.service';
+import { ChatEntry, ChatMessage, ChatMessageType, ChatUser } from './chat.types';
 
 @Component({
   selector: 'app-chat',
