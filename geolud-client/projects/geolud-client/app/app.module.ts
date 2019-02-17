@@ -6,7 +6,6 @@ import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
@@ -14,21 +13,22 @@ import { StoreModule } from '@ngrx/store';
 import { reducers } from './core/store/state';
 import { GeoludHomeModule } from './modules/home/home.module';
 import { GeoludCoreModule } from './core/core.module';
+import {ToastrModule} from 'ngx-toastr';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     GeoludCoreModule.forRoot(),
     GeoludHomeModule,
-    NgbModule,
-    BrowserModule,
+    AppRoutingModule,
     ToastrModule.forRoot({
       preventDuplicates: true,
       tapToDismiss: true,
     }),
+    NgbModule,
+    BrowserModule,
     FormsModule,
     HttpClientModule,
-    AppRoutingModule,
     BrowserAnimationsModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     StoreModule.forRoot(reducers),

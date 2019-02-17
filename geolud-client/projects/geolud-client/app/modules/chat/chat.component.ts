@@ -6,7 +6,7 @@ import { AlertService } from '../../core/alert/alert.service';
 import { ChatEntry, ChatMessage, ChatMessageType, ChatUser } from './chat.types';
 
 @Component({
-  selector: 'app-chat',
+  selector: 'geolud-chat',
   templateUrl: './chat.component.html',
   styleUrls: ['./chat.component.scss'],
 })

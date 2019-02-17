@@ -6,7 +6,7 @@ import { AlertService } from '../../core/alert/alert.service';
 import { ContactRequest } from './contact.types';
 
 @Component({
-  selector: 'app-contact',
+  selector: 'geolud-contact',
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.scss'],
 })

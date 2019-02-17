@@ -7,7 +7,7 @@
       "root": "projects/geolud-client/",
       "sourceRoot": "projects/geolud-client/",
       "projectType": "application",
-      "prefix": "app",
+      "prefix": "geolud",
       "schematics": {
         "@schematics/angular:component": {
           "styleext": "scss"

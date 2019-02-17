@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 
 @Component({
-  selector: 'app-resume',
+  selector: 'geolud-resume',
   templateUrl: './resume.component.html',
   styleUrls: ['./resume.component.scss'],
 })

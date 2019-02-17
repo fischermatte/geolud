@@ -6,7 +6,7 @@ import { AlertService } from '../../core/alert/alert.service';
 import { Project } from './project.types';
 
 @Component({
-  selector: 'app-projects',
+  selector: 'geolud-projects',
   templateUrl: './projects.component.html',
   styleUrls: ['./projects.component.scss'],
 })
