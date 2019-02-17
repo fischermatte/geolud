@@ -1,7 +1,6 @@
 import { Action } from '@ngrx/store';
 import { Project } from '../../../projects/project.model';
 
-
 export enum ProjectActionType {
   ADD_PROJECT = '[PROJECT] ADD PROJECT',
   ADD_PROJECTS = '[PROJECT] ADD PROJECTS',

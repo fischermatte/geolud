@@ -1,5 +1,4 @@
-import {AssetLink, Customer, Interval} from '../api/api';
-
+import { AssetLink, Customer, Interval } from '../api/api';
 
 export interface Project {
   id: string;

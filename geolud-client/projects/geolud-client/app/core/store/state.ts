@@ -1,5 +1,5 @@
 import { ActionReducerMap } from '@ngrx/store';
-import { projectsReducer } from './project/project.reducers';
+import { projectReducer } from './project/project.reducers';
 import { ProjectState } from './project/project.state';
 
 export interface State {
@@ -7,5 +7,5 @@ export interface State {
 }
 
 export const reducers: ActionReducerMap<State> = {
-  projects: projectsReducer,
+  projects: projectReducer,
 };
