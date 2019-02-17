@@ -19,4 +19,4 @@ export class ChatRoutingModule {}
   imports: [FormsModule, CommonModule, ChatRoutingModule],
   providers: [PushService],
 })
-export class ChatModule {}
+export class GeoludChatModule {}

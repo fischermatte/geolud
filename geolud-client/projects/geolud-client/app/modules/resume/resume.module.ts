@@ -16,4 +16,4 @@ export class ResumeRoutingModule {}
   imports: [CommonModule, ResumeRoutingModule],
   providers: [],
 })
-export class ResumeModule {}
+export class GeoludResumeModule {}

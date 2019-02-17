@@ -6,4 +6,4 @@ import { NgModule } from '@angular/core';
   imports: [],
   providers: [],
 })
-export class HomeModule {}
+export class GeoludHomeModule {}

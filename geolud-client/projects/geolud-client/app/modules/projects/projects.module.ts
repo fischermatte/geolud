@@ -19,4 +19,4 @@ export class ProjectsRoutingModule {}
   imports: [CommonModule, ProjectsRoutingModule, BlockUIModule.forRoot()],
   providers: [ProjectService],
 })
-export class ProjectsModule {}
+export class GeoludProjectsModule {}

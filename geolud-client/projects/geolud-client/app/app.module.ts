@@ -8,23 +8,18 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AppConfigService } from './core/config/app-config.service';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { StoreModule } from '@ngrx/store';
 import { reducers } from './core/store/state';
-import { HomeModule } from './modules/home/home.module';
-import { CoreModule } from './core/core.module';
-
-export function loadConfig(appConfigService: AppConfigService) {
-  return () => appConfigService.loadConfig();
-}
+import { GeoludHomeModule } from './modules/home/home.module';
+import { GeoludCoreModule } from './core/core.module';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
-    CoreModule,
-    HomeModule,
+    GeoludCoreModule.forRoot(),
+    GeoludHomeModule,
     NgbModule,
     BrowserModule,
     ToastrModule.forRoot({

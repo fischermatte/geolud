@@ -17,4 +17,4 @@ export class ContactRoutingModule {}
   imports: [CommonModule, FormsModule, ContactRoutingModule],
   providers: [],
 })
-export class ContactModule {}
+export class GeoludContactModule {}

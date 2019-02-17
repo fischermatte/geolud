@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { publishReplay, refCount } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
-import {Project} from './project.types';
+import { Project } from './project.types';
 
 @Injectable()
 export class ProjectService {

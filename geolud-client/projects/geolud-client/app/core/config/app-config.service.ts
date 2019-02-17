@@ -1,8 +1,7 @@
-import { APP_INITIALIZER, Injectable } from '@angular/core';
+import { APP_INITIALIZER, Injectable, Provider } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { AppConfig } from './app-config';
-import { loadConfig } from '../../app.module';
 
 @Injectable({
   providedIn: 'root',
@@ -24,9 +23,9 @@ export class AppConfigService {
   }
 }
 
-export const AppConfigServiceProvider = {
+export const AppConfigServiceProvider: Provider = {
   provide: APP_INITIALIZER,
-  useFactory: loadConfig,
+  useFactory: (appConfigService: AppConfigService) => appConfigService.loadConfig(),
   deps: [AppConfigService],
   multi: true,
 };
