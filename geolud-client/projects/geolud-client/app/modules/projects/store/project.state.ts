@@ -1,5 +1,5 @@
 import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
-import { Project } from '../../../modules/projects/project.types';
+import { Project } from '../project.types';
 
 export interface ProjectState extends EntityState<Project> {}
 

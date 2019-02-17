@@ -8,11 +8,11 @@ export class AlertService {
   constructor(private toastr: ToastrService) {}
 
   addError(text, error?: any) {
-    setTimeout(() =>this.toastr.error(text));
+    setTimeout(() => this.toastr.error(text));
     console.error(JSON.stringify(error));
   }
 
   addSuccess(text: string, title?: string) {
-    setTimeout(() =>this.toastr.success(text, title));
+    setTimeout(() => this.toastr.success(text, title));
   }
 }

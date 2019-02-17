@@ -12,7 +12,7 @@ export class RestHttpInterceptor implements HttpInterceptor {
   }
 }
 
-export const RestHttpInterceptorProvider: Provider = {
+export const restHttpInterceptorProvider: Provider = {
   provide: HTTP_INTERCEPTORS,
   useClass: RestHttpInterceptor,
   multi: true,

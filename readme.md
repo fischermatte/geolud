@@ -10,8 +10,10 @@ My personal 'cloud-native' homepage as a progressive web app. Totally over-engin
 ### geolud-client
 - Angular
 - Bootstrap 
+- NgRx for reactive state management (@ngrx/effects, @ngrx/entity, @ngrx/store) 
 - Service Worker (@angular/pwa)
 - Websocket (for Chat)
+- Lazy Module Loading (for faster startup)
 
 ### geolud-server-java
 - Spring: Boot 2 / Cloud / Data / Reactive (Mongo, Websockets, WebFlux)

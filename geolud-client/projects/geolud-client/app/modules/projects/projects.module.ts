@@ -5,6 +5,11 @@ import { ProjectsComponent } from './projects.component';
 import { ProjectPeriodPipe } from './project-period.pipe';
 import { BlockUIModule } from 'ng-block-ui';
 import { ProjectService } from './project.service';
+import { StoreModule } from '@ngrx/store';
+import { projectReducer } from './store/project.reducers';
+import { EffectsModule } from '@ngrx/effects';
+import { ProjectEffects } from './store/project.effects';
+import { ProjectApiService } from './project.api.service';
 
 const routes: Routes = [{ path: '', component: ProjectsComponent }];
 
@@ -16,7 +21,15 @@ export class ProjectsRoutingModule {}
 
 @NgModule({
   declarations: [ProjectsComponent, ProjectPeriodPipe],
-  imports: [CommonModule, ProjectsRoutingModule, BlockUIModule.forRoot()],
-  providers: [ProjectService],
+  imports: [
+    CommonModule,
+    ProjectsRoutingModule,
+    BlockUIModule.forRoot(),
+    StoreModule.forFeature('projectFeature', {
+      projects: projectReducer,
+    }),
+    EffectsModule.forFeature([ProjectEffects]),
+  ],
+  providers: [ProjectService, ProjectApiService, ProjectEffects],
 })
 export class GeoludProjectsModule {}

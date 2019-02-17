@@ -4,13 +4,13 @@
     "directive-selector": [
       true,
       "attribute",
-      "app",
+      "geolud",
       "camelCase"
     ],
     "component-selector": [
       true,
       "element",
-      "app",
+      "geolud",
       "kebab-case"
     ]
   }

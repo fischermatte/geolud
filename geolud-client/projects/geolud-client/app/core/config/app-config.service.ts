@@ -23,9 +23,11 @@ export class AppConfigService {
   }
 }
 
-export const AppConfigServiceProvider: Provider = {
+export const appConfigServiceProvider: Provider = {
   provide: APP_INITIALIZER,
-  useFactory: (appConfigService: AppConfigService) => { return () => appConfigService.loadConfig() },
+  useFactory: (appConfigService: AppConfigService) => {
+    return () => appConfigService.loadConfig();
+  },
   deps: [AppConfigService],
   multi: true,
 };
