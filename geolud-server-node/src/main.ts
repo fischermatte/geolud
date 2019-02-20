@@ -4,8 +4,6 @@ import { WsAdapter } from '@nestjs/websockets';
 
 const port = process.env.PORT || 8080;
 
-console.info(`Serving at port ${port}`);
-
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, {
     logger: console,
