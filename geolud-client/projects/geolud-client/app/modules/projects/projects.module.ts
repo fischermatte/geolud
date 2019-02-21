@@ -6,9 +6,9 @@ import { ProjectPeriodPipe } from './project-period.pipe';
 import { BlockUIModule } from 'ng-block-ui';
 import { ProjectService } from './project.service';
 import { StoreModule } from '@ngrx/store';
-import { projectReducer } from './store/project.reducers';
+import { projectReducer } from './state/project.reducers';
 import { EffectsModule } from '@ngrx/effects';
-import { ProjectEffects } from './store/project.effects';
+import { ProjectEffects } from './state/project.effects';
 import { ProjectApiService } from './project.api.service';
 
 const routes: Routes = [{ path: '', component: ProjectsComponent }];
