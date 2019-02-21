@@ -1,6 +1,6 @@
 import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 import { Project } from '../project.types';
-import {createFeatureSelector, createSelector} from '@ngrx/store';
+import { createFeatureSelector, createSelector } from '@ngrx/store';
 
 export interface ProjectState extends EntityState<Project> {
   loading: boolean;
@@ -20,5 +20,5 @@ export const isLoading = (state: ProjectState) => state.loading;
 
 export const isProjectLoading = createSelector(
   selectProjectEntity,
-  isLoading
+  isLoading,
 );

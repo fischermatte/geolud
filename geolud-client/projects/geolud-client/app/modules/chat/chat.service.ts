@@ -49,8 +49,7 @@ export class ChatService {
       )
       .subscribe(
         entry => this.messages.push(entry),
-        error => this.alertService.addError('Failed to connect via WebSockets. Is your corporate proxy blocking it?', error,
-          'Websocket Error'),
+        error => this.alertService.addError('Failed to connect via WebSockets. Is your corporate proxy blocking it?', error, 'Websocket Error'),
       );
   }
 
