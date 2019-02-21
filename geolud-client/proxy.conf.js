@@ -4,8 +4,8 @@ const PROXY_CONFIG = {
     'bypass': function (req, res) {
       if (req.url === '/app-config') {
         res.end(JSON.stringify({
-          apiBase: 'http://localhost:8080',
-          wsBase: 'ws://localhost:8080'
+          apiBase: 'http://localhost:8000',
+          wsBase: 'ws://localhost:8000'
         }));
         return true;
       }

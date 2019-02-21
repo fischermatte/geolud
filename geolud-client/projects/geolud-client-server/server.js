@@ -9,6 +9,7 @@ const BACKEND_IS_SSL = process.env.BACKEND_IS_SSL || false;
 const VAPID_PUPLIC_KEY =
   (pushCredentials && pushCredentials.vapid_puplic_key) || 'BNIQ6kTA0xRv7p4Hi9jfatnhB40Meo0M_KFfv54rp_GA7ip1uy2KiAT0bfz0CSwY5JjJj6lzcv306wVTf9A3NDU';
 const APP_DIRECTORY = getAppDirectory();
+const port = process.env.PORT || 8080;
 
 const app = express();
 
@@ -32,7 +33,7 @@ app.get('*', function(req, res) {
   });
 });
 
-app.listen(8080, function() {
+app.listen(port, function() {
   console.log('app listening on http://localhost:8080!');
 });
 

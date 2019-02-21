@@ -7,8 +7,8 @@ import { ToastrService } from 'ngx-toastr';
 export class AlertService {
   constructor(private toastr: ToastrService) {}
 
-  addError(text, error?: any) {
-    setTimeout(() => this.toastr.error(text));
+  addError(text, error?: any, title?: string) {
+    setTimeout(() => this.toastr.error(text, title));
     console.error(JSON.stringify(error));
   }
 

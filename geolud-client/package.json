@@ -83,7 +83,6 @@
     "webdriver-manager": "^12.1.1"
   },
   "engines": {
-    "node": "^8.14.0",
-    "npm": "^6.4.1"
+    "node": "8.11.3"
   }
 }
