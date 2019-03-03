@@ -1,25 +1,48 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { map, publishReplay, refCount } from 'rxjs/operators';
-import { environment } from '../../environments/environment';
 import { Project } from '../api/api';
+import { Apollo } from 'apollo-angular';
+import gql from 'graphql-tag';
+import { map } from 'rxjs/operators';
+import { ApolloQueryResult } from 'apollo-client';
+
+interface ProjectsResponse {
+  projects: Project[];
+}
+
+const projectsGqlQuery = gql`
+  {
+    projects {
+      id
+      title
+      description
+      period {
+        from
+        to
+      }
+      customer {
+        name
+        url
+      }
+    }
+  }
+`;
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProjectService {
-  private url: string = environment.appConfig.apiBase + `/api/projects`;
   private publisher: Observable<Project[]>;
 
-  constructor(private http: HttpClient) {}
+  constructor(private apollo: Apollo) {}
 
   getAll(): Observable<Project[]> {
     if (!this.publisher) {
-      this.publisher = this.http.get<Project[]>(this.url).pipe(
-        publishReplay(1),
-        refCount(),
-      );
+      this.publisher = this.apollo
+        .watchQuery({
+          query: projectsGqlQuery,
+        })
+        .valueChanges.pipe(map((result: ApolloQueryResult<ProjectsResponse>) => result.data.projects));
     }
     return this.publisher;
   }

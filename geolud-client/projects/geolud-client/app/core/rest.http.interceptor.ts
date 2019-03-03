@@ -1,6 +1,6 @@
-import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Injectable } from '@angular/core';
+import {Injectable, Provider} from '@angular/core';
 
 @Injectable()
 export class RestHttpInterceptor implements HttpInterceptor {
@@ -11,3 +11,9 @@ export class RestHttpInterceptor implements HttpInterceptor {
     return next.handle(authReq);
   }
 }
+
+export const RestHttpInterceptorProvider: Provider = {
+  provide: HTTP_INTERCEPTORS,
+  useClass: RestHttpInterceptor,
+  multi: true,
+};
