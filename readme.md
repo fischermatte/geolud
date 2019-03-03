@@ -12,6 +12,7 @@ My personal 'cloud-native' homepage as a progressive web app. Totally over-engin
 - Bootstrap 
 - Service Worker (@angular/pwa)
 - Websocket (for Chat)
+- GraphQL (Apollo Angular)
 
 ### geolud-server-java
 - Spring: Boot 2 / Cloud / Data / Reactive (Mongo, Websockets, WebFlux)
