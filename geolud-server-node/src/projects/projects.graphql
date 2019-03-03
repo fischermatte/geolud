@@ -1,0 +1,30 @@
+type Query {
+    project(id: ID!): Project
+    projects: [Project]
+}
+
+scalar Date
+
+type Project {
+    id: String!
+    title: String!
+    description: String!
+    period: Interval
+    customer: Customer
+    assetLinks: [AssetLink]
+}
+
+type Customer {
+    name: String!
+    url: String!
+}
+
+type AssetLink {
+    title: String!
+    url: String!
+}
+
+type Interval {
+    from: Date!
+    to: Date
+}

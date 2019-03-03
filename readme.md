@@ -22,6 +22,7 @@ My personal 'cloud-native' homepage as a progressive web app. Totally over-engin
 - NestJS
 - TypeORM 
 - MongoDB
+- GraphQL Server 
 
 ## 2. How to run it locally
 
