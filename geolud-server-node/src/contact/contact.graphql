@@ -1,13 +1,22 @@
 type Mutation {
-    submitContactRequest(contactRequest: ContactRequest): String
+    submitContactRequest(name: String, email: String!, message: String!): Delivery
 }
 
 input ContactRequest {
     name: String
     email: String!
     message: String!
+    sentAt: Date
 }
 
+scalar Date
+
+type Delivery {
+    sentAt: Date
+}
+
+
+
 type Subscription {
-    contactRequestSubmitted: string
+    contactRequestSubmitted: String
 }

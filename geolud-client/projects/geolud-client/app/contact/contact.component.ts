@@ -1,9 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Title } from '@angular/platform-browser';
 import { environment } from '../../environments/environment';
 import { AlertService } from '../core/alert/alert.service';
-import { ContactRequest } from './chat.model';
+import { ContactRequest } from './contact.model';
+import {ContactService} from './contact.service';
 
 @Component({
   selector: 'app-contact',
@@ -16,7 +16,7 @@ export class ContactComponent implements OnInit {
   contactRequest: ContactRequest;
   @ViewChild('contactForm') contactForm: any;
 
-  constructor(private http: HttpClient, private alertService: AlertService, title: Title) {
+  constructor(private contactService: ContactService, private alertService: AlertService, title: Title) {
     title.setTitle('Georg Ludewig - Software Engineer - Contact');
   }
 
@@ -26,10 +26,9 @@ export class ContactComponent implements OnInit {
 
   onSubmit() {
     if (this.contactForm.valid) {
-      // note we set the response type to text due to this issue:  https://github.com/angular/angular/issues/18680
-      this.http.post(this.url, this.contactRequest, { responseType: 'text' }).subscribe(
-        () => {
-          this.alertService.addSuccess('Contact request was submitted!');
+      this.contactService.submitContactRequest(this.contactRequest).subscribe(
+        (sentAt: Date) => {
+          this.alertService.addSuccess('Contact request was submitted at ' + sentAt.toLocaleString());
           this.contactForm.reset();
         },
         error => {

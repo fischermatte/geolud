@@ -7,12 +7,12 @@ import { ApolloQueryResult } from 'apollo-client';
 import { Project } from './project.model';
 
 interface ProjectsResponse {
-  projects: Project[];
+  allProjects: Project[];
 }
 
 const allProjectsQuery = gql`
   {
-    projects {
+    allProjects {
       id
       title
       description
@@ -42,7 +42,7 @@ export class ProjectService {
         .watchQuery({
           query: allProjectsQuery,
         })
-        .valueChanges.pipe(map((result: ApolloQueryResult<ProjectsResponse>) => result.data.projects));
+        .valueChanges.pipe(map((result: ApolloQueryResult<ProjectsResponse>) => result.data.allProjects));
     }
     return this.publisher;
   }

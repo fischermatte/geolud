@@ -8,7 +8,8 @@ import { AppConfig, MailConfigProvider } from './app.config';
 import { DataInitializerService } from './initialization/data-initializer.service';
 import { ChatGateway } from './chat/chat.gateway';
 import { Project } from './projects/project.model';
-import {ProjectsResolvers} from './projects/projects.resolver';
+import { ProjectsResolvers } from './projects/projects.resolver';
+import { ContactResolvers } from './contact/contact.resolver';
 
 @Module({
   imports: [
@@ -19,6 +20,6 @@ import {ProjectsResolvers} from './projects/projects.resolver';
     }),
   ],
   controllers: [ProjectController, ContactController],
-  providers: [MailService, DataInitializerService, MailConfigProvider, ChatGateway, ProjectsResolvers],
+  providers: [MailService, DataInitializerService, MailConfigProvider, ChatGateway, ProjectsResolvers, ContactResolvers],
 })
 export class AppModule {}
