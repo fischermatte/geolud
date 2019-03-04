@@ -1,11 +1,11 @@
 import { inject, TestBed } from '@angular/core/testing';
 import { ProjectService } from './project.service';
-import { HttpClientModule } from '@angular/common/http';
+import { ApolloModule } from 'apollo-angular';
 
 describe('ProjectService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientModule],
+      imports: [ApolloModule],
       providers: [],
     });
   });
