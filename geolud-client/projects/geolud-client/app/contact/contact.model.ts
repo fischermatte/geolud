@@ -3,7 +3,3 @@ export interface ContactRequest {
   email: string;
   message: string;
 }
-
-export interface Delivery {
-  sentAt: Date;
-}
