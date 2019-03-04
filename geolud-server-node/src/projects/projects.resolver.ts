@@ -13,16 +13,16 @@ export class ProjectsResolvers {
     private readonly projectRepository: MongoRepository<Project>,
   ) {}
 
-  @Query('projects')
+  @Query('allProjects')
   @UseGuards(ProjectsGuard)
-  async findAll(): Promise<Project[]> {
+  async allProjects(): Promise<Project[]> {
     const projects = await this.projectRepository.find();
     projects.sort((a, b) => b.period.from.getTime() - a.period.from.getTime());
     return projects;
   }
 
   @Query('project')
-  findOneById(@Args('id') id: string): Promise<Project> {
+  project(@Args('id') id: string): Promise<Project> {
     return this.projectRepository.findOne(new MongoObjectID(id) as TypeOrmObjectID);
   }
 }

@@ -1,0 +1,13 @@
+type Mutation {
+    submitContactRequest(contactRequest: ContactRequest): String
+}
+
+input ContactRequest {
+    name: String
+    email: String!
+    message: String!
+}
+
+type Subscription {
+    contactRequestSubmitted: string
+}

@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Interval } from '../api/api';
+import {Interval} from './project.model';
 
 @Pipe({
   name: 'projectPeriod',

@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Project } from '../api/api';
 import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
 import { map } from 'rxjs/operators';
 import { ApolloQueryResult } from 'apollo-client';
+import { Project } from './project.model';
 
 interface ProjectsResponse {
   projects: Project[];
 }
 
-const projectsGqlQuery = gql`
+const allProjectsQuery = gql`
   {
     projects {
       id
@@ -36,11 +36,11 @@ export class ProjectService {
 
   constructor(private apollo: Apollo) {}
 
-  getAll(): Observable<Project[]> {
+  findAll(): Observable<Project[]> {
     if (!this.publisher) {
       this.publisher = this.apollo
         .watchQuery({
-          query: projectsGqlQuery,
+          query: allProjectsQuery,
         })
         .valueChanges.pipe(map((result: ApolloQueryResult<ProjectsResponse>) => result.data.projects));
     }

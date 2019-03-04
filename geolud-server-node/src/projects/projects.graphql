@@ -1,6 +1,6 @@
 type Query {
     project(id: ID!): Project
-    projects: [Project]
+    allProjects: [Project]
 }
 
 scalar Date

@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Title } from '@angular/platform-browser';
 import { environment } from '../../environments/environment';
 import { AlertService } from '../core/alert/alert.service';
-import { ContactRequest } from '../api/api';
+import { ContactRequest } from './chat.model';
 
 @Component({
   selector: 'app-contact',
