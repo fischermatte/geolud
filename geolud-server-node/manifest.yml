@@ -4,7 +4,7 @@ applications:
 - name: dev-geolud-server-node
   instances: 1
   buildpack: https://github.com/cloudfoundry/nodejs-buildpack.git#v1.6.36
-  memory: 100m
+  memory: 200m
   routes:
   - route: dev-geolud-server.mybluemix.net
   services:
