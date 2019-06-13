@@ -14,7 +14,7 @@ export class ContactComponent implements OnInit {
   private url = environment.appConfig.apiBase + '/api/contact';
 
   contactRequest: ContactRequest;
-  @ViewChild('contactForm') contactForm: any;
+  @ViewChild('contactForm', { static: true }) contactForm: any;
 
   constructor(private contactService: ContactService, private alertService: AlertService, title: Title) {
     title.setTitle('Georg Ludewig - Software Engineer - Contact');

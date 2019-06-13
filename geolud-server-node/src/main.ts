@@ -1,6 +1,6 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import { WsAdapter } from '@nestjs/websockets';
+import { WsAdapter } from '@nestjs/platform-ws';
 
 const port = process.env.PORT || 8080;
 
