@@ -12,7 +12,7 @@ export class DataInitializerService implements OnModuleInit {
   ) {}
 
   onModuleInit(): any {
-    return this.projectRepository.clear().then(() => {
+    return this.projectRepository.clear().catch(() => console.log('no collection yet present')).finally(() => {
       ALL_PROJECTS.forEach(project => {
         return this.projectRepository.save(project);
       });

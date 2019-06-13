@@ -11,9 +11,9 @@ import { AlertService } from '../core/alert/alert.service';
   styleUrls: ['./chat.component.scss'],
 })
 export class ChatComponent implements OnInit, AfterViewChecked {
-  @ViewChild('messagesContainer')
+  @ViewChild('messagesContainer', { static: true })
   private messagesContainer: ElementRef;
-  @ViewChild('messageInput')
+  @ViewChild('messageInput', { static: false })
   private messageInput: ElementRef;
   user: ChatUser;
   message: string;

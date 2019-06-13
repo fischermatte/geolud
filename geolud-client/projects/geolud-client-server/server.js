@@ -41,7 +41,7 @@ function getAppDirectory() {
   let directory = path.join(__dirname, 'app');
   if (!fs.existsSync(directory)) {
     // fallback when starting server from within git repo as developer
-    directory = path.join(__dirname, '..\\..\\dist\\app');
+    directory = path.join(__dirname, '../../dist/app');
   }
   console.log(`serving files from ${directory}`);
   return directory;
