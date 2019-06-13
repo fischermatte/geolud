@@ -87,6 +87,6 @@
     "webdriver-manager": "^12.1.1"
   },
   "engines": {
-    "node": "8.11.3"
+    "node": "^10"
   }
 }
