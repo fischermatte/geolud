@@ -12,6 +12,7 @@ export class DataInitializerService implements OnModuleInit {
   ) {}
 
   onModuleInit(): any {
+    // tslint:disable-next-line:no-console
     return this.projectRepository.clear().catch(() => console.log('no collection yet present')).finally(() => {
       ALL_PROJECTS.forEach(project => {
         return this.projectRepository.save(project);
