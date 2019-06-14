@@ -24,10 +24,10 @@ import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.jayway.awaitility.Awaitility.await;
 import static io.fischermatte.geolud.server.rest.api.v1.Paths.CHAT;
 import static io.reactivex.BackpressureStrategy.LATEST;
 import static java.util.concurrent.TimeUnit.SECONDS;
+import static org.awaitility.Awaitility.await;
 import static org.junit.jupiter.api.Assertions.fail;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
 
