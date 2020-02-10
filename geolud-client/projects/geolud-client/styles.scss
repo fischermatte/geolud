@@ -1,18 +1,1 @@
-$fa-font-path: "~font-awesome/fonts";
-$lato-font-path: "~lato-font/fonts";
-$montserrat-font-path: "~montserrat-font/fonts";
-
 @import 'variables';
-@import '../../node_modules/bootstrap/scss/bootstrap';
-@import '../../node_modules/font-awesome/scss/font-awesome';
-@import '../../node_modules/lato-font/scss/lato-font';
-@import '../../node_modules/montserrat-font/scss/montserrat-font';
-@import '../../node_modules/startbootstrap-freelancer/scss/freelancer';
-@import '~ngx-toastr/toastr-bs4-alert';
-@import 'theme_overrides';
-@import 'blockui_overrides';
-
-//see https://stackoverflow.com/questions/53989445/ngx-toastr-toast-not-showing-in-angular-7#
-#toast-container > div {
-  opacity:1;
-}

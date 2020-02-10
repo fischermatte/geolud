@@ -28,10 +28,6 @@
               "projects/geolud-client/manifest.webmanifest"
             ],
             "styles": [
-              "node_modules/lato-font/scss/lato-font.scss",
-              "node_modules/montserrat-font/scss/montserrat-font.scss",
-              "node_modules/bootstrap/scss/bootstrap.scss",
-              "node_modules/startbootstrap-freelancer/scss/freelancer.scss",
               "projects/geolud-client/styles.scss"
             ],
             "scripts": []
@@ -91,10 +87,6 @@
             "tsConfig": "projects/geolud-client/tsconfig.spec.json",
             "karmaConfig": "projects/geolud-client/karma.conf.js",
             "styles": [
-              "node_modules/lato-font/scss/lato-font.scss",
-              "node_modules/montserrat-font/scss/montserrat-font.scss",
-              "node_modules/bootstrap/scss/bootstrap.scss",
-              "node_modules/startbootstrap-freelancer/scss/freelancer.scss",
               "projects/geolud-client/styles.scss"
             ],
             "scripts": [],
