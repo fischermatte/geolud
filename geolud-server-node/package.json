@@ -30,7 +30,7 @@
     "@nestjs/platform-ws": "^6.3.1",
     "@nestjs/typeorm": "^6.1.2",
     "@nestjs/websockets": "^6.3.1",
-    "apollo-server-express": "^2.6.3",
+    "apollo-server-express": "^2.14.2",
     "cfenv": "^1.2.2",
     "graphql": "^14.3.1",
     "graphql-tools": "^4.0.4",
