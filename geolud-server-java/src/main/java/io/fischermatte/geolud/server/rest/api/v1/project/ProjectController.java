@@ -20,7 +20,7 @@ import io.swagger.annotations.ApiResponses;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-@Api(value = "projects", description = "the projects API")
+@Api(value = "projects")
 @RestController
 public class ProjectController {
 

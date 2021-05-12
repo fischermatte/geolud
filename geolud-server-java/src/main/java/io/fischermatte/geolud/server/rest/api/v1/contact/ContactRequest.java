@@ -1,8 +1,7 @@
 package io.fischermatte.geolud.server.rest.api.v1.contact;
 
-import javax.validation.constraints.NotNull;
-
 import org.springframework.validation.annotation.Validated;
+import javax.validation.constraints.NotNull;
 
 /**
  * ContactRequest
@@ -10,9 +9,7 @@ import org.springframework.validation.annotation.Validated;
 @Validated
 public class ContactRequest {
     private String name = null;
-
     private String email = null;
-
     private String message = null;
 
     public ContactRequest name(String name) {

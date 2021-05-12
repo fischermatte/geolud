@@ -4,8 +4,9 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.fischermatte.geolud.server.config.ApplicationConfig;
 import io.fischermatte.geolud.server.service.mail.MailService;
-import io.reactivex.subjects.ReplaySubject;
-import io.reactivex.subjects.Subject;
+import io.reactivex.rxjava3.core.BackpressureStrategy;
+import io.reactivex.rxjava3.schedulers.Schedulers;
+import io.reactivex.rxjava3.subjects.ReplaySubject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -18,8 +19,6 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.concurrent.TimeUnit;
 
-import static io.reactivex.BackpressureStrategy.LATEST;
-import static io.reactivex.schedulers.Schedulers.single;
 
 @Component
 public class ChatWebSocketHandler implements WebSocketHandler {
@@ -28,12 +27,12 @@ public class ChatWebSocketHandler implements WebSocketHandler {
     private final ObjectMapper objectMapper;
     private final MailService mailService;
     private LocalDateTime lastChatNotificationEmail;
-    private Subject<String> subject;
+    private ReplaySubject<String> subject;
 
     public ChatWebSocketHandler(ObjectMapper objectMapper, MailService mailService) {
         this.objectMapper = objectMapper;
         this.mailService = mailService;
-        this.subject = ReplaySubject.createWithTimeAndSize(2, TimeUnit.MINUTES, single(), 10);
+        this.subject = ReplaySubject.createWithTimeAndSize(2, TimeUnit.MINUTES, Schedulers.single(), 10);
     }
 
     @Override
@@ -48,7 +47,7 @@ public class ChatWebSocketHandler implements WebSocketHandler {
                     subject.onNext(toJson(chatMessage));
                 });
         // 2/2: tell the websocket session that the subject is the publishing source
-        return session.send(subject.map(session::textMessage).toFlowable(LATEST));
+        return session.send(subject.map(session::textMessage).toFlowable(BackpressureStrategy.LATEST));
     }
 
     private String toJson(ChatMessage chatMessage) {
