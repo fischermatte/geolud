@@ -2,7 +2,7 @@
   "name": "geolud-client-server",
   "version": "1.4.8",
   "dependencies": {
-    "express": "^4.16.3",
+    "express": "^4.17.3",
     "vcap_services": "^0.6.0"
   },
   "scripts": {
